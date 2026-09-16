@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Wishlist | AMEZA Premium Modern E-Commerce Store</title>
+  <meta name="description" content="View and manage your saved favorite items on AMEZA. Handcrafted apparel, tech wearables, and leather goods.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/amezashopify logo.png">
+</head>
+<body>
+
+  <!-- 1. TOP ANNOUNCEMENT BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-badge">Special Offer</span>
+        <span>Free Worldwide Express Shipping on all orders over $100 &bull; 30-Day Easy Returns</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="index.html#section-deals" class="top-bar-link">
+          🔥 Flash Deals
+        </a>
+        <span style="opacity: 0.4;">|</span>
+        <button class="top-bar-link" data-action="open-account">
+          Track Order
+        </button>
+        <span style="opacity: 0.4;">|</span>
+        <span class="top-bar-link">USD ($)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN HEADER (Sticky & Clean) -->
+  <header class="header-sticky" id="main-header">
+    <div class="container header-inner">
+      <!-- Left: Logo -->
+      <a href="index.html" class="logo-wrap" title="AMEZA E-Commerce">
+        <img src="assets/amezashopify logo.png" alt="AMEZA Logo" onerror="this.src='assets/logo.png'">
+      </a>
+
+      <!-- Center: Navigation Links with Icons -->
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">
+          <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Home</span>
+        </a>
+        <a href="index.html#section-clothes-jewellery" class="nav-link">
+          <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path></svg>
+          <span>Clothing</span>
+        </a>
+        <a href="index.html#section-electronics-watches" class="nav-link">
+          <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+          <span>Electronics</span>
+        </a>
+        <a href="index.html#section-electronics-watches" class="nav-link">
+          <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"></circle><polyline points="12 9 12 12 13.5 13.5"></polyline><path d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l.35-3.83A2 2 0 0 1 9.83 1h4.34a2 2 0 0 1 2 1.82l.35 3.83"></path></svg>
+          <span>Watches</span>
+        </a>
+        <a href="index.html#section-leather-collection" class="nav-link">
+          <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="3"></rect><line x1="7" y1="7" x2="7" y2="17"></line><circle cx="12" cy="12" r="1.5" fill="currentColor"></circle><circle cx="16" cy="12" r="1.5" fill="currentColor"></circle></svg>
+          <span>Leather Belts</span>
+        </a>
+        <a href="index.html#section-leather-collection" class="nav-link">
+          <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line><circle cx="17" cy="14" r="1.5" fill="currentColor"></circle></svg>
+          <span>Wallets</span>
+        </a>
+        <a href="index.html#section-latest-range" class="nav-link">
+          <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span>Bags &amp; Totes</span>
+        </a>
+      </nav>
+
+      <!-- Right: Utility Actions -->
+      <div class="header-actions">
+        <!-- Search Trigger -->
+        <button class="action-btn" data-action="open-search" title="Search Products" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+
+        <!-- Account Trigger -->
+        <button class="action-btn" data-action="open-account" title="My Account" aria-label="Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </button>
+
+        <!-- Wishlist Trigger -->
+        <button class="action-btn active" data-action="open-wishlist" title="Wishlist" aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <span class="badge-count wishlist-count-badge" style="display: none;">0</span>
+        </button>
+
+        <!-- Cart Trigger -->
+        <button class="action-btn" data-action="open-cart" title="Shopping Cart" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="badge-count cart-count-badge" style="display: none;">0</span>
+        </button>
+
+        <!-- Mobile Hamburger -->
+        <button class="action-btn hamburger-btn" data-action="mobile-menu-toggle" aria-label="Toggle Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu (inside sticky header so it remains visible when scrolled) -->
+    <div id="mobile-nav-menu" class="mobile-nav-menu">
+      <div class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+          <span>Home</span>
+        </a>
+        <a href="index.html#section-clothes-jewellery" class="mobile-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path></svg>
+          <span>Clothing</span>
+        </a>
+        <a href="index.html#section-electronics-watches" class="mobile-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+          <span>Electronics</span>
+        </a>
+        <a href="index.html#section-electronics-watches" class="mobile-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="7"></circle><polyline points="12 9 12 12 13.5 13.5"></polyline></svg>
+          <span>Watches</span>
+        </a>
+        <a href="index.html#section-leather-collection" class="mobile-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="3"></rect><line x1="7" y1="7" x2="7" y2="17"></line></svg>
+          <span>Leather Belts</span>
+        </a>
+        <a href="index.html#section-leather-collection" class="mobile-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+          <span>Wallets</span>
+        </a>
+        <a href="index.html#section-latest-range" class="mobile-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path></svg>
+          <span>Bags &amp; Totes</span>
+        </a>
+        <a href="wishlist.html" class="mobile-nav-item active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <span>My Wishlist (<span class="wishlist-count-badge">0</span>)</span>
+        </a>
+        <a href="index.html#section-deals" class="mobile-nav-item deals-link">
+          <span>🔥 Limited Deals</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Breadcrumb -->
+    <div style="background: var(--bg-white); border-bottom: 1px solid var(--border); padding: 12px 0;">
+      <div class="container">
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-muted);">
+          <a href="index.html" style="color: var(--text-main); font-weight: 600;">Home</a>
+          <span>/</span>
+          <span style="color: var(--primary); font-weight: 700;">Wishlist</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEDICATED WISHLIST SECTION -->
+    <section class="section wishlist-page-section" id="section-wishlist" style="padding: 36px 0 60px; min-height: 55vh;">
+      <div class="container">
+        <div class="wishlist-banner-header">
+          <div class="wishlist-banner-info">
+            <div class="wishlist-pill-badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              <span>Saved Items Collection</span>
+            </div>
+            <h2>My Saved Wishlist (<span id="wishlist-page-count">0</span> items)</h2>
+            <p>Your handpicked favorite products saved for quick access and instant purchase.</p>
+          </div>
+          <div class="wishlist-page-actions">
+            <button class="btn-primary" id="btn-wishlist-page-move-all" data-action="wishlist-move-all">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              <span>Move All to Cart</span>
+            </button>
+            <button class="btn-clear-search" id="btn-wishlist-page-clear" data-action="wishlist-clear-all">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              <span>Clear Wishlist</span>
+            </button>
+            <a href="index.html" class="btn-clear-search" style="text-decoration: none;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              <span>Back to Store</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Wishlist Grid -->
+        <div class="products-grid-5" id="grid-wishlist-page">
+          <!-- Dynamically populated via JS -->
+        </div>
+
+        <!-- Wishlist Empty State -->
+        <div class="search-empty-state" id="wishlist-empty-page" style="display: none; padding: 60px 20px;">
+          <div class="empty-search-icon">🤍</div>
+          <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--dark); margin-bottom: 8px;">Your Wishlist is Empty</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; max-width: 440px; margin-left: auto; margin-right: auto;">
+            You haven't saved any items yet. Browse our store and click the heart icon on any product to save it here!
+          </p>
+          <a href="index.html" class="btn-primary" style="display: inline-flex; text-decoration: none;">
+            Browse Store Products &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST / SERVICE BENEFITS SECTION -->
+    <section class="trust-section">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          </div>
+          <div class="trust-text">
+            <h4>FREE SHIPPING</h4>
+            <p>On all orders over $100</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          </div>
+          <div class="trust-text">
+            <h4>EASY RETURNS</h4>
+            <p>30-day hassle-free policy</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <div class="trust-text">
+            <h4>SECURE PAYMENT</h4>
+            <p>256-bit encrypted checkout</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <div class="trust-text">
+            <h4>QUALITY PRODUCTS</h4>
+            <p>100% authentic guarantee</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          </div>
+          <div class="trust-text">
+            <h4>24/7 SUPPORT</h4>
+            <p>Dedicated customer care</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GREEN NEWSLETTER SECTION -->
+    <section class="newsletter-section">
+      <div class="container newsletter-content">
+        <h2 class="newsletter-title">Discover Something You'll Love</h2>
+        <p class="newsletter-desc">
+          Subscribe to the AMEZA newsletter for early access to product drops, exclusive VIP member discounts, and lifestyle style guides.
+        </p>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" id="newsletter-email" placeholder="Enter your email address" required aria-label="Email for Newsletter">
+          <button type="submit" class="btn-newsletter">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- MULTI-COLUMN FOOTER -->
+  <footer class="footer-main">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html">
+            <img src="assets/amezashopify logo.png" alt="AMEZA Logo" class="footer-logo" onerror="this.src='assets/logo.png'">
+          </a>
+          <p>
+            AMEZA is a premium lifestyle store dedicated to bringing together the finest in smart wearable tech, heavy organic apparel, and authentic full-grain leather craftsmanship.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-icon" title="Facebook" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-icon" title="Instagram" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" class="social-icon" title="TikTok" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.41a8.28 8.28 0 0 0 4.76 1.73V6.69z"/></svg>
+            </a>
+            <a href="#" class="social-icon" title="YouTube" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33zM9.75 15.02V8.54l5.7 3.24-5.7 3.24z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#section-clothes-jewellery">Clothing &amp; Tops</a></li>
+            <li><a href="index.html#section-electronics-watches">Electronics &amp; Audio</a></li>
+            <li><a href="index.html#section-electronics-watches">Smart Watches</a></li>
+            <li><a href="index.html#section-leather-collection">Leather Belts</a></li>
+            <li><a href="index.html#section-latest-range">Luxury Bags</a></li>
+            <li><a href="index.html#section-deals">Special Deals</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="#" data-action="open-account">Track Your Order</a></li>
+            <li><a href="#">Shipping &amp; Delivery</a></li>
+            <li><a href="#">Returns &amp; Exchanges</a></li>
+            <li><a href="#">Warranty &amp; Service</a></li>
+            <li><a href="#">Help &amp; FAQs</a></li>
+            <li><a href="#">Contact Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="#">About AMEZA</a></li>
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Store Locator</a></li>
+            <li><a href="#">Affiliate Program</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal &amp; Privacy</h4>
+          <ul class="footer-links">
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookie Settings</a></li>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">Security Standards</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 AMEZA Shopify Store. All rights reserved.</p>
+        <p class="footer-powered">Powered by <a href="https://techsyentra.com" target="_blank" rel="noopener noreferrer">techsyentra.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SLIDE-OUT CART DRAWER -->
+  <div class="drawer-backdrop" id="drawer-backdrop" data-action="close-cart"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span>Shopping Cart</span>
+      </div>
+      <button class="btn-close-drawer" data-action="close-cart" aria-label="Close Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <!-- Free Shipping Meter -->
+    <div class="shipping-meter">
+      <div class="shipping-meter-text" id="shipping-meter-text">
+        Add $100.00 more to qualify for <strong>FREE Shipping</strong>!
+      </div>
+      <div class="shipping-progress-bar">
+        <div class="shipping-progress-fill" id="shipping-progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Wrap -->
+    <div class="cart-items-wrap" id="cart-items-container">
+      <!-- Items dynamically populated via JS -->
+    </div>
+
+    <!-- Cart Footer -->
+    <div class="drawer-footer" id="cart-drawer-footer">
+      <div class="drawer-coupon-box">
+        <input type="text" id="cart-coupon-input" placeholder="Coupon Code (e.g. AMEZA20)" aria-label="Coupon code">
+        <button id="btn-apply-coupon">Apply</button>
+      </div>
+
+      <div class="drawer-subtotal">
+        <span>Estimated Total</span>
+        <span id="cart-total" style="color: var(--primary-dark);">$0.00</span>
+      </div>
+
+      <button class="btn-checkout" data-action="open-checkout">
+        Proceed to Checkout &rarr;
+      </button>
+    </div>
+  </aside>
+
+  <!-- WISHLIST DRAWER -->
+  <div class="drawer-backdrop" id="wishlist-backdrop" data-action="close-wishlist"></div>
+  <aside class="cart-drawer" id="wishlist-drawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        <span>Saved Wishlist</span>
+      </div>
+      <button class="btn-close-drawer" data-action="close-wishlist" aria-label="Close Wishlist">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div class="cart-items-wrap" id="wishlist-items-container">
+      <!-- Items dynamically populated via JS -->
+    </div>
+    <div class="drawer-footer" id="wishlist-drawer-footer" style="display: none;">
+      <div class="drawer-subtotal">
+        <span>Saved Items</span>
+        <strong id="wishlist-drawer-count">0 items</strong>
+      </div>
+      <button class="btn-primary" style="width: 100%; justify-content: center; margin-bottom: 8px; height: 46px;" data-action="wishlist-move-all">
+        Move All to Cart &rarr;
+      </button>
+      <div style="display: flex; gap: 8px;">
+        <button class="btn-clear-search" style="flex: 1; justify-content: center;" data-action="wishlist-clear-all">
+          Clear All
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- QUICK VIEW & PRODUCT DETAIL MODAL -->
+  <div class="modal-backdrop" id="product-modal">
+    <div class="modal-card">
+      <button class="btn-close-modal" data-action="close-quick-view" aria-label="Close Modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div id="product-modal-content">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE GLOBAL SEARCH OVERLAY MODAL -->
+  <div class="search-modal" id="search-modal">
+    <div class="search-modal-box">
+      <div class="search-modal-header">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="live-search-input" placeholder="Type to search all 50+ products..." autofocus aria-label="Quick Search Input">
+        <button class="btn-close-drawer" data-action="close-search" aria-label="Close Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="search-results-wrap" id="live-search-results">
+        <!-- Live search auto-suggestions -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal-backdrop" id="checkout-modal">
+    <div class="modal-card checkout-modal-card">
+      <button class="btn-close-modal" data-action="close-checkout" aria-label="Close Modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div id="checkout-modal-content">
+        <h3 class="checkout-title">Express Checkout</h3>
+        <form id="checkout-form" onsubmit="event.preventDefault(); window.amezaApp.submitCheckout(event);">
+          <div class="checkout-form-grid">
+            <div class="form-group">
+              <label for="chk-fname">First Name *</label>
+              <input type="text" id="chk-fname" required placeholder="John">
+            </div>
+            <div class="form-group">
+              <label for="chk-lname">Last Name *</label>
+              <input type="text" id="chk-lname" required placeholder="Doe">
+            </div>
+            <div class="form-group full">
+              <label for="chk-email">Email Address *</label>
+              <input type="email" id="chk-email" required placeholder="john@example.com">
+            </div>
+            <div class="form-group full">
+              <label for="chk-address">Shipping Address *</label>
+              <input type="text" id="chk-address" required placeholder="123 Luxury Avenue, Suite 400">
+            </div>
+            <div class="form-group">
+              <label for="chk-city">City *</label>
+              <input type="text" id="chk-city" required placeholder="New York">
+            </div>
+            <div class="form-group">
+              <label for="chk-zip">Postal / ZIP Code *</label>
+              <input type="text" id="chk-zip" required placeholder="10001">
+            </div>
+            <div class="form-group full">
+              <label for="chk-payment">Payment Method *</label>
+              <select id="chk-payment">
+                <option value="card">💳 Credit / Debit Card (Visa, MC, Amex)</option>
+                <option value="applepay"> Apple Pay / Google Pay</option>
+                <option value="paypal">🅿️ PayPal Express Checkout</option>
+                <option value="cod">💵 Cash on Delivery</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; padding: 14px; font-size: 1rem;">
+            Place Order &bull; Complete Payment &rarr;
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- USER ACCOUNT MODAL -->
+  <div class="modal-backdrop" id="account-modal">
+    <div class="modal-card" style="max-width: 580px;">
+      <button class="btn-close-modal" data-action="close-account" aria-label="Close Modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div id="account-modal-content">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATIONS CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
