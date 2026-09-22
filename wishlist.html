@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Wishlist | AMEZA Premium Modern E-Commerce Store</title>
   <meta name="description" content="View and manage your saved favorite items on AMEZA. Handcrafted apparel, tech wearables, and leather goods.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/travel.css">
   <link rel="icon" type="image/png" href="assets/amezashopify logo.png">
 </head>
 <body>
@@ -14,19 +16,23 @@
   <div class="top-bar">
     <div class="container top-bar-inner">
       <div class="top-bar-left">
-        <span class="top-bar-badge">Special Offer</span>
+        <span class="top-bar-badge"><i class="fa-solid fa-tag"></i> Special Offer</span>
         <span>Free Worldwide Express Shipping on all orders over $100 &bull; 30-Day Easy Returns</span>
       </div>
       <div class="top-bar-right">
         <a href="index.html#section-deals" class="top-bar-link">
-          🔥 Flash Deals
+          <i class="fa-solid fa-fire" style="color: #f97316;"></i> Flash Deals
+        </a>
+        <span style="opacity: 0.4;">|</span>
+        <a href="stays.html" class="top-bar-link">
+          <i class="fa-solid fa-plane-departure"></i> Travel Services
         </a>
         <span style="opacity: 0.4;">|</span>
         <button class="top-bar-link" data-action="open-account">
-          Track Order
+          <i class="fa-solid fa-clipboard-list"></i> Track Order
         </button>
         <span style="opacity: 0.4;">|</span>
-        <span class="top-bar-link">USD ($)</span>
+        <span class="top-bar-link"><i class="fa-solid fa-globe"></i> USD ($)</span>
       </div>
     </div>
   </div>
@@ -102,39 +108,59 @@
       </div>
     </div>
 
-    <!-- Mobile Drawer Menu (inside sticky header so it remains visible when scrolled) -->
+    <!-- Mobile Drawer Menu -->
     <div id="mobile-nav-menu" class="mobile-nav-menu">
       <div class="mobile-nav-links">
         <a href="index.html" class="mobile-nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+          <i class="fa-solid fa-house"></i>
           <span>Home</span>
         </a>
+        <a href="stays.html" class="mobile-nav-item">
+          <i class="fa-solid fa-bed"></i>
+          <span>Stays &amp; Hotels</span>
+        </a>
+        <a href="flights.html" class="mobile-nav-item">
+          <i class="fa-solid fa-plane-departure"></i>
+          <span>Flights</span>
+        </a>
+        <a href="car-rental.html" class="mobile-nav-item">
+          <i class="fa-solid fa-car"></i>
+          <span>Car Rental</span>
+        </a>
+        <a href="attractions.html" class="mobile-nav-item">
+          <i class="fa-solid fa-ticket"></i>
+          <span>Attractions</span>
+        </a>
+        <a href="airport-taxis.html" class="mobile-nav-item">
+          <i class="fa-solid fa-taxi"></i>
+          <span>Airport Taxis</span>
+        </a>
         <a href="index.html#section-clothes-jewellery" class="mobile-nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path></svg>
+          <i class="fa-solid fa-shirt"></i>
           <span>Clothing</span>
         </a>
         <a href="index.html#section-electronics-watches" class="mobile-nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+          <i class="fa-solid fa-headphones"></i>
           <span>Electronics</span>
         </a>
         <a href="index.html#section-electronics-watches" class="mobile-nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="7"></circle><polyline points="12 9 12 12 13.5 13.5"></polyline></svg>
+          <i class="fa-regular fa-clock"></i>
           <span>Watches</span>
         </a>
         <a href="index.html#section-leather-collection" class="mobile-nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="3"></rect><line x1="7" y1="7" x2="7" y2="17"></line></svg>
+          <i class="fa-solid fa-gem"></i>
           <span>Leather Belts</span>
         </a>
         <a href="index.html#section-leather-collection" class="mobile-nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+          <i class="fa-solid fa-wallet"></i>
           <span>Wallets</span>
         </a>
         <a href="index.html#section-latest-range" class="mobile-nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path></svg>
+          <i class="fa-solid fa-bag-shopping"></i>
           <span>Bags &amp; Totes</span>
         </a>
         <a href="wishlist.html" class="mobile-nav-item active">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <i class="fa-solid fa-heart"></i>
           <span>My Wishlist (<span class="wishlist-count-badge">0</span>)</span>
         </a>
         <a href="index.html#section-deals" class="mobile-nav-item deals-link">
@@ -143,6 +169,41 @@
       </div>
     </div>
   </header>
+
+  <!-- 2.1 BOOKING SERVICES CATEGORIES BAR -->
+  <div class="travel-nav-bar">
+    <div class="container travel-nav-container">
+      <a href="stays.html" class="travel-cat-pill">
+        <i class="fa-solid fa-bed"></i>
+        <span>Stays</span>
+      </a>
+
+      <a href="flights.html" class="travel-cat-pill">
+        <i class="fa-solid fa-plane-departure"></i>
+        <span>Flights</span>
+      </a>
+
+      <a href="car-rental.html" class="travel-cat-pill">
+        <i class="fa-solid fa-car"></i>
+        <span>Car rental</span>
+      </a>
+
+      <a href="attractions.html" class="travel-cat-pill">
+        <i class="fa-solid fa-ticket"></i>
+        <span>Attractions</span>
+      </a>
+
+      <a href="airport-taxis.html" class="travel-cat-pill">
+        <i class="fa-solid fa-taxi"></i>
+        <span>Airport taxis</span>
+      </a>
+
+      <a href="index.html" class="travel-cat-pill store-pill">
+        <i class="fa-solid fa-store"></i>
+        <span>Shop Products</span>
+      </a>
+    </div>
+  </div>
 
   <main>
     <!-- Breadcrumb -->
@@ -285,18 +346,10 @@
             AMEZA is a premium lifestyle store dedicated to bringing together the finest in smart wearable tech, heavy organic apparel, and authentic full-grain leather craftsmanship.
           </p>
           <div class="footer-socials">
-            <a href="#" class="social-icon" title="Facebook" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-            <a href="#" class="social-icon" title="Instagram" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            </a>
-            <a href="#" class="social-icon" title="TikTok" aria-label="TikTok">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.41a8.28 8.28 0 0 0 4.76 1.73V6.69z"/></svg>
-            </a>
-            <a href="#" class="social-icon" title="YouTube" aria-label="YouTube">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33zM9.75 15.02V8.54l5.7 3.24-5.7 3.24z"/></svg>
-            </a>
+            <a href="#" class="social-icon" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-icon" title="TikTok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="social-icon" title="YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
           </div>
         </div>
 

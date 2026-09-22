@@ -4,6 +4,7 @@
    Structure Inspiration: Booking.com Clean Discovery & Card Organization
    ========================================================================== */
 
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -2923,3 +2924,209 @@ input, select, textarea {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   AMEZA LUXURY GLOBAL FOOTER STYLES
+   ========================================================================== */
+.footer,
+.footer-main {
+  background: #0B1120 !important;
+  color: #94A3B8 !important;
+  padding: 64px 0 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  margin-top: 40px;
+}
+
+.footer-grid,
+.footer-top {
+  display: grid !important;
+  grid-template-columns: 2fr 1.2fr 1.2fr 1.4fr !important;
+  gap: 40px !important;
+  padding-bottom: 48px !important;
+}
+
+.footer-col,
+.footer-brand {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.footer-logo {
+  height: 44px !important;
+  width: auto !important;
+  margin-bottom: 16px !important;
+  display: inline-block !important;
+  object-fit: contain !important;
+}
+
+.footer-desc,
+.footer-brand p {
+  color: #94A3B8 !important;
+  font-size: 0.92rem !important;
+  line-height: 1.65 !important;
+  margin-bottom: 20px !important;
+  max-width: 320px !important;
+}
+
+.footer-socials {
+  display: flex !important;
+  gap: 10px !important;
+  align-items: center !important;
+}
+
+.social-icon,
+.footer-social-link {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 10px !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #F8FAFC !important;
+  transition: all 0.25s ease !important;
+  text-decoration: none !important;
+}
+
+.social-icon svg,
+.footer-social-link svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.social-icon:hover,
+.footer-social-link:hover {
+  background: #7FB73C !important;
+  border-color: #7FB73C !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(127, 183, 60, 0.35) !important;
+}
+
+.footer-title,
+.footer-col h4 {
+  font-size: 1.05rem !important;
+  font-weight: 800 !important;
+  color: #FFFFFF !important;
+  letter-spacing: -0.01em !important;
+  margin-bottom: 22px !important;
+  position: relative !important;
+  display: inline-block !important;
+}
+
+.footer-title::after,
+.footer-col h4::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  bottom: -6px !important;
+  width: 24px !important;
+  height: 2.5px !important;
+  background: #7FB73C !important;
+  border-radius: 2px !important;
+}
+
+.footer-links {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.footer-links li a {
+  color: #94A3B8 !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.footer-links li a:hover {
+  color: #FFFFFF !important;
+  transform: translateX(4px) !important;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 24px 0 !important;
+  background: #070B14 !important;
+}
+
+.footer-bottom-inner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+  color: #64748B !important;
+  font-size: 0.85rem !important;
+}
+
+.footer-bottom-inner p {
+  margin: 0 !important;
+  color: #64748B !important;
+}
+
+.footer-bottom-links {
+  display: flex !important;
+  gap: 20px !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.footer-bottom-links a {
+  color: #64748B !important;
+  text-decoration: none !important;
+  font-size: 0.85rem !important;
+  transition: color 0.2s ease !important;
+}
+
+.footer-bottom-links a:hover {
+  color: #7FB73C !important;
+}
+
+.footer-payment-badges {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.payment-badge {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 6px !important;
+  padding: 4px 8px !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  color: #E2E8F0 !important;
+  letter-spacing: 0.5px !important;
+}
+
+@media (max-width: 992px) {
+  .footer-grid,
+  .footer-top {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-grid,
+  .footer-top {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+  .footer-bottom-inner {
+    flex-direction: column !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+}
+

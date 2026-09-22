@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attractions, Activities &amp; Experiences | AMEZA Travel Services</title>
+  <meta name="description" content="Discover and book world-famous attractions, museum tickets, guided tours, desert safaris, and theme parks worldwide on AMEZA.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/travel.css">
+  <link rel="icon" type="image/png" href="assets/amezashopify logo.png">
+</head>
+<body>
+
+  <!-- 1. TOP ANNOUNCEMENT BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-badge"><i class="fa-solid fa-ticket"></i> Attractions</span>
+        <span>Skip-the-line digital passes &bull; Instant mobile confirmation &bull; Free cancellation</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="index.html" class="top-bar-link"><i class="fa-solid fa-bag-shopping"></i> Store Catalog</a>
+        <span style="opacity: 0.4;">|</span>
+        <button class="top-bar-link" id="btn-my-attr-bookings"><i class="fa-solid fa-clipboard-list"></i> My Travel Bookings</button>
+        <span style="opacity: 0.4;">|</span>
+        <span class="top-bar-link">USD ($)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN HEADER -->
+  <header class="header-sticky" id="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-wrap" title="AMEZA Travel">
+        <img src="assets/amezashopify logo.png" alt="AMEZA Logo" onerror="this.src='assets/logo.png'">
+      </a>
+
+      <!-- Center Nav -->
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link"><span>Store Home</span></a>
+        <a href="stays.html" class="nav-link"><span>Stays</span></a>
+        <a href="flights.html" class="nav-link"><span>Flights</span></a>
+        <a href="car-rental.html" class="nav-link"><span>Car Rental</span></a>
+        <a href="attractions.html" class="nav-link active"><span>Attractions</span></a>
+        <a href="airport-taxis.html" class="nav-link"><span>Airport Taxis</span></a>
+      </nav>
+
+      <!-- Right Actions -->
+      <div class="header-actions">
+        <a href="wishlist.html" class="action-btn" title="Wishlist">
+          <i class="fa-regular fa-heart" style="font-size: 1.15rem;"></i>
+        </a>
+        <a href="index.html" class="btn-primary" style="padding: 8px 18px; font-size: 0.88rem;">Back to Store</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. TRAVEL CATEGORIES NAVIGATION BAR -->
+  <div class="travel-nav-bar">
+    <div class="container travel-nav-container">
+      <a href="stays.html" class="travel-cat-pill">
+        <i class="fa-solid fa-bed"></i>
+        <span>Stays</span>
+      </a>
+
+      <a href="flights.html" class="travel-cat-pill">
+        <i class="fa-solid fa-plane-departure"></i>
+        <span>Flights</span>
+      </a>
+
+      <a href="car-rental.html" class="travel-cat-pill">
+        <i class="fa-solid fa-car"></i>
+        <span>Car rental</span>
+      </a>
+
+      <a href="attractions.html" class="travel-cat-pill active">
+        <i class="fa-solid fa-ticket"></i>
+        <span>Attractions</span>
+      </a>
+
+      <a href="airport-taxis.html" class="travel-cat-pill">
+        <i class="fa-solid fa-taxi"></i>
+        <span>Airport taxis</span>
+      </a>
+
+      <a href="index.html" class="travel-cat-pill store-pill">
+        <i class="fa-solid fa-store"></i>
+        <span>Shop Products</span>
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO HEADER -->
+    <section class="travel-hero">
+      <div class="container">
+        <div class="travel-hero-tag"><i class="fa-solid fa-ticket"></i> Attractions, Activities &amp; Tours</div>
+        <h1 class="travel-hero-title">Attractions, activities and <span>experiences</span></h1>
+        <p class="travel-hero-subtitle">Discover new attractions, explore popular experiences, and see what everyone's talking about worldwide.</p>
+      </div>
+    </section>
+
+    <!-- UNIFIED INTERACTIVE SEARCH FLOATING BOX -->
+    <div class="container travel-search-wrap">
+      <div class="travel-search-box travel-search-box-unified">
+        <form id="form-attr-search" class="travel-search-grid" style="grid-template-columns: 2.2fr 1.6fr 1.1fr;">
+          
+          <!-- Destination Field with Interactive Popover -->
+          <div class="travel-search-field has-dropdown" id="field-attr-destination-wrap">
+            <i class="fa-solid fa-location-dot" style="font-size: 1.25rem; color: #006CE4;"></i>
+            <div class="field-content">
+              <span class="field-label">Where are you going?</span>
+              <input type="text" id="input-attr-destination" placeholder="Destination, attraction or activity" autocomplete="off">
+            </div>
+
+            <!-- Destination Autocomplete Popover -->
+            <div class="search-dropdown-popover dest-popover" id="popover-attr-destination">
+              <div class="popover-header-title">Popular Destinations</div>
+              <div class="popover-items-list" id="attr-dest-list">
+                <div class="popover-item" data-val="Dubai">
+                  <div class="popover-icon"><i class="fa-solid fa-city"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">Dubai</span>
+                    <span class="popover-sub">United Arab Emirates &bull; 142 experiences</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Paris">
+                  <div class="popover-icon"><i class="fa-solid fa-landmark"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">Paris</span>
+                    <span class="popover-sub">France &bull; 184 experiences</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="London">
+                  <div class="popover-icon"><i class="fa-solid fa-building-columns"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">London</span>
+                    <span class="popover-sub">United Kingdom &bull; 126 experiences</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Rome">
+                  <div class="popover-icon"><i class="fa-solid fa-monument"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">Rome</span>
+                    <span class="popover-sub">Italy &bull; 98 experiences</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="New York">
+                  <div class="popover-icon"><i class="fa-solid fa-tree-city"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">New York</span>
+                    <span class="popover-sub">United States &bull; 156 experiences</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Tokyo">
+                  <div class="popover-icon"><i class="fa-solid fa-torii-gate"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">Tokyo</span>
+                    <span class="popover-sub">Japan &bull; 110 experiences</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Barcelona">
+                  <div class="popover-icon"><i class="fa-solid fa-umbrella-beach"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">Barcelona</span>
+                    <span class="popover-sub">Spain &bull; 85 experiences</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Amsterdam">
+                  <div class="popover-icon"><i class="fa-solid fa-water"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">Amsterdam</span>
+                    <span class="popover-sub">Netherlands &bull; 72 experiences</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Date Selector with Interactive Dual-Month Popover -->
+          <div class="travel-search-field has-dropdown" id="field-attr-dates-wrap">
+            <i class="fa-solid fa-calendar-days" style="font-size: 1.25rem; color: #006CE4;"></i>
+            <div class="field-content">
+              <span class="field-label">Select Date</span>
+              <input type="text" id="input-attr-dates" placeholder="Select your date" readonly>
+            </div>
+
+            <!-- Dual Month Datepicker Popover -->
+            <div class="search-dropdown-popover dates-popover-wide" id="popover-attr-dates">
+              <div class="datepicker-container" id="attr-datepicker-months-container"></div>
+              <div class="datepicker-footer">
+                <div class="datepicker-footer-left">
+                  <span style="font-size: 0.85rem; color: #64748B;"><i class="fa-solid fa-circle-info"></i> Instant mobile entry ticket date</span>
+                </div>
+                <button type="button" class="btn-primary" id="btn-attr-dates-done" style="padding: 8px 20px; font-size: 0.9rem;">Done</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Search Button -->
+          <button type="submit" class="travel-search-btn" id="btn-attr-search-submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <div class="container">
+      
+      <!-- TOP DESTINATIONS SHOWCASE (MATCHING REFERENCE IMAGE) -->
+      <section class="dest-section">
+        <div class="dest-section-header">
+          <h2 class="dest-section-title">Explore top destinations</h2>
+          <p class="dest-section-sub">These popular destinations have a lot to offer</p>
+        </div>
+
+        <div class="dest-cards-grid">
+          <!-- Paris -->
+          <div class="dest-card" data-city="Paris">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80" alt="Paris" class="dest-card-img" loading="lazy">
+            <div class="dest-card-gradient">
+              <div class="dest-card-name">Paris</div>
+              <div class="dest-card-count">184 things to do</div>
+            </div>
+          </div>
+
+          <!-- Dubai -->
+          <div class="dest-card" data-city="Dubai">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80" alt="Dubai" class="dest-card-img" loading="lazy">
+            <div class="dest-card-gradient">
+              <div class="dest-card-name">Dubai</div>
+              <div class="dest-card-count">142 things to do</div>
+            </div>
+          </div>
+
+          <!-- London -->
+          <div class="dest-card" data-city="London">
+            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80" alt="London" class="dest-card-img" loading="lazy">
+            <div class="dest-card-gradient">
+              <div class="dest-card-name">London</div>
+              <div class="dest-card-count">126 things to do</div>
+            </div>
+          </div>
+
+          <!-- Rome -->
+          <div class="dest-card" data-city="Rome">
+            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80" alt="Rome" class="dest-card-img" loading="lazy">
+            <div class="dest-card-gradient">
+              <div class="dest-card-name">Rome</div>
+              <div class="dest-card-count">98 things to do</div>
+            </div>
+          </div>
+
+          <!-- New York -->
+          <div class="dest-card" data-city="New York">
+            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80" alt="New York" class="dest-card-img" loading="lazy">
+            <div class="dest-card-gradient">
+              <div class="dest-card-name">New York</div>
+              <div class="dest-card-count">156 things to do</div>
+            </div>
+          </div>
+
+          <!-- Tokyo -->
+          <div class="dest-card" data-city="Tokyo">
+            <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80" alt="Tokyo" class="dest-card-img" loading="lazy">
+            <div class="dest-card-gradient">
+              <div class="dest-card-name">Tokyo</div>
+              <div class="dest-card-count">110 things to do</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3-PILLARS VALUE PROPOSITIONS BANNER -->
+      <section class="travel-value-props">
+        <div class="value-prop-item">
+          <div class="value-prop-icon"><i class="fa-solid fa-earth-americas"></i></div>
+          <div class="value-prop-content">
+            <h4>Explore top attractions</h4>
+            <p>Experience the best of your destination, with all the top sights and attractions in one place</p>
+          </div>
+        </div>
+
+        <div class="value-prop-item">
+          <div class="value-prop-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+          <div class="value-prop-content">
+            <h4>Fast and flexible</h4>
+            <p>Book tickets online in minutes, with free cancellation on many attractions</p>
+          </div>
+        </div>
+
+        <div class="value-prop-item">
+          <div class="value-prop-icon"><i class="fa-solid fa-headset"></i></div>
+          <div class="value-prop-content">
+            <h4>Support when you need it</h4>
+            <p>Our global Customer Service team is here to help 24/7 whenever you travel</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATEGORY FILTER TABS / PILLS -->
+      <div style="margin-top: 10px; margin-bottom: 8px;">
+        <div class="dest-section-header" style="margin-bottom: 12px;">
+          <h2 class="dest-section-title" id="attr-results-heading">Nearby attractions &amp; experiences</h2>
+          <p class="dest-section-sub" id="attr-results-sub">Filter by activity category or search any experience worldwide</p>
+        </div>
+
+        <div class="attr-category-pills">
+          <button class="attr-cat-pill active" data-cat="all"><i class="fa-solid fa-compass"></i> All Activities</button>
+          <button class="attr-cat-pill" data-cat="landmarks"><i class="fa-solid fa-landmark"></i> Landmarks &amp; Sky Decks</button>
+          <button class="attr-cat-pill" data-cat="museums"><i class="fa-solid fa-building-columns"></i> Museums &amp; Art</button>
+          <button class="attr-cat-pill" data-cat="tours"><i class="fa-solid fa-mountain-sun"></i> Desert Safaris &amp; Tours</button>
+          <button class="attr-cat-pill" data-cat="theme_parks"><i class="fa-solid fa-wand-magic-sparkles"></i> Theme Parks &amp; Fun</button>
+          <button class="attr-cat-pill" data-cat="cruises"><i class="fa-solid fa-ship"></i> Cruises &amp; Water</button>
+          <button class="attr-cat-pill" data-cat="day_trips"><i class="fa-solid fa-bus"></i> Day Trips</button>
+        </div>
+      </div>
+
+      <!-- ATTRACTIONS CATALOG GRID (3 COLUMNS) -->
+      <div class="attractions-catalog-grid" id="attr-catalog-grid"></div>
+
+    </div>
+  </main>
+
+  <!-- ATTRACTION PASS BOOKING & DETAIL MODAL -->
+  <div class="travel-modal-backdrop" id="modal-attr-book">
+    <div class="travel-modal-dialog" style="max-width: 640px; max-height: 90vh; display: flex; flex-direction: column;">
+      
+      <!-- Modal Header with Circular Close Button -->
+      <div class="travel-modal-header" style="border-bottom: 1.5px solid #F1F5F9; padding: 18px 24px; position: relative;">
+        <div>
+          <h3 class="travel-modal-title" style="font-size: 1.25rem; font-weight: 800; color: #0F172A;" id="modal-attr-title-heading">Attraction Details &amp; Booking</h3>
+          <span style="font-size: 0.84rem; color: #64748B;" id="modal-attr-subtitle">Instant Mobile Voucher &bull; Fast-Track Admission</span>
+        </div>
+        <button class="travel-modal-close-btn" id="btn-close-attr-modal" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="travel-modal-body" style="padding: 24px; overflow-y: auto;">
+        
+        <!-- Large High-Res Hero Image Banner -->
+        <div style="position: relative; width: 100%; height: 220px; border-radius: 12px; overflow: hidden; margin-bottom: 18px; box-shadow: 0 4px 14px rgba(0,0,0,0.08);">
+          <img id="modal-attr-thumb" src="" alt="Attraction" style="width: 100%; height: 100%; object-fit: cover;">
+          <span id="modal-attr-badge" style="position: absolute; top: 14px; left: 14px; background: #0F172A; color: #FFFFFF; font-size: 0.76rem; font-weight: 800; padding: 5px 12px; border-radius: 6px; border-left: 3px solid var(--travel-brand);"></span>
+        </div>
+
+        <!-- Title & Rating Info -->
+        <div style="margin-bottom: 16px;">
+          <div id="modal-attr-cat" style="font-size: 0.78rem; font-weight: 800; color: var(--travel-brand-dark); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;"></div>
+          <h4 id="modal-attr-name" style="font-size: 1.25rem; font-weight: 800; color: #0F172A; line-height: 1.35; margin-bottom: 8px;"></h4>
+          
+          <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 0.88rem; margin-bottom: 12px;">
+            <span id="modal-attr-rating" style="display: inline-flex; align-items: center; gap: 4px; font-weight: 800; color: #0F172A;"></span>
+            <span style="color: #CBD5E1;">&bull;</span>
+            <span id="modal-attr-duration" style="color: #64748B; font-weight: 600;"><i class="fa-regular fa-clock"></i> </span>
+            <span style="color: #CBD5E1;">&bull;</span>
+            <span style="color: #16A34A; font-weight: 700;"><i class="fa-solid fa-circle-check"></i> Free cancellation</span>
+          </div>
+        </div>
+
+        <!-- Experience Highlights Checklist -->
+        <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 16px 18px; margin-bottom: 20px;">
+          <div style="font-size: 0.88rem; font-weight: 800; color: #0F172A; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+            <i class="fa-solid fa-sparkles" style="color: var(--travel-brand);"></i>
+            <span>Experience Highlights &amp; Inclusions</span>
+          </div>
+          <div id="modal-attr-highlights-list" style="display: flex; flex-direction: column; gap: 8px;"></div>
+        </div>
+
+        <!-- Clean Pass Reservation Form (NO LABELS, ONLY CLEAN DESCRIPTIVE PLACEHOLDERS) -->
+        <form id="form-attr-reservation">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            
+            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px;">
+              <!-- Preferred Time Slot -->
+              <select class="travel-input" id="attr-timeslot" style="cursor: pointer; background-color: #FFFFFF;">
+                <option value="10:00 AM (Morning Slot)">Morning Entry — 10:00 AM</option>
+                <option value="02:30 PM (Afternoon Slot)">Afternoon Entry — 02:30 PM</option>
+                <option value="05:30 PM (Prime Sunset Slot)" selected>Prime Sunset — 05:30 PM</option>
+                <option value="08:00 PM (Night Skyline Slot)">Night Lights — 08:00 PM</option>
+              </select>
+
+              <!-- Number of Passes -->
+              <select class="travel-input" id="attr-ticket-qty" style="cursor: pointer; background-color: #FFFFFF;">
+                <option value="1">1 Adult Pass</option>
+                <option value="2" selected>2 Adult Passes</option>
+                <option value="3">3 Adult Passes</option>
+                <option value="4">4 Passes (Family)</option>
+                <option value="6">6 Passes (Group)</option>
+              </select>
+            </div>
+
+            <!-- Full Name -->
+            <input type="text" class="travel-input" id="attr-guest-name" required placeholder="Primary Visitor Full Name *" autocomplete="name">
+
+            <!-- Email -->
+            <input type="email" class="travel-input" id="attr-guest-email" required placeholder="Email Address (for QR digital voucher) *" autocomplete="email">
+
+            <!-- Phone Number -->
+            <input type="tel" class="travel-input" id="attr-guest-phone" placeholder="Mobile Phone Number (Optional)" autocomplete="tel">
+
+            <!-- Special Requests / Notes -->
+            <textarea class="travel-input" id="attr-notes" rows="2" placeholder="Special Requests or Notes (Optional)" style="resize: none;"></textarea>
+          </div>
+
+          <!-- Total Calculation Summary Card -->
+          <div class="booking-summary-card" style="margin-top: 18px;">
+            <div class="summary-row">
+              <span style="color: #64748B;">Pass Subtotal:</span>
+              <span id="attr-summary-subtotal" style="font-weight: 700;">$104.00</span>
+            </div>
+            <div class="summary-row">
+              <span style="color: #64748B;">Instant Fast-Track Mobile Delivery:</span>
+              <span style="color: var(--travel-brand); font-weight: 800;">Free / Included</span>
+            </div>
+            <div class="summary-row total" style="margin-top: 8px; padding-top: 10px; border-top: 1px dashed #CBD5E1;">
+              <span style="font-weight: 800; color: #0F172A;">Total Payable:</span>
+              <span id="attr-summary-total" style="color: var(--travel-brand); font-weight: 900; font-size: 1.25rem;">$104.00</span>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-primary" style="margin-top: 20px; width: 100%; padding: 14px; font-size: 1.05rem; font-weight: 800; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <span>Confirm &amp; Generate Instant Mobile Passes</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIGITAL QR VOUCHER PASS MODAL -->
+  <div class="travel-modal-backdrop" id="modal-attr-voucher">
+    <div class="travel-modal-dialog" style="max-width: 580px;">
+      <div class="travel-modal-header" style="border-bottom: 1.5px solid #F1F5F9; padding: 20px 24px; position: relative;">
+        <h3 class="travel-modal-title" style="font-size: 1.25rem; font-weight: 800; color: #0F172A;">🎟️ Digital Entry Pass &amp; QR Voucher</h3>
+        <button class="travel-modal-close-btn" id="btn-close-attr-voucher" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="travel-modal-body" id="attr-voucher-body" style="padding: 24px;"></div>
+    </div>
+  </div>
+
+  <!-- MY BOOKINGS MODAL -->
+  <div class="travel-modal-backdrop" id="modal-my-attr-bookings-view">
+    <div class="travel-modal-dialog" style="max-width: 620px;">
+      <div class="travel-modal-header" style="border-bottom: 1.5px solid #F1F5F9; padding: 20px 24px; position: relative;">
+        <h3 class="travel-modal-title" style="font-size: 1.25rem; font-weight: 800; color: #0F172A;">📋 My Active Travel Bookings</h3>
+        <button class="travel-modal-close-btn" id="btn-close-my-attr-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="travel-modal-body" style="padding: 24px;">
+        <div id="my-attr-bookings-list" class="travel-cards-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo-wrap">
+          <img src="assets/amezashopify logo.png" alt="AMEZA Logo" class="footer-logo" onerror="this.src='assets/logo.png'">
+        </a>
+        <p class="footer-desc">
+          AMEZA is your all-in-one destination for premium lifestyle shopping and seamless global travel bookings — from luxury stays to verified flight schedules and airport transfers.
+        </p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-icon" title="TikTok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" class="social-icon" title="YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Travel Categories</h4>
+        <ul class="footer-links">
+          <li><a href="stays.html"><i class="fa-solid fa-hotel"></i> Hotels &amp; Stays</a></li>
+          <li><a href="flights.html"><i class="fa-solid fa-plane-departure"></i> Flight Booking</a></li>
+          <li><a href="car-rental.html"><i class="fa-solid fa-car"></i> Car Rentals</a></li>
+          <li><a href="attractions.html"><i class="fa-solid fa-ticket"></i> Attractions &amp; Tours</a></li>
+          <li><a href="airport-taxis.html"><i class="fa-solid fa-taxi"></i> Airport Taxis</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Store Products</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#section-clothes-jewellery"><i class="fa-solid fa-shirt"></i> Clothing &amp; Fashion</a></li>
+          <li><a href="index.html#section-electronics-watches"><i class="fa-solid fa-headphones"></i> Electronics &amp; Audio</a></li>
+          <li><a href="index.html#section-electronics-watches"><i class="fa-regular fa-clock"></i> Smart Watches</a></li>
+          <li><a href="index.html#section-leather-collection"><i class="fa-solid fa-gem"></i> Full-Grain Leather Belts</a></li>
+          <li><a href="index.html#section-latest-range"><i class="fa-solid fa-bag-shopping"></i> Luxury Handbags</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Customer Care</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fa-solid fa-store"></i> Store Home</a></li>
+          <li><a href="wishlist.html"><i class="fa-solid fa-heart"></i> Saved Wishlist</a></li>
+          <li><a href="mailto:support@amezastore.com"><i class="fa-solid fa-envelope"></i> 24/7 Global Support</a></li>
+          <li><a href="#"><i class="fa-solid fa-lock"></i> 256-Bit SSL Encrypted</a></li>
+          <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Buyer Protection</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 AMEZA Travel &amp; E-Commerce. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT ENGINE -->
+  <script type="module">
+    import { TRAVEL_DATA, TravelState, showTravelToast, generateBookingId } from './js/travel-engine.js';
+    import { AttractionsSearchbox } from './js/travel-searchbox.js';
+
+    let currentSelectedCategory = 'all';
+    let selectedAttr = null;
+    let searchBoxInstance = null;
+
+    // Render Grid of Attractions
+    function renderAttractionsGrid(list) {
+      const container = document.getElementById('attr-catalog-grid');
+      if (!container) return;
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; background: #FFFFFF; padding: 48px 24px; text-align: center; border-radius: 14px; border: 1.5px solid #E2E8F0;">
+            <div style="font-size: 2.8rem; margin-bottom: 12px;">🎟️</div>
+            <h3 style="font-size: 1.35rem; font-weight: 800; color: #0F172A;">No experiences found</h3>
+            <p style="color: #64748B; margin-top: 8px; font-size: 0.95rem;">Try choosing another destination or resetting your category filters.</p>
+            <button class="btn-primary" id="btn-reset-empty-search" style="margin-top: 16px; padding: 8px 20px;">Show All Experiences</button>
+          </div>
+        `;
+        document.getElementById('btn-reset-empty-search')?.addEventListener('click', () => {
+          document.getElementById('input-attr-destination').value = '';
+          currentSelectedCategory = 'all';
+          updateCatPillsActiveState('all');
+          applyFilters();
+        });
+        return;
+      }
+
+      container.innerHTML = list.map(a => `
+        <article class="attr-card-grid-item attr-clickable-card" data-attr-id="${a.id}" style="cursor: pointer;">
+          <div class="attr-grid-img-wrap">
+            <img src="${a.image}" alt="${a.title}" class="attr-grid-img" loading="lazy">
+            <span class="attr-grid-badge">${a.badge}</span>
+          </div>
+
+          <div class="attr-grid-body">
+            <div>
+              <div class="attr-grid-cat">${a.category} &bull; ${a.city}</div>
+              <h3 class="attr-grid-title" title="${a.title}">${a.title}</h3>
+              
+              <div class="attr-grid-rating">
+                <span class="attr-rating-badge">${a.rating}</span>
+                <span style="font-weight: 700; color: #0F172A;"><i class="fa-solid fa-star" style="color: #F59E0B;"></i> ${a.rating}</span>
+                <span style="color: #64748B; font-size: 0.8rem;">(${a.reviewsCount.toLocaleString()} reviews)</span>
+              </div>
+
+              <div class="attr-grid-duration">
+                <i class="fa-regular fa-clock"></i>
+                <span>${a.duration} &bull; Instant confirmation</span>
+              </div>
+
+              <div class="attr-grid-perk">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>${a.cancellation}</span>
+              </div>
+            </div>
+
+            <div class="attr-grid-footer">
+              <div class="attr-grid-price-block">
+                <span class="attr-price-label">From</span>
+                <div>
+                  <span class="attr-price-amount">$${a.price}</span>
+                  <span class="attr-price-orig">$${a.originalPrice}</span>
+                </div>
+              </div>
+
+              <button class="btn-book-attr-grid btn-open-attr" data-attr-id="${a.id}">
+                Book Passes &rarr;
+              </button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      // Bind click handlers to entire card and button to open modal
+      container.querySelectorAll('.attr-clickable-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+          const aid = card.getAttribute('data-attr-id');
+          openAttrModal(aid);
+        });
+      });
+    }
+
+    function applyFilters() {
+      const destInput = document.getElementById('input-attr-destination')?.value.toLowerCase().trim() || '';
+      
+      let filtered = TRAVEL_DATA.attractions.filter(a => {
+        const matchesDest = !destInput || 
+          a.city.toLowerCase().includes(destInput) || 
+          a.title.toLowerCase().includes(destInput) || 
+          a.country?.toLowerCase().includes(destInput) ||
+          a.category.toLowerCase().includes(destInput);
+
+        const matchesCategory = currentSelectedCategory === 'all' || a.catType === currentSelectedCategory;
+
+        return matchesDest && matchesCategory;
+      });
+
+      const heading = document.getElementById('attr-results-heading');
+      const sub = document.getElementById('attr-results-sub');
+      if (heading) {
+        if (destInput) {
+          heading.textContent = `Top Experiences in "${destInput.charAt(0).toUpperCase() + destInput.slice(1)}" (${filtered.length} found)`;
+          if (sub) sub.textContent = `Verified skip-the-line passes &amp; instant mobile vouchers for ${destInput}`;
+        } else {
+          heading.textContent = `Nearby attractions &amp; experiences (${filtered.length} available)`;
+          if (sub) sub.textContent = `Discover must-see sights, world-famous museum passes, desert tours, and tickets`;
+        }
+      }
+
+      renderAttractionsGrid(filtered);
+    }
+
+    function updateCatPillsActiveState(catVal) {
+      document.querySelectorAll('.attr-cat-pill').forEach(pill => {
+        if (pill.getAttribute('data-cat') === catVal) {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
+        }
+      });
+    }
+
+    function openAttrModal(attrId) {
+      selectedAttr = TRAVEL_DATA.attractions.find(a => a.id === attrId) || TRAVEL_DATA.attractions[0];
+      if (!selectedAttr) return;
+
+      document.getElementById('modal-attr-name').textContent = selectedAttr.title;
+      document.getElementById('modal-attr-subtitle').textContent = `${selectedAttr.city}, ${selectedAttr.country || ''} • Duration: ${selectedAttr.duration}`;
+      document.getElementById('modal-attr-thumb').src = selectedAttr.image;
+      document.getElementById('modal-attr-badge').textContent = `${selectedAttr.category} • ${selectedAttr.badge}`;
+      document.getElementById('modal-attr-cat').textContent = `${selectedAttr.category} • ${selectedAttr.city}, ${selectedAttr.country || ''}`;
+      
+      document.getElementById('modal-attr-rating').innerHTML = `
+        <span class="attr-rating-badge">${selectedAttr.rating}</span>
+        <i class="fa-solid fa-star" style="color: #F59E0B;"></i> ${selectedAttr.rating}
+        <span style="color: #64748B; font-weight: 500; font-size: 0.82rem;">(${selectedAttr.reviewsCount.toLocaleString()} verified reviews)</span>
+      `;
+
+      document.getElementById('modal-attr-duration').innerHTML = `
+        <i class="fa-regular fa-clock"></i> Duration: ${selectedAttr.duration} &bull; Instant QR Pass
+      `;
+
+      // Render Highlights
+      const highlightsContainer = document.getElementById('modal-attr-highlights-list');
+      if (highlightsContainer) {
+        const items = selectedAttr.highlights && selectedAttr.highlights.length > 0 
+          ? selectedAttr.highlights 
+          : ['Skip-the-line fast admission', 'Direct mobile barcode entry', '24/7 priority customer support'];
+        
+        highlightsContainer.innerHTML = items.map(h => `
+          <div style="display: flex; align-items: center; gap: 9px; font-size: 0.86rem; color: #334155;">
+            <i class="fa-solid fa-circle-check" style="color: var(--travel-brand); font-size: 0.95rem;"></i>
+            <span>${h}</span>
+          </div>
+        `).join('');
+      }
+
+      // Reset clean input fields
+      const guestNameInput = document.getElementById('attr-guest-name');
+      const guestEmailInput = document.getElementById('attr-guest-email');
+      const guestPhoneInput = document.getElementById('attr-guest-phone');
+      const guestNotesInput = document.getElementById('attr-notes');
+      if (guestNameInput) guestNameInput.value = '';
+      if (guestEmailInput) guestEmailInput.value = '';
+      if (guestPhoneInput) guestPhoneInput.value = '';
+      if (guestNotesInput) guestNotesInput.value = '';
+
+      updateAttrCost();
+      document.getElementById('modal-attr-book').classList.add('open');
+    }
+
+    function updateAttrCost() {
+      if (!selectedAttr) return;
+      const qty = parseInt(document.getElementById('attr-ticket-qty').value) || 2;
+      const total = selectedAttr.price * qty;
+      document.getElementById('attr-summary-subtotal').textContent = `$${total}.00`;
+      document.getElementById('attr-summary-total').textContent = `$${total}.00`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Initialize Searchbox with Popovers
+      searchBoxInstance = new AttractionsSearchbox({
+        container: document,
+        onChange: () => {
+          applyFilters();
+        }
+      });
+
+      // 2. Initial Render
+      renderAttractionsGrid(TRAVEL_DATA.attractions);
+
+      // 3. Search Form Submit
+      document.getElementById('form-attr-search')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        applyFilters();
+      });
+
+      // 4. Destination Cards Click (Explore Top Destinations)
+      document.querySelectorAll('.dest-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const city = card.getAttribute('data-city');
+          if (city && searchBoxInstance) {
+            searchBoxInstance.setDestination(city);
+            applyFilters();
+            
+            // Smooth scroll to catalog grid
+            document.getElementById('attr-results-heading')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // 5. Category Pills Click
+      document.querySelectorAll('.attr-cat-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+          const cat = pill.getAttribute('data-cat') || 'all';
+          currentSelectedCategory = cat;
+          updateCatPillsActiveState(cat);
+          applyFilters();
+        });
+      });
+
+      // 6. Modal Qty Change
+      document.getElementById('attr-ticket-qty')?.addEventListener('change', updateAttrCost);
+
+      // 7. Modal Close Buttons
+      document.getElementById('btn-close-attr-modal')?.addEventListener('click', () => {
+        document.getElementById('modal-attr-book').classList.remove('open');
+      });
+
+      document.getElementById('btn-close-attr-voucher')?.addEventListener('click', () => {
+        document.getElementById('modal-attr-voucher').classList.remove('open');
+      });
+
+      document.getElementById('btn-close-my-attr-modal')?.addEventListener('click', () => {
+        document.getElementById('modal-my-attr-bookings-view').classList.remove('open');
+      });
+
+      // 8. Modal Backdrop Close
+      document.querySelectorAll('.travel-modal-backdrop').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            modal.classList.remove('open');
+          }
+        });
+      });
+
+      // 9. Reservation Form Submit & Voucher Pass Generation
+      document.getElementById('form-attr-reservation')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!selectedAttr) return;
+
+        const qty = parseInt(document.getElementById('attr-ticket-qty').value) || 2;
+        const total = selectedAttr.price * qty;
+        const bookingId = generateBookingId('TKT');
+        const guestName = document.getElementById('attr-guest-name').value.trim();
+        const guestEmail = document.getElementById('attr-guest-email').value.trim();
+        const guestPhone = document.getElementById('attr-guest-phone')?.value.trim() || 'N/A';
+        const timeSlot = document.getElementById('attr-timeslot').value;
+        const dateFormatted = document.getElementById('input-attr-dates')?.value || 'Upcoming Date';
+
+        const booking = {
+          type: 'Attraction Pass',
+          bookingId: bookingId,
+          title: selectedAttr.title,
+          guestName: guestName,
+          email: guestEmail,
+          phone: guestPhone,
+          timeSlot: timeSlot,
+          visitDate: dateFormatted,
+          qty: `${qty} Pass(es)`,
+          totalPrice: total,
+          city: selectedAttr.city,
+          status: 'Confirmed &bull; Mobile Ready',
+          date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        };
+
+        TravelState.saveBooking(booking);
+        document.getElementById('modal-attr-book').classList.remove('open');
+
+        // Render QR Voucher Pass
+        document.getElementById('attr-voucher-body').innerHTML = `
+          <div class="voucher-card" style="border: 2px solid #E2E8F0; border-radius: 14px; padding: 22px; background: #FFFFFF; box-shadow: 0 4px 18px rgba(0,0,0,0.06);">
+            <div class="voucher-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1.5px solid #F1F5F9; padding-bottom: 14px;">
+              <div>
+                <span class="voucher-field-label" style="font-size: 0.75rem; color: #64748B; font-weight: 700; text-transform: uppercase;">Digital Pass Barcode ID</span>
+                <div class="voucher-pnr" style="font-size: 1.35rem; font-weight: 900; color: var(--travel-brand); letter-spacing: 1px;">#${booking.bookingId}</div>
+              </div>
+              <span class="amenity-tag" style="background: rgba(127, 183, 60, 0.12); color: #365314; font-size: 0.85rem; font-weight: 800; padding: 6px 14px; border: 1px solid rgba(127,183,60,0.3); border-radius: 20px;">
+                <i class="fa-solid fa-circle-check"></i> Valid Mobile Entry
+              </span>
+            </div>
+
+            <div class="voucher-details-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px;">
+              <div>
+                <span class="voucher-field-label" style="font-size: 0.74rem; color: #64748B; font-weight: 700;">Experience</span>
+                <div class="voucher-field-value" style="font-size: 0.92rem; font-weight: 800; color: #0F172A;">${booking.title}</div>
+              </div>
+              <div>
+                <span class="voucher-field-label" style="font-size: 0.74rem; color: #64748B; font-weight: 700;">Date &amp; Time Slot</span>
+                <div class="voucher-field-value" style="font-size: 0.92rem; font-weight: 800; color: #0F172A;">${booking.timeSlot}</div>
+              </div>
+              <div>
+                <span class="voucher-field-label" style="font-size: 0.74rem; color: #64748B; font-weight: 700;">Primary Pass Holder</span>
+                <div class="voucher-field-value" style="font-size: 0.92rem; font-weight: 800; color: #0F172A;">${booking.guestName}</div>
+              </div>
+              <div>
+                <span class="voucher-field-label" style="font-size: 0.74rem; color: #64748B; font-weight: 700;">Quantity</span>
+                <div class="voucher-field-value" style="font-size: 0.92rem; font-weight: 800; color: #0F172A;">${booking.qty}</div>
+              </div>
+              <div>
+                <span class="voucher-field-label" style="font-size: 0.74rem; color: #64748B; font-weight: 700;">Total Paid</span>
+                <div class="voucher-field-value" style="font-size: 0.95rem; font-weight: 900; color: var(--travel-brand);">$${booking.totalPrice}.00 USD</div>
+              </div>
+              <div>
+                <span class="voucher-field-label" style="font-size: 0.74rem; color: #64748B; font-weight: 700;">Admission Scanner</span>
+                <div class="voucher-field-value" style="font-size: 0.92rem; font-weight: 800; color: #0F172A;">Fast-Track Turnstile QR</div>
+              </div>
+            </div>
+
+            <!-- Visual Barcode Simulation -->
+            <div style="background: #F8FAFC; border: 1.5px dashed #CBD5E1; border-radius: 10px; padding: 14px; text-align: center; margin-bottom: 14px;">
+              <div style="font-family: monospace; font-size: 1.6rem; letter-spacing: 4px; color: #0F172A; font-weight: 900;">||| | |||| || ||| |||| | ||| ||</div>
+              <div style="font-size: 0.78rem; color: #64748B; margin-top: 4px;">PASS BARCODE: TKT-${booking.bookingId}-AMEZA</div>
+            </div>
+
+            <p style="font-size: 0.82rem; color: #64748B; line-height: 1.4; margin: 0;">
+              Show this digital QR pass on your mobile phone or print it for instant admission at the venue turnstile scanner.
+            </p>
+          </div>
+
+          <button class="btn-primary" onclick="window.print()" style="margin-top: 18px; width: 100%; padding: 14px; font-size: 1rem; font-weight: 800; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <i class="fa-solid fa-print"></i>
+            <span>Print / Save Mobile Passes</span>
+          </button>
+        `;
+
+        document.getElementById('modal-attr-voucher').classList.add('open');
+        showTravelToast('🎟️ Passes confirmed! Mobile voucher ready.');
+      });
+
+      // 10. My Travel Bookings Modal Handler
+      document.getElementById('btn-my-attr-bookings')?.addEventListener('click', () => {
+        const bookings = TravelState.getBookings();
+        const container = document.getElementById('my-attr-bookings-list');
+        if (!container) return;
+
+        if (bookings.length === 0) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 36px 16px;">
+              <div style="font-size: 2.2rem; margin-bottom: 10px;">📋</div>
+              <p style="color: #64748B; font-size: 1rem; font-weight: 600;">No active travel bookings found.</p>
+              <p style="color: #94A3B8; font-size: 0.85rem; margin-top: 4px;">Book an attraction pass or tour to see your digital vouchers here.</p>
+            </div>
+          `;
+        } else {
+          container.innerHTML = bookings.map(b => `
+            <div style="border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 16px; background: #FFFFFF; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span style="font-weight: 800; color: var(--travel-brand); font-size: 0.9rem;">#${b.bookingId} &bull; ${b.type}</span>
+                <span class="amenity-tag" style="background: rgba(127, 183, 60, 0.1); color: #365314; font-size: 0.78rem; font-weight: 800; padding: 4px 10px; border-radius: 12px;">${b.status}</span>
+              </div>
+              <h4 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 4px; color: #0F172A;">${b.title}</h4>
+              <p style="font-size: 0.85rem; color: #64748B; margin: 0;">Visitor: <strong>${b.guestName}</strong> &bull; ${b.qty || '1 Pass'} &bull; Total: <strong>$${b.totalPrice}</strong> &bull; ${b.date}</p>
+            </div>
+          `).join('');
+        }
+
+        document.getElementById('modal-my-attr-bookings-view').classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>

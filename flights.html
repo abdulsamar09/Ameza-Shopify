@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Official Flights &amp; Airline Network | AMEZA</title>
+  <meta name="description" content="Book genuine scheduled flights with Emirates, Qatar Airways, British Airways, PIA, flydubai and global airlines on AMEZA.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/travel.css">
+  <link rel="icon" type="image/png" href="assets/amezashopify logo.png">
+</head>
+<body>
+
+  <!-- 1. TOP ANNOUNCEMENT BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-badge"><i class="fa-solid fa-plane"></i> Official Airfare Portal</span>
+        <span>Verified Airline Schedules &bull; IATA Direct Electronic Tickets &bull; 24/7 Flight Support</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="index.html" class="top-bar-link"><i class="fa-solid fa-bag-shopping"></i> Store Catalog</a>
+        <span style="opacity: 0.4;">|</span>
+        <button class="top-bar-link" id="btn-my-flight-bookings"><i class="fa-solid fa-clipboard-list"></i> My Travel Bookings</button>
+        <span style="opacity: 0.4;">|</span>
+        <span class="top-bar-link">USD ($)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN HEADER -->
+  <header class="header-sticky" id="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-wrap" title="AMEZA Travel">
+        <img src="assets/amezashopify logo.png" alt="AMEZA Logo" onerror="this.src='assets/logo.png'">
+      </a>
+
+      <!-- Center Nav -->
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link"><span>Store Home</span></a>
+        <a href="stays.html" class="nav-link"><span>Stays</span></a>
+        <a href="flights.html" class="nav-link active"><span>Flights</span></a>
+        <a href="car-rental.html" class="nav-link"><span>Car Rental</span></a>
+        <a href="attractions.html" class="nav-link"><span>Attractions</span></a>
+        <a href="airport-taxis.html" class="nav-link"><span>Airport Taxis</span></a>
+      </nav>
+
+      <!-- Right Actions -->
+      <div class="header-actions">
+        <a href="wishlist.html" class="action-btn" title="Wishlist">
+          <i class="fa-regular fa-heart" style="font-size: 1.15rem;"></i>
+        </a>
+        <a href="index.html" class="btn-primary" style="padding: 8px 18px; font-size: 0.88rem;">Back to Store</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. TRAVEL CATEGORIES NAVIGATION BAR -->
+  <div class="travel-nav-bar">
+    <div class="container travel-nav-container">
+      <a href="stays.html" class="travel-cat-pill">
+        <i class="fa-solid fa-bed"></i>
+        <span>Stays</span>
+      </a>
+
+      <a href="flights.html" class="travel-cat-pill active">
+        <i class="fa-solid fa-plane-departure"></i>
+        <span>Flights</span>
+      </a>
+
+      <a href="car-rental.html" class="travel-cat-pill">
+        <i class="fa-solid fa-car"></i>
+        <span>Car rental</span>
+      </a>
+
+      <a href="attractions.html" class="travel-cat-pill">
+        <i class="fa-solid fa-ticket"></i>
+        <span>Attractions</span>
+      </a>
+
+      <a href="airport-taxis.html" class="travel-cat-pill">
+        <i class="fa-solid fa-taxi"></i>
+        <span>Airport taxis</span>
+      </a>
+
+      <a href="index.html" class="travel-cat-pill store-pill">
+        <i class="fa-solid fa-store"></i>
+        <span>Shop Products</span>
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO HEADER -->
+    <section class="travel-hero">
+      <div class="container">
+        <div class="travel-hero-tag"><i class="fa-solid fa-plane"></i> Live Flight Search</div>
+        <h1 class="travel-hero-title">Book <span>Flights</span></h1>
+        <p class="travel-hero-subtitle">Search real-time airline routes and global schedules.</p>
+
+        <!-- Trip Type Options -->
+        <div class="travel-search-options">
+          <label class="travel-option-item">
+            <input type="radio" name="trip-type" value="round-trip" checked> Round-trip
+          </label>
+          <label class="travel-option-item">
+            <input type="radio" name="trip-type" value="one-way"> One-way
+          </label>
+          <label class="travel-option-item">
+            <input type="radio" name="trip-type" value="multi-city"> Multi-city
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEARCH FLOATING BOX -->
+    <div class="container travel-search-wrap">
+      <div class="travel-search-box">
+        <form id="form-flight-search" class="travel-search-grid flights-grid">
+          
+          <!-- 1. Departure Airport -->
+          <div class="travel-search-field has-dropdown" id="field-flight-from-wrap">
+            <i class="fa-solid fa-plane-departure" style="font-size: 1.2rem; color: var(--travel-brand);"></i>
+            <div class="field-content">
+              <span class="field-label">Departure (City / Airport)</span>
+              <input type="text" id="flight-from-input" value="Dubai (DXB)" placeholder="Where from?" autocomplete="off">
+            </div>
+
+            <!-- Popover Dropdown -->
+            <div class="search-dropdown-popover" id="popover-flight-from">
+              <div class="popover-scroll">
+                <div class="popover-section-title">Popular Departure Hubs</div>
+                <div class="popover-item" data-val="Dubai (DXB)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Dubai International Airport (DXB)</div>
+                    <div class="popover-sub">Dubai, United Arab Emirates</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Karachi (KHI)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Jinnah International Airport (KHI)</div>
+                    <div class="popover-sub">Karachi, Pakistan</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Lahore (LHE)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Allama Iqbal Int'l Airport (LHE)</div>
+                    <div class="popover-sub">Lahore, Pakistan</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Islamabad (ISB)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Islamabad International Airport (ISB)</div>
+                    <div class="popover-sub">Islamabad, Pakistan</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="London Heathrow (LHR)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">London Heathrow Airport (LHR)</div>
+                    <div class="popover-sub">London, United Kingdom</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="New York (JFK)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">John F. Kennedy Int'l (JFK)</div>
+                    <div class="popover-sub">New York, United States</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Doha (DOH)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Hamad International Airport (DOH)</div>
+                    <div class="popover-sub">Doha, Qatar</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Jeddah (JED)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">King Abdulaziz Int'l (JED)</div>
+                    <div class="popover-sub">Jeddah, Saudi Arabia</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Istanbul (IST)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Istanbul Airport (IST)</div>
+                    <div class="popover-sub">Istanbul, Turkey</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Destination Airport -->
+          <div class="travel-search-field has-dropdown" id="field-flight-to-wrap">
+            <i class="fa-solid fa-plane-arrival" style="font-size: 1.2rem; color: var(--travel-brand);"></i>
+            <div class="field-content">
+              <span class="field-label">Destination (City / Airport)</span>
+              <input type="text" id="flight-to-input" value="" placeholder="Where to? (e.g. London, New York)" autocomplete="off">
+            </div>
+
+            <!-- Popover Dropdown -->
+            <div class="search-dropdown-popover" id="popover-flight-to">
+              <div class="popover-scroll">
+                <div class="popover-section-title">Popular Destination Hubs</div>
+                <div class="popover-item" data-val="London Heathrow (LHR)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-arrival"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">London Heathrow (LHR)</div>
+                    <div class="popover-sub">London, United Kingdom</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="New York (JFK)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-arrival"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">John F. Kennedy (JFK)</div>
+                    <div class="popover-sub">New York, United States</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Paris Charles de Gaulle (CDG)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-arrival"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Paris Charles de Gaulle (CDG)</div>
+                    <div class="popover-sub">Paris, France</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Tokyo Haneda (HND)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-arrival"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Tokyo Haneda (HND)</div>
+                    <div class="popover-sub">Tokyo, Japan</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Dubai (DXB)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-arrival"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Dubai International (DXB)</div>
+                    <div class="popover-sub">Dubai, United Arab Emirates</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Singapore Changi (SIN)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-arrival"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Singapore Changi Airport (SIN)</div>
+                    <div class="popover-sub">Singapore</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Bangkok Suvarnabhumi (BKK)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-arrival"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Suvarnabhumi Airport (BKK)</div>
+                    <div class="popover-sub">Bangkok, Thailand</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Lahore (LHE)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-arrival"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Allama Iqbal Int'l (LHE)</div>
+                    <div class="popover-sub">Lahore, Pakistan</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Islamabad (ISB)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane-arrival"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Islamabad Int'l (ISB)</div>
+                    <div class="popover-sub">Islamabad, Pakistan</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Flight Dates -->
+          <div class="travel-search-field has-dropdown" id="field-flight-dates-wrap">
+            <i class="fa-solid fa-calendar-days" style="font-size: 1.2rem; color: var(--travel-brand);"></i>
+            <div class="field-content">
+              <span class="field-label">Flight Dates</span>
+              <input type="text" id="flight-date-input" readonly value="Thu, Oct 15 &mdash; Fri, Oct 23, 2026" style="cursor:pointer;">
+            </div>
+
+            <!-- Popover Dual-Calendar Dropdown -->
+            <div class="search-dropdown-popover datepicker-popover" id="popover-flight-dates">
+              <div class="datepicker-tabs">
+                <button type="button" class="datepicker-tab active">Select Dates</button>
+              </div>
+
+              <div class="datepicker-months-wrap" id="flight-datepicker-months-container">
+                <!-- Dynamically generated via FlightSearchbox -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Cabin & Passenger -->
+          <div class="travel-search-field has-dropdown" id="field-flight-cabin-wrap">
+            <i class="fa-solid fa-user-group" style="font-size: 1.2rem; color: var(--travel-brand);"></i>
+            <div class="field-content">
+              <span class="field-label">Cabin &amp; Passenger</span>
+              <div class="guests-display-wrap">
+                <span id="label-flight-cabin-summary">1 Adult &bull; Economy</span>
+                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+              </div>
+            </div>
+
+            <!-- Popover Cabin & Passenger Dropdown -->
+            <div class="search-dropdown-popover guests-popover" id="popover-flight-cabin">
+              <div class="counter-row">
+                <div class="counter-label">
+                  <span class="counter-name">Adults</span>
+                  <span class="counter-desc">Age 12+</span>
+                </div>
+                <div class="counter-controls">
+                  <button type="button" class="counter-btn" id="btn-flight-adults-minus"><i class="fa-solid fa-minus"></i></button>
+                  <span class="counter-val" id="val-flight-adults">1</span>
+                  <button type="button" class="counter-btn" id="btn-flight-adults-plus"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+
+              <div class="counter-row">
+                <div class="counter-label">
+                  <span class="counter-name">Children</span>
+                  <span class="counter-desc">Age 2 &ndash; 11</span>
+                </div>
+                <div class="counter-controls">
+                  <button type="button" class="counter-btn" id="btn-flight-children-minus"><i class="fa-solid fa-minus"></i></button>
+                  <span class="counter-val" id="val-flight-children">0</span>
+                  <button type="button" class="counter-btn" id="btn-flight-children-plus"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+
+              <div class="counter-row">
+                <div class="counter-label">
+                  <span class="counter-name">Infants</span>
+                  <span class="counter-desc">Under 2 yrs</span>
+                </div>
+                <div class="counter-controls">
+                  <button type="button" class="counter-btn" id="btn-flight-infants-minus"><i class="fa-solid fa-minus"></i></button>
+                  <span class="counter-val" id="val-flight-infants">0</span>
+                  <button type="button" class="counter-btn" id="btn-flight-infants-plus"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+
+              <!-- Cabin Class Selector -->
+              <span class="field-label" style="margin-top: 14px; display:block;">Cabin Class</span>
+              <div class="cabin-options-grid">
+                <button type="button" class="cabin-option-btn active" data-cabin="Economy">Economy</button>
+                <button type="button" class="cabin-option-btn" data-cabin="Premium Economy">Prem. Economy</button>
+                <button type="button" class="cabin-option-btn" data-cabin="Business Class">Business</button>
+                <button type="button" class="cabin-option-btn" data-cabin="First Class">First Class</button>
+              </div>
+
+              <button type="button" class="guests-done-btn" id="btn-flight-cabin-done">Done</button>
+            </div>
+          </div>
+
+          <!-- Search Button -->
+          <button type="submit" class="travel-search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search Flights</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- MAIN RESULTS & API REQUIRED SHORT SHOWCASE -->
+    <div class="container" style="margin-bottom: 70px;">
+      <div style="background: #FFFFFF; border: 1.5px solid var(--travel-border); border-radius: 16px; padding: 40px 24px; text-align: center; max-width: 680px; margin: 0 auto; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);">
+        
+        <!-- Icon -->
+        <div style="width: 70px; height: 70px; border-radius: 50%; background: var(--travel-brand-light); border: 2px solid var(--travel-brand); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 18px auto; color: var(--travel-brand-dark);">
+          <i class="fa-solid fa-plane-departure"></i>
+        </div>
+
+        <!-- Title -->
+        <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--travel-text-dark); margin-bottom: 10px; letter-spacing: -0.02em;">
+          Live Flight Booking
+        </h2>
+
+        <!-- Short Description -->
+        <p style="font-size: 0.95rem; color: var(--travel-text-muted); max-width: 520px; margin: 0 auto 22px auto; line-height: 1.55;">
+          Real-time international flight search, live airline schedules, and direct seat booking require an active Flight API integration.
+        </p>
+
+        <!-- Action Link -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
+          <a href="stays.html" style="color: var(--travel-text-dark); background: #F1F5F9; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none; display:inline-flex; align-items:center; gap:8px;">
+            <i class="fa-solid fa-hotel"></i> Explore Hotel Stays &rarr;
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- MY BOOKINGS MODAL -->
+  <div class="travel-modal-backdrop" id="modal-my-travel-bookings">
+    <div class="travel-modal-dialog">
+      <div class="travel-modal-header">
+        <h3 class="travel-modal-title">📋 My Active Travel Reservations</h3>
+        <button id="btn-close-my-travel-bookings" style="font-size: 1.6rem; color: var(--travel-text-muted); cursor:pointer; background:none; border:none;">&times;</button>
+      </div>
+      <div class="travel-modal-body">
+        <div id="all-bookings-list" class="travel-cards-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo-wrap">
+          <img src="assets/amezashopify logo.png" alt="AMEZA Logo" class="footer-logo" onerror="this.src='assets/logo.png'">
+        </a>
+        <p class="footer-desc">
+          AMEZA is your all-in-one destination for premium lifestyle shopping and seamless global travel bookings — from luxury stays to verified flight schedules and airport transfers.
+        </p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-icon" title="TikTok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" class="social-icon" title="YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Travel Categories</h4>
+        <ul class="footer-links">
+          <li><a href="stays.html"><i class="fa-solid fa-hotel"></i> Hotels &amp; Stays</a></li>
+          <li><a href="flights.html"><i class="fa-solid fa-plane-departure"></i> Flight Booking</a></li>
+          <li><a href="car-rental.html"><i class="fa-solid fa-car"></i> Car Rentals</a></li>
+          <li><a href="attractions.html"><i class="fa-solid fa-ticket"></i> Attractions &amp; Tours</a></li>
+          <li><a href="airport-taxis.html"><i class="fa-solid fa-taxi"></i> Airport Taxis</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Store Products</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#section-clothes-jewellery"><i class="fa-solid fa-shirt"></i> Clothing &amp; Fashion</a></li>
+          <li><a href="index.html#section-electronics-watches"><i class="fa-solid fa-headphones"></i> Electronics &amp; Audio</a></li>
+          <li><a href="index.html#section-electronics-watches"><i class="fa-regular fa-clock"></i> Smart Watches</a></li>
+          <li><a href="index.html#section-leather-collection"><i class="fa-solid fa-gem"></i> Full-Grain Leather Belts</a></li>
+          <li><a href="index.html#section-latest-range"><i class="fa-solid fa-bag-shopping"></i> Luxury Handbags</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Customer Care</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fa-solid fa-store"></i> Store Home</a></li>
+          <li><a href="wishlist.html"><i class="fa-solid fa-heart"></i> Saved Wishlist</a></li>
+          <li><a href="mailto:support@amezastore.com"><i class="fa-solid fa-envelope"></i> 24/7 Global Support</a></li>
+          <li><a href="#"><i class="fa-solid fa-lock"></i> 256-Bit SSL Encrypted</a></li>
+          <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Buyer Protection</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 AMEZA Travel &amp; E-Commerce. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .quick-route-pill {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .quick-route-pill:hover {
+      background: var(--travel-brand);
+      border-color: var(--travel-brand);
+      transform: translateY(-1px);
+    }
+  </style>
+
+  <script type="module">
+    import { TravelState, showTravelToast } from './js/travel-engine.js';
+    import { FlightSearchbox } from './js/travel-searchbox.js';
+
+    function checkSavedApiKey() {
+      const savedKey = localStorage.getItem('ameza_flight_api_key');
+      const savedProvider = localStorage.getItem('ameza_flight_api_provider') || 'Amadeus GDS';
+      if (savedKey) {
+        console.log(`[AMEZA] Flight API configured with ${savedProvider}`);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize dynamic Flight searchbox
+      new FlightSearchbox({ container: document });
+      checkSavedApiKey();
+
+      // Quick Route Pills Click
+      document.querySelectorAll('.quick-route-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+          const from = pill.getAttribute('data-from');
+          const to = pill.getAttribute('data-to');
+          if (document.getElementById('flight-from-input')) document.getElementById('flight-from-input').value = from;
+          if (document.getElementById('flight-to-input')) document.getElementById('flight-to-input').value = to;
+          showTravelToast(`Selected Route: ${from} ⇄ ${to}. Live API required to query GDS airline fares.`);
+        });
+      });
+
+      // Search Submit
+      document.getElementById('form-flight-search')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fromVal = document.getElementById('flight-from-input')?.value || 'Origin';
+        const toVal = document.getElementById('flight-to-input')?.value || 'Destination';
+        showTravelToast(`Flight search for ${fromVal} → ${toVal}: Flight API integration required for live pricing.`);
+      });
+
+      // My Bookings Drawer
+      document.getElementById('btn-my-flight-bookings')?.addEventListener('click', () => {
+        const bookings = TravelState.getBookings();
+        const container = document.getElementById('all-bookings-list');
+        if (!container) return;
+
+        if (bookings.length === 0) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px;">
+              <p style="color: var(--travel-text-muted); font-size: 1rem;">No active travel bookings found in this browser.</p>
+            </div>
+          `;
+        } else {
+          container.innerHTML = bookings.map(b => `
+            <div style="border: 1.5px solid var(--travel-border); border-radius: 12px; padding: 18px; background: #FFFFFF; box-shadow:0 2px 8px rgba(0,0,0,0.03); margin-bottom: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-weight: 800; color: var(--travel-brand); font-size:0.95rem;">#${b.bookingId} &bull; ${b.type}</span>
+                <span class="amenity-tag">${b.status}</span>
+              </div>
+              <h4 style="font-size: 1.15rem; font-weight:800; margin-bottom: 4px; color:var(--travel-text-dark);">${b.title}</h4>
+              <p style="font-size: 0.88rem; color: var(--travel-text-muted);">Guest: <strong>${b.guestName}</strong> &bull; Total: <strong>$${b.totalPrice}</strong> &bull; ${b.date}</p>
+            </div>
+          `).join('');
+        }
+        document.getElementById('modal-my-travel-bookings').classList.add('open');
+      });
+
+      document.getElementById('btn-close-my-travel-bookings')?.addEventListener('click', () => {
+        document.getElementById('modal-my-travel-bookings').classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>

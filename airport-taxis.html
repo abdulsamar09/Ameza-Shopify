@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airport Taxis &amp; Chauffeur Transfers | AMEZA Travel Services</title>
+  <meta name="description" content="Pre-book reliable airport transfers, executive chauffeur cars, and minivans with flight delay monitoring on AMEZA.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/travel.css">
+  <link rel="icon" type="image/png" href="assets/amezashopify logo.png">
+</head>
+<body>
+
+  <!-- 1. TOP ANNOUNCEMENT BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-badge"><i class="fa-solid fa-taxi"></i> Airport Transfers</span>
+        <span>Flight tracking included &bull; 60 mins free waiting time &bull; Fixed upfront prices</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="index.html" class="top-bar-link"><i class="fa-solid fa-bag-shopping"></i> Store Catalog</a>
+        <span style="opacity: 0.4;">|</span>
+        <button class="top-bar-link" id="btn-my-taxi-bookings"><i class="fa-solid fa-clipboard-list"></i> My Travel Bookings</button>
+        <span style="opacity: 0.4;">|</span>
+        <span class="top-bar-link">USD ($)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN HEADER -->
+  <header class="header-sticky" id="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-wrap" title="AMEZA Travel">
+        <img src="assets/amezashopify logo.png" alt="AMEZA Logo" onerror="this.src='assets/logo.png'">
+      </a>
+
+      <!-- Center Nav -->
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link"><span>Store Home</span></a>
+        <a href="stays.html" class="nav-link"><span>Stays</span></a>
+        <a href="flights.html" class="nav-link"><span>Flights</span></a>
+        <a href="car-rental.html" class="nav-link"><span>Car Rental</span></a>
+        <a href="attractions.html" class="nav-link"><span>Attractions</span></a>
+        <a href="airport-taxis.html" class="nav-link active"><span>Airport Taxis</span></a>
+      </nav>
+
+      <!-- Right Actions -->
+      <div class="header-actions">
+        <a href="wishlist.html" class="action-btn" title="Wishlist">
+          <i class="fa-regular fa-heart" style="font-size: 1.15rem;"></i>
+        </a>
+        <a href="index.html" class="btn-primary" style="padding: 8px 18px; font-size: 0.88rem;">Back to Store</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. TRAVEL CATEGORIES NAVIGATION BAR -->
+  <div class="travel-nav-bar">
+    <div class="container travel-nav-container">
+      <a href="stays.html" class="travel-cat-pill">
+        <i class="fa-solid fa-bed"></i>
+        <span>Stays</span>
+      </a>
+
+      <a href="flights.html" class="travel-cat-pill">
+        <i class="fa-solid fa-plane-departure"></i>
+        <span>Flights</span>
+      </a>
+
+      <a href="car-rental.html" class="travel-cat-pill">
+        <i class="fa-solid fa-car"></i>
+        <span>Car rental</span>
+      </a>
+
+      <a href="attractions.html" class="travel-cat-pill">
+        <i class="fa-solid fa-ticket"></i>
+        <span>Attractions</span>
+      </a>
+
+      <a href="airport-taxis.html" class="travel-cat-pill active">
+        <i class="fa-solid fa-taxi"></i>
+        <span>Airport taxis</span>
+      </a>
+
+      <a href="index.html" class="travel-cat-pill store-pill">
+        <i class="fa-solid fa-store"></i>
+        <span>Shop Products</span>
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO HEADER -->
+    <section class="travel-hero">
+      <div class="container">
+        <div class="travel-hero-tag"><i class="fa-solid fa-taxi"></i> Guaranteed Chauffeur Transfers</div>
+        <h1 class="travel-hero-title">Book your airport taxi <span>with confidence</span></h1>
+        <p class="travel-hero-subtitle">Easy airport transfers to and from your hotel or address with door-to-door meet and greet.</p>
+
+        <div class="travel-search-options">
+          <label class="travel-option-item">
+            <input type="radio" name="taxi-trip-type" value="one-way" checked> One-way transfer
+          </label>
+          <label class="travel-option-item">
+            <input type="radio" name="taxi-trip-type" value="return"> Return trip (Save 10%)
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEARCH FLOATING BOX -->
+    <div class="container travel-search-wrap">
+      <div class="travel-search-box travel-search-box-unified">
+        <form id="form-taxi-search" class="travel-search-grid taxis-grid">
+          
+          <!-- Pick-up Location Field -->
+          <div class="travel-search-field has-dropdown" id="field-taxi-pickup-wrap">
+            <i class="fa-solid fa-plane-departure" style="font-size: 1.2rem; color: #006CE4;"></i>
+            <div class="field-content">
+              <span class="field-label">Pick-up Location</span>
+              <input type="text" id="taxi-pickup" placeholder="Airport, flight arrival terminal or address" autocomplete="off">
+            </div>
+
+            <!-- Pick-up Autocomplete Popover -->
+            <div class="search-dropdown-popover dest-popover" id="popover-taxi-pickup">
+              <div class="popover-header-title">Major Airports &amp; Terminals</div>
+              <div class="popover-items-list">
+                <div class="popover-item" data-val="Dubai International Airport (DXB)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">Dubai International Airport (DXB)</span>
+                    <span class="popover-sub">Dubai, United Arab Emirates &bull; All Terminals</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="London Heathrow Airport (LHR)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">London Heathrow Airport (LHR)</span>
+                    <span class="popover-sub">London, United Kingdom &bull; Terminals 2, 3, 4, 5</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Paris Charles de Gaulle (CDG)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">Paris Charles de Gaulle (CDG)</span>
+                    <span class="popover-sub">Paris, France &bull; Terminal 1, 2A-G</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="John F. Kennedy Airport (JFK)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">John F. Kennedy Airport (JFK)</span>
+                    <span class="popover-sub">New York, United States &bull; All Terminals</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Rome Fiumicino Airport (FCO)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">Rome Fiumicino Airport (FCO)</span>
+                    <span class="popover-sub">Rome, Italy &bull; Leonardo da Vinci Terminal</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Tokyo Haneda Airport (HND)">
+                  <div class="popover-icon"><i class="fa-solid fa-plane"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">Tokyo Haneda Airport (HND)</span>
+                    <span class="popover-sub">Tokyo, Japan &bull; International Terminal</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Drop-off Destination Field -->
+          <div class="travel-search-field has-dropdown" id="field-taxi-dropoff-wrap">
+            <i class="fa-solid fa-hotel" style="font-size: 1.2rem; color: #006CE4;"></i>
+            <div class="field-content">
+              <span class="field-label">Drop-off Destination</span>
+              <input type="text" id="taxi-dropoff" placeholder="Hotel name, resort or exact street address" autocomplete="off">
+            </div>
+
+            <!-- Drop-off Suggestions Popover -->
+            <div class="search-dropdown-popover dest-popover" id="popover-taxi-dropoff">
+              <div class="popover-header-title">Popular Drop-off Destinations</div>
+              <div class="popover-items-list">
+                <div class="popover-item" data-val="Downtown City Center &amp; Hotels">
+                  <div class="popover-icon"><i class="fa-solid fa-city"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">Downtown City Center &amp; Hotels</span>
+                    <span class="popover-sub">Central Business District &bull; Luxury Hotels</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="The Ritz-Carlton, JBR Marina">
+                  <div class="popover-icon"><i class="fa-solid fa-hotel"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">The Ritz-Carlton, JBR Marina</span>
+                    <span class="popover-sub">Beachfront Resort &bull; Dubai Marina</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Central London / Westminster">
+                  <div class="popover-icon"><i class="fa-solid fa-landmark"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">Central London / Westminster</span>
+                    <span class="popover-sub">Covent Garden, Soho &bull; London</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Eiffel Tower &amp; 16th Arrondissement">
+                  <div class="popover-icon"><i class="fa-solid fa-tower-observation"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">Eiffel Tower &amp; 16th Arrondissement</span>
+                    <span class="popover-sub">Central Paris Hotels &bull; France</span>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Manhattan Midtown / Times Square">
+                  <div class="popover-icon"><i class="fa-solid fa-tree-city"></i></div>
+                  <div class="popover-text">
+                    <span class="popover-primary">Manhattan Midtown / Times Square</span>
+                    <span class="popover-sub">5th Avenue, Central Park Hotels &bull; NYC</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Date & Time Selector -->
+          <div class="travel-search-field" id="field-taxi-date-wrap">
+            <i class="fa-solid fa-clock" style="font-size: 1.2rem; color: #006CE4;"></i>
+            <div class="field-content">
+              <span class="field-label">Arrival Date &amp; Time</span>
+              <input type="text" id="taxi-date-time" placeholder="Select Date &amp; Time" value="">
+            </div>
+          </div>
+
+          <!-- Search Button -->
+          <button type="submit" class="travel-search-btn">
+            <i class="fa-solid fa-calculator"></i>
+            <span>Calculate Fares</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <div class="container" style="margin-top: 28px; margin-bottom: 48px;">
+      
+      <div class="dest-section-header" style="margin-bottom: 20px;">
+        <h2 class="dest-section-title" id="taxi-results-heading">Available Airport Taxi Fleet</h2>
+        <p class="dest-section-sub" id="taxi-route-info">Fixed guaranteed fares &bull; Flight delay tracking &bull; 60 mins free waiting time</p>
+      </div>
+
+      <!-- Dynamic Taxis List -->
+      <div class="travel-cards-list" id="taxis-cards-container"></div>
+
+    </div>
+  </main>
+
+  <!-- TAXI RESERVATION MODAL -->
+  <div class="travel-modal-backdrop" id="modal-taxi-book">
+    <div class="travel-modal-dialog" style="max-width: 600px; max-height: 90vh; display: flex; flex-direction: column;">
+      
+      <!-- Modal Header with Circular Close Button -->
+      <div class="travel-modal-header" style="border-bottom: 1.5px solid #F1F5F9; padding: 18px 24px; position: relative;">
+        <div>
+          <h3 class="travel-modal-title" style="font-size: 1.25rem; font-weight: 800; color: #0F172A;" id="modal-taxi-title">Book Airport Transfer</h3>
+          <span style="font-size: 0.84rem; color: #64748B;" id="modal-taxi-route">Airport &rarr; Hotel Destination</span>
+        </div>
+        <button class="travel-modal-close-btn" id="btn-close-taxi-modal" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="travel-modal-body" style="padding: 24px; overflow-y: auto;">
+        
+        <!-- Selected Vehicle Preview Card -->
+        <div style="display: flex; gap: 16px; background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 14px; margin-bottom: 18px; align-items: center;">
+          <img id="modal-taxi-thumb" src="" alt="Vehicle" style="width: 100px; height: 75px; object-fit: cover; border-radius: 8px; flex-shrink: 0;">
+          <div>
+            <span id="modal-taxi-badge" style="font-size: 0.72rem; font-weight: 800; color: var(--travel-brand-dark); text-transform: uppercase;"></span>
+            <h4 id="modal-taxi-vehicle-name" style="font-size: 1.05rem; font-weight: 800; color: #0F172A; margin: 2px 0 4px;"></h4>
+            <div style="font-size: 0.82rem; color: #64748B;" id="modal-taxi-specs"></div>
+          </div>
+        </div>
+
+        <!-- Clean Form: NO LABELS, ONLY CLEAN DESCRIPTIVE PLACEHOLDERS -->
+        <form id="form-taxi-reservation">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            
+            <!-- Lead Passenger Name -->
+            <input type="text" class="travel-input" id="taxi-pass-name" required placeholder="Lead Passenger Full Name (for arrival sign) *" autocomplete="name">
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <!-- WhatsApp / Mobile -->
+              <input type="tel" class="travel-input" id="taxi-phone" required placeholder="Mobile / WhatsApp Number *" autocomplete="tel">
+
+              <!-- Flight Number -->
+              <input type="text" class="travel-input" id="taxi-flight-no" required placeholder="Flight Number (e.g. EK-201) *">
+            </div>
+
+            <!-- Email Address -->
+            <input type="email" class="travel-input" id="taxi-email" required placeholder="Email Address (for instant confirmation voucher) *" autocomplete="email">
+
+            <!-- Driver Instructions -->
+            <textarea class="travel-input" id="taxi-instructions" rows="2" placeholder="Driver Instructions (e.g. Need child seat, extra bulky luggage) (Optional)" style="resize: none;"></textarea>
+          </div>
+
+          <!-- Total Calculation Breakdown -->
+          <div class="booking-summary-card" style="margin-top: 18px;">
+            <div class="summary-row">
+              <span style="color: #64748B;">Transfer Fare (<span id="taxi-summary-trip-type">One-way</span>):</span>
+              <span id="taxi-summary-fare" style="font-weight: 700;">$45.00</span>
+            </div>
+            <div class="summary-row">
+              <span style="color: #64748B;">Meet &amp; Greet + Airport Tolls:</span>
+              <span style="color: var(--travel-brand); font-weight: 800;">Included Free</span>
+            </div>
+            <div class="summary-row total" style="margin-top: 8px; padding-top: 10px; border-top: 1px dashed #CBD5E1;">
+              <span style="font-weight: 800; color: #0F172A;">Total Guaranteed Fare:</span>
+              <span id="taxi-summary-total" style="color: var(--travel-brand); font-weight: 900; font-size: 1.25rem;">$45.00</span>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-primary" style="margin-top: 20px; width: 100%; padding: 14px; font-size: 1.05rem; font-weight: 800; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <span>Confirm Chauffeur Transfer Booking</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAXI VOUCHER PASS MODAL -->
+  <div class="travel-modal-backdrop" id="modal-taxi-voucher">
+    <div class="travel-modal-dialog" style="max-width: 580px;">
+      <div class="travel-modal-header" style="border-bottom: 1.5px solid #F1F5F9; padding: 20px 24px; position: relative;">
+        <h3 class="travel-modal-title" style="font-size: 1.25rem; font-weight: 800; color: #0F172A;">🚕 Chauffeur Transfer Voucher</h3>
+        <button class="travel-modal-close-btn" id="btn-close-taxi-voucher" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="travel-modal-body" id="taxi-voucher-body" style="padding: 24px;"></div>
+    </div>
+  </div>
+
+  <!-- MY BOOKINGS MODAL -->
+  <div class="travel-modal-backdrop" id="modal-my-taxi-bookings-view">
+    <div class="travel-modal-dialog" style="max-width: 620px;">
+      <div class="travel-modal-header" style="border-bottom: 1.5px solid #F1F5F9; padding: 20px 24px; position: relative;">
+        <h3 class="travel-modal-title" style="font-size: 1.25rem; font-weight: 800; color: #0F172A;">📋 My Active Travel Bookings</h3>
+        <button class="travel-modal-close-btn" id="btn-close-my-taxi-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="travel-modal-body" style="padding: 24px;">
+        <div id="my-taxi-bookings-list" class="travel-cards-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo-wrap">
+          <img src="assets/amezashopify logo.png" alt="AMEZA Logo" class="footer-logo" onerror="this.src='assets/logo.png'">
+        </a>
+        <p class="footer-desc">
+          AMEZA is your all-in-one destination for premium lifestyle shopping and seamless global travel bookings — from luxury stays to verified flight schedules and airport transfers.
+        </p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-icon" title="TikTok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" class="social-icon" title="YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Travel Categories</h4>
+        <ul class="footer-links">
+          <li><a href="stays.html"><i class="fa-solid fa-hotel"></i> Hotels &amp; Stays</a></li>
+          <li><a href="flights.html"><i class="fa-solid fa-plane-departure"></i> Flight Booking</a></li>
+          <li><a href="car-rental.html"><i class="fa-solid fa-car"></i> Car Rentals</a></li>
+          <li><a href="attractions.html"><i class="fa-solid fa-ticket"></i> Attractions &amp; Tours</a></li>
+          <li><a href="airport-taxis.html"><i class="fa-solid fa-taxi"></i> Airport Taxis</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Store Products</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#section-clothes-jewellery"><i class="fa-solid fa-shirt"></i> Clothing &amp; Fashion</a></li>
+          <li><a href="index.html#section-electronics-watches"><i class="fa-solid fa-headphones"></i> Electronics &amp; Audio</a></li>
+          <li><a href="index.html#section-electronics-watches"><i class="fa-regular fa-clock"></i> Smart Watches</a></li>
+          <li><a href="index.html#section-leather-collection"><i class="fa-solid fa-gem"></i> Full-Grain Leather Belts</a></li>
+          <li><a href="index.html#section-latest-range"><i class="fa-solid fa-bag-shopping"></i> Luxury Handbags</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Customer Care</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fa-solid fa-store"></i> Store Home</a></li>
+          <li><a href="wishlist.html"><i class="fa-solid fa-heart"></i> Saved Wishlist</a></li>
+          <li><a href="mailto:support@amezastore.com"><i class="fa-solid fa-envelope"></i> 24/7 Global Support</a></li>
+          <li><a href="#"><i class="fa-solid fa-lock"></i> 256-Bit SSL Encrypted</a></li>
+          <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Buyer Protection</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 AMEZA Travel &amp; E-Commerce. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT ENGINE -->
+  <script type="module">
+    import { TRAVEL_DATA, TravelState, showTravelToast, generateBookingId } from './js/travel-engine.js';
+
+    let currentTaxis = [...TRAVEL_DATA.taxis];
+    let selectedTaxi = null;
+    let tripMode = 'one-way';
+
+    // Set default pickup date & time
+    const today = new Date();
+    const defaultDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+    const dateFormatted = defaultDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+    const defaultDateTimeStr = `${dateFormatted}, 02:30 PM`;
+
+    function renderTaxis(list) {
+      const container = document.getElementById('taxis-cards-container');
+      if (!container) return;
+
+      container.innerHTML = list.map(t => {
+        const fare = tripMode === 'return' ? Math.round(t.baseFare * 1.8) : t.baseFare;
+        return `
+          <article class="travel-taxi-card taxi-clickable-card" data-taxi-id="${t.id}">
+            <!-- Vehicle Image with Badge -->
+            <div class="taxi-card-img-wrap">
+              <img src="${t.image}" alt="${t.vehicleClass}" class="taxi-card-img" loading="lazy">
+              <span class="taxi-card-badge">${t.badge || 'Executive Transfer'}</span>
+            </div>
+
+            <!-- Vehicle Details Content -->
+            <div class="taxi-card-content">
+              <div>
+                <div class="taxi-card-cat">Fixed Rate Transfer &bull; ${tripMode === 'return' ? 'Return Trip (10% Off)' : 'One-way'}</div>
+                <h3 class="taxi-card-title">${t.vehicleClass}</h3>
+                <p class="taxi-card-sub">${t.example}</p>
+
+                <!-- Capacity Pills -->
+                <div class="taxi-capacity-pills">
+                  <span class="taxi-cap-pill"><i class="fa-solid fa-user-group"></i> Up to ${t.passengers} Passengers</span>
+                  <span class="taxi-cap-pill"><i class="fa-solid fa-suitcase"></i> Up to ${t.luggage} Suitcases</span>
+                </div>
+
+                <!-- Features Checklist -->
+                <div class="taxi-card-features">
+                  ${t.features.map(f => `<span class="taxi-feature-item"><i class="fa-solid fa-check"></i> ${f}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+
+            <!-- Price & Booking Column -->
+            <div class="taxi-card-price-col">
+              <span class="taxi-price-tag-label">Guaranteed Fare:</span>
+              <div class="taxi-price-amount">$${fare}</div>
+              <span class="taxi-price-note"><i class="fa-solid fa-circle-check"></i> All taxes &amp; tolls included</span>
+              
+              <button class="btn-book-taxi btn-open-taxi" data-taxi-id="${t.id}">
+                <span>Book Transfer</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      // Bind click handlers to entire card
+      container.querySelectorAll('.taxi-clickable-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const tid = card.getAttribute('data-taxi-id');
+          openTaxiModal(tid);
+        });
+      });
+    }
+
+    function openTaxiModal(taxiId) {
+      selectedTaxi = TRAVEL_DATA.taxis.find(t => t.id === taxiId) || TRAVEL_DATA.taxis[0];
+      const pickup = document.getElementById('taxi-pickup').value.trim() || 'Dubai International Airport (DXB)';
+      const dropoff = document.getElementById('taxi-dropoff').value.trim() || 'Downtown City Center / Hotels';
+      const fare = tripMode === 'return' ? Math.round(selectedTaxi.baseFare * 1.8) : selectedTaxi.baseFare;
+
+      document.getElementById('modal-taxi-title').textContent = `${selectedTaxi.vehicleClass} Transfer`;
+      document.getElementById('modal-taxi-route').textContent = `${pickup} → ${dropoff}`;
+      document.getElementById('modal-taxi-vehicle-name').textContent = selectedTaxi.vehicleClass;
+      document.getElementById('modal-taxi-badge').textContent = selectedTaxi.badge || 'Guaranteed Chauffeur';
+      document.getElementById('modal-taxi-thumb').src = selectedTaxi.image;
+      document.getElementById('modal-taxi-specs').innerHTML = `${selectedTaxi.example} &bull; Up to <strong>${selectedTaxi.passengers} Passengers</strong>, <strong>${selectedTaxi.luggage} Suitcases</strong>`;
+
+      document.getElementById('taxi-summary-trip-type').textContent = tripMode === 'return' ? 'Return Trip (10% Off)' : 'One-way';
+      document.getElementById('taxi-summary-fare').textContent = `$${fare}.00`;
+      document.getElementById('taxi-summary-total').textContent = `$${fare}.00`;
+
+      // Clear form inputs
+      const passName = document.getElementById('taxi-pass-name');
+      const phone = document.getElementById('taxi-phone');
+      const flightNo = document.getElementById('taxi-flight-no');
+      const email = document.getElementById('taxi-email');
+      const instructions = document.getElementById('taxi-instructions');
+
+      if (passName) passName.value = '';
+      if (phone) phone.value = '';
+      if (flightNo) flightNo.value = '';
+      if (email) email.value = '';
+      if (instructions) instructions.value = '';
+
+      document.getElementById('modal-taxi-book').classList.add('open');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set default date input
+      const dateInput = document.getElementById('taxi-date-time');
+      if (dateInput) dateInput.value = defaultDateTimeStr;
+
+      renderTaxis(currentTaxis);
+
+      // Trip type radios (one-way vs return)
+      document.querySelectorAll('input[name="taxi-trip-type"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          tripMode = e.target.value;
+          renderTaxis(currentTaxis);
+        });
+      });
+
+      // Search Form Submit
+      document.getElementById('form-taxi-search')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const pickup = document.getElementById('taxi-pickup').value.trim() || 'Dubai Airport (DXB)';
+        const dropoff = document.getElementById('taxi-dropoff').value.trim() || 'Downtown City Center';
+        document.getElementById('taxi-results-heading').textContent = `Available Taxis: ${pickup} to ${dropoff}`;
+        document.getElementById('taxi-route-info').textContent = `Guaranteed fixed rates &bull; Free flight delay monitoring &bull; Instant voucher`;
+        renderTaxis(currentTaxis);
+      });
+
+      // Quick Route Cards Click Handler
+      document.querySelectorAll('.taxi-route-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const p = card.getAttribute('data-pickup');
+          const d = card.getAttribute('data-dropoff');
+          if (p) document.getElementById('taxi-pickup').value = p;
+          if (d) document.getElementById('taxi-dropoff').value = d;
+          
+          document.getElementById('taxi-results-heading').textContent = `Available Taxis: ${p} to ${d}`;
+          renderTaxis(currentTaxis);
+
+          // Smooth scroll to fleet
+          document.getElementById('taxi-results-heading')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // Destination / Airport Popovers
+      const setupPopover = (fieldWrapId, inputId, popoverId) => {
+        const wrap = document.getElementById(fieldWrapId);
+        const input = document.getElementById(inputId);
+        const popover = document.getElementById(popoverId);
+
+        if (!wrap || !input || !popover) return;
+
+        input.addEventListener('focus', () => {
+          document.querySelectorAll('.search-dropdown-popover').forEach(p => p.classList.remove('open'));
+          popover.classList.add('open');
+          wrap.classList.add('is-active-field');
+        });
+
+        popover.addEventListener('click', (e) => {
+          const item = e.target.closest('.popover-item');
+          if (item) {
+            const val = item.getAttribute('data-val') || item.querySelector('.popover-primary')?.textContent;
+            input.value = val.trim();
+            popover.classList.remove('open');
+            wrap.classList.remove('is-active-field');
+          }
+        });
+      };
+
+      setupPopover('field-taxi-pickup-wrap', 'taxi-pickup', 'popover-taxi-pickup');
+      setupPopover('field-taxi-dropoff-wrap', 'taxi-dropoff', 'popover-taxi-dropoff');
+
+      // Close popovers on click outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.has-dropdown')) {
+          document.querySelectorAll('.search-dropdown-popover').forEach(p => p.classList.remove('open'));
+          document.querySelectorAll('.travel-search-field').forEach(f => f.classList.remove('is-active-field'));
+        }
+      });
+
+      // Modal Close Handlers
+      document.getElementById('btn-close-taxi-modal')?.addEventListener('click', () => {
+        document.getElementById('modal-taxi-book').classList.remove('open');
+      });
+
+      document.getElementById('btn-close-taxi-voucher')?.addEventListener('click', () => {
+        document.getElementById('modal-taxi-voucher').classList.remove('open');
+      });
+
+      document.getElementById('btn-close-my-taxi-modal')?.addEventListener('click', () => {
+        document.getElementById('modal-my-taxi-bookings-view').classList.remove('open');
+      });
+
+      // Backdrop Click
+      document.querySelectorAll('.travel-modal-backdrop').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            modal.classList.remove('open');
+          }
+        });
+      });
+
+      // Form Reservation Submit & QR Voucher Generation
+      document.getElementById('form-taxi-reservation')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!selectedTaxi) return;
+
+        const bookingId = generateBookingId('TXI');
+        const pickup = document.getElementById('taxi-pickup').value.trim() || 'Airport Terminal';
+        const dropoff = document.getElementById('taxi-dropoff').value.trim() || 'Hotel Destination';
+        const fare = tripMode === 'return' ? Math.round(selectedTaxi.baseFare * 1.8) : selectedTaxi.baseFare;
+        const passName = document.getElementById('taxi-pass-name').value.trim();
+        const phone = document.getElementById('taxi-phone').value.trim();
+        const flightNo = document.getElementById('taxi-flight-no').value.trim();
+        const email = document.getElementById('taxi-email').value.trim();
+        const dateTime = document.getElementById('taxi-date-time')?.value || defaultDateTimeStr;
+
+        const booking = {
+          type: 'Airport Taxi',
+          bookingId: bookingId,
+          title: `${selectedTaxi.vehicleClass} (${selectedTaxi.example})`,
+          pickup: pickup,
+          dropoff: dropoff,
+          guestName: passName,
+          phone: phone,
+          flightNo: flightNo,
+          email: email,
+          tripType: tripMode === 'return' ? 'Return Trip (10% Off)' : 'One-way',
+          dateTime: dateTime,
+          totalPrice: fare,
+          status: 'Confirmed &bull; Chauffeur Assigned',
+          date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        };
+
+        TravelState.saveBooking(booking);
+        document.getElementById('modal-taxi-book').classList.remove('open');
+
+        // Render QR Voucher Pass
+        document.getElementById('taxi-voucher-body').innerHTML = `
+          <div class="voucher-card" style="border: 2px solid #E2E8F0; border-radius: 14px; padding: 22px; background: #FFFFFF; box-shadow: 0 4px 18px rgba(0,0,0,0.06);">
+            <div class="voucher-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1.5px solid #F1F5F9; padding-bottom: 14px;">
+              <div>
+                <span class="voucher-field-label" style="font-size: 0.75rem; color: #64748B; font-weight: 700; text-transform: uppercase;">Transfer Booking ID</span>
+                <div class="voucher-pnr" style="font-size: 1.35rem; font-weight: 900; color: var(--travel-brand); letter-spacing: 1px;">#${booking.bookingId}</div>
+              </div>
+              <span class="amenity-tag" style="background: rgba(127, 183, 60, 0.12); color: #365314; font-size: 0.85rem; font-weight: 800; padding: 6px 14px; border: 1px solid rgba(127,183,60,0.3); border-radius: 20px;">
+                <i class="fa-solid fa-circle-check"></i> Driver Confirmed
+              </span>
+            </div>
+
+            <div class="voucher-details-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px;">
+              <div>
+                <span class="voucher-field-label" style="font-size: 0.74rem; color: #64748B; font-weight: 700;">Vehicle Class</span>
+                <div class="voucher-field-value" style="font-size: 0.92rem; font-weight: 800; color: #0F172A;">${booking.title}</div>
+              </div>
+              <div>
+                <span class="voucher-field-label" style="font-size: 0.74rem; color: #64748B; font-weight: 700;">Lead Passenger</span>
+                <div class="voucher-field-value" style="font-size: 0.92rem; font-weight: 800; color: #0F172A;">${booking.guestName}</div>
+              </div>
+              <div>
+                <span class="voucher-field-label" style="font-size: 0.74rem; color: #64748B; font-weight: 700;">Pick-up Location</span>
+                <div class="voucher-field-value" style="font-size: 0.92rem; font-weight: 800; color: #0F172A;">${booking.pickup}</div>
+              </div>
+              <div>
+                <span class="voucher-field-label" style="font-size: 0.74rem; color: #64748B; font-weight: 700;">Drop-off Destination</span>
+                <div class="voucher-field-value" style="font-size: 0.92rem; font-weight: 800; color: #0F172A;">${booking.dropoff}</div>
+              </div>
+              <div>
+                <span class="voucher-field-label" style="font-size: 0.74rem; color: #64748B; font-weight: 700;">Flight &amp; Date</span>
+                <div class="voucher-field-value" style="font-size: 0.92rem; font-weight: 800; color: #0F172A;">${booking.flightNo} &bull; ${booking.dateTime}</div>
+              </div>
+              <div>
+                <span class="voucher-field-label" style="font-size: 0.74rem; color: #64748B; font-weight: 700;">Guaranteed Total</span>
+                <div class="voucher-field-value" style="font-size: 0.95rem; font-weight: 900; color: var(--travel-brand);">$${booking.totalPrice}.00 USD</div>
+              </div>
+            </div>
+
+            <!-- Visual Barcode Simulation -->
+            <div style="background: #F8FAFC; border: 1.5px dashed #CBD5E1; border-radius: 10px; padding: 14px; text-align: center; margin-bottom: 14px;">
+              <div style="font-family: monospace; font-size: 1.6rem; letter-spacing: 4px; color: #0F172A; font-weight: 900;">||| || |||| | ||| |||| | ||| ||</div>
+              <div style="font-size: 0.78rem; color: #64748B; margin-top: 4px;">CHAUFFEUR CODE: TXI-${booking.bookingId}-AMEZA</div>
+            </div>
+
+            <p style="font-size: 0.82rem; color: #64748B; line-height: 1.4; margin: 0;">
+              Your driver will track your flight (${booking.flightNo}) in real time and greet you inside the arrivals hall with a name sign.
+            </p>
+          </div>
+
+          <button class="btn-primary" onclick="window.print()" style="margin-top: 18px; width: 100%; padding: 14px; font-size: 1rem; font-weight: 800; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <i class="fa-solid fa-print"></i>
+            <span>Print / Save Chauffeur Voucher</span>
+          </button>
+        `;
+
+        document.getElementById('modal-taxi-voucher').classList.add('open');
+        showTravelToast('🚕 Chauffeur transfer confirmed! Voucher ready.');
+      });
+
+      // My Travel Bookings Modal Handler
+      document.getElementById('btn-my-taxi-bookings')?.addEventListener('click', () => {
+        const bookings = TravelState.getBookings();
+        const container = document.getElementById('my-taxi-bookings-list');
+        if (!container) return;
+
+        if (bookings.length === 0) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 36px 16px;">
+              <div style="font-size: 2.2rem; margin-bottom: 10px;">📋</div>
+              <p style="color: #64748B; font-size: 1rem; font-weight: 600;">No active travel bookings found.</p>
+              <p style="color: #94A3B8; font-size: 0.85rem; margin-top: 4px;">Book an airport transfer or stay to see your digital vouchers here.</p>
+            </div>
+          `;
+        } else {
+          container.innerHTML = bookings.map(b => `
+            <div style="border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 16px; background: #FFFFFF; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span style="font-weight: 800; color: var(--travel-brand); font-size: 0.9rem;">#${b.bookingId} &bull; ${b.type}</span>
+                <span class="amenity-tag" style="background: rgba(127, 183, 60, 0.1); color: #365314; font-size: 0.78rem; font-weight: 800; padding: 4px 10px; border-radius: 12px;">${b.status}</span>
+              </div>
+              <h4 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 4px; color: #0F172A;">${b.title}</h4>
+              <p style="font-size: 0.85rem; color: #64748B; margin: 0;">Passenger: <strong>${b.guestName || 'Guest'}</strong> &bull; Total: <strong>$${b.totalPrice}</strong> &bull; ${b.date}</p>
+            </div>
+          `).join('');
+        }
+
+        document.getElementById('modal-my-taxi-bookings-view').classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>

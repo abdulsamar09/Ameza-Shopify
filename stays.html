@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stays &amp; Hotels | AMEZA Travel Services</title>
+  <meta name="description" content="Find and book top luxury hotels, resorts, private beach villas, and holiday apartments worldwide on AMEZA.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/travel.css">
+  <link rel="icon" type="image/png" href="assets/amezashopify logo.png">
+</head>
+<body>
+
+  <!-- 1. TOP ANNOUNCEMENT BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-badge"><i class="fa-solid fa-tag"></i> Travel Deals</span>
+        <span>Save up to 30% on worldwide hotels &bull; Free Cancellation on most rooms</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="index.html" class="top-bar-link"><i class="fa-solid fa-bag-shopping"></i> Store Catalog</a>
+        <span style="opacity: 0.4;">|</span>
+        <button class="top-bar-link" id="btn-my-stays-bookings"><i class="fa-solid fa-clipboard-list"></i> My Travel Bookings</button>
+        <span style="opacity: 0.4;">|</span>
+        <span class="top-bar-link">USD ($)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN HEADER -->
+  <header class="header-sticky" id="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-wrap" title="AMEZA Travel">
+        <img src="assets/amezashopify logo.png" alt="AMEZA Logo" onerror="this.src='assets/logo.png'">
+      </a>
+
+      <!-- Center Nav -->
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link"><span>Store Home</span></a>
+        <a href="stays.html" class="nav-link active"><span>Stays</span></a>
+        <a href="flights.html" class="nav-link"><span>Flights</span></a>
+        <a href="car-rental.html" class="nav-link"><span>Car Rental</span></a>
+        <a href="attractions.html" class="nav-link"><span>Attractions</span></a>
+        <a href="airport-taxis.html" class="nav-link"><span>Airport Taxis</span></a>
+      </nav>
+
+      <!-- Right Actions -->
+      <div class="header-actions">
+        <a href="wishlist.html" class="action-btn" title="Wishlist">
+          <i class="fa-regular fa-heart" style="font-size: 1.15rem;"></i>
+        </a>
+        <a href="index.html" class="btn-primary" style="padding: 8px 18px; font-size: 0.88rem;">Back to Store</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. TRAVEL CATEGORIES NAVIGATION BAR -->
+  <div class="travel-nav-bar">
+    <div class="container travel-nav-container">
+      <a href="stays.html" class="travel-cat-pill active">
+        <i class="fa-solid fa-bed"></i>
+        <span>Stays</span>
+      </a>
+
+      <a href="flights.html" class="travel-cat-pill">
+        <i class="fa-solid fa-plane-departure"></i>
+        <span>Flights</span>
+      </a>
+
+      <a href="car-rental.html" class="travel-cat-pill">
+        <i class="fa-solid fa-car"></i>
+        <span>Car rental</span>
+      </a>
+
+      <a href="attractions.html" class="travel-cat-pill">
+        <i class="fa-solid fa-ticket"></i>
+        <span>Attractions</span>
+      </a>
+
+      <a href="airport-taxis.html" class="travel-cat-pill">
+        <i class="fa-solid fa-taxi"></i>
+        <span>Airport taxis</span>
+      </a>
+
+      <a href="index.html" class="travel-cat-pill store-pill">
+        <i class="fa-solid fa-store"></i>
+        <span>Shop Products</span>
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- 1. HERO HEADER -->
+    <section class="travel-hero">
+      <div class="container">
+        <div class="travel-hero-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Verified Worldwide Stays</div>
+        <h1 class="travel-hero-title">Find your next <span>stay</span></h1>
+        <p class="travel-hero-subtitle">Search deals on hotels, luxury homes, private villas, and much more...</p>
+
+        <!-- Booking Checkbox Filters -->
+        <div class="travel-search-options">
+          <label class="travel-option-item">
+            <input type="checkbox" id="chk-entire-home">
+            <span>I'm looking for an entire home or apartment</span>
+          </label>
+          <label class="travel-option-item">
+            <input type="checkbox" id="chk-work-travel">
+            <span>I'm travelling for work</span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SEARCH FLOATING BOX -->
+    <div class="container travel-search-wrap">
+      <div class="travel-search-box">
+        <form id="form-hotel-search" class="travel-search-grid">
+          
+          <!-- 1. Destination Autocomplete Field -->
+          <div class="travel-search-field has-dropdown" id="field-destination-wrap">
+            <i class="fa-solid fa-bed" style="font-size: 1.2rem; color: var(--travel-brand);"></i>
+            <div class="field-content">
+              <span class="field-label">Where are you going?</span>
+              <input type="text" id="input-destination" placeholder="Where to? (e.g. Dubai, London, Paris)" autocomplete="off" value="">
+            </div>
+
+            <!-- Popover Dropdown -->
+            <div class="search-dropdown-popover" id="popover-destination">
+              <div class="popover-scroll">
+                <div class="popover-section-title">Your recent searches</div>
+                <div class="popover-item" data-val="Perth, Australia">
+                  <div class="popover-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Perth</div>
+                    <div class="popover-sub">Sep 22 &ndash; Oct 21 , 2 adults</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Islamabad, Pakistan">
+                  <div class="popover-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Islamabad</div>
+                    <div class="popover-sub">2 adults</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Dubai, United Arab Emirates">
+                  <div class="popover-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Dubai</div>
+                    <div class="popover-sub">Oct 12 &ndash; Oct 17 , 2 adults</div>
+                  </div>
+                </div>
+
+                <div class="popover-section-title" style="margin-top: 8px; border-top: 1px solid #F1F5F9; padding-top: 10px;">Trending destinations</div>
+                <div class="popover-item" data-val="Karachi, Pakistan">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Karachi</div>
+                    <div class="popover-sub">Pakistan</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Lahore, Pakistan">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Lahore</div>
+                    <div class="popover-sub">Pakistan</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Islamabad, Pakistan">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Islamabad</div>
+                    <div class="popover-sub">Pakistan</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Istanbul, Turkey">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Istanbul</div>
+                    <div class="popover-sub">Turkey</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Kuala Lumpur, Malaysia">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Kuala Lumpur</div>
+                    <div class="popover-sub">Malaysia</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Dubai, United Arab Emirates">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Dubai</div>
+                    <div class="popover-sub">United Arab Emirates</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="London, United Kingdom">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">London</div>
+                    <div class="popover-sub">United Kingdom</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Paris, France">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Paris</div>
+                    <div class="popover-sub">France</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Tokyo, Japan">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Tokyo</div>
+                    <div class="popover-sub">Japan</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="New York, United States">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">New York</div>
+                    <div class="popover-sub">United States</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Dual-Month Date Range Picker Field -->
+          <div class="travel-search-field has-dropdown" id="field-dates-wrap">
+            <i class="fa-solid fa-calendar-days" style="font-size: 1.2rem; color: var(--travel-brand);"></i>
+            <div class="field-content">
+              <span class="field-label">Check-in &mdash; Check-out</span>
+              <input type="text" id="input-dates" readonly value="Tue, Sep 22 &mdash; Wed, Oct 21" style="cursor:pointer;">
+            </div>
+
+            <!-- Popover Dual-Calendar Dropdown -->
+            <div class="search-dropdown-popover datepicker-popover" id="popover-dates">
+              <div class="datepicker-tabs">
+                <button type="button" class="datepicker-tab active" data-tab="calendar">Calendar</button>
+                <button type="button" class="datepicker-tab" data-tab="flexible">I'm flexible</button>
+              </div>
+
+              <div class="datepicker-months-wrap" id="datepicker-months-container">
+                <!-- Populated dynamically via TravelSearchbox -->
+              </div>
+
+              <div class="datepicker-footer">
+                <span class="datepicker-footer-title">Flexible date options</span>
+                <div class="datepicker-pills">
+                  <button type="button" class="date-pill active" data-flex="0">Exact dates</button>
+                  <button type="button" class="date-pill" data-flex="1">&plusmn; 1 day</button>
+                  <button type="button" class="date-pill" data-flex="2">&plusmn; 2 days</button>
+                  <button type="button" class="date-pill" data-flex="3">&plusmn; 3 days</button>
+                  <button type="button" class="date-pill" data-flex="7">&plusmn; 7 days</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Guests & Rooms Occupancy Field -->
+          <div class="travel-search-field has-dropdown" id="field-guests-wrap">
+            <i class="fa-solid fa-user-group" style="font-size: 1.2rem; color: var(--travel-brand);"></i>
+            <div class="field-content">
+              <span class="field-label">Guests &amp; Rooms</span>
+              <div class="guests-display-wrap" id="guests-display-text">
+                <span id="label-guests-summary">2 Adults &bull; 0 Children &bull; 1 Room</span>
+                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+              </div>
+            </div>
+
+            <!-- Popover Guests Dropdown -->
+            <div class="search-dropdown-popover guests-popover" id="popover-guests">
+              <div class="counter-row">
+                <div class="counter-label">
+                  <span class="counter-name">Adults</span>
+                </div>
+                <div class="counter-controls">
+                  <button type="button" class="counter-btn" id="btn-adults-minus"><i class="fa-solid fa-minus"></i></button>
+                  <span class="counter-val" id="val-adults">2</span>
+                  <button type="button" class="counter-btn" id="btn-adults-plus"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+
+              <div class="counter-row">
+                <div class="counter-label">
+                  <span class="counter-name">Children</span>
+                  <span class="counter-desc">Ages 0 &ndash; 17</span>
+                </div>
+                <div class="counter-controls">
+                  <button type="button" class="counter-btn" id="btn-children-minus"><i class="fa-solid fa-minus"></i></button>
+                  <span class="counter-val" id="val-children">0</span>
+                  <button type="button" class="counter-btn" id="btn-children-plus"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+
+              <div class="counter-row">
+                <div class="counter-label">
+                  <span class="counter-name">Rooms</span>
+                </div>
+                <div class="counter-controls">
+                  <button type="button" class="counter-btn" id="btn-rooms-minus"><i class="fa-solid fa-minus"></i></button>
+                  <span class="counter-val" id="val-rooms">1</span>
+                  <button type="button" class="counter-btn" id="btn-rooms-plus"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+
+              <div class="pets-row">
+                <div class="pets-label">
+                  <span class="counter-name">Traveling with pets?</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="chk-travel-pets">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="pets-info-note">
+                <p>Assistance animals aren't considered pets.</p>
+                <a href="#" class="pets-info-link">Read more about traveling with assistance animals</a>
+              </div>
+
+              <button type="button" class="guests-done-btn" id="btn-guests-done">Done</button>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="travel-search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- 3. OFFERS SECTION -->
+    <section class="container booking-section">
+      <div class="booking-sec-header">
+        <h2 class="booking-sec-title">Offers</h2>
+        <p class="booking-sec-subtitle">Promotions, deals and special offers for you</p>
+      </div>
+
+      <div class="offers-promo-grid">
+        <!-- Offer 1 -->
+        <div class="offer-card" style="background-image: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&auto=format&fit=crop&q=80');">
+          <div class="offer-card-content">
+            <span class="offer-badge"><i class="fa-solid fa-fire"></i> Early 2026 Deals</span>
+            <h3 class="offer-card-title">Save 15% or more on luxury stays</h3>
+            <p class="offer-card-desc">Plan your dream getaway and save on worldwide 5-star hotels and beachfront private resorts.</p>
+            <button class="offer-btn quick-filter-btn" data-city="Dubai">
+              <span>Explore Deals &rarr;</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Offer 2 -->
+        <div class="offer-card" style="background-image: url('https://images.unsplash.com/photo-1540541338287-41700207dee6?w=900&auto=format&fit=crop&q=80');">
+          <div class="offer-card-content">
+            <span class="offer-badge" style="background: #2563EB;"><i class="fa-solid fa-globe"></i> Global Getaways</span>
+            <h3 class="offer-card-title">Fly away to your dream holiday</h3>
+            <p class="offer-card-desc">Get special discounted rates when booking curated stays in London, Paris, and Tokyo.</p>
+            <button class="offer-btn quick-filter-btn" data-city="London">
+              <span>Find a Stay &rarr;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. TRENDING DESTINATIONS (5-Grid Booking.com Layout) -->
+    <section class="container booking-section">
+      <div class="booking-sec-header">
+        <h2 class="booking-sec-title">Trending destinations</h2>
+        <p class="booking-sec-subtitle">Most popular choices for travellers worldwide</p>
+      </div>
+
+      <!-- Top Row (2 Big Cards) -->
+      <div class="trending-grid-top">
+        <div class="dest-card quick-filter-btn" data-city="Dubai" title="Explore Dubai Stays">
+          <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=900&auto=format&fit=crop&q=80" alt="Dubai">
+          <div class="dest-card-overlay">
+            <h3 class="dest-card-name">Dubai 🇦🇪</h3>
+            <span class="dest-card-props">2,410 luxury properties</span>
+          </div>
+        </div>
+
+        <div class="dest-card quick-filter-btn" data-city="London" title="Explore London Stays">
+          <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900&auto=format&fit=crop&q=80" alt="London">
+          <div class="dest-card-overlay">
+            <h3 class="dest-card-name">London 🇬🇧</h3>
+            <span class="dest-card-props">1,890 historic hotels &amp; apartments</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Row (3 Cards) -->
+      <div class="trending-grid-bottom">
+        <div class="dest-card quick-filter-btn" data-city="Paris" title="Explore Paris Stays">
+          <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=700&auto=format&fit=crop&q=80" alt="Paris">
+          <div class="dest-card-overlay">
+            <h3 class="dest-card-name">Paris 🇫🇷</h3>
+            <span class="dest-card-props">1,520 boutique properties</span>
+          </div>
+        </div>
+
+        <div class="dest-card quick-filter-btn" data-city="Tokyo" title="Explore Tokyo Stays">
+          <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=700&auto=format&fit=crop&q=80" alt="Tokyo">
+          <div class="dest-card-overlay">
+            <h3 class="dest-card-name">Tokyo 🇯🇵</h3>
+            <span class="dest-card-props">980 modern suites &amp; ryokans</span>
+          </div>
+        </div>
+
+        <div class="dest-card quick-filter-btn" data-city="New York" title="Explore New York Stays">
+          <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=700&auto=format&fit=crop&q=80" alt="New York">
+          <div class="dest-card-overlay">
+            <h3 class="dest-card-name">New York 🇺🇸</h3>
+            <span class="dest-card-props">1,230 skyline luxury hotels</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. BROWSE BY PROPERTY TYPE -->
+    <section class="container booking-section">
+      <div class="booking-sec-header">
+        <h2 class="booking-sec-title">Browse by property type</h2>
+        <p class="booking-sec-subtitle">Distinctive accommodations for every travel style</p>
+      </div>
+
+      <div class="prop-types-grid">
+        <div class="prop-type-card quick-filter-btn" data-amenity="Breakfast Included">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&auto=format&fit=crop&q=80" alt="Hotels" class="prop-type-img">
+          <div class="prop-type-body">
+            <h4 class="prop-type-title">Hotels</h4>
+            <span class="prop-type-count">1,450 properties</span>
+          </div>
+        </div>
+
+        <div class="prop-type-card quick-filter-btn" data-amenity="Free WiFi">
+          <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&auto=format&fit=crop&q=80" alt="Apartments" class="prop-type-img">
+          <div class="prop-type-body">
+            <h4 class="prop-type-title">Apartments</h4>
+            <span class="prop-type-count">890 properties</span>
+          </div>
+        </div>
+
+        <div class="prop-type-card quick-filter-btn" data-amenity="Swimming Pool">
+          <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&auto=format&fit=crop&q=80" alt="Resorts" class="prop-type-img">
+          <div class="prop-type-body">
+            <h4 class="prop-type-title">Resorts</h4>
+            <span class="prop-type-count">540 properties</span>
+          </div>
+        </div>
+
+        <div class="prop-type-card quick-filter-btn" data-stars="5">
+          <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&auto=format&fit=crop&q=80" alt="Villas" class="prop-type-img">
+          <div class="prop-type-body">
+            <h4 class="prop-type-title">Villas</h4>
+            <span class="prop-type-count">320 properties</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. EXPLORE POPULAR DESTINATIONS -->
+    <section class="container booking-section">
+      <div class="booking-sec-header">
+        <h2 class="booking-sec-title">Explore popular destinations</h2>
+        <p class="booking-sec-subtitle">These popular destinations have a lot to offer</p>
+      </div>
+
+      <div class="explore-cities-grid">
+        <div class="explore-city-card quick-filter-btn" data-city="Rome">
+          <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400&auto=format&fit=crop&q=80" alt="Rome" class="explore-city-img">
+          <h4 class="explore-city-name">Rome 🇮🇹</h4>
+          <span class="explore-city-dist">620 properties</span>
+        </div>
+
+        <div class="explore-city-card quick-filter-btn" data-city="Barcelona">
+          <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=400&auto=format&fit=crop&q=80" alt="Barcelona" class="explore-city-img">
+          <h4 class="explore-city-name">Barcelona 🇪🇸</h4>
+          <span class="explore-city-dist">540 properties</span>
+        </div>
+
+        <div class="explore-city-card quick-filter-btn" data-city="Istanbul">
+          <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=400&auto=format&fit=crop&q=80" alt="Istanbul" class="explore-city-img">
+          <h4 class="explore-city-name">Istanbul 🇹🇷</h4>
+          <span class="explore-city-dist">890 properties</span>
+        </div>
+
+        <div class="explore-city-card quick-filter-btn" data-city="Bali">
+          <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&auto=format&fit=crop&q=80" alt="Bali" class="explore-city-img">
+          <h4 class="explore-city-name">Bali 🇮🇩</h4>
+          <span class="explore-city-dist">430 properties</span>
+        </div>
+
+        <div class="explore-city-card quick-filter-btn" data-city="Bangkok">
+          <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=400&auto=format&fit=crop&q=80" alt="Bangkok" class="explore-city-img">
+          <h4 class="explore-city-name">Bangkok 🇹🇭</h4>
+          <span class="explore-city-dist">710 properties</span>
+        </div>
+
+        <div class="explore-city-card quick-filter-btn" data-city="Sydney">
+          <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=400&auto=format&fit=crop&q=80" alt="Sydney" class="explore-city-img">
+          <h4 class="explore-city-name">Sydney 🇦🇺</h4>
+          <span class="explore-city-dist">390 properties</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. GENIUS / VIP LOYALTY PROGRAM BANNER -->
+    <div class="container">
+      <div class="genius-rewards-banner">
+        <div class="genius-left">
+          <div class="genius-icon-box">
+            <i class="fa-solid fa-crown"></i>
+          </div>
+          <div>
+            <h3 class="genius-title">Travel more, spend less with AMEZA Genius</h3>
+            <p class="genius-desc">Enjoy instant 10%–20% discounts, free gourmet breakfast, and complimentary room upgrades on participating luxury stays worldwide.</p>
+          </div>
+        </div>
+        <div class="genius-actions">
+          <button class="btn-primary" style="padding: 12px 24px; font-size: 0.95rem;" onclick="document.getElementById('input-destination').focus();">
+            Unlock Member Rates
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. STAY AT OUR TOP UNIQUE PROPERTIES (4-CARD DISCOVERY GRID) -->
+    <section class="container booking-section" id="section-unique-properties">
+      <div class="booking-sec-header">
+        <h2 class="booking-sec-title">Stay at our top unique properties</h2>
+        <p class="booking-sec-subtitle">From castles and luxury villas to iconic 5-star suites</p>
+      </div>
+
+      <div class="prop-types-grid">
+        <!-- Property 1: Burj Al Arab -->
+        <div class="prop-type-card quick-filter-btn" data-city="Dubai" title="Click to view Dubai stays">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=700&auto=format&fit=crop&q=80" alt="Burj Al Arab" class="prop-type-img">
+          <div class="prop-type-body">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <span style="font-size:0.75rem; font-weight:800; color:#15803D; background:#DCFCE7; padding:2px 8px; border-radius:4px;">Dubai Luxury</span>
+              <span style="font-size:0.8rem; font-weight:800; color:#0F172A; background:#F1F5F9; padding:2px 6px; border-radius:4px;">★ 9.9</span>
+            </div>
+            <h4 class="prop-type-title">Burj Al Arab Jumeirah</h4>
+            <span class="prop-type-count">Jumeirah Beach, Dubai &bull; 5 Stars</span>
+            <div style="margin-top:8px; font-weight:800; font-size:1rem; color:var(--travel-brand-darker);">
+              Starting from <span style="color:var(--travel-brand);">$790</span> / night
+            </div>
+          </div>
+        </div>
+
+        <!-- Property 2: The Savoy London -->
+        <div class="prop-type-card quick-filter-btn" data-city="London" title="Click to view London stays">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&auto=format&fit=crop&q=80" alt="The Savoy London" class="prop-type-img">
+          <div class="prop-type-body">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <span style="font-size:0.75rem; font-weight:800; color:#15803D; background:#DCFCE7; padding:2px 8px; border-radius:4px;">Central London</span>
+              <span style="font-size:0.8rem; font-weight:800; color:#0F172A; background:#F1F5F9; padding:2px 6px; border-radius:4px;">★ 9.7</span>
+            </div>
+            <h4 class="prop-type-title">The Savoy London</h4>
+            <span class="prop-type-count">Westminster, London &bull; 5 Stars</span>
+            <div style="margin-top:8px; font-weight:800; font-size:1rem; color:var(--travel-brand-darker);">
+              Starting from <span style="color:var(--travel-brand);">$380</span> / night
+            </div>
+          </div>
+        </div>
+
+        <!-- Property 3: Hôtel Plaza Athénée -->
+        <div class="prop-type-card quick-filter-btn" data-city="Paris" title="Click to view Paris stays">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700&auto=format&fit=crop&q=80" alt="Hôtel Plaza Athénée" class="prop-type-img">
+          <div class="prop-type-body">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <span style="font-size:0.75rem; font-weight:800; color:#15803D; background:#DCFCE7; padding:2px 8px; border-radius:4px;">Champs-Élysées</span>
+              <span style="font-size:0.8rem; font-weight:800; color:#0F172A; background:#F1F5F9; padding:2px 6px; border-radius:4px;">★ 9.8</span>
+            </div>
+            <h4 class="prop-type-title">Hôtel Plaza Athénée</h4>
+            <span class="prop-type-count">8th Arr., Paris &bull; 5 Stars</span>
+            <div style="margin-top:8px; font-weight:800; font-size:1rem; color:var(--travel-brand-darker);">
+              Starting from <span style="color:var(--travel-brand);">$420</span> / night
+            </div>
+          </div>
+        </div>
+
+        <!-- Property 4: Marina Bay Sands -->
+        <div class="prop-type-card quick-filter-btn" data-city="Singapore" title="Click to view Singapore stays">
+          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=700&auto=format&fit=crop&q=80" alt="Marina Bay Sands" class="prop-type-img">
+          <div class="prop-type-body">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <span style="font-size:0.75rem; font-weight:800; color:#15803D; background:#DCFCE7; padding:2px 8px; border-radius:4px;">Infinity Pool</span>
+              <span style="font-size:0.8rem; font-weight:800; color:#0F172A; background:#F1F5F9; padding:2px 6px; border-radius:4px;">★ 9.6</span>
+            </div>
+            <h4 class="prop-type-title">Marina Bay Sands</h4>
+            <span class="prop-type-count">Bayfront, Singapore &bull; 5 Stars</span>
+            <div style="margin-top:8px; font-weight:800; font-size:1rem; color:var(--travel-brand-darker);">
+              Starting from <span style="color:var(--travel-brand);">$350</span> / night
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MY BOOKINGS MODAL -->
+  <div class="travel-modal-backdrop" id="modal-my-bookings">
+    <div class="travel-modal-dialog">
+      <div class="travel-modal-header">
+        <h3 class="travel-modal-title">📋 My Active Travel Bookings</h3>
+        <button id="btn-close-my-bookings" style="font-size: 1.6rem; color: var(--travel-text-muted); cursor:pointer; background:none; border:none;">&times;</button>
+      </div>
+      <div class="travel-modal-body">
+        <div id="my-bookings-list" class="travel-cards-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo-wrap">
+          <img src="assets/amezashopify logo.png" alt="AMEZA Logo" class="footer-logo" onerror="this.src='assets/logo.png'">
+        </a>
+        <p class="footer-desc">
+          AMEZA is your all-in-one destination for premium lifestyle shopping and seamless global travel bookings — from luxury stays to verified flight schedules and airport transfers.
+        </p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-icon" title="TikTok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" class="social-icon" title="YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Travel Categories</h4>
+        <ul class="footer-links">
+          <li><a href="stays.html"><i class="fa-solid fa-hotel"></i> Hotels &amp; Stays</a></li>
+          <li><a href="flights.html"><i class="fa-solid fa-plane-departure"></i> Flight Booking</a></li>
+          <li><a href="car-rental.html"><i class="fa-solid fa-car"></i> Car Rentals</a></li>
+          <li><a href="attractions.html"><i class="fa-solid fa-ticket"></i> Attractions &amp; Tours</a></li>
+          <li><a href="airport-taxis.html"><i class="fa-solid fa-taxi"></i> Airport Taxis</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Store Products</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#section-clothes-jewellery"><i class="fa-solid fa-shirt"></i> Clothing &amp; Fashion</a></li>
+          <li><a href="index.html#section-electronics-watches"><i class="fa-solid fa-headphones"></i> Electronics &amp; Audio</a></li>
+          <li><a href="index.html#section-electronics-watches"><i class="fa-regular fa-clock"></i> Smart Watches</a></li>
+          <li><a href="index.html#section-leather-collection"><i class="fa-solid fa-gem"></i> Full-Grain Leather Belts</a></li>
+          <li><a href="index.html#section-latest-range"><i class="fa-solid fa-bag-shopping"></i> Luxury Handbags</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Customer Care</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fa-solid fa-store"></i> Store Home</a></li>
+          <li><a href="wishlist.html"><i class="fa-solid fa-heart"></i> Saved Wishlist</a></li>
+          <li><a href="mailto:support@amezastore.com"><i class="fa-solid fa-envelope"></i> 24/7 Global Support</a></li>
+          <li><a href="#"><i class="fa-solid fa-lock"></i> 256-Bit SSL Encrypted</a></li>
+          <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Buyer Protection</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 AMEZA Travel &amp; E-Commerce. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { TravelState, showTravelToast } from './js/travel-engine.js';
+    import { TravelSearchbox } from './js/travel-searchbox.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize dynamic searchbox popovers
+      new TravelSearchbox({ container: document });
+      // Form Search Submit -> Navigates to dedicated search page
+      document.getElementById('form-hotel-search')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const dest = document.getElementById('input-destination')?.value.trim();
+        if (dest) {
+          window.location.href = `stays-search.html?city=${encodeURIComponent(dest)}`;
+        } else {
+          window.location.href = 'stays-search.html';
+        }
+      });
+
+      // Quick Destination & Property Filter Clicks -> Navigates to separate page with query
+      document.querySelectorAll('.quick-filter-btn').forEach(card => {
+        card.addEventListener('click', (e) => {
+          e.preventDefault();
+          const city = card.getAttribute('data-city');
+          const amenity = card.getAttribute('data-amenity');
+          const stars = card.getAttribute('data-stars');
+
+          const params = new URLSearchParams();
+          if (city) params.set('city', city);
+          if (amenity) params.set('amenity', amenity);
+          if (stars) params.set('stars', stars);
+
+          window.location.href = `stays-search.html?${params.toString()}`;
+        });
+      });
+
+      // My Bookings Drawer
+      document.getElementById('btn-my-stays-bookings')?.addEventListener('click', () => {
+        const bookings = TravelState.getBookings();
+        const container = document.getElementById('my-bookings-list');
+        if (!container) return;
+
+        if (bookings.length === 0) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px;">
+              <p style="color: var(--travel-text-muted); font-size: 1rem;">No active travel reservations found in this browser.</p>
+            </div>
+          `;
+        } else {
+          container.innerHTML = bookings.map(b => `
+            <div style="border: 1.5px solid var(--travel-border); border-radius: 12px; padding: 18px; background: #FFFFFF; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-weight: 800; color: var(--travel-brand); font-size:0.95rem;">#${b.bookingId} &bull; ${b.type}</span>
+                <span class="amenity-tag">${b.status}</span>
+              </div>
+              <h4 style="font-size: 1.15rem; font-weight:800; margin-bottom: 4px; color:var(--travel-text-dark);">${b.title}</h4>
+              <p style="font-size: 0.88rem; color: var(--travel-text-muted);">Guest: <strong>${b.guestName}</strong> &bull; Total: <strong>$${b.totalPrice}</strong> &bull; ${b.date}</p>
+            </div>
+          `).join('');
+        }
+        document.getElementById('modal-my-bookings').classList.add('open');
+      });
+
+      document.getElementById('btn-close-my-bookings')?.addEventListener('click', () => {
+        document.getElementById('modal-my-bookings').classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>

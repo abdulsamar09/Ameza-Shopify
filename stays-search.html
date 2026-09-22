@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Stays &amp; Hotels | AMEZA Luxury Travel</title>
+  <meta name="description" content="Browse and book verified 5-star hotels, luxury villas, and boutique apartments worldwide with guaranteed best prices.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/travel.css">
+  <link rel="icon" type="image/png" href="assets/amezashopify logo.png">
+</head>
+<body>
+
+  <!-- 1. TOP ANNOUNCEMENT BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-badge"><i class="fa-solid fa-tag"></i> Member Deals</span>
+        <span>Save up to 30% on worldwide hotels &bull; Free Cancellation on most rooms</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="index.html" class="top-bar-link"><i class="fa-solid fa-bag-shopping"></i> Store Catalog</a>
+        <span style="opacity: 0.4;">|</span>
+        <button class="top-bar-link" id="btn-my-stays-bookings"><i class="fa-solid fa-clipboard-list"></i> My Travel Bookings</button>
+        <span style="opacity: 0.4;">|</span>
+        <span class="top-bar-link"><i class="fa-solid fa-globe"></i> USD ($)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN HEADER -->
+  <header class="header-sticky" id="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-wrap" title="AMEZA Travel">
+        <img src="assets/amezashopify logo.png" alt="AMEZA Logo" onerror="this.src='assets/logo.png'">
+      </a>
+
+      <!-- Center Nav -->
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link"><span>Store Home</span></a>
+        <a href="stays.html" class="nav-link active"><span>Stays</span></a>
+        <a href="flights.html" class="nav-link"><span>Flights</span></a>
+        <a href="car-rental.html" class="nav-link"><span>Car Rental</span></a>
+        <a href="attractions.html" class="nav-link"><span>Attractions</span></a>
+        <a href="airport-taxis.html" class="nav-link"><span>Airport Taxis</span></a>
+      </nav>
+
+      <!-- Right Actions -->
+      <div class="header-actions">
+        <a href="wishlist.html" class="action-btn" title="Wishlist">
+          <i class="fa-regular fa-heart" style="font-size: 1.15rem;"></i>
+        </a>
+        <a href="stays.html" class="btn-primary" style="padding: 8px 18px; font-size: 0.88rem;">
+          <i class="fa-solid fa-arrow-left"></i> Back to Stays Home
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. TRAVEL CATEGORIES NAVIGATION BAR -->
+  <div class="travel-nav-bar">
+    <div class="container travel-nav-container">
+      <a href="stays.html" class="travel-cat-pill active">
+        <i class="fa-solid fa-bed"></i>
+        <span>Stays</span>
+      </a>
+
+      <a href="flights.html" class="travel-cat-pill">
+        <i class="fa-solid fa-plane-departure"></i>
+        <span>Flights</span>
+      </a>
+
+      <a href="car-rental.html" class="travel-cat-pill">
+        <i class="fa-solid fa-car"></i>
+        <span>Car rental</span>
+      </a>
+
+      <a href="attractions.html" class="travel-cat-pill">
+        <i class="fa-solid fa-ticket"></i>
+        <span>Attractions</span>
+      </a>
+
+      <a href="airport-taxis.html" class="travel-cat-pill">
+        <i class="fa-solid fa-taxi"></i>
+        <span>Airport taxis</span>
+      </a>
+
+      <a href="index.html" class="travel-cat-pill store-pill">
+        <i class="fa-solid fa-store"></i>
+        <span>Shop Products</span>
+      </a>
+    </div>
+  </div>
+
+  <main style="background: #F8FAFC; padding: 24px 0 60px 0; min-height: 80vh;">
+    <!-- BREADCRUMB & COMPACT SEARCH BAR -->
+    <div class="container" style="margin-bottom: 24px;">
+      <!-- Breadcrumb -->
+      <div style="display: flex; align-items: center; gap: 8px; font-size: 0.84rem; color: var(--travel-text-muted); margin-bottom: 16px;">
+        <a href="index.html" style="color: var(--travel-text-dark); font-weight: 600; text-decoration: none;">Home</a>
+        <span>/</span>
+        <a href="stays.html" style="color: var(--travel-text-dark); font-weight: 600; text-decoration: none;">Stays</a>
+        <span>/</span>
+        <span style="color: var(--travel-brand); font-weight: 700;" id="breadcrumb-current">Search Results</span>
+      </div>
+
+      <!-- COMPACT SEARCH BAR -->
+      <div class="travel-search-box" style="box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+        <form id="form-hotel-search" class="travel-search-grid">
+          
+          <!-- 1. Destination Autocomplete Field -->
+          <div class="travel-search-field has-dropdown" id="field-destination-wrap">
+            <i class="fa-solid fa-bed" style="font-size: 1.2rem; color: var(--travel-brand);"></i>
+            <div class="field-content">
+              <span class="field-label">Destination / Hotel</span>
+              <input type="text" id="input-destination" placeholder="Where to? (e.g. Dubai, London, Paris)" autocomplete="off" value="">
+            </div>
+
+            <!-- Popover Dropdown -->
+            <div class="search-dropdown-popover" id="popover-destination">
+              <div class="popover-scroll">
+                <div class="popover-section-title">Your recent searches</div>
+                <div class="popover-item" data-val="Perth, Australia">
+                  <div class="popover-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Perth</div>
+                    <div class="popover-sub">Sep 22 &ndash; Oct 21 , 2 adults</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Islamabad, Pakistan">
+                  <div class="popover-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Islamabad</div>
+                    <div class="popover-sub">2 adults</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Dubai, United Arab Emirates">
+                  <div class="popover-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Dubai</div>
+                    <div class="popover-sub">Oct 12 &ndash; Oct 17 , 2 adults</div>
+                  </div>
+                </div>
+
+                <div class="popover-section-title" style="margin-top: 8px; border-top: 1px solid #F1F5F9; padding-top: 10px;">Trending destinations</div>
+                <div class="popover-item" data-val="Karachi, Pakistan">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Karachi</div>
+                    <div class="popover-sub">Pakistan</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Lahore, Pakistan">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Lahore</div>
+                    <div class="popover-sub">Pakistan</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Islamabad, Pakistan">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Islamabad</div>
+                    <div class="popover-sub">Pakistan</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Istanbul, Turkey">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Istanbul</div>
+                    <div class="popover-sub">Turkey</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Kuala Lumpur, Malaysia">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Kuala Lumpur</div>
+                    <div class="popover-sub">Malaysia</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Dubai, United Arab Emirates">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Dubai</div>
+                    <div class="popover-sub">United Arab Emirates</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="London, United Kingdom">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">London</div>
+                    <div class="popover-sub">United Kingdom</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Paris, France">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Paris</div>
+                    <div class="popover-sub">France</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="Tokyo, Japan">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">Tokyo</div>
+                    <div class="popover-sub">Japan</div>
+                  </div>
+                </div>
+                <div class="popover-item" data-val="New York, United States">
+                  <div class="popover-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="popover-text">
+                    <div class="popover-primary">New York</div>
+                    <div class="popover-sub">United States</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Dual-Month Date Range Picker Field -->
+          <div class="travel-search-field has-dropdown" id="field-dates-wrap">
+            <i class="fa-solid fa-calendar-days" style="font-size: 1.2rem; color: var(--travel-brand);"></i>
+            <div class="field-content">
+              <span class="field-label">Check-in &mdash; Check-out</span>
+              <input type="text" id="input-dates" readonly value="Tue, Sep 22 &mdash; Wed, Oct 21" style="cursor:pointer;">
+            </div>
+
+            <!-- Popover Dual-Calendar Dropdown -->
+            <div class="search-dropdown-popover datepicker-popover" id="popover-dates">
+              <div class="datepicker-tabs">
+                <button type="button" class="datepicker-tab active" data-tab="calendar">Calendar</button>
+                <button type="button" class="datepicker-tab" data-tab="flexible">I'm flexible</button>
+              </div>
+
+              <div class="datepicker-months-wrap" id="datepicker-months-container">
+                <!-- Populated dynamically via TravelSearchbox -->
+              </div>
+
+              <div class="datepicker-footer">
+                <span class="datepicker-footer-title">Flexible date options</span>
+                <div class="datepicker-pills">
+                  <button type="button" class="date-pill active" data-flex="0">Exact dates</button>
+                  <button type="button" class="date-pill" data-flex="1">&plusmn; 1 day</button>
+                  <button type="button" class="date-pill" data-flex="2">&plusmn; 2 days</button>
+                  <button type="button" class="date-pill" data-flex="3">&plusmn; 3 days</button>
+                  <button type="button" class="date-pill" data-flex="7">&plusmn; 7 days</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Guests & Rooms Occupancy Field -->
+          <div class="travel-search-field has-dropdown" id="field-guests-wrap">
+            <i class="fa-solid fa-user-group" style="font-size: 1.2rem; color: var(--travel-brand);"></i>
+            <div class="field-content">
+              <span class="field-label">Guests &amp; Rooms</span>
+              <div class="guests-display-wrap" id="guests-display-text">
+                <span id="label-guests-summary">2 Adults &bull; 0 Children &bull; 1 Room</span>
+                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+              </div>
+            </div>
+
+            <!-- Popover Guests Dropdown -->
+            <div class="search-dropdown-popover guests-popover" id="popover-guests">
+              <div class="counter-row">
+                <div class="counter-label">
+                  <span class="counter-name">Adults</span>
+                </div>
+                <div class="counter-controls">
+                  <button type="button" class="counter-btn" id="btn-adults-minus"><i class="fa-solid fa-minus"></i></button>
+                  <span class="counter-val" id="val-adults">2</span>
+                  <button type="button" class="counter-btn" id="btn-adults-plus"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+
+              <div class="counter-row">
+                <div class="counter-label">
+                  <span class="counter-name">Children</span>
+                  <span class="counter-desc">Ages 0 &ndash; 17</span>
+                </div>
+                <div class="counter-controls">
+                  <button type="button" class="counter-btn" id="btn-children-minus"><i class="fa-solid fa-minus"></i></button>
+                  <span class="counter-val" id="val-children">0</span>
+                  <button type="button" class="counter-btn" id="btn-children-plus"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+
+              <div class="counter-row">
+                <div class="counter-label">
+                  <span class="counter-name">Rooms</span>
+                </div>
+                <div class="counter-controls">
+                  <button type="button" class="counter-btn" id="btn-rooms-minus"><i class="fa-solid fa-minus"></i></button>
+                  <span class="counter-val" id="val-rooms">1</span>
+                  <button type="button" class="counter-btn" id="btn-rooms-plus"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+
+              <div class="pets-row">
+                <div class="pets-label">
+                  <span class="counter-name">Traveling with pets?</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="chk-travel-pets">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="pets-info-note">
+                <p>Assistance animals aren't considered pets.</p>
+                <a href="#" class="pets-info-link">Read more about traveling with assistance animals</a>
+              </div>
+
+              <button type="button" class="guests-done-btn" id="btn-guests-done">Done</button>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="travel-search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- MAIN RESULTS & FILTER LAYOUT -->
+    <div class="container travel-page-layout">
+      <!-- Sidebar Filters -->
+      <aside class="travel-sidebar">
+        <div class="travel-filter-card">
+          <div class="travel-filter-title">
+            <span>Filter by:</span>
+            <button id="btn-reset-filters" style="font-size: 0.82rem; color: var(--travel-brand); font-weight: 800; background:none; border:none; cursor:pointer;">Reset all</button>
+          </div>
+
+          <!-- Star Rating -->
+          <div class="travel-filter-group">
+            <span class="travel-filter-group-title">Star Rating</span>
+            <label class="travel-checkbox-label">
+              <span><input type="checkbox" name="stars-filter" value="5" checked> 5 Stars (Luxury)</span>
+              <span class="travel-checkbox-count">5</span>
+            </label>
+            <label class="travel-checkbox-label">
+              <span><input type="checkbox" name="stars-filter" value="4" checked> 4 Stars</span>
+              <span class="travel-checkbox-count">1</span>
+            </label>
+          </div>
+
+          <!-- Popular Amenities -->
+          <div class="travel-filter-group">
+            <span class="travel-filter-group-title">Popular Amenities</span>
+            <label class="travel-checkbox-label">
+              <span><input type="checkbox" name="amenity-filter" value="Breakfast Included" checked> Breakfast Included</span>
+            </label>
+            <label class="travel-checkbox-label">
+              <span><input type="checkbox" name="amenity-filter" value="Swimming Pool" checked> Swimming Pool</span>
+            </label>
+            <label class="travel-checkbox-label">
+              <span><input type="checkbox" name="amenity-filter" value="Free WiFi" checked> Free High-Speed WiFi</span>
+            </label>
+          </div>
+
+          <!-- Price Range -->
+          <div class="travel-filter-group">
+            <span class="travel-filter-group-title">Price per night</span>
+            <label class="travel-checkbox-label">
+              <span><input type="radio" name="price-filter" value="all" checked> Any Price</span>
+            </label>
+            <label class="travel-checkbox-label">
+              <span><input type="radio" name="price-filter" value="0-250"> Under $250</span>
+            </label>
+            <label class="travel-checkbox-label">
+              <span><input type="radio" name="price-filter" value="250-320"> $250 to $320</span>
+            </label>
+            <label class="travel-checkbox-label">
+              <span><input type="radio" name="price-filter" value="320+"> $320 &amp; Above</span>
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Results Grid Area -->
+      <section class="travel-results-content">
+        <div class="travel-results-header">
+          <div>
+            <h1 class="travel-results-title" id="stays-heading" style="font-size: 1.5rem; margin-bottom: 4px;">Showing Available Properties</h1>
+            <span class="travel-results-count" id="stays-sub-count">Prices include all taxes &bull; Free cancellation available</span>
+          </div>
+          <div class="travel-sort-bar">
+            <button class="travel-sort-btn active" data-stay-sort="popular">Popular</button>
+            <button class="travel-sort-btn" data-stay-sort="price-low">Price (Lowest)</button>
+            <button class="travel-sort-btn" data-stay-sort="rating">Top Rated</button>
+          </div>
+        </div>
+
+        <!-- Dynamic Hotels List -->
+        <div class="travel-cards-list" id="stays-cards-container">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- BOOKING MODAL -->
+  <div class="travel-modal-backdrop" id="modal-hotel-book">
+    <div class="travel-modal-dialog">
+      <div class="travel-modal-header">
+        <div>
+          <h3 class="travel-modal-title" id="modal-hotel-title">Reserve Your Stay</h3>
+          <span style="font-size: 0.88rem; color: var(--travel-text-muted);" id="modal-hotel-loc">Dubai</span>
+        </div>
+        <button id="btn-close-hotel-modal" style="font-size: 1.6rem; color: var(--travel-text-muted); cursor:pointer; background:none; border:none;">&times;</button>
+      </div>
+
+      <div class="travel-modal-body">
+        <form id="form-hotel-reservation">
+          <div class="travel-form-grid">
+            <div class="travel-form-group">
+              <label class="travel-form-label">Guest First Name *</label>
+              <input type="text" class="travel-input" id="guest-first-name" required value="Abdul">
+            </div>
+            <div class="travel-form-group">
+              <label class="travel-form-label">Guest Last Name *</label>
+              <input type="text" class="travel-input" id="guest-last-name" required value="Samar">
+            </div>
+            <div class="travel-form-group">
+              <label class="travel-form-label">Email Address (for voucher confirmation) *</label>
+              <input type="email" class="travel-input" id="guest-email" required value="guest@example.com">
+            </div>
+            <div class="travel-form-group">
+              <label class="travel-form-label">Phone Number *</label>
+              <input type="tel" class="travel-input" id="guest-phone" required value="+971 50 123 4567">
+            </div>
+            <div class="travel-form-group">
+              <label class="travel-form-label">Room Type</label>
+              <select class="travel-input" id="guest-room-type">
+                <option value="Deluxe King Ocean View">Deluxe King Ocean View</option>
+                <option value="Executive Suite with Balcony (+ $50/night)">Executive Suite with Balcony</option>
+                <option value="Presidential Penthouse Suite (+ $150/night)">Presidential Penthouse Suite</option>
+              </select>
+            </div>
+            <div class="travel-form-group">
+              <label class="travel-form-label">Number of Nights</label>
+              <select class="travel-input" id="guest-nights">
+                <option value="3">3 Nights</option>
+                <option value="5" selected>5 Nights (Standard)</option>
+                <option value="7">7 Nights (Weekly Package - 10% Off)</option>
+                <option value="10">10 Nights</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="booking-summary-box">
+            <div class="summary-row">
+              <span>Standard Room Rate (<span id="summary-night-count">5</span> nights):</span>
+              <span id="summary-subtotal" style="font-weight: 700;">$1,425.00</span>
+            </div>
+            <div class="summary-row">
+              <span>AMEZA Member Instant Promotion:</span>
+              <span style="color: var(--travel-brand); font-weight: 800;">-$100.00</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total Payable at Property:</span>
+              <span id="summary-total" style="color: var(--travel-brand);">$1,325.00</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-hotel-book" style="margin-top: 18px; padding: 14px; font-size: 1.05rem;">
+            Confirm &amp; Instant Book (Pay at Property) &rarr;
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOKING CONFIRMATION MODAL -->
+  <div class="travel-modal-backdrop" id="modal-voucher-view">
+    <div class="travel-modal-dialog">
+      <div class="travel-modal-header">
+        <h3 class="travel-modal-title">🎉 Hotel Reservation Confirmed!</h3>
+        <button id="btn-close-voucher-modal" style="font-size: 1.6rem; color: var(--travel-text-muted); cursor:pointer; background:none; border:none;">&times;</button>
+      </div>
+      <div class="travel-modal-body" id="voucher-content-body">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MY BOOKINGS MODAL -->
+  <div class="travel-modal-backdrop" id="modal-my-bookings">
+    <div class="travel-modal-dialog">
+      <div class="travel-modal-header">
+        <h3 class="travel-modal-title">📋 My Active Travel Bookings</h3>
+        <button id="btn-close-my-bookings" style="font-size: 1.6rem; color: var(--travel-text-muted); cursor:pointer; background:none; border:none;">&times;</button>
+      </div>
+      <div class="travel-modal-body">
+        <div id="my-bookings-list" class="travel-cards-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo-wrap">
+          <img src="assets/amezashopify logo.png" alt="AMEZA Logo" class="footer-logo" onerror="this.src='assets/logo.png'">
+        </a>
+        <p class="footer-desc">
+          AMEZA is your all-in-one destination for premium lifestyle shopping and seamless global travel bookings — from luxury stays to verified flight schedules and airport transfers.
+        </p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-icon" title="TikTok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" class="social-icon" title="YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Travel Categories</h4>
+        <ul class="footer-links">
+          <li><a href="stays.html"><i class="fa-solid fa-hotel"></i> Hotels &amp; Stays</a></li>
+          <li><a href="flights.html"><i class="fa-solid fa-plane-departure"></i> Flight Booking</a></li>
+          <li><a href="car-rental.html"><i class="fa-solid fa-car"></i> Car Rentals</a></li>
+          <li><a href="attractions.html"><i class="fa-solid fa-ticket"></i> Attractions &amp; Tours</a></li>
+          <li><a href="airport-taxis.html"><i class="fa-solid fa-taxi"></i> Airport Taxis</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Store Products</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#section-clothes-jewellery"><i class="fa-solid fa-shirt"></i> Clothing &amp; Fashion</a></li>
+          <li><a href="index.html#section-electronics-watches"><i class="fa-solid fa-headphones"></i> Electronics &amp; Audio</a></li>
+          <li><a href="index.html#section-electronics-watches"><i class="fa-regular fa-clock"></i> Smart Watches</a></li>
+          <li><a href="index.html#section-leather-collection"><i class="fa-solid fa-gem"></i> Full-Grain Leather Belts</a></li>
+          <li><a href="index.html#section-latest-range"><i class="fa-solid fa-bag-shopping"></i> Luxury Handbags</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Customer Care</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fa-solid fa-store"></i> Store Home</a></li>
+          <li><a href="wishlist.html"><i class="fa-solid fa-heart"></i> Saved Wishlist</a></li>
+          <li><a href="mailto:support@amezastore.com"><i class="fa-solid fa-envelope"></i> 24/7 Global Support</a></li>
+          <li><a href="#"><i class="fa-solid fa-lock"></i> 256-Bit SSL Encrypted</a></li>
+          <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Buyer Protection</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 AMEZA Travel &amp; E-Commerce. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { TRAVEL_DATA, TravelState, showTravelToast, generateBookingId } from './js/travel-engine.js';
+    import { TravelSearchbox } from './js/travel-searchbox.js';
+
+    let currentStays = [...TRAVEL_DATA.stays];
+    let selectedHotel = null;
+    let activeStaySort = 'popular';
+
+    function renderStays(staysList) {
+      const container = document.getElementById('stays-cards-container');
+      if (!container) return;
+
+      if (staysList.length === 0) {
+        container.innerHTML = `
+          <div style="background: #fff; padding: 48px 24px; text-align: center; border-radius: 14px; border: 1.5px solid var(--travel-border);">
+            <div style="font-size: 2.5rem; margin-bottom: 10px; color: var(--travel-brand);"><i class="fa-solid fa-hotel"></i></div>
+            <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--travel-text-dark);">No properties found</h3>
+            <p style="color: var(--travel-text-muted); margin-top: 8px; font-size: 0.92rem;">Try adjusting your destination keyword, stars, or price filters.</p>
+            <button id="btn-stays-empty-reset" class="btn-primary" style="margin-top: 16px; padding: 10px 20px;">Reset All Filters</button>
+          </div>
+        `;
+        document.getElementById('btn-stays-empty-reset')?.addEventListener('click', resetStaysFilters);
+        return;
+      }
+
+      container.innerHTML = staysList.map(hotel => `
+        <article class="travel-hotel-card">
+          <div class="hotel-card-img-wrap">
+            <img src="${hotel.image}" alt="${hotel.name}" class="hotel-card-img" loading="lazy">
+            <span class="hotel-card-badge">${hotel.badge}</span>
+          </div>
+
+          <div class="hotel-card-content">
+            <div>
+              <h3 class="hotel-card-title btn-open-booking" data-hotel-id="${hotel.id}">${hotel.name}</h3>
+              <div class="hotel-card-location">
+                <i class="fa-solid fa-location-dot" style="font-size: 0.9rem; color: var(--travel-brand);"></i>
+                <span>${hotel.location} &bull; <strong>${hotel.distance}</strong></span>
+              </div>
+              <div class="hotel-card-stars">
+                ${'<i class="fa-solid fa-star"></i>'.repeat(hotel.stars)}
+              </div>
+              <div class="hotel-card-amenities">
+                ${hotel.amenities.map(a => `<span class="amenity-tag"><i class="fa-solid fa-check"></i> ${a}</span>`).join('')}
+              </div>
+            </div>
+            <div class="hotel-card-perks">
+              <span><i class="fa-solid fa-circle-check"></i> ${hotel.perks}</span>
+            </div>
+          </div>
+
+          <div class="hotel-card-price-col">
+            <div class="hotel-rating-box">
+              <div class="rating-text-wrap">
+                <span class="rating-verdict">${hotel.verdict}</span>
+                <span class="rating-reviews-count">${hotel.reviewsCount.toLocaleString()} reviews</span>
+              </div>
+              <span class="rating-score-badge">${hotel.rating}</span>
+            </div>
+
+            <div class="hotel-price-bottom">
+              <span class="hotel-price-duration">5 nights, 2 adults</span>
+              <div>
+                <span class="hotel-original-price">$${hotel.originalPrice * 5}</span>
+                <div class="hotel-price-amount">$${hotel.price * 5}</div>
+              </div>
+              <span class="hotel-tax-note">Includes taxes and charges</span>
+              <button class="btn-hotel-book btn-open-booking" data-hotel-id="${hotel.id}">
+                See availability &rarr;
+              </button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      document.querySelectorAll('.btn-open-booking').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const hotelId = btn.getAttribute('data-hotel-id');
+          openBookingModal(hotelId);
+        });
+      });
+    }
+
+    function applyStayFilters() {
+      const city = document.getElementById('input-destination').value.toLowerCase().trim();
+      const checkedStars = Array.from(document.querySelectorAll('input[name="stars-filter"]:checked')).map(c => parseInt(c.value));
+      const priceVal = document.querySelector('input[name="price-filter"]:checked')?.value || 'all';
+      const checkedAmenities = Array.from(document.querySelectorAll('input[name="amenity-filter"]:checked')).map(c => c.value);
+
+      let filtered = TRAVEL_DATA.stays.filter(s => {
+        const matchesCity = !city || s.city.toLowerCase().includes(city) || s.name.toLowerCase().includes(city) || s.location.toLowerCase().includes(city);
+        const matchesStars = checkedStars.length === 0 || checkedStars.includes(s.stars);
+        const matchesAmenity = checkedAmenities.length === 0 || checkedAmenities.every(a => s.amenities.includes(a));
+        
+        let matchesPrice = true;
+        if (priceVal === '0-250') matchesPrice = s.price <= 250;
+        else if (priceVal === '250-320') matchesPrice = s.price > 250 && s.price <= 320;
+        else if (priceVal === '320+') matchesPrice = s.price > 320;
+
+        return matchesCity && matchesStars && matchesAmenity && matchesPrice;
+      });
+
+      if (activeStaySort === 'price-low') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (activeStaySort === 'rating') {
+        filtered.sort((a, b) => b.rating - a.rating);
+      }
+
+      const destName = document.getElementById('input-destination').value.trim();
+      if (destName) {
+        document.getElementById('stays-heading').textContent = `Properties in ${destName} (${filtered.length} found)`;
+        document.getElementById('breadcrumb-current').textContent = destName;
+      } else {
+        document.getElementById('stays-heading').textContent = `Showing Available Properties (${filtered.length} found)`;
+        document.getElementById('breadcrumb-current').textContent = 'Search Results';
+      }
+
+      renderStays(filtered);
+    }
+
+    function resetStaysFilters() {
+      document.querySelectorAll('input[name="stars-filter"], input[name="amenity-filter"]').forEach(c => c.checked = true);
+      document.querySelector('input[name="price-filter"][value="all"]').checked = true;
+      document.getElementById('input-destination').value = '';
+      activeStaySort = 'popular';
+      document.querySelectorAll('.travel-sort-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('.travel-sort-btn[data-stay-sort="popular"]')?.classList.add('active');
+      applyStayFilters();
+    }
+
+    function openBookingModal(hotelId) {
+      selectedHotel = TRAVEL_DATA.stays.find(s => s.id === hotelId) || TRAVEL_DATA.stays[0];
+      document.getElementById('modal-hotel-title').textContent = `Book ${selectedHotel.name}`;
+      document.getElementById('modal-hotel-loc').textContent = `${selectedHotel.location} (${selectedHotel.stars} Stars &bull; Rating ${selectedHotel.rating})`;
+      updateModalPrice();
+      document.getElementById('modal-hotel-book').classList.add('open');
+    }
+
+    function updateModalPrice() {
+      if (!selectedHotel) return;
+      const nights = parseInt(document.getElementById('guest-nights').value) || 5;
+      const subtotal = selectedHotel.price * nights;
+      const discount = 100;
+      const total = Math.max(0, subtotal - discount);
+
+      document.getElementById('summary-night-count').textContent = nights;
+      document.getElementById('summary-subtotal').textContent = `$${subtotal.toLocaleString()}.00`;
+      document.getElementById('summary-total').textContent = `$${total.toLocaleString()}.00`;
+    }
+
+    // Parse URL params
+    function initFromUrlParams() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const city = urlParams.get('city');
+      const amenity = urlParams.get('amenity');
+      const stars = urlParams.get('stars');
+
+      if (city) {
+        document.getElementById('input-destination').value = city;
+      }
+      if (amenity) {
+        document.querySelectorAll('input[name="amenity-filter"]').forEach(chk => {
+          chk.checked = (chk.value === amenity);
+        });
+      }
+      if (stars) {
+        document.querySelectorAll('input[name="stars-filter"]').forEach(chk => {
+          chk.checked = (chk.value === stars);
+        });
+      }
+
+      applyStayFilters();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      new TravelSearchbox({ container: document });
+      initFromUrlParams();
+
+      // Live search input & dropdown click update
+      document.getElementById('input-destination')?.addEventListener('input', applyStayFilters);
+      document.getElementById('popover-destination')?.addEventListener('click', () => {
+        setTimeout(applyStayFilters, 50);
+      });
+
+      // Form Search
+      document.getElementById('form-hotel-search')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        applyStayFilters();
+      });
+
+      // Filter change listeners
+      document.querySelectorAll('input[name="stars-filter"], input[name="price-filter"], input[name="amenity-filter"]').forEach(input => {
+        input.addEventListener('change', applyStayFilters);
+      });
+
+      // Reset filters
+      document.getElementById('btn-reset-filters')?.addEventListener('click', resetStaysFilters);
+
+      // Sort buttons
+      document.querySelectorAll('.travel-sort-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.travel-sort-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeStaySort = btn.getAttribute('data-stay-sort');
+          applyStayFilters();
+        });
+      });
+
+      // Nights change
+      document.getElementById('guest-nights')?.addEventListener('change', updateModalPrice);
+
+      // Close modal
+      document.getElementById('btn-close-hotel-modal')?.addEventListener('click', () => {
+        document.getElementById('modal-hotel-book').classList.remove('open');
+      });
+
+      document.getElementById('btn-close-voucher-modal')?.addEventListener('click', () => {
+        document.getElementById('modal-voucher-view').classList.remove('open');
+      });
+
+      // Form Submit
+      document.getElementById('form-hotel-reservation')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nights = parseInt(document.getElementById('guest-nights').value) || 5;
+        const total = (selectedHotel.price * nights) - 100;
+        const bookingId = generateBookingId('HTL');
+        
+        const booking = {
+          type: 'Stay',
+          bookingId: bookingId,
+          title: selectedHotel.name,
+          location: selectedHotel.location,
+          guestName: `${document.getElementById('guest-first-name').value} ${document.getElementById('guest-last-name').value}`,
+          email: document.getElementById('guest-email').value,
+          roomType: document.getElementById('guest-room-type').value,
+          nights: nights,
+          totalPrice: total,
+          status: 'Confirmed (Pay at property)',
+          date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        };
+
+        TravelState.saveBooking(booking);
+        document.getElementById('modal-hotel-book').classList.remove('open');
+
+        // Show Voucher
+        document.getElementById('voucher-content-body').innerHTML = `
+          <div class="voucher-card">
+            <div class="voucher-header">
+              <div>
+                <span class="voucher-field-label">Booking Reference</span>
+                <div class="voucher-pnr">#${booking.bookingId}</div>
+              </div>
+              <span class="amenity-tag" style="background:var(--travel-brand-light); color:#3F6212; font-size:0.9rem; padding:6px 14px; border:1px solid rgba(127,183,60,0.4);"><i class="fa-solid fa-circle-check"></i> Confirmed</span>
+            </div>
+            <div class="voucher-details-grid">
+              <div>
+                <span class="voucher-field-label">Hotel Name</span>
+                <div class="voucher-field-value">${booking.title}</div>
+              </div>
+              <div>
+                <span class="voucher-field-label">Location</span>
+                <div class="voucher-field-value">${booking.location}</div>
+              </div>
+              <div>
+                <span class="voucher-field-label">Primary Guest</span>
+                <div class="voucher-field-value">${booking.guestName}</div>
+              </div>
+              <div>
+                <span class="voucher-field-label">Room Type &amp; Nights</span>
+                <div class="voucher-field-value">${booking.roomType} (${booking.nights} Nights)</div>
+              </div>
+              <div>
+                <span class="voucher-field-label">Payment Status</span>
+                <div class="voucher-field-value" style="color:var(--travel-brand-darker);">Pay at Property: $${booking.totalPrice.toLocaleString()}.00</div>
+              </div>
+              <div>
+                <span class="voucher-field-label">Confirmation Email</span>
+                <div class="voucher-field-value">${booking.email}</div>
+              </div>
+            </div>
+            <p style="font-size:0.84rem; color:var(--travel-text-muted); border-top:1px dashed var(--travel-border); padding-top:12px;">
+              Present this confirmation or Booking ID #${booking.bookingId} upon check-in. Free cancellation available until 48 hours prior to arrival.
+            </p>
+          </div>
+          <button class="btn-primary" onclick="window.print()" style="margin-top: 18px; width: 100%; padding: 14px; font-size:1rem; display:flex; align-items:center; justify-content:center; gap:8px;">
+            <i class="fa-solid fa-print"></i> Print / Save PDF Voucher
+          </button>
+        `;
+        document.getElementById('modal-voucher-view').classList.add('open');
+      });
+
+      // My Bookings Drawer
+      document.getElementById('btn-my-stays-bookings')?.addEventListener('click', () => {
+        const bookings = TravelState.getBookings();
+        const container = document.getElementById('my-bookings-list');
+        if (!container) return;
+
+        if (bookings.length === 0) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px;">
+              <p style="color: var(--travel-text-muted); font-size: 1rem;">No active travel reservations found in this browser.</p>
+            </div>
+          `;
+        } else {
+          container.innerHTML = bookings.map(b => `
+            <div style="border: 1.5px solid var(--travel-border); border-radius: 12px; padding: 18px; background: #FFFFFF; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-weight: 800; color: var(--travel-brand); font-size:0.95rem;">#${b.bookingId} &bull; ${b.type}</span>
+                <span class="amenity-tag">${b.status}</span>
+              </div>
+              <h4 style="font-size: 1.15rem; font-weight:800; margin-bottom: 4px; color:var(--travel-text-dark);">${b.title}</h4>
+              <p style="font-size: 0.88rem; color: var(--travel-text-muted);">Guest: <strong>${b.guestName}</strong> &bull; Total: <strong>$${b.totalPrice}</strong> &bull; ${b.date}</p>
+            </div>
+          `).join('');
+        }
+        document.getElementById('modal-my-bookings').classList.add('open');
+      });
+
+      document.getElementById('btn-close-my-bookings')?.addEventListener('click', () => {
+        document.getElementById('modal-my-bookings').classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
