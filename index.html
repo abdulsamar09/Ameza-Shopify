@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/travel.css">
+  <link rel="stylesheet" href="css/account.css">
   <link rel="icon" type="image/png" href="assets/amezashopify logo.png">
 </head>
 <body>
@@ -20,14 +21,6 @@
         <span>Free Worldwide Express Shipping on all orders over $100 &bull; 30-Day Easy Returns</span>
       </div>
       <div class="top-bar-right">
-        <a href="#section-deals" class="top-bar-link" data-action="scroll-section" data-target="section-deals">
-          <i class="fa-solid fa-fire" style="color: #f97316;"></i> Flash Deals
-        </a>
-        <span style="opacity: 0.4;">|</span>
-        <a href="stays.html" class="top-bar-link">
-          <i class="fa-solid fa-plane-departure"></i> Travel Services
-        </a>
-        <span style="opacity: 0.4;">|</span>
         <button class="top-bar-link" data-action="open-account">
           <i class="fa-solid fa-clipboard-list"></i> Track Order
         </button>
@@ -85,7 +78,7 @@
         </button>
 
         <!-- Account Trigger -->
-        <button class="action-btn" data-action="open-account" title="My Account" aria-label="Account">
+        <button class="action-btn" data-action="open-account" title="My Account" aria-label="Account" id="header-account-btn" style="position: relative;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         </button>
 
@@ -107,80 +100,60 @@
         </button>
       </div>
     </div>
-
-    <!-- Mobile Drawer Menu -->
-    <div id="mobile-nav-menu" class="mobile-nav-menu">
-      <div class="mobile-nav-links">
-        <a href="#" class="mobile-nav-item active">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
-          <span>Home</span>
-        </a>
-        <a href="stays.html" class="mobile-nav-item">
-          <i class="fa-solid fa-bed"></i>
-          <span>Stays &amp; Hotels</span>
-        </a>
-        <a href="flights.html" class="mobile-nav-item">
-          <i class="fa-solid fa-plane-departure"></i>
-          <span>Flights</span>
-        </a>
-        <a href="car-rental.html" class="mobile-nav-item">
-          <i class="fa-solid fa-car"></i>
-          <span>Car Rental</span>
-        </a>
-        <a href="attractions.html" class="mobile-nav-item">
-          <i class="fa-solid fa-ticket"></i>
-          <span>Attractions</span>
-        </a>
-        <a href="airport-taxis.html" class="mobile-nav-item">
-          <i class="fa-solid fa-taxi"></i>
-          <span>Airport Taxis</span>
-        </a>
-        <a href="#section-clothes-jewellery" class="mobile-nav-item" data-action="scroll-section" data-target="section-clothes-jewellery">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path></svg>
-          <span>Clothing</span>
-        </a>
-        <a href="#section-electronics-watches" class="mobile-nav-item" data-action="scroll-section" data-target="section-electronics-watches">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
-          <span>Electronics</span>
-        </a>
-        <a href="wishlist.html" class="mobile-nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-          <span>My Wishlist (<span class="wishlist-count-badge">0</span>)</span>
-        </a>
-        <a href="#section-deals" class="mobile-nav-item deals-link" data-action="scroll-section" data-target="section-deals">
-          <span>🔥 Limited Deals</span>
-        </a>
-      </div>
-    </div>
   </header>
 
   <!-- 2.1 BOOKING SERVICES CATEGORIES BAR -->
   <div class="travel-nav-bar">
     <div class="container travel-nav-container">
-      <a href="stays.html" class="travel-cat-pill">
-        <i class="fa-solid fa-bed"></i>
-        <span>Stays</span>
-      </a>
-
-      <a href="flights.html" class="travel-cat-pill">
-        <i class="fa-solid fa-plane-departure"></i>
-        <span>Flights</span>
-      </a>
-
-      <a href="car-rental.html" class="travel-cat-pill">
-        <i class="fa-solid fa-car"></i>
-        <span>Car rental</span>
-      </a>
-
-      <a href="attractions.html" class="travel-cat-pill">
-        <i class="fa-solid fa-ticket"></i>
-        <span>Attractions</span>
-      </a>
-
-      <a href="airport-taxis.html" class="travel-cat-pill">
-        <i class="fa-solid fa-taxi"></i>
-        <span>Airport taxis</span>
-      </a>
+      <div class="services-nav-dropdown">
+        <button class="services-nav-btn" type="button" aria-expanded="false" aria-haspopup="true">
+          <i class="fa-solid fa-plane-departure"></i>
+          <span>Travel &amp; Booking Services</span>
+          <span class="services-btn-pill">Stays &bull; Flights &bull; Cars &bull; Taxis</span>
+          <i class="fa-solid fa-chevron-down services-chevron"></i>
+        </button>
+        <div class="services-menu-dropdown">
+          <div class="services-menu-header">
+            <span>Explore Services</span>
+            <i class="fa-solid fa-compass" style="color: var(--primary, #7DBA35);"></i>
+          </div>
+          <a href="stays.html" class="services-menu-item">
+            <div class="services-item-icon"><i class="fa-solid fa-bed"></i></div>
+            <div class="services-item-text">
+              <span class="services-item-title">Stay</span>
+              <span class="services-item-sub">Hotels, Resorts & Homes</span>
+            </div>
+          </a>
+          <a href="car-rental.html" class="services-menu-item">
+            <div class="services-item-icon"><i class="fa-solid fa-car"></i></div>
+            <div class="services-item-text">
+              <span class="services-item-title">Car rental</span>
+              <span class="services-item-sub">Self-drive & Chauffeur</span>
+            </div>
+          </a>
+          <a href="attractions.html" class="services-menu-item">
+            <div class="services-item-icon"><i class="fa-solid fa-ticket"></i></div>
+            <div class="services-item-text">
+              <span class="services-item-title">Attraction</span>
+              <span class="services-item-sub">Tours, Activities & Passes</span>
+            </div>
+          </a>
+          <a href="airport-taxis.html" class="services-menu-item">
+            <div class="services-item-icon"><i class="fa-solid fa-taxi"></i></div>
+            <div class="services-item-text">
+              <span class="services-item-title">Airport Taxis</span>
+              <span class="services-item-sub">Fast & Reliable Airport Pickups</span>
+            </div>
+          </a>
+          <a href="flights.html" class="services-menu-item">
+            <div class="services-item-icon"><i class="fa-solid fa-plane-departure"></i></div>
+            <div class="services-item-text">
+              <span class="services-item-title">Flight</span>
+              <span class="services-item-sub">Worldwide Flight Bookings</span>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -861,7 +834,10 @@
   <!-- 22. TOAST NOTIFICATIONS CONTAINER -->
   <div class="toast-container" id="toast-container"></div>
 
-  <!-- Scripts -->
+  <!-- Currency Engine -->
+  <script src="js/currency.js"></script>
+  <!-- Auth engine for account icon state & profile dropdown -->
+  <script src="js/auth.js"></script>
   <script type="module" src="js/app.js"></script>
 </body>
 </html>

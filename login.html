@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In | AMEZA Premium E-Commerce Store</title>
+  <meta name="description" content="Sign in to your AMEZA account to access your orders, wishlist, and personalized shopping experience.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/account.css">
+  <link rel="icon" type="image/png" href="assets/amezashopify logo.png">
+</head>
+<body>
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-badge"><i class="fa-solid fa-tag"></i> Special Offer</span>
+        <span>Free Worldwide Express Shipping on all orders over $100 &bull; 30-Day Easy Returns</span>
+      </div>
+      <div class="top-bar-right">
+        <button class="top-bar-link" id="topbar-account-btn">
+          <i class="fa-solid fa-clipboard-list"></i> Track Order
+        </button>
+        <span style="opacity: 0.4;">|</span>
+        <span class="top-bar-link"><i class="fa-solid fa-globe"></i> USD ($)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER -->
+  <header class="header-sticky" id="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-wrap" title="AMEZA E-Commerce">
+        <img src="assets/amezashopify logo.png" alt="AMEZA Logo" onerror="this.src='assets/logo.png'">
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">
+          <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Home</span>
+        </a>
+        <a href="index.html#section-clothes-jewellery" class="nav-link">
+          <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path></svg>
+          <span>Clothing</span>
+        </a>
+        <a href="index.html#section-electronics-watches" class="nav-link">
+          <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+          <span>Electronics</span>
+        </a>
+        <a href="index.html#section-leather-collection" class="nav-link">
+          <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="3"></rect></svg>
+          <span>Leather Belts</span>
+        </a>
+        <a href="index.html#section-latest-range" class="nav-link">
+          <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path></svg>
+          <span>Bags &amp; Totes</span>
+        </a>
+      </nav>
+      <div class="header-actions">
+        <button class="action-btn" id="header-account-btn" title="My Account" aria-label="Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </button>
+        <a href="wishlist.html" class="action-btn" title="Wishlist" aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </a>
+        <a href="index.html" class="action-btn" title="Continue Shopping" aria-label="Shop">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        </a>
+        <button class="action-btn hamburger-btn" data-action="mobile-menu-toggle" aria-label="Open Navigation Menu" title="Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- LOGIN PAGE CONTENT -->
+  <main>
+    <div class="auth-page-wrapper">
+      <div class="auth-card">
+
+        <!-- Logo -->
+        <a href="index.html" class="auth-logo-link">
+          <img src="assets/amezashopify logo.png" alt="AMEZA" onerror="this.style.display='none'">
+        </a>
+
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Sign in to your account to continue shopping.</p>
+
+        <!-- Form-level alert -->
+        <div class="auth-alert alert-error" id="login-alert" role="alert" aria-live="polite">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <span id="login-alert-msg"></span>
+        </div>
+
+        <!-- 2FA challenge (hidden by default) -->
+        <div id="twofa-challenge" style="display: none;">
+          <div class="auth-alert alert-info show" style="margin-bottom: 16px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+            <span>Two-factor authentication is enabled on this account. Enter the 6-digit code from your authenticator app.</span>
+          </div>
+
+          <div class="auth-form-group">
+            <label for="twofa-code">Authentication Code</label>
+            <div class="auth-input-wrap">
+              <svg class="auth-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+              <input type="text" id="twofa-code" class="auth-input" placeholder="000000" maxlength="10" autocomplete="one-time-code" inputmode="numeric" aria-label="Two-factor authentication code">
+            </div>
+          </div>
+          <p style="font-size:0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+            Can't access your authenticator? 
+            <a href="#" class="auth-link" id="use-recovery-code-link">Use a recovery code</a>
+          </p>
+          <button class="btn-auth-primary" id="btn-verify-2fa" type="button" aria-label="Verify two-factor code">
+            <span class="btn-spinner" id="spinner-2fa"></span>
+            <span id="btn-2fa-label">Verify Code</span>
+          </button>
+          <button class="btn-auth-primary" id="btn-back-to-login" type="button" style="background: var(--bg-page); color: var(--text-main); box-shadow: none; border: 1px solid var(--border);" aria-label="Back to login form">
+            ← Back
+          </button>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="login-form" novalidate>
+          <!-- Email -->
+          <div class="auth-form-group">
+            <label for="login-email">Email Address <span class="required" aria-hidden="true">*</span></label>
+            <div class="auth-input-wrap">
+              <svg class="auth-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <input type="email" id="login-email" class="auth-input" placeholder="you@example.com" autocomplete="email" required aria-describedby="login-email-error">
+            </div>
+            <div class="auth-error-msg" id="login-email-error" role="alert">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line></svg>
+              <span id="login-email-error-text"></span>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="auth-form-group">
+            <label for="login-password">Password <span class="required" aria-hidden="true">*</span></label>
+            <div class="auth-input-wrap">
+              <svg class="auth-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <input type="password" id="login-password" class="auth-input" placeholder="Your password" autocomplete="current-password" required aria-describedby="login-password-error">
+              <button type="button" class="btn-password-toggle" id="toggle-login-password" aria-label="Toggle password visibility">
+                <svg id="eye-icon-login" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </button>
+            </div>
+            <div class="auth-error-msg" id="login-password-error" role="alert">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line></svg>
+              <span id="login-password-error-text"></span>
+            </div>
+          </div>
+
+          <!-- Options -->
+          <div class="auth-options-row">
+            <label class="auth-checkbox-label">
+              <input type="checkbox" id="remember-me" checked aria-label="Remember me">
+              Remember me
+            </label>
+            <a href="forgot-password.html" class="auth-link">Forgot Password?</a>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn-auth-primary" id="btn-login" aria-label="Sign in to your account">
+            <span class="btn-spinner" id="spinner-login"></span>
+            <span id="btn-login-label">Sign In</span>
+          </button>
+        </form>
+
+        <!-- Switch to signup -->
+        <div class="auth-switch-row">
+          Don't have an account? <a href="signup.html">Create Account</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER (simplified) -->
+  <footer class="footer-main" style="padding: 24px 0;">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <p>&copy; 2026 AMEZA. All rights reserved.</p>
+        <p class="footer-powered">Powered by <a href="https://techsyentra.com" target="_blank" rel="noopener noreferrer">techsyentra.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div class="account-toast-container" id="account-toast-container"></div>
+
+  <!-- Currency Engine -->
+  <script src="js/currency.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Redirect if already logged in
+    if (window.AmezaAuth && window.AmezaAuth.isLoggedIn()) {
+      const params = new URLSearchParams(window.location.search);
+      const redirect = params.get('redirect');
+      window.location.href = redirect ? decodeURIComponent(redirect) : 'account.html';
+    }
+
+    // Update header account icon
+    document.addEventListener('DOMContentLoaded', () => {
+      const headerBtn = document.getElementById('header-account-btn');
+      const topbarBtn = document.getElementById('topbar-account-btn');
+      if (headerBtn) headerBtn.addEventListener('click', () => window.location.href = 'login.html');
+      if (topbarBtn) topbarBtn.addEventListener('click', () => window.location.href = 'login.html');
+    });
+
+    let pendingUserId = null; // holds userId during 2FA challenge
+
+    // ─── Password toggle ───────────────────────────────────────
+    document.getElementById('toggle-login-password').addEventListener('click', () => {
+      const input = document.getElementById('login-password');
+      const icon = document.getElementById('eye-icon-login');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+      } else {
+        input.type = 'password';
+        icon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+      }
+    });
+
+    // ─── Inline validation helpers ─────────────────────────────
+    function showFieldError(fieldId, errorId, message) {
+      const field = document.getElementById(fieldId);
+      const errorDiv = document.getElementById(errorId);
+      const errorText = document.getElementById(errorId + '-text');
+      if (field) field.classList.add('error');
+      if (errorDiv) errorDiv.classList.add('show');
+      if (errorText) errorText.textContent = message;
+    }
+
+    function clearFieldError(fieldId, errorId) {
+      const field = document.getElementById(fieldId);
+      const errorDiv = document.getElementById(errorId);
+      if (field) field.classList.remove('error');
+      if (errorDiv) errorDiv.classList.remove('show');
+    }
+
+    function showAlert(message, type = 'error') {
+      const alert = document.getElementById('login-alert');
+      const msg = document.getElementById('login-alert-msg');
+      alert.className = `auth-alert alert-${type} show`;
+      msg.textContent = message;
+      alert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function hideAlert() {
+      document.getElementById('login-alert').classList.remove('show');
+    }
+
+    function setLoading(loading) {
+      const btn = document.getElementById('btn-login');
+      const spinner = document.getElementById('spinner-login');
+      const label = document.getElementById('btn-login-label');
+      btn.disabled = loading;
+      spinner.classList.toggle('show', loading);
+      label.textContent = loading ? 'Signing In...' : 'Sign In';
+    }
+
+    // ─── Clear errors on input ─────────────────────────────────
+    document.getElementById('login-email').addEventListener('input', () => clearFieldError('login-email', 'login-email-error'));
+    document.getElementById('login-password').addEventListener('input', () => clearFieldError('login-password', 'login-password-error'));
+
+    // ─── Login form submit ─────────────────────────────────────
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideAlert();
+
+      const email = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-password').value;
+      const remember = document.getElementById('remember-me').checked;
+
+      // Validate
+      let valid = true;
+      if (!email) {
+        showFieldError('login-email', 'login-email-error', 'Please enter your email address.');
+        valid = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showFieldError('login-email', 'login-email-error', 'Please enter a valid email address.');
+        valid = false;
+      }
+      if (!password) {
+        showFieldError('login-password', 'login-password-error', 'Please enter your password.');
+        valid = false;
+      }
+      if (!valid) return;
+
+      setLoading(true);
+      try {
+        const result = await window.AmezaAuth.login({ email, password, remember });
+
+        if (result.requiresTwoFA) {
+          pendingUserId = result.userId;
+          document.getElementById('login-form').style.display = 'none';
+          document.getElementById('twofa-challenge').style.display = 'block';
+          document.getElementById('twofa-code').focus();
+        } else if (result.success) {
+          showAlert('Login successful! Redirecting to your dashboard...', 'success');
+          setTimeout(() => {
+            const params = new URLSearchParams(window.location.search);
+            const redirect = params.get('redirect');
+            window.location.href = redirect ? decodeURIComponent(redirect) : 'account.html';
+          }, 500);
+        } else {
+          showAlert(result.error || 'Incorrect email or password.');
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error('Login error:', err);
+        showAlert('Something went wrong. Please try again.');
+        setLoading(false);
+      }
+    });
+
+    // ─── 2FA verify ────────────────────────────────────────────
+    document.getElementById('btn-verify-2fa').addEventListener('click', async () => {
+      const code = document.getElementById('twofa-code').value.trim();
+      const remember = document.getElementById('remember-me').checked;
+
+      if (!code) {
+        showAlert('Please enter your 6-digit authentication code.');
+        return;
+      }
+
+      const spinner = document.getElementById('spinner-2fa');
+      const label = document.getElementById('btn-2fa-label');
+      const btn = document.getElementById('btn-verify-2fa');
+      btn.disabled = true;
+      spinner.classList.add('show');
+      label.textContent = 'Verifying...';
+
+      try {
+        const result = await window.AmezaAuth.completeTwoFALogin({ userId: pendingUserId, code, remember });
+        if (result.success) {
+          const params = new URLSearchParams(window.location.search);
+          const redirect = params.get('redirect');
+          window.location.href = redirect ? decodeURIComponent(redirect) : 'account.html';
+        } else {
+          showAlert(result.error || 'Invalid code. Please try again.');
+        }
+      } catch (err) {
+        showAlert('Something went wrong. Please try again.');
+      } finally {
+        btn.disabled = false;
+        spinner.classList.remove('show');
+        label.textContent = 'Verify Code';
+      }
+    });
+
+    // Allow Enter key in 2FA code field
+    document.getElementById('twofa-code').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') document.getElementById('btn-verify-2fa').click();
+    });
+
+    // Back button from 2FA
+    document.getElementById('btn-back-to-login').addEventListener('click', () => {
+      pendingUserId = null;
+      document.getElementById('login-form').style.display = 'block';
+      document.getElementById('twofa-challenge').style.display = 'none';
+      hideAlert();
+    });
+
+    // Recovery code toggle
+    document.getElementById('use-recovery-code-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      const codeInput = document.getElementById('twofa-code');
+      codeInput.placeholder = 'XXXXX-XXXXX (recovery code)';
+      codeInput.inputMode = 'text';
+      codeInput.maxLength = 11;
+      codeInput.focus();
+    });
+  </script>
+</body>
+</html>

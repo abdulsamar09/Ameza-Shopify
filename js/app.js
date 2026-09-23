@@ -39,6 +39,14 @@ const ICONS = {
   check: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`
 };
 
+// Price Formatter (uses AmezaCurrency if available)
+function formatPrice(amount) {
+  if (window.AmezaCurrency && typeof window.AmezaCurrency.format === 'function') {
+    return window.AmezaCurrency.format(amount);
+  }
+  return '$' + (Number(amount) || 0).toFixed(2);
+}
+
 // Initialize Application
 document.addEventListener('DOMContentLoaded', () => {
   renderCategories();
@@ -48,6 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
   setupEventListeners();
   updateBadges();
   startCountdownTimers();
+
+  // Listen to currency changes and re-render product grids & drawers
+  window.addEventListener('ameza:currency-changed', () => {
+    renderProducts();
+    renderLimitedDeals();
+    renderCartDrawer();
+    renderWishlistDrawer();
+    renderWishlistPage();
+  });
 });
 
 /* ==========================================================================
@@ -136,8 +153,8 @@ function createProductCardHTML(p) {
 
       <div class="product-bottom">
         <div class="price-wrap">
-          <span class="price-current">$${p.price.toFixed(2)}</span>
-          ${p.oldPrice ? `<span class="price-old">$${p.oldPrice.toFixed(2)}</span>` : ''}
+          <span class="price-current">${formatPrice(p.price)}</span>
+          ${p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : ''}
         </div>
         <button class="btn-add-cart" data-action="add-cart" data-product-id="${p.id}">
           ${ICONS.cart} Add
@@ -188,7 +205,20 @@ function setupEventListeners() {
         toggleSearchModal(false);
         break;
       case 'open-account':
-        toggleAccountModal(true);
+        // Redirect to account system (auth.js handles login state)
+        // Check localStorage session instead of importing auth.js module
+        (function() {
+          try {
+            const session = JSON.parse(localStorage.getItem('ameza_session') || 'null');
+            if (session && session.expiresAt && Date.now() < session.expiresAt) {
+              window.location.href = 'account.html';
+            } else {
+              window.location.href = 'login.html';
+            }
+          } catch(err) {
+            window.location.href = 'login.html';
+          }
+        })();
         break;
       case 'close-account':
         toggleAccountModal(false);
@@ -434,7 +464,7 @@ function renderCartDrawer() {
         <div class="cart-item-info">
           <h4 class="cart-item-title">${item.name}</h4>
           ${variantText ? `<div class="cart-item-variant">${variantText}</div>` : ''}
-          <div class="cart-item-price">$${itemTotal.toFixed(2)}</div>
+          <div class="cart-item-price">${formatPrice(itemTotal)}</div>
           <div class="flex items-center justify-between" style="margin-top: 8px;">
             <div class="cart-qty-controls">
               <button class="qty-btn" onclick="window.amezaApp.updateCartItemQty(${idx}, -1)">-</button>
@@ -458,8 +488,8 @@ function renderCartDrawer() {
 
   const finalTotal = Math.max(0, subtotal - discount);
 
-  if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-  if (totalEl) totalEl.textContent = `$${finalTotal.toFixed(2)}`;
+  if (subtotalEl) subtotalEl.textContent = formatPrice(subtotal);
+  if (totalEl) totalEl.textContent = formatPrice(finalTotal);
 
   // Free shipping progress ($100 target)
   const freeShipThreshold = 100;
@@ -470,7 +500,7 @@ function renderCartDrawer() {
       shippingText.innerHTML = `🎉 <strong>Congratulations!</strong> You qualified for <strong>FREE Shipping</strong>!`;
     } else {
       const remaining = freeShipThreshold - subtotal;
-      shippingText.textContent = `Add $${remaining.toFixed(2)} more for FREE Express Shipping!`;
+      shippingText.textContent = `Add ${formatPrice(remaining)} more for FREE Express Shipping!`;
     }
   }
 }
@@ -565,7 +595,7 @@ function renderWishlistDrawer() {
       </div>
       <div class="cart-item-info">
         <h4 class="cart-item-title" style="cursor: pointer;" onclick="window.amezaApp.openQuickView('${item.id}'); window.amezaApp.toggleWishlistDrawer(false);">${item.name}</h4>
-        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+        <div class="cart-item-price">${formatPrice(item.price)}</div>
         <div class="flex items-center justify-between" style="margin-top: 10px;">
           <button class="btn-primary" style="padding: 7px 14px; font-size: 0.78rem;" onclick="window.amezaApp.moveWishlistToCart('${item.id}', ${idx})">
             ${ICONS.cart} Move to Cart
@@ -721,8 +751,8 @@ function openQuickView(productId) {
         </div>
 
         <div class="modal-price-wrap">
-          <span class="modal-price-current">$${product.price.toFixed(2)}</span>
-          ${product.oldPrice ? `<span class="modal-price-old">$${product.oldPrice.toFixed(2)}</span>` : ''}
+          <span class="modal-price-current">${formatPrice(product.price)}</span>
+          ${product.oldPrice ? `<span class="modal-price-old">${formatPrice(product.oldPrice)}</span>` : ''}
           ${product.discount ? `<span class="badge badge-discount">${product.discount}</span>` : ''}
         </div>
 
@@ -1028,7 +1058,7 @@ function renderLiveSearchResults(query) {
           <div style="font-size: 0.72rem; font-weight: 700; color: var(--primary-dark); text-transform: uppercase;">${p.category}</div>
           <div style="font-size: 0.9rem; font-weight: 700; color: var(--dark);">${p.name}</div>
         </div>
-        <div style="font-size: 0.95rem; font-weight: 800; color: var(--dark);">$${p.price.toFixed(2)}</div>
+        <div style="font-size: 0.95rem; font-weight: 800; color: var(--dark);">${formatPrice(p.price)}</div>
       </div>
     `).join('');
   }
@@ -1065,7 +1095,7 @@ function handleCheckoutSubmit(e) {
         <div style="background: var(--bg-page); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; max-width: 420px; margin: 0 auto 24px; text-align: left;">
           <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px;">
             <span style="color: var(--text-muted);">Order Total:</span>
-            <span style="font-weight: 800; color: var(--dark);">$${total.toFixed(2)}</span>
+            <span style="font-weight: 800; color: var(--dark);">${formatPrice(total)}</span>
           </div>
           <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px;">
             <span style="color: var(--text-muted);">Payment:</span>
@@ -1088,6 +1118,7 @@ function handleCheckoutSubmit(e) {
 }
 
 function finishCheckoutOrder(orderId, total) {
+  // Legacy state (kept for backward compatibility)
   state.user.orders.unshift({
     id: orderId,
     date: new Date().toISOString().split('T')[0],
@@ -1095,6 +1126,44 @@ function finishCheckoutOrder(orderId, total) {
     status: 'Processing',
     items: state.cart.map(i => i.name)
   });
+
+  // Persist to ameza_orders_{userId} so account order history works
+  try {
+    const session = JSON.parse(localStorage.getItem('ameza_session') || 'null');
+    if (session && session.userId && session.expiresAt && Date.now() < session.expiresAt) {
+      const key = `ameza_orders_${session.userId}`;
+      const orders = JSON.parse(localStorage.getItem(key) || '[]');
+      const checkoutForm = document.getElementById('checkout-form');
+      const formData = checkoutForm ? new FormData(checkoutForm) : null;
+      const newOrder = {
+        id: orderId,
+        status: 'Processing',
+        paymentStatus: 'Paid',
+        paymentMethod: 'Card',
+        shippingAddress: checkoutForm
+          ? (checkoutForm.querySelector('input[placeholder="123 Luxury Avenue, Suite 400"]')?.value || 'On file')
+          : 'On file',
+        subtotal: total,
+        shipping: 0,
+        total: total,
+        items: state.cart.map(i => ({
+          id: i.id,
+          name: i.name,
+          image: i.image,
+          price: i.price,
+          quantity: i.quantity || 1,
+          size: i.selectedSize || i.size || '',
+          color: i.selectedColor || i.color || '',
+        })),
+        createdAt: Date.now(),
+        date: new Date().toLocaleDateString('en-US'),
+      };
+      orders.unshift(newOrder);
+      localStorage.setItem(key, JSON.stringify(orders));
+    }
+  } catch(err) {
+    // Not logged in or auth error — order only saved to legacy state
+  }
 
   state.cart = [];
   state.appliedCoupon = null;
@@ -1218,12 +1287,12 @@ function renderCheckoutSummary() {
       ${state.cart.map(i => `
         <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
           <span>${i.name} (x${i.quantity})</span>
-          <span style="font-weight: 700;">$${(i.price * i.quantity).toFixed(2)}</span>
+          <span style="font-weight: 700;">${formatPrice(i.price * i.quantity)}</span>
         </div>
       `).join('')}
       <div style="border-top: 1px solid var(--border); margin-top: 8px; padding-top: 6px; display: flex; justify-content: space-between; font-weight: 800; font-size: 0.95rem; color: var(--dark);">
         <span>Total Due:</span>
-        <span style="color: var(--primary-dark);">$${total.toFixed(2)}</span>
+        <span style="color: var(--primary-dark);">${formatPrice(total)}</span>
       </div>
     </div>
   `;
@@ -1242,6 +1311,10 @@ function toggleAccountModal(open) {
 }
 
 function toggleMobileMenu() {
+  if (window.AmezaAuth && typeof window.AmezaAuth.openHeavyMobileDrawer === 'function') {
+    window.AmezaAuth.openHeavyMobileDrawer();
+    return;
+  }
   const menu = document.getElementById('mobile-nav-menu');
   if (menu) {
     menu.classList.toggle('active');

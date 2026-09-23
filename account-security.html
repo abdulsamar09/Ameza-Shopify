@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Settings | AMEZA Account</title>
+  <meta name="description" content="Manage account security — password, two-factor authentication, and active sessions.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/account.css">
+  <link rel="icon" type="image/png" href="assets/amezashopify logo.png">
+  <!-- QR code library for 2FA setup -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSe9/jPTeUnHvnOyZgzfNGJMDXgNatdOolKA==" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left"><span class="top-bar-badge"><i class="fa-solid fa-tag"></i> Special Offer</span><span>Free Worldwide Express Shipping on all orders over $100</span></div>
+      <div class="top-bar-right"><a href="account-orders.html" class="top-bar-link"><i class="fa-solid fa-clipboard-list"></i> Track Order</a><span style="opacity:0.4;">|</span><span class="top-bar-link"><i class="fa-solid fa-globe"></i> USD ($)</span></div>
+    </div>
+  </div>
+
+  <header class="header-sticky">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-wrap"><img src="assets/amezashopify logo.png" alt="AMEZA" onerror="this.style.display='none'"></a>
+      <div class="header-actions">
+        <a href="account.html" class="action-btn" title="My Account"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
+        <a href="wishlist.html" class="action-btn" title="Wishlist"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></a>
+        <button class="action-btn hamburger-btn" data-action="mobile-menu-toggle" aria-label="Toggle Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="account-page-wrapper">
+    <div class="container">
+      <button class="account-mobile-nav-toggle" id="account-mobile-nav-toggle">
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> My Account</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+      <div class="account-layout">
+        <aside class="account-sidebar" id="account-sidebar"></aside>
+        <main class="account-content">
+
+          <!-- ======= 1. CHANGE PASSWORD ======= -->
+          <div class="account-card">
+            <div class="account-card-header">
+              <div class="account-card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                Change Password
+              </div>
+            </div>
+            <div class="account-card-body">
+              <div class="auth-alert" id="pw-alert" role="alert" aria-live="polite">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+                <span id="pw-alert-msg"></span>
+              </div>
+              <form id="change-pw-form" novalidate>
+                <div class="account-form-group">
+                  <label for="current-password">Current Password</label>
+                  <input type="password" id="current-password" class="account-input" placeholder="Enter current password" autocomplete="current-password">
+                </div>
+                <div class="account-form-group">
+                  <label for="new-password-sec">New Password</label>
+                  <input type="password" id="new-password-sec" class="account-input" placeholder="New strong password" autocomplete="new-password">
+                  <div class="password-strength-wrap" style="margin-top:6px;">
+                    <div class="password-strength-bar-track"><div class="password-strength-bar-fill" id="sec-strength-bar"></div></div>
+                    <span class="password-strength-label" id="sec-strength-label" style="color:var(--text-muted);"></span>
+                  </div>
+                </div>
+                <div class="account-form-group">
+                  <label for="confirm-password-sec">Confirm New Password</label>
+                  <input type="password" id="confirm-password-sec" class="account-input" placeholder="Repeat new password" autocomplete="new-password">
+                </div>
+                <button type="submit" class="btn-section-action" id="btn-change-pw">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <span id="btn-change-pw-label">Update Password</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- ======= 2. TWO-FACTOR AUTHENTICATION ======= -->
+          <div class="account-card">
+            <div class="account-card-header">
+              <div class="account-card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                Two-Factor Authentication
+              </div>
+            </div>
+            <div class="account-card-body">
+
+              <!-- ⚠️ Demo disclaimer -->
+              <div class="auth-demo-notice" style="margin-bottom: 20px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line></svg>
+                <span><strong>Demo:</strong> This 2FA implementation uses real TOTP (RFC 6238) algorithm. However, the secret is stored in browser localStorage. For production, store the secret server-side and verify on the server.</span>
+              </div>
+
+              <!-- Status -->
+              <div class="twofa-status-card" id="twofa-status-card">
+                <div>
+                  <div style="font-weight: 800; color: var(--dark); margin-bottom: 4px;">Authenticator App (TOTP)</div>
+                  <div style="font-size: 0.82rem; color: var(--text-muted);">Google Authenticator, Authy, or any TOTP app</div>
+                </div>
+                <div id="twofa-status-right"><!-- Populated by JS --></div>
+              </div>
+
+              <!-- 2FA Setup Flow (shown when enabling) -->
+              <div id="twofa-setup-flow" style="display: none;">
+
+                <!-- Step 1: Scan QR -->
+                <div id="twofa-step-1" class="twofa-setup-steps">
+                  <div class="twofa-step">
+                    <div class="twofa-step-num">1</div>
+                    <div class="twofa-step-body">
+                      <strong>Install an authenticator app</strong>
+                      <p>Download Google Authenticator, Microsoft Authenticator, or Authy on your phone.</p>
+                    </div>
+                  </div>
+                  <div class="twofa-step">
+                    <div class="twofa-step-num">2</div>
+                    <div class="twofa-step-body">
+                      <strong>Scan this QR code</strong>
+                      <p>Open the authenticator app and scan the QR code below.</p>
+                    </div>
+                  </div>
+
+                  <div class="twofa-qr-section">
+                    <div id="twofa-qr-canvas" style="display: flex; justify-content: center; margin-bottom: 12px;"></div>
+                    <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 6px;">Can't scan? Enter this key manually:</p>
+                    <div class="twofa-secret-box">
+                      <code class="twofa-secret-key" id="twofa-secret-display"></code>
+                      <button class="btn-addr-action" id="btn-copy-secret" title="Copy to clipboard" aria-label="Copy secret key">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        Copy
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="twofa-step">
+                    <div class="twofa-step-num">3</div>
+                    <div class="twofa-step-body">
+                      <strong>Enter the 6-digit verification code</strong>
+                      <p>After scanning, your app will show a 6-digit code. Enter it below to enable 2FA.</p>
+                    </div>
+                  </div>
+
+                  <div class="auth-alert" id="twofa-setup-alert" role="alert" aria-live="polite">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+                    <span id="twofa-setup-alert-msg"></span>
+                  </div>
+
+                  <div class="account-form-group">
+                    <label for="twofa-verify-code">Verification Code from App</label>
+                    <input type="text" id="twofa-verify-code" class="account-input" placeholder="000000" maxlength="6" inputmode="numeric" autocomplete="one-time-code" style="font-size: 1.3rem; letter-spacing: 4px; text-align: center; max-width: 200px;">
+                  </div>
+
+                  <div style="display: flex; gap: 10px;">
+                    <button class="btn-section-action" id="btn-confirm-2fa" aria-label="Confirm and enable two-factor authentication">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span id="btn-confirm-2fa-label">Enable 2FA</span>
+                    </button>
+                    <button class="btn-section-action secondary" id="btn-cancel-2fa">Cancel</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Recovery codes (shown after enabling) -->
+              <div id="twofa-recovery-display" style="display: none;">
+                <div class="auth-alert alert-warning show" style="margin-bottom: 16px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line></svg>
+                  <span><strong>Save these recovery codes!</strong> Each can be used once if you lose access to your authenticator app. Store them safely — they won't be shown again.</span>
+                </div>
+                <div class="recovery-codes-grid" id="new-recovery-codes"></div>
+                <div style="display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap;">
+                  <button class="btn-section-action" id="btn-copy-recovery-codes">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    Copy All
+                  </button>
+                  <button class="btn-section-action secondary" id="btn-done-2fa">Done, I've Saved Them</button>
+                </div>
+              </div>
+
+              <!-- Disable 2FA Form -->
+              <div id="twofa-disable-flow" style="display: none;">
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">To disable 2FA, enter your current password and your current TOTP code (or a recovery code).</p>
+
+                <div class="auth-alert" id="disable-2fa-alert" role="alert" aria-live="polite">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+                  <span id="disable-2fa-alert-msg"></span>
+                </div>
+
+                <div class="account-form-group">
+                  <label for="disable-pw">Current Password</label>
+                  <input type="password" id="disable-pw" class="account-input" placeholder="Enter your password">
+                </div>
+                <div class="account-form-group">
+                  <label for="disable-code">Current TOTP Code or Recovery Code</label>
+                  <input type="text" id="disable-code" class="account-input" placeholder="000000 or XXXXX-XXXXX" maxlength="11">
+                </div>
+                <div style="display: flex; gap: 10px;">
+                  <button class="btn-danger" id="btn-confirm-disable-2fa" aria-label="Confirm disable two-factor authentication">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg>
+                    <span id="btn-disable-2fa-label">Disable 2FA</span>
+                  </button>
+                  <button class="btn-section-action secondary" id="btn-cancel-disable-2fa">Cancel</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ======= 3. RECOVERY CODES ======= -->
+          <div class="account-card" id="recovery-codes-card" style="display: none;">
+            <div class="account-card-header">
+              <div class="account-card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                Recovery Codes
+              </div>
+            </div>
+            <div class="account-card-body">
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">Recovery codes let you access your account if you lose your authenticator app. Each code can only be used <strong>once</strong>.</p>
+
+              <div id="recovery-codes-status" style="margin-bottom: 16px;"></div>
+
+              <!-- Regenerate form -->
+              <div id="regen-form" style="display: none;">
+                <div class="auth-alert" id="regen-alert" role="alert" aria-live="polite">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+                  <span id="regen-alert-msg"></span>
+                </div>
+                <div class="account-form-group">
+                  <label for="regen-password">Current Password to Regenerate</label>
+                  <input type="password" id="regen-password" class="account-input" placeholder="Enter your password">
+                </div>
+                <div style="display: flex; gap: 10px;">
+                  <button class="btn-section-action" id="btn-regen-confirm" aria-label="Regenerate recovery codes">Regenerate Codes</button>
+                  <button class="btn-section-action secondary" id="btn-regen-cancel">Cancel</button>
+                </div>
+              </div>
+
+              <!-- New codes display -->
+              <div id="regen-codes-display" style="display: none;">
+                <div class="auth-alert alert-warning show" style="margin-bottom: 12px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line></svg>
+                  <span>Your old codes have been invalidated. Save these new ones!</span>
+                </div>
+                <div class="recovery-codes-grid" id="regen-codes-grid"></div>
+                <button class="btn-section-action" id="btn-copy-regen-codes" style="margin-top: 12px;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  Copy All
+                </button>
+              </div>
+
+              <div id="regen-btn-row" style="margin-top: 12px;">
+                <button class="btn-section-action secondary" id="btn-regen-codes" aria-label="Regenerate recovery codes">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                  Regenerate Codes
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ======= 4. ACTIVE SESSIONS ======= -->
+          <div class="account-card">
+            <div class="account-card-header">
+              <div class="account-card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                Active Sessions
+              </div>
+            </div>
+            <div class="account-card-body" id="sessions-container">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- ======= 5. DANGER ZONE ======= -->
+          <div class="account-card">
+            <div class="account-card-header">
+              <div class="account-card-title" style="color: var(--badge-sale);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                Danger Zone
+              </div>
+            </div>
+            <div class="account-card-body">
+              <div class="danger-zone">
+                <div class="danger-zone-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line></svg>
+                  Delete Account
+                </div>
+                <p>Permanently delete your AMEZA account and all associated data including orders, addresses, and wishlist. This action cannot be undone.</p>
+
+                <div class="auth-alert" id="delete-account-alert" role="alert" aria-live="polite">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+                  <span id="delete-account-alert-msg"></span>
+                </div>
+
+                <div id="delete-account-form" style="display: none;">
+                  <div class="account-form-group" style="margin-top: 12px;">
+                    <label for="delete-confirm-password">Enter your password to confirm</label>
+                    <input type="password" id="delete-confirm-password" class="account-input" placeholder="Your current password" style="max-width: 300px;">
+                  </div>
+                  <div class="account-form-group">
+                    <label style="align-items: flex-start; gap: 10px;" class="auth-checkbox-label">
+                      <input type="checkbox" id="delete-understand-check" style="margin-top:2px; flex-shrink:0;">
+                      <span style="font-size: 0.82rem; color: #7A2020;">I understand this action is permanent and cannot be undone.</span>
+                    </label>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <button class="btn-danger" id="btn-confirm-delete" aria-label="Permanently delete account">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg>
+                      <span id="btn-delete-label">Delete My Account Permanently</span>
+                    </button>
+                    <button class="btn-section-action secondary" id="btn-cancel-delete">Cancel</button>
+                  </div>
+                </div>
+
+                <button class="btn-danger" id="btn-show-delete-form" style="margin-top: 8px;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg>
+                  Delete Account
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-main" style="padding: 24px 0;"><div class="container"><div class="footer-bottom" style="border-top:none;padding-top:0;"><p>&copy; 2026 AMEZA. All rights reserved.</p><p class="footer-powered">Powered by <a href="https://techsyentra.com" target="_blank">techsyentra.com</a></p></div></div></footer>
+  <div class="account-toast-container" id="account-toast-container"></div>
+
+  <!-- Currency Engine -->
+  <script src="js/currency.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/account-ui.js"></script>
+  <script>
+    const Auth = window.AmezaAuth;
+    const UI = window.AccountUI;
+    const user = UI.requireAuth();
+    if (!user) throw new Error('Not authenticated');
+
+    document.getElementById('account-sidebar').innerHTML = UI.sidebarHTML(user, 'security');
+    UI.initMobileSidebar();
+    document.getElementById('sidebar-logout-btn').addEventListener('click', async () => {
+      if (await UI.confirm({ title: 'Sign Out', description: 'Sign out?', confirmText: 'Sign Out', cancelText: 'Stay' })) {
+        Auth.logout(); window.location.href = 'index.html';
+      }
+    });
+
+    // ═══════════════════════════════════════════════════════════
+    // 1. CHANGE PASSWORD
+    // ═══════════════════════════════════════════════════════════
+
+    document.getElementById('new-password-sec').addEventListener('input', function() {
+      const r = Auth.checkPasswordStrength(this.value);
+      const bar = document.getElementById('sec-strength-bar');
+      const lbl = document.getElementById('sec-strength-label');
+      bar.style.width = (r.score / 5 * 100) + '%';
+      bar.style.backgroundColor = r.color;
+      lbl.textContent = r.label;
+      lbl.style.color = r.color;
+    });
+
+    document.getElementById('change-pw-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const current = document.getElementById('current-password').value;
+      const newPw   = document.getElementById('new-password-sec').value;
+      const confirm = document.getElementById('confirm-password-sec').value;
+      const alert   = document.getElementById('pw-alert');
+      const msg     = document.getElementById('pw-alert-msg');
+
+      if (!current || !newPw || !confirm) {
+        alert.className = 'auth-alert alert-error show'; msg.textContent = 'All fields are required.'; return;
+      }
+      if (newPw !== confirm) {
+        alert.className = 'auth-alert alert-error show'; msg.textContent = 'New passwords do not match.'; return;
+      }
+      const strength = Auth.checkPasswordStrength(newPw);
+      if (strength.score < 3) {
+        alert.className = 'auth-alert alert-error show'; msg.textContent = 'Please choose a stronger password.'; return;
+      }
+
+      const btn = document.getElementById('btn-change-pw');
+      const lbl = document.getElementById('btn-change-pw-label');
+      btn.disabled = true; lbl.textContent = 'Updating...';
+
+      try {
+        const result = await Auth.changePassword(user.id, { currentPassword: current, newPassword: newPw });
+        if (result.success) {
+          alert.className = 'auth-alert alert-success show'; msg.textContent = 'Password updated successfully!';
+          document.getElementById('change-pw-form').reset();
+          document.getElementById('sec-strength-bar').style.width = '0';
+          document.getElementById('sec-strength-label').textContent = '';
+          UI.toast('Password changed successfully.', 'success');
+        } else {
+          alert.className = 'auth-alert alert-error show'; msg.textContent = result.error || 'Failed to update password.';
+        }
+      } finally {
+        btn.disabled = false; lbl.textContent = 'Update Password';
+      }
+    });
+
+    // ═══════════════════════════════════════════════════════════
+    // 2. TWO-FACTOR AUTHENTICATION
+    // ═══════════════════════════════════════════════════════════
+
+    let currentUser = Auth.getCurrentUser();
+    let pendingTOTPSecret = null;
+
+    function refresh2FAStatus() {
+      currentUser = Auth.getCurrentUser();
+      const twoFAEnabled = currentUser.twoFAEnabled;
+      const statusCard = document.getElementById('twofa-status-card');
+      const rightEl = document.getElementById('twofa-status-right');
+      const recoveryCard = document.getElementById('recovery-codes-card');
+
+      statusCard.className = `twofa-status-card ${twoFAEnabled ? 'twofa-status-enabled' : ''}`;
+
+      if (twoFAEnabled) {
+        rightEl.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <span class="twofa-status-badge enabled-badge"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Enabled</span>
+            <button class="btn-danger" id="btn-disable-2fa" style="font-size:0.78rem; padding: 6px 14px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              Disable 2FA
+            </button>
+          </div>`;
+        document.getElementById('btn-disable-2fa').addEventListener('click', () => {
+          document.getElementById('twofa-setup-flow').style.display = 'none';
+          document.getElementById('twofa-disable-flow').style.display = 'block';
+        });
+        recoveryCard.style.display = 'block';
+        renderRecoveryCodes();
+      } else {
+        rightEl.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span class="twofa-status-badge disabled-badge">Not Enabled</span>
+            <button class="btn-section-action" id="btn-enable-2fa" style="font-size:0.78rem; padding: 7px 14px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Enable 2FA
+            </button>
+          </div>`;
+        document.getElementById('btn-enable-2fa').addEventListener('click', begin2FASetup);
+        recoveryCard.style.display = 'none';
+      }
+    }
+
+    async function begin2FASetup() {
+      const result = await Auth.beginTwoFASetup(user.id);
+      if (!result.success) { UI.toast(result.error, 'error'); return; }
+
+      pendingTOTPSecret = result.secret;
+      document.getElementById('twofa-setup-flow').style.display = 'block';
+      document.getElementById('twofa-recovery-display').style.display = 'none';
+      document.getElementById('twofa-disable-flow').style.display = 'none';
+
+      // Display secret key
+      document.getElementById('twofa-secret-display').textContent = pendingTOTPSecret;
+
+      // Generate QR code
+      const qrContainer = document.getElementById('twofa-qr-canvas');
+      qrContainer.innerHTML = '';
+      if (typeof QRCode !== 'undefined') {
+        new QRCode(qrContainer, {
+          text: result.uri,
+          width: 200,
+          height: 200,
+          colorDark: '#111827',
+          colorLight: '#FFFFFF',
+          correctLevel: QRCode.CorrectLevel.M,
+        });
+      } else {
+        qrContainer.innerHTML = `<div style="padding:20px; text-align:center; font-size:0.82rem; color:var(--text-muted);">QR library not loaded. Use the secret key below.</div>`;
+      }
+    }
+
+    document.getElementById('btn-copy-secret').addEventListener('click', () => {
+      UI.copyToClipboard(pendingTOTPSecret, 'Secret key copied!');
+    });
+
+    document.getElementById('btn-confirm-2fa').addEventListener('click', async () => {
+      const code = document.getElementById('twofa-verify-code').value.trim();
+      const alertEl = document.getElementById('twofa-setup-alert');
+      const alertMsg = document.getElementById('twofa-setup-alert-msg');
+
+      if (!code || code.length < 6) {
+        alertEl.className = 'auth-alert alert-error show'; alertMsg.textContent = 'Please enter the 6-digit code from your authenticator app.'; return;
+      }
+
+      const btn = document.getElementById('btn-confirm-2fa');
+      const lbl = document.getElementById('btn-confirm-2fa-label');
+      btn.disabled = true; lbl.textContent = 'Verifying...';
+
+      try {
+        const result = await Auth.confirmTwoFASetup(user.id, code);
+        if (result.success) {
+          document.getElementById('twofa-step-1').style.display = 'none';
+          document.getElementById('twofa-recovery-display').style.display = 'block';
+          // Show recovery codes
+          const grid = document.getElementById('new-recovery-codes');
+          grid.innerHTML = result.recoveryCodes.map(c => `<div class="recovery-code-item">${c}</div>`).join('');
+          refresh2FAStatus();
+          UI.toast('2FA enabled successfully!', 'success');
+        } else {
+          alertEl.className = 'auth-alert alert-error show'; alertMsg.textContent = result.error || 'Invalid code.';
+        }
+      } finally {
+        btn.disabled = false; lbl.textContent = 'Enable 2FA';
+      }
+    });
+
+    document.getElementById('btn-cancel-2fa').addEventListener('click', () => {
+      document.getElementById('twofa-setup-flow').style.display = 'none';
+      document.getElementById('twofa-step-1').style.display = 'block';
+    });
+
+    document.getElementById('btn-copy-recovery-codes').addEventListener('click', () => {
+      const codes = Array.from(document.querySelectorAll('#new-recovery-codes .recovery-code-item')).map(el => el.textContent.trim()).join('\n');
+      UI.copyToClipboard(codes, 'Recovery codes copied!');
+    });
+
+    document.getElementById('btn-done-2fa').addEventListener('click', () => {
+      document.getElementById('twofa-setup-flow').style.display = 'none';
+      document.getElementById('twofa-recovery-display').style.display = 'none';
+    });
+
+    // Disable 2FA
+    document.getElementById('btn-confirm-disable-2fa').addEventListener('click', async () => {
+      const password = document.getElementById('disable-pw').value;
+      const code     = document.getElementById('disable-code').value.trim();
+      const alertEl  = document.getElementById('disable-2fa-alert');
+      const alertMsg = document.getElementById('disable-2fa-alert-msg');
+
+      if (!password || !code) {
+        alertEl.className = 'auth-alert alert-error show'; alertMsg.textContent = 'Both password and verification code are required.'; return;
+      }
+
+      const btn = document.getElementById('btn-confirm-disable-2fa');
+      const lbl = document.getElementById('btn-disable-2fa-label');
+      btn.disabled = true; lbl.textContent = 'Disabling...';
+
+      try {
+        const result = await Auth.disableTwoFA(user.id, { password, code });
+        if (result.success) {
+          document.getElementById('twofa-disable-flow').style.display = 'none';
+          refresh2FAStatus();
+          UI.toast('2FA has been disabled.', 'success');
+        } else {
+          alertEl.className = 'auth-alert alert-error show'; alertMsg.textContent = result.error || 'Failed to disable 2FA.';
+        }
+      } finally {
+        btn.disabled = false; lbl.textContent = 'Disable 2FA';
+      }
+    });
+
+    document.getElementById('btn-cancel-disable-2fa').addEventListener('click', () => {
+      document.getElementById('twofa-disable-flow').style.display = 'none';
+    });
+
+    // ═══════════════════════════════════════════════════════════
+    // 3. RECOVERY CODES
+    // ═══════════════════════════════════════════════════════════
+
+    function renderRecoveryCodes() {
+      const storedCodes = Auth.getRecoveryCodes(user.id);
+      const statusEl = document.getElementById('recovery-codes-status');
+      const count = storedCodes.length;
+      statusEl.innerHTML = `
+        <div class="twofa-status-card" style="margin-bottom: 0;">
+          <div>
+            <div style="font-weight: 700; color: var(--dark);">${count} code${count !== 1 ? 's' : ''} remaining</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Each code can be used once to sign in if you lose your authenticator.</div>
+          </div>
+          <span class="twofa-status-badge ${count < 2 ? 'disabled-badge' : 'enabled-badge'}">${count < 2 ? '⚠ Low' : '✓ OK'}</span>
+        </div>`;
+    }
+
+    document.getElementById('btn-regen-codes').addEventListener('click', () => {
+      document.getElementById('regen-form').style.display = 'block';
+      document.getElementById('regen-btn-row').style.display = 'none';
+      document.getElementById('regen-codes-display').style.display = 'none';
+    });
+
+    document.getElementById('btn-regen-cancel').addEventListener('click', () => {
+      document.getElementById('regen-form').style.display = 'none';
+      document.getElementById('regen-btn-row').style.display = 'block';
+    });
+
+    document.getElementById('btn-regen-confirm').addEventListener('click', async () => {
+      const password = document.getElementById('regen-password').value;
+      const alertEl  = document.getElementById('regen-alert');
+      const alertMsg = document.getElementById('regen-alert-msg');
+
+      if (!password) {
+        alertEl.className = 'auth-alert alert-error show'; alertMsg.textContent = 'Please enter your password.'; return;
+      }
+
+      const result = await Auth.regenerateRecoveryCodes(user.id, { password });
+      if (result.success) {
+        document.getElementById('regen-form').style.display = 'none';
+        document.getElementById('regen-codes-display').style.display = 'block';
+        document.getElementById('regen-codes-grid').innerHTML = result.recoveryCodes.map(c => `<div class="recovery-code-item">${c}</div>`).join('');
+        renderRecoveryCodes();
+        UI.toast('Recovery codes regenerated!', 'success');
+      } else {
+        alertEl.className = 'auth-alert alert-error show'; alertMsg.textContent = result.error || 'Failed.';
+      }
+    });
+
+    document.getElementById('btn-copy-regen-codes').addEventListener('click', () => {
+      const codes = Array.from(document.querySelectorAll('#regen-codes-grid .recovery-code-item')).map(el => el.textContent.trim()).join('\n');
+      UI.copyToClipboard(codes, 'New codes copied!');
+    });
+
+    // ═══════════════════════════════════════════════════════════
+    // 4. ACTIVE SESSIONS
+    // ═══════════════════════════════════════════════════════════
+
+    function renderSessions() {
+      const session = Auth.getSession();
+      const container = document.getElementById('sessions-container');
+      if (!session) { container.innerHTML = '<p style="color:var(--text-muted);">No active sessions found.</p>'; return; }
+
+      container.innerHTML = `
+        <div class="session-card current-session">
+          <div class="session-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
+          <div class="session-info">
+            <strong>Current Session</strong>
+            <small>Session ID: ${session.sessionId ? session.sessionId.substring(0, 20) + '...' : 'N/A'}</small>
+            <small>Expires: ${UI.formatDate(session.expiresAt)}</small>
+          </div>
+          <span class="session-current-badge">Active Now</span>
+        </div>
+        <div style="margin-top: 12px; display: flex; gap: 10px;">
+          <button class="btn-danger" id="btn-sign-out-all" style="font-size:0.82rem;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            Sign Out of All Sessions
+          </button>
+        </div>
+      `;
+
+      document.getElementById('btn-sign-out-all').addEventListener('click', async () => {
+        const confirmed = await UI.confirm({ title: 'Sign Out Everywhere', description: 'This will sign you out of this session. Are you sure?', confirmText: 'Sign Out', dangerous: true });
+        if (confirmed) { Auth.logout(); window.location.href = 'login.html'; }
+      });
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // 5. DELETE ACCOUNT
+    // ═══════════════════════════════════════════════════════════
+
+    document.getElementById('btn-show-delete-form').addEventListener('click', () => {
+      document.getElementById('delete-account-form').style.display = 'block';
+      document.getElementById('btn-show-delete-form').style.display = 'none';
+    });
+
+    document.getElementById('btn-cancel-delete').addEventListener('click', () => {
+      document.getElementById('delete-account-form').style.display = 'none';
+      document.getElementById('btn-show-delete-form').style.display = 'inline-flex';
+    });
+
+    document.getElementById('btn-confirm-delete').addEventListener('click', async () => {
+      const password  = document.getElementById('delete-confirm-password').value;
+      const checked   = document.getElementById('delete-understand-check').checked;
+      const alertEl   = document.getElementById('delete-account-alert');
+      const alertMsg  = document.getElementById('delete-account-alert-msg');
+
+      if (!password) {
+        alertEl.className = 'auth-alert alert-error show'; alertMsg.textContent = 'Please enter your password.'; return;
+      }
+      if (!checked) {
+        alertEl.className = 'auth-alert alert-error show'; alertMsg.textContent = 'Please check the confirmation box.'; return;
+      }
+
+      const confirmed = await UI.confirm({
+        title: '⚠️ Delete Account Permanently',
+        description: 'This will permanently delete your account, all orders, addresses, and saved data. This CANNOT be undone. Are you absolutely sure?',
+        confirmText: 'Delete My Account',
+        cancelText: 'No, Keep My Account',
+        dangerous: true,
+      });
+
+      if (!confirmed) return;
+
+      const btn = document.getElementById('btn-confirm-delete');
+      const lbl = document.getElementById('btn-delete-label');
+      btn.disabled = true; lbl.textContent = 'Deleting...';
+
+      try {
+        const result = await Auth.deleteAccount(user.id, { password });
+        if (result.success) {
+          UI.toast('Account deleted. Redirecting...', 'success');
+          setTimeout(() => window.location.href = 'index.html', 1500);
+        } else {
+          alertEl.className = 'auth-alert alert-error show'; alertMsg.textContent = result.error || 'Failed to delete account.';
+          btn.disabled = false; lbl.textContent = 'Delete My Account Permanently';
+        }
+      } catch {
+        alertEl.className = 'auth-alert alert-error show'; alertMsg.textContent = 'Something went wrong. Please try again.';
+        btn.disabled = false; lbl.textContent = 'Delete My Account Permanently';
+      }
+    });
+
+    // ═══════════════════════════════════════════════════════════
+    // INIT
+    // ═══════════════════════════════════════════════════════════
+
+    refresh2FAStatus();
+    renderSessions();
+  </script>
+</body>
+</html>

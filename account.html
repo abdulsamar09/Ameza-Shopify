@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account | AMEZA Premium E-Commerce Store</title>
+  <meta name="description" content="Manage your AMEZA account, orders, addresses, wishlist and security settings.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/account.css">
+  <link rel="icon" type="image/png" href="assets/amezashopify logo.png">
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-badge"><i class="fa-solid fa-tag"></i> Special Offer</span>
+        <span>Free Worldwide Express Shipping on all orders over $100 &bull; 30-Day Easy Returns</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="account-orders.html" class="top-bar-link"><i class="fa-solid fa-clipboard-list"></i> Track Order</a>
+        <span style="opacity:0.4;">|</span>
+        <span class="top-bar-link"><i class="fa-solid fa-globe"></i> USD ($)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER -->
+  <header class="header-sticky" id="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-wrap" title="AMEZA E-Commerce">
+        <img src="assets/amezashopify logo.png" alt="AMEZA Logo" onerror="this.style.display='none'">
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">
+          <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Home</span>
+        </a>
+        <a href="index.html#section-clothes-jewellery" class="nav-link"><span>Clothing</span></a>
+        <a href="index.html#section-electronics-watches" class="nav-link"><span>Electronics</span></a>
+        <a href="index.html#section-leather-collection" class="nav-link"><span>Leather Belts</span></a>
+        <a href="index.html#section-latest-range" class="nav-link"><span>Bags &amp; Totes</span></a>
+      </nav>
+      <div class="header-actions">
+        <button class="action-btn" id="header-account-btn" title="My Account" aria-label="My Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </button>
+        <a href="wishlist.html" class="action-btn" title="Wishlist" aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </a>
+        <a href="index.html" class="action-btn" title="Shop" aria-label="Shop">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        </a>
+        <button class="action-btn hamburger-btn" data-action="mobile-menu-toggle" aria-label="Toggle Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ACCOUNT PAGE -->
+  <div class="account-page-wrapper">
+    <div class="container">
+
+      <!-- Mobile nav toggle -->
+      <button class="account-mobile-nav-toggle" id="account-mobile-nav-toggle" aria-label="Toggle account navigation">
+        <span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          My Account
+        </span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+
+      <div class="account-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="account-sidebar" id="account-sidebar">
+          <!-- Populated by JS -->
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="account-content" id="account-main-content">
+
+          <!-- Welcome Banner -->
+          <div class="dashboard-welcome" id="dashboard-welcome">
+            <div>
+              <h2 id="welcome-name">Welcome back!</h2>
+              <p id="welcome-subtitle">Here's what's happening with your account today.</p>
+            </div>
+            <a href="index.html" class="btn-section-action">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              Continue Shopping
+            </a>
+          </div>
+
+          <!-- Stats -->
+          <div class="dashboard-stats-grid" id="dashboard-stats">
+            <div class="stat-card">
+              <div class="stat-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              </div>
+              <div class="stat-card-value" id="stat-total-orders">0</div>
+              <div class="stat-card-label">Total Orders</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-icon" style="background: #FEF3C7; color: #92400E;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div class="stat-card-value" id="stat-pending-orders">0</div>
+              <div class="stat-card-label">Pending Orders</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-icon" style="background: #FEE2E2; color: #991B1B;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              </div>
+              <div class="stat-card-value" id="stat-wishlist">0</div>
+              <div class="stat-card-label">Wishlist Items</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-icon" style="background: #DCFCE7; color: #166534;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              </div>
+              <div class="stat-card-value" id="stat-status">Active</div>
+              <div class="stat-card-label">Account Status</div>
+            </div>
+          </div>
+
+          <!-- Recent Orders -->
+          <div class="account-card">
+            <div class="account-card-header">
+              <div class="account-card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path></svg>
+                Recent Orders
+              </div>
+              <a href="account-orders.html" class="btn-section-action secondary" style="font-size: 0.8rem; padding: 6px 14px;">View All</a>
+            </div>
+            <div id="recent-orders-container">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="account-card">
+            <div class="account-card-header">
+              <div class="account-card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                Quick Links
+              </div>
+            </div>
+            <div class="account-card-body">
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+                <a href="account-profile.html" style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px; background: var(--bg-page); border: 1px solid var(--border); border-radius: var(--radius-lg); text-decoration: none; color: var(--text-main); transition: var(--transition);" onmouseover="this.style.borderColor='var(--primary)'; this.style.background='var(--primary-light)'" onmouseout="this.style.borderColor='var(--border)'; this.style.background='var(--bg-page)'">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                  <span style="font-size: 0.82rem; font-weight: 700;">Edit Profile</span>
+                </a>
+                <a href="account-addresses.html" style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px; background: var(--bg-page); border: 1px solid var(--border); border-radius: var(--radius-lg); text-decoration: none; color: var(--text-main); transition: var(--transition);" onmouseover="this.style.borderColor='var(--primary)'; this.style.background='var(--primary-light)'" onmouseout="this.style.borderColor='var(--border)'; this.style.background='var(--bg-page)'">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  <span style="font-size: 0.82rem; font-weight: 700;">Addresses</span>
+                </a>
+                <a href="account-security.html" style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px; background: var(--bg-page); border: 1px solid var(--border); border-radius: var(--radius-lg); text-decoration: none; color: var(--text-main); transition: var(--transition);" onmouseover="this.style.borderColor='var(--primary)'; this.style.background='var(--primary-light)'" onmouseout="this.style.borderColor='var(--border)'; this.style.background='var(--bg-page)'">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <span style="font-size: 0.82rem; font-weight: 700;">Security</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-main" style="padding: 24px 0;">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <p>&copy; 2026 AMEZA. All rights reserved.</p>
+        <p class="footer-powered">Powered by <a href="https://techsyentra.com" target="_blank">techsyentra.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="account-toast-container" id="account-toast-container"></div>
+
+  <!-- Currency Engine -->
+  <script src="js/currency.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/account-ui.js"></script>
+  <script>
+    const Auth = window.AmezaAuth;
+    const UI = window.AccountUI;
+
+    // ─── Guard ────────────────────────────────────────────────────
+    const user = UI.requireAuth();
+    if (!user) throw new Error('Not authenticated');
+
+    // ─── Header account icon ──────────────────────────────────────
+    const headerAccBtn = document.getElementById('header-account-btn');
+    if (headerAccBtn) {
+      headerAccBtn.addEventListener('click', () => {
+        window.location.href = 'account.html';
+      });
+    }
+
+    // ─── Sidebar ──────────────────────────────────────────────────
+    const sidebar = document.getElementById('account-sidebar');
+    sidebar.innerHTML = UI.sidebarHTML(user, 'overview');
+    UI.initMobileSidebar();
+
+    document.getElementById('sidebar-logout-btn').addEventListener('click', async () => {
+      const confirmed = await UI.confirm({
+        title: 'Sign Out',
+        description: 'Are you sure you want to sign out of your account?',
+        confirmText: 'Sign Out',
+        cancelText: 'Stay'
+      });
+      if (confirmed) {
+        Auth.logout();
+        window.location.href = 'index.html';
+      }
+    });
+
+    // ─── Welcome message ──────────────────────────────────────────
+    document.getElementById('welcome-name').textContent = `Welcome back, ${user.firstName}!`;
+    document.getElementById('welcome-subtitle').textContent = user.emailVerified
+      ? 'Here\'s what\'s happening with your account today.'
+      : '⚠️ Your email address is not verified. Please verify to unlock all features.';
+
+    // ─── Stats ────────────────────────────────────────────────────
+    const orders = Auth.getOrders(user.id);
+    const wishlist = JSON.parse(localStorage.getItem('ameza_wishlist') || '[]');
+    const pendingOrders = orders.filter(o => ['processing', 'pending'].includes((o.status || '').toLowerCase()));
+
+    document.getElementById('stat-total-orders').textContent = orders.length;
+    document.getElementById('stat-pending-orders').textContent = pendingOrders.length;
+    document.getElementById('stat-wishlist').textContent = wishlist.length;
+    document.getElementById('stat-status').textContent = user.emailVerified ? 'Active' : 'Unverified';
+
+    // ─── Recent Orders ─────────────────────────────────────────────
+    const container = document.getElementById('recent-orders-container');
+    const recentOrders = orders.slice(0, 5);
+
+    if (recentOrders.length === 0) {
+      container.innerHTML = `
+        <div class="account-empty-state">
+          <div class="account-empty-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path></svg>
+          </div>
+          <h3>No orders yet</h3>
+          <p>Start shopping and your orders will appear here.</p>
+          <a href="index.html" class="btn-section-action">Start Shopping</a>
+        </div>
+      `;
+    } else {
+      container.innerHTML = recentOrders.map(o => `
+        <div class="order-row">
+          <div>
+            <div class="order-id">#${o.id}</div>
+            <div class="order-date">${UI.formatDate(o.createdAt || o.date)}</div>
+          </div>
+          <div class="order-items-preview">${Array.isArray(o.items) ? o.items.map(i => i.name || i).join(', ') : '—'}</div>
+          <div>${UI.statusBadge(o.status || 'Processing')}</div>
+          <div class="order-total">${UI.formatPrice(o.total || 0)}</div>
+          <a href="account-order-detail.html?id=${encodeURIComponent(o.id)}" class="btn-view-order">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            View
+          </a>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>

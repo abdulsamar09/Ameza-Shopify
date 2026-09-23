@@ -48,10 +48,16 @@
 
       <!-- Right Actions -->
       <div class="header-actions">
+        <button class="action-btn" id="header-account-btn" title="My Account" aria-label="Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </button>
         <a href="wishlist.html" class="action-btn" title="Wishlist">
           <i class="fa-regular fa-heart" style="font-size: 1.15rem;"></i>
         </a>
-        <a href="index.html" class="btn-primary" style="padding: 8px 18px; font-size: 0.88rem;">Back to Store</a>
+        <a href="index.html" class="btn-primary desktop-store-btn" style="padding: 8px 18px; font-size: 0.88rem;">Back to Store</a>
+        <button class="action-btn hamburger-btn" data-action="mobile-menu-toggle" aria-label="Toggle Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -59,30 +65,55 @@
   <!-- 3. TRAVEL CATEGORIES NAVIGATION BAR -->
   <div class="travel-nav-bar">
     <div class="container travel-nav-container">
-      <a href="stays.html" class="travel-cat-pill">
-        <i class="fa-solid fa-bed"></i>
-        <span>Stays</span>
-      </a>
-
-      <a href="flights.html" class="travel-cat-pill">
-        <i class="fa-solid fa-plane-departure"></i>
-        <span>Flights</span>
-      </a>
-
-      <a href="car-rental.html" class="travel-cat-pill">
-        <i class="fa-solid fa-car"></i>
-        <span>Car rental</span>
-      </a>
-
-      <a href="attractions.html" class="travel-cat-pill">
-        <i class="fa-solid fa-ticket"></i>
-        <span>Attractions</span>
-      </a>
-
-      <a href="airport-taxis.html" class="travel-cat-pill active">
-        <i class="fa-solid fa-taxi"></i>
-        <span>Airport taxis</span>
-      </a>
+      <div class="services-nav-dropdown">
+        <button class="services-nav-btn" type="button" aria-expanded="false" aria-haspopup="true">
+          <i class="fa-solid fa-plane-departure"></i>
+          <span>Travel &amp; Booking Services</span>
+          <span class="services-btn-pill">Stays &bull; Flights &bull; Cars &bull; Taxis</span>
+          <i class="fa-solid fa-chevron-down services-chevron"></i>
+        </button>
+        <div class="services-menu-dropdown">
+          <div class="services-menu-header">
+            <span>Explore Services</span>
+            <i class="fa-solid fa-compass" style="color: var(--travel-brand, #7DBA35);"></i>
+          </div>
+          <a href="stays.html" class="services-menu-item">
+            <div class="services-item-icon"><i class="fa-solid fa-bed"></i></div>
+            <div class="services-item-text">
+              <span class="services-item-title">Stay</span>
+              <span class="services-item-sub">Hotels, Resorts & Homes</span>
+            </div>
+          </a>
+          <a href="car-rental.html" class="services-menu-item">
+            <div class="services-item-icon"><i class="fa-solid fa-car"></i></div>
+            <div class="services-item-text">
+              <span class="services-item-title">Car rental</span>
+              <span class="services-item-sub">Self-drive & Chauffeur</span>
+            </div>
+          </a>
+          <a href="attractions.html" class="services-menu-item">
+            <div class="services-item-icon"><i class="fa-solid fa-ticket"></i></div>
+            <div class="services-item-text">
+              <span class="services-item-title">Attraction</span>
+              <span class="services-item-sub">Tours, Activities & Passes</span>
+            </div>
+          </a>
+          <a href="airport-taxis.html" class="services-menu-item active">
+            <div class="services-item-icon"><i class="fa-solid fa-taxi"></i></div>
+            <div class="services-item-text">
+              <span class="services-item-title">Airport Taxis</span>
+              <span class="services-item-sub">Fast & Reliable Airport Pickups</span>
+            </div>
+          </a>
+          <a href="flights.html" class="services-menu-item">
+            <div class="services-item-icon"><i class="fa-solid fa-plane-departure"></i></div>
+            <div class="services-item-text">
+              <span class="services-item-title">Flight</span>
+              <span class="services-item-sub">Worldwide Flight Bookings</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
       <a href="index.html" class="travel-cat-pill store-pill">
         <i class="fa-solid fa-store"></i>
@@ -748,5 +779,8 @@
       });
     });
   </script>
+  <!-- Currency Engine -->
+  <script src="js/currency.js"></script>
+  <script src="js/auth.js"></script>
 </body>
 </html>

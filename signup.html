@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | AMEZA Premium E-Commerce Store</title>
+  <meta name="description" content="Create your AMEZA account for faster checkout, order tracking, wishlist management and exclusive member benefits.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/account.css">
+  <link rel="icon" type="image/png" href="assets/amezashopify logo.png">
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-badge"><i class="fa-solid fa-tag"></i> Special Offer</span>
+        <span>Free Worldwide Express Shipping on all orders over $100 &bull; 30-Day Easy Returns</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="login.html" class="top-bar-link"><i class="fa-solid fa-clipboard-list"></i> Track Order</a>
+        <span style="opacity:0.4;">|</span>
+        <span class="top-bar-link"><i class="fa-solid fa-globe"></i> USD ($)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER -->
+  <header class="header-sticky" id="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-wrap" title="AMEZA E-Commerce">
+        <img src="assets/amezashopify logo.png" alt="AMEZA Logo" onerror="this.style.display='none'">
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">
+          <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Home</span>
+        </a>
+        <a href="index.html#section-clothes-jewellery" class="nav-link"><span>Clothing</span></a>
+        <a href="index.html#section-electronics-watches" class="nav-link"><span>Electronics</span></a>
+        <a href="index.html#section-leather-collection" class="nav-link"><span>Leather Belts</span></a>
+        <a href="index.html#section-latest-range" class="nav-link"><span>Bags &amp; Totes</span></a>
+      </nav>
+      <div class="header-actions">
+        <a href="login.html" class="action-btn" title="Sign In" aria-label="Sign In">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
+        <a href="wishlist.html" class="action-btn" title="Wishlist" aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </a>
+        <button class="action-btn hamburger-btn" data-action="mobile-menu-toggle" aria-label="Open Navigation Menu" title="Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SIGNUP CONTENT -->
+  <main>
+    <div class="auth-page-wrapper">
+      <div class="auth-card auth-card-wide">
+
+        <a href="index.html" class="auth-logo-link">
+          <img src="assets/amezashopify logo.png" alt="AMEZA" onerror="this.style.display='none'">
+        </a>
+
+        <h1 class="auth-title">Create Your Account</h1>
+        <p class="auth-subtitle">Join us for a faster and better shopping experience.</p>
+
+        <!-- Alert -->
+        <div class="auth-alert" id="signup-alert" role="alert" aria-live="polite">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <span id="signup-alert-msg"></span>
+        </div>
+
+        <form id="signup-form" novalidate>
+          <!-- Name row -->
+          <div class="auth-form-row">
+            <div class="auth-form-group">
+              <label for="signup-firstname">First Name <span class="required">*</span></label>
+              <div class="auth-input-wrap">
+                <svg class="auth-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <input type="text" id="signup-firstname" class="auth-input" placeholder="John" autocomplete="given-name" required aria-describedby="err-firstname">
+              </div>
+              <div class="auth-error-msg" id="err-firstname" role="alert"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg><span id="err-firstname-text"></span></div>
+            </div>
+            <div class="auth-form-group">
+              <label for="signup-lastname">Last Name <span class="required">*</span></label>
+              <div class="auth-input-wrap">
+                <svg class="auth-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <input type="text" id="signup-lastname" class="auth-input" placeholder="Doe" autocomplete="family-name" required aria-describedby="err-lastname">
+              </div>
+              <div class="auth-error-msg" id="err-lastname" role="alert"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg><span id="err-lastname-text"></span></div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="auth-form-group">
+            <label for="signup-email">Email Address <span class="required">*</span></label>
+            <div class="auth-input-wrap">
+              <svg class="auth-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <input type="email" id="signup-email" class="auth-input" placeholder="you@example.com" autocomplete="email" required aria-describedby="err-email">
+            </div>
+            <div class="auth-error-msg" id="err-email" role="alert"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg><span id="err-email-text"></span></div>
+          </div>
+
+          <!-- Phone (optional) -->
+          <div class="auth-form-group">
+            <label for="signup-phone">Phone Number <span style="font-size:0.78rem; color: var(--text-muted); font-weight:500;">(optional)</span></label>
+            <div class="auth-input-wrap">
+              <svg class="auth-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1 19.79 19.79 0 0 1 1.6 4.58 2 2 0 0 1 3.56 2.4h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <input type="tel" id="signup-phone" class="auth-input" placeholder="+1 (555) 000-0000" autocomplete="tel">
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="auth-form-group">
+            <label for="signup-password">Password <span class="required">*</span></label>
+            <div class="auth-input-wrap">
+              <svg class="auth-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <input type="password" id="signup-password" class="auth-input" placeholder="Create a strong password" autocomplete="new-password" required aria-describedby="err-password">
+              <button type="button" class="btn-password-toggle" id="toggle-signup-password" aria-label="Toggle password visibility">
+                <svg id="eye-icon-signup" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </button>
+            </div>
+            <div class="auth-error-msg" id="err-password" role="alert"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg><span id="err-password-text"></span></div>
+
+            <!-- Strength bar -->
+            <div class="password-strength-wrap">
+              <div class="password-strength-bar-track">
+                <div class="password-strength-bar-fill" id="strength-bar"></div>
+              </div>
+              <span class="password-strength-label" id="strength-label" style="color: var(--text-muted);"></span>
+            </div>
+
+            <!-- Requirements -->
+            <div class="password-requirements">
+              <div class="password-req-title">Password must include:</div>
+              <ul class="password-req-list" aria-label="Password requirements">
+                <li class="password-req-item" id="req-length">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  8+ characters
+                </li>
+                <li class="password-req-item" id="req-uppercase">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Uppercase letter
+                </li>
+                <li class="password-req-item" id="req-lowercase">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Lowercase letter
+                </li>
+                <li class="password-req-item" id="req-number">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  One number
+                </li>
+                <li class="password-req-item" id="req-special">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Special character
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="auth-form-group">
+            <label for="signup-confirm-password">Confirm Password <span class="required">*</span></label>
+            <div class="auth-input-wrap">
+              <svg class="auth-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <input type="password" id="signup-confirm-password" class="auth-input" placeholder="Repeat your password" autocomplete="new-password" required aria-describedby="err-confirm">
+              <button type="button" class="btn-password-toggle" id="toggle-confirm-password" aria-label="Toggle confirm password visibility">
+                <svg id="eye-icon-confirm" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </button>
+            </div>
+            <div class="auth-error-msg" id="err-confirm" role="alert"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg><span id="err-confirm-text"></span></div>
+          </div>
+
+          <!-- Terms -->
+          <div class="auth-form-group">
+            <label class="auth-checkbox-label" style="align-items: flex-start; gap: 10px;">
+              <input type="checkbox" id="terms-checkbox" required aria-describedby="err-terms" style="margin-top: 2px; flex-shrink: 0;">
+              <span style="font-size: 0.83rem; line-height: 1.5;">I agree to AMEZA's <a href="#" class="auth-link">Terms &amp; Conditions</a> and <a href="#" class="auth-link">Privacy Policy</a>.</span>
+            </label>
+            <div class="auth-error-msg" id="err-terms" role="alert"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg><span id="err-terms-text"></span></div>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn-auth-primary" id="btn-signup" aria-label="Create your account">
+            <span class="btn-spinner" id="spinner-signup"></span>
+            <span id="btn-signup-label">Create Account</span>
+          </button>
+        </form>
+
+        <div class="auth-switch-row">
+          Already have an account? <a href="login.html">Sign In</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-main" style="padding: 24px 0;">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <p>&copy; 2026 AMEZA. All rights reserved.</p>
+        <p class="footer-powered">Powered by <a href="https://techsyentra.com" target="_blank" rel="noopener noreferrer">techsyentra.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="account-toast-container" id="account-toast-container"></div>
+
+  <!-- Currency Engine -->
+  <script src="js/currency.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Redirect if already logged in
+    if (window.AmezaAuth && window.AmezaAuth.isLoggedIn()) {
+      window.location.href = 'account.html';
+    }
+
+    // ─── Password toggle helpers ────────────────────────────────
+    function makeToggle(btnId, inputId, iconId) {
+      document.getElementById(btnId).addEventListener('click', () => {
+        const input = document.getElementById(inputId);
+        const icon = document.getElementById(iconId);
+        if (input.type === 'password') {
+          input.type = 'text';
+          icon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+        } else {
+          input.type = 'password';
+          icon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+        }
+      });
+    }
+    makeToggle('toggle-signup-password', 'signup-password', 'eye-icon-signup');
+    makeToggle('toggle-confirm-password', 'signup-confirm-password', 'eye-icon-confirm');
+
+    // ─── Password strength ──────────────────────────────────────
+    document.getElementById('signup-password').addEventListener('input', function() {
+      const val = this.value;
+      const result = window.AmezaAuth.checkPasswordStrength(val);
+
+      const bar = document.getElementById('strength-bar');
+      const label = document.getElementById('strength-label');
+      bar.style.width = (result.score / 5 * 100) + '%';
+      bar.style.backgroundColor = result.color;
+      label.textContent = result.label;
+      label.style.color = result.color;
+
+      // Update requirement items
+      const map = {
+        'req-length': result.checks.length,
+        'req-uppercase': result.checks.uppercase,
+        'req-lowercase': result.checks.lowercase,
+        'req-number': result.checks.number,
+        'req-special': result.checks.special,
+      };
+      Object.entries(map).forEach(([id, met]) => {
+        document.getElementById(id).classList.toggle('met', met);
+      });
+    });
+
+    // ─── Inline error helpers ───────────────────────────────────
+    function showErr(inputId, errId, msg) {
+      document.getElementById(inputId)?.classList.add('error');
+      const div = document.getElementById(errId);
+      const txt = document.getElementById(errId + '-text');
+      if (div) div.classList.add('show');
+      if (txt) txt.textContent = msg;
+    }
+    function clearErr(inputId, errId) {
+      document.getElementById(inputId)?.classList.remove('error');
+      document.getElementById(errId)?.classList.remove('show');
+    }
+
+    ['signup-firstname','signup-lastname','signup-email','signup-password','signup-confirm-password'].forEach(id => {
+      const errId = 'err-' + id.replace('signup-', '').replace('-password','').replace('-', '');
+      document.getElementById(id)?.addEventListener('input', () => clearErr(id, errId));
+    });
+
+    function showAlertBox(msg, type = 'error') {
+      const a = document.getElementById('signup-alert');
+      const t = document.getElementById('signup-alert-msg');
+      a.className = `auth-alert alert-${type} show`;
+      t.textContent = msg;
+    }
+
+    // ─── Form submit ────────────────────────────────────────────
+    document.getElementById('signup-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const firstName = document.getElementById('signup-firstname').value.trim();
+      const lastName  = document.getElementById('signup-lastname').value.trim();
+      const email     = document.getElementById('signup-email').value.trim();
+      const phone     = document.getElementById('signup-phone').value.trim();
+      const password  = document.getElementById('signup-password').value;
+      const confirm   = document.getElementById('signup-confirm-password').value;
+      const terms     = document.getElementById('terms-checkbox').checked;
+
+      let valid = true;
+
+      if (!firstName) { showErr('signup-firstname','err-firstname','First name is required.'); valid = false; }
+      if (!lastName)  { showErr('signup-lastname','err-lastname','Last name is required.'); valid = false; }
+      if (!email)     { showErr('signup-email','err-email','Email address is required.'); valid = false; }
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('signup-email','err-email','Please enter a valid email.'); valid = false; }
+
+      const strength = window.AmezaAuth.checkPasswordStrength(password);
+      if (!password)  { showErr('signup-password','err-password','Password is required.'); valid = false; }
+      else if (strength.score < 3) { showErr('signup-password','err-password','Please choose a stronger password (at least "Fair").'); valid = false; }
+
+      if (!confirm)   { showErr('signup-confirm-password','err-confirm','Please confirm your password.'); valid = false; }
+      else if (password !== confirm) { showErr('signup-confirm-password','err-confirm','Passwords do not match.'); valid = false; }
+
+      if (!terms) {
+        document.getElementById('err-terms').classList.add('show');
+        document.getElementById('err-terms-text').textContent = 'You must accept the Terms & Conditions to continue.';
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      // Set loading
+      const btn = document.getElementById('btn-signup');
+      const spinner = document.getElementById('spinner-signup');
+      const label = document.getElementById('btn-signup-label');
+      btn.disabled = true;
+      spinner.classList.add('show');
+      label.textContent = 'Creating Account...';
+
+      try {
+        const result = await window.AmezaAuth.register({ firstName, lastName, email, phone, password });
+        if (result.success) {
+          showAlertBox('Account created successfully! Redirecting to your dashboard...', 'success');
+          setTimeout(() => {
+            const params = new URLSearchParams(window.location.search);
+            const redirect = params.get('redirect');
+            window.location.href = redirect ? decodeURIComponent(redirect) : 'account.html';
+          }, 800);
+        } else {
+          showAlertBox(result.error || 'Something went wrong. Please try again.');
+          btn.disabled = false;
+          spinner.classList.remove('show');
+          label.textContent = 'Create Account';
+        }
+      } catch (err) {
+        console.error('Signup error:', err);
+        showAlertBox('Something went wrong. Please try again.');
+        btn.disabled = false;
+        spinner.classList.remove('show');
+        label.textContent = 'Create Account';
+      }
+    });
+  </script>
+</body>
+</html>

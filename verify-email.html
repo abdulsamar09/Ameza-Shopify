@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Your Email | AMEZA</title>
+  <meta name="description" content="Verify your AMEZA account email address to complete registration.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/account.css">
+  <link rel="icon" type="image/png" href="assets/amezashopify logo.png">
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-badge"><i class="fa-solid fa-tag"></i> Special Offer</span>
+        <span>Free Worldwide Express Shipping on all orders over $100 &bull; 30-Day Easy Returns</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="login.html" class="top-bar-link"><i class="fa-solid fa-clipboard-list"></i> Track Order</a>
+        <span style="opacity:0.4;">|</span>
+        <a href="login.html" class="top-bar-link"><i class="fa-solid fa-user"></i> Sign In</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header-sticky">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-wrap"><img src="assets/amezashopify logo.png" alt="AMEZA" onerror="this.style.display='none'"></a>
+      <div class="header-actions">
+        <a href="login.html" class="action-btn" title="Sign In">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
+        <button class="action-btn hamburger-btn" data-action="mobile-menu-toggle" aria-label="Open Navigation Menu" title="Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main>
+    <div class="auth-page-wrapper">
+      <div class="auth-card" style="text-align: center;">
+
+        <a href="index.html" class="auth-logo-link">
+          <img src="assets/amezashopify logo.png" alt="AMEZA" onerror="this.style.display='none'">
+        </a>
+
+        <!-- SUCCESS STATE (hidden by default) -->
+        <div id="verify-success-state" style="display: none;">
+          <div class="verify-email-icon" style="background: #DCFCE7; border-color: #86EFAC; color: #166534;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <h1 class="auth-title">Email Verified!</h1>
+          <p class="auth-subtitle">Your email has been successfully verified. You can now access your account.</p>
+          <a href="account.html" class="btn-auth-primary" style="display: flex; text-decoration: none; margin-top: 20px;">
+            Continue to Account →
+          </a>
+        </div>
+
+        <!-- EXPIRED TOKEN STATE (hidden by default) -->
+        <div id="verify-expired-state" style="display: none;">
+          <div class="verify-email-icon" style="background: #FEF3C7; border-color: #FDE68A; color: #92400E;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          </div>
+          <h1 class="auth-title">Link Expired</h1>
+          <p class="auth-subtitle" id="expired-msg">This verification link has expired. Please request a new one.</p>
+          <a href="login.html" class="btn-auth-primary" style="display: flex; text-decoration: none; margin-top: 16px;">Back to Sign In</a>
+        </div>
+
+        <!-- DEFAULT VERIFY STATE -->
+        <div id="verify-default-state">
+          <div class="verify-email-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </div>
+
+          <h1 class="auth-title">Verify Your Email</h1>
+          <p class="auth-subtitle">We've sent a verification link to your email address.</p>
+
+          <div class="verify-email-address" id="verify-email-display">your@email.com</div>
+
+          <!-- Demo Notice -->
+          <div class="auth-demo-notice">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span><strong>Demo Mode:</strong> Email verification is simulated in this demo. No actual email is sent. Click the button below to verify your account instantly for testing purposes.</span>
+          </div>
+
+          <!-- Alert -->
+          <div class="auth-alert" id="verify-alert" role="alert" aria-live="polite">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line></svg>
+            <span id="verify-alert-msg"></span>
+          </div>
+
+          <!-- Verify button (demo) -->
+          <button class="btn-auth-primary" id="btn-verify-demo" type="button" aria-label="Verify email (demo)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Verify Email (Demo)
+          </button>
+
+          <div class="auth-divider">or</div>
+
+          <!-- Resend -->
+          <button class="btn-resend" id="btn-resend" type="button" aria-label="Resend verification email">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+            Resend Verification Email
+          </button>
+          <div class="resend-countdown" id="resend-countdown"></div>
+
+          <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 8px; align-items: center;">
+            <a href="#" class="auth-link" id="change-email-link" style="font-size: 0.85rem;">Change Email Address</a>
+            <a href="login.html" class="auth-link" style="font-size: 0.85rem;">← Back to Sign In</a>
+          </div>
+
+          <!-- Dev token display -->
+          <div class="dev-token-box" id="dev-token-box" style="text-align: left; margin-top: 20px; display: none;">
+            <strong>🔧 Developer: Simulated Verify Token</strong>
+            <code id="dev-token-display"></code>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer-main" style="padding: 24px 0;">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <p>&copy; 2026 AMEZA. All rights reserved.</p>
+        <p class="footer-powered">Powered by <a href="https://techsyentra.com" target="_blank">techsyentra.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="account-toast-container" id="account-toast-container"></div>
+
+  <!-- Currency Engine -->
+  <script src="js/currency.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    const Auth = window.AmezaAuth;
+    let pendingUserId = sessionStorage.getItem('ameza_pending_verify_uid');
+    let pendingToken  = sessionStorage.getItem('ameza_pending_verify_token');
+    let resendTimer = null;
+    let resendSeconds = 0;
+
+    function showState(stateId) {
+      ['verify-default-state', 'verify-success-state', 'verify-expired-state'].forEach(id => {
+        document.getElementById(id).style.display = (id === stateId) ? 'block' : 'none';
+      });
+    }
+
+    function showAlert(msg, type = 'error') {
+      const a = document.getElementById('verify-alert');
+      const t = document.getElementById('verify-alert-msg');
+      a.className = `auth-alert alert-${type} show`;
+      t.textContent = msg;
+    }
+
+    // ─── Handle ?token= in URL (simulated link click) ───────────
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlToken = urlParams.get('token');
+    if (urlToken) {
+      const result = Auth.verifyEmail(urlToken);
+      if (result.success) {
+        sessionStorage.removeItem('ameza_pending_verify_uid');
+        sessionStorage.removeItem('ameza_pending_verify_token');
+        showState('verify-success-state');
+        // Auto-create session for verified user
+        Auth.createSession && Auth.createSession(result.userId);
+      } else {
+        showState('verify-expired-state');
+        document.getElementById('expired-msg').textContent = result.error;
+      }
+    } else {
+      // Default state — load user info
+      showState('verify-default-state');
+
+      if (pendingUserId) {
+        const user = Auth.findUserById(pendingUserId);
+        if (user) {
+          document.getElementById('verify-email-display').textContent = user.email;
+          if (user.emailVerified) {
+            showState('verify-success-state');
+          }
+        }
+      }
+
+      // Show dev token
+      if (pendingToken) {
+        const tokenBox = document.getElementById('dev-token-box');
+        const tokenDisplay = document.getElementById('dev-token-display');
+        tokenBox.style.display = 'block';
+        tokenDisplay.textContent = `verify-email.html?token=${pendingToken}`;
+      }
+    }
+
+    // ─── Demo verify button ─────────────────────────────────────
+    document.getElementById('btn-verify-demo').addEventListener('click', () => {
+      if (!pendingUserId) {
+        showAlert('No pending verification found. Please sign up first.', 'error');
+        return;
+      }
+      const token = pendingToken || Auth.findUserById(pendingUserId)?.verifyToken;
+      if (!token) {
+        showAlert('Verification token not found.', 'error');
+        return;
+      }
+      const result = Auth.verifyEmail(token);
+      if (result.success) {
+        sessionStorage.removeItem('ameza_pending_verify_uid');
+        sessionStorage.removeItem('ameza_pending_verify_token');
+        showState('verify-success-state');
+      } else {
+        showAlert(result.error, 'error');
+      }
+    });
+
+    // ─── Resend verification ────────────────────────────────────
+    function startResendCountdown(seconds = 60) {
+      resendSeconds = seconds;
+      const btn = document.getElementById('btn-resend');
+      const countdown = document.getElementById('resend-countdown');
+      btn.disabled = true;
+
+      resendTimer = setInterval(() => {
+        resendSeconds--;
+        countdown.textContent = `You can resend in ${resendSeconds}s`;
+        if (resendSeconds <= 0) {
+          clearInterval(resendTimer);
+          btn.disabled = false;
+          countdown.textContent = '';
+        }
+      }, 1000);
+    }
+
+    document.getElementById('btn-resend').addEventListener('click', () => {
+      if (!pendingUserId) {
+        showAlert('No pending verification found. Please sign up first.', 'error');
+        return;
+      }
+      const result = Auth.resendVerificationEmail(pendingUserId);
+      if (result.success) {
+        pendingToken = result.token;
+        sessionStorage.setItem('ameza_pending_verify_token', pendingToken);
+        document.getElementById('dev-token-display').textContent = `verify-email.html?token=${pendingToken}`;
+        document.getElementById('dev-token-box').style.display = 'block';
+        showAlert('Verification email resent (demo). Check the token box above.', 'success');
+        startResendCountdown(60);
+      } else {
+        showAlert(result.error, 'error');
+      }
+    });
+
+    // ─── Change email link ──────────────────────────────────────
+    document.getElementById('change-email-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      const newEmail = prompt('Enter your new email address:');
+      if (newEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail)) {
+        if (pendingUserId) {
+          Auth.updateUser(pendingUserId, {
+            email: newEmail.toLowerCase().trim(),
+            emailVerified: false,
+          });
+          const resendResult = Auth.resendVerificationEmail(pendingUserId);
+          if (resendResult.success) {
+            pendingToken = resendResult.token;
+            sessionStorage.setItem('ameza_pending_verify_token', pendingToken);
+          }
+          document.getElementById('verify-email-display').textContent = newEmail.toLowerCase().trim();
+          showAlert('Email updated. Please verify your new address.', 'success');
+        }
+      } else if (newEmail) {
+        alert('Please enter a valid email address.');
+      }
+    });
+
+    // Start initial countdown
+    startResendCountdown(60);
+  </script>
+</body>
+</html>

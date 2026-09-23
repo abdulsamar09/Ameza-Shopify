@@ -43,14 +43,175 @@
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
+  overflow: visible;
   padding: 4px 0;
 }
 
-.travel-nav-container::-webkit-scrollbar {
-  display: none;
+/* Services Dropdown in Dark Nav Bar */
+.services-nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.services-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  color: #FFFFFF;
+  font-size: 0.92rem;
+  font-weight: 700;
+  white-space: nowrap;
+  border: 1.5px solid rgba(127, 183, 60, 0.4);
+  background: rgba(127, 183, 60, 0.15);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.services-nav-btn:hover,
+.services-nav-dropdown:hover .services-nav-btn,
+.services-nav-dropdown.is-open .services-nav-btn {
+  background: var(--travel-brand, #7DBA35);
+  border-color: var(--travel-brand, #7DBA35);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(127, 183, 60, 0.4);
+}
+
+.services-nav-btn .services-chevron {
+  font-size: 0.72rem;
+  transition: transform 0.25s ease;
+}
+
+.services-btn-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.16);
+  padding: 2px 9px;
+  border-radius: 999px;
+  color: #E2E8F0;
+  margin-left: 4px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.services-nav-btn:hover .services-btn-pill,
+.services-nav-dropdown:hover .services-btn-pill,
+.services-nav-dropdown.is-open .services-btn-pill {
+  background: rgba(255, 255, 255, 0.28);
+  color: #FFFFFF;
+}
+
+.services-nav-dropdown:hover .services-chevron,
+.services-nav-dropdown.is-open .services-chevron {
+  transform: rotate(180deg);
+}
+
+.services-menu-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 290px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  padding: 8px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px) scale(0.97);
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+  pointer-events: none;
+}
+
+.services-nav-dropdown:hover .services-menu-dropdown,
+.services-nav-dropdown.is-open .services-menu-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.services-menu-header {
+  padding: 6px 10px 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748B;
+  border-bottom: 1px solid #F1F5F9;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.services-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #0F172A;
+  transition: all 0.18s ease;
+}
+
+.services-menu-item:hover {
+  background: #F1F8E9;
+  color: #2E5C06;
+  transform: translateX(3px);
+}
+
+.services-menu-item.active {
+  background: #E8F5E9;
+  color: #1B5E20;
+  font-weight: 700;
+}
+
+.services-item-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--travel-brand, #7DBA35);
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: all 0.18s ease;
+}
+
+.services-menu-item:hover .services-item-icon {
+  background: var(--travel-brand, #7DBA35);
+  color: #FFFFFF;
+  border-color: var(--travel-brand, #7DBA35);
+}
+
+.services-item-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.services-item-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: inherit;
+}
+
+.services-item-sub {
+  font-size: 0.73rem;
+  color: #64748B;
+  line-height: 1.2;
+}
+
+.services-menu-item:hover .services-item-sub {
+  color: #4D8714;
 }
 
 .travel-cat-pill {
@@ -3294,27 +3455,62 @@
   .main-nav {
     display: none !important; /* Managed via mobile drawer / categories bar */
   }
+  .desktop-store-btn {
+    display: none !important;
+  }
 
-  /* Horizontal Scrolling Category Pills Bar */
+  /* Services Navigation Bar */
   .travel-nav-bar {
     padding: 6px 0 !important;
   }
   .travel-nav-container {
     display: flex !important;
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-    -webkit-overflow-scrolling: touch !important;
-    padding: 6px 12px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    overflow: visible !important;
+    padding: 4px 12px !important;
     gap: 8px !important;
-    scrollbar-width: none !important;
+    flex-wrap: nowrap !important;
   }
-  .travel-nav-container::-webkit-scrollbar {
+  .services-nav-dropdown {
+    position: static !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+  .services-nav-btn {
+    width: 100% !important;
+    justify-content: space-between !important;
+    padding: 7px 10px !important;
+    font-size: 0.82rem !important;
+    gap: 4px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+  }
+  .services-nav-btn span {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+  .services-btn-pill {
     display: none !important;
   }
-  .travel-cat-pill {
+  .travel-cat-pill.store-pill {
     flex-shrink: 0 !important;
-    padding: 7px 14px !important;
-    font-size: 0.84rem !important;
+    padding: 7px 12px !important;
+    font-size: 0.82rem !important;
+    white-space: nowrap !important;
+    margin-left: 0 !important;
+  }
+  .services-menu-dropdown {
+    position: absolute !important;
+    top: calc(100% + 6px) !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    max-width: 360px !important;
+    margin: 0 auto !important;
+    box-shadow: 0 20px 48px rgba(15, 23, 42, 0.35), 0 0 0 100vmax rgba(15, 23, 42, 0.35) !important;
+    z-index: 2000 !important;
   }
 
   /* Hero Section */
