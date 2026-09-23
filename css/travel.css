@@ -2534,8 +2534,8 @@
 .footer-grid,
 .footer-top {
   display: grid !important;
-  grid-template-columns: 2fr 1.2fr 1.2fr 1.4fr !important;
-  gap: 40px !important;
+  grid-template-columns: 1.8fr 1fr 1.1fr 1fr 1.1fr !important;
+  gap: 32px !important;
   padding-bottom: 48px !important;
 }
 
@@ -2546,7 +2546,7 @@
 }
 
 .footer-logo {
-  height: 44px !important;
+  height: 48px !important;
   width: auto !important;
   margin-bottom: 16px !important;
   display: inline-block !important;
@@ -2556,7 +2556,7 @@
 .footer-desc,
 .footer-brand p {
   color: #94A3B8 !important;
-  font-size: 0.92rem !important;
+  font-size: 0.9rem !important;
   line-height: 1.65 !important;
   margin-bottom: 20px !important;
   max-width: 320px !important;
@@ -2584,15 +2584,16 @@
 }
 
 .social-icon svg,
-.footer-social-link svg {
-  width: 18px !important;
-  height: 18px !important;
+.footer-social-link svg,
+.social-icon i,
+.footer-social-link i {
+  font-size: 16px !important;
 }
 
 .social-icon:hover,
 .footer-social-link:hover {
-  background: var(--travel-brand) !important;
-  border-color: var(--travel-brand) !important;
+  background: var(--travel-brand, #7FB73C) !important;
+  border-color: var(--travel-brand, #7FB73C) !important;
   color: #FFFFFF !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 6px 16px rgba(127, 183, 60, 0.35) !important;
@@ -2600,11 +2601,12 @@
 
 .footer-title,
 .footer-col h4 {
-  font-size: 1.05rem !important;
+  font-size: 1rem !important;
   font-weight: 800 !important;
   color: #FFFFFF !important;
-  letter-spacing: -0.01em !important;
-  margin-bottom: 22px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 20px !important;
   position: relative !important;
   display: inline-block !important;
 }
@@ -2617,7 +2619,7 @@
   bottom: -6px !important;
   width: 24px !important;
   height: 2.5px !important;
-  background: var(--travel-brand) !important;
+  background: var(--travel-brand, #7FB73C) !important;
   border-radius: 2px !important;
 }
 
@@ -2627,32 +2629,33 @@
   margin: 0 !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 12px !important;
+  gap: 10px !important;
 }
 
 .footer-links li a {
   color: #94A3B8 !important;
-  font-size: 0.9rem !important;
+  font-size: 0.88rem !important;
   font-weight: 500 !important;
   text-decoration: none !important;
   transition: all 0.2s ease !important;
   display: inline-flex !important;
   align-items: center !important;
-  gap: 6px !important;
+  gap: 8px !important;
 }
 
 .footer-links li a:hover {
-  color: #FFFFFF !important;
+  color: var(--travel-brand, #7FB73C) !important;
   transform: translateX(4px) !important;
 }
 
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-  padding: 24px 0 !important;
+  padding: 22px 0 !important;
   background: #070B14 !important;
 }
 
-.footer-bottom-inner {
+.footer-bottom-inner,
+.footer-bottom {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -2662,14 +2665,16 @@
   font-size: 0.85rem !important;
 }
 
-.footer-bottom-inner p {
+.footer-bottom-inner p,
+.footer-bottom p {
   margin: 0 !important;
   color: #64748B !important;
 }
 
 .footer-bottom-links {
   display: flex !important;
-  gap: 20px !important;
+  align-items: center !important;
+  gap: 16px !important;
   list-style: none !important;
   padding: 0 !important;
   margin: 0 !important;
@@ -2683,44 +2688,65 @@
 }
 
 .footer-bottom-links a:hover {
-  color: var(--travel-brand) !important;
+  color: var(--travel-brand, #7FB73C) !important;
 }
 
-.footer-payment-badges {
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
+.footer-powered a {
+  color: var(--travel-brand, #7FB73C) !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
 }
 
-.payment-badge {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 6px !important;
-  padding: 4px 8px !important;
-  font-size: 0.72rem !important;
-  font-weight: 800 !important;
-  color: #E2E8F0 !important;
-  letter-spacing: 0.5px !important;
+.footer-powered a:hover {
+  text-decoration: underline !important;
+}
+
+@media (max-width: 1200px) {
+  .footer-grid,
+  .footer-top {
+    grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr !important;
+    gap: 24px !important;
+  }
 }
 
 @media (max-width: 992px) {
   .footer-grid,
   .footer-top {
-    grid-template-columns: 1fr 1fr !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 32px !important;
+  }
+  .footer-brand {
+    grid-column: span 3 !important;
+    max-width: 500px !important;
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 680px) {
+  .footer-grid,
+  .footer-top {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 28px !important;
+  }
+  .footer-brand {
+    grid-column: span 2 !important;
+  }
+}
+
+@media (max-width: 480px) {
   .footer-grid,
   .footer-top {
     grid-template-columns: 1fr !important;
-    gap: 28px !important;
+    gap: 24px !important;
   }
+  .footer-brand {
+    grid-column: span 1 !important;
+  }
+  .footer-bottom,
   .footer-bottom-inner {
     flex-direction: column !important;
     text-align: center !important;
     justify-content: center !important;
+    gap: 12px !important;
   }
 }
 
