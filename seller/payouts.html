@@ -4,34 +4,303 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Payouts | AMEZA Seller Central</title>
+  <meta name="description" content="Manage your U.S. bank transfers, ACH payout schedules, and double-entry disbursement records on AMEZA Marketplace.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/dashboard.css">
   <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
 </head>
-<body data-layout="none">
+<body data-layout="none" class="seller-body">
+
+  <!-- 1. Top Bar (Shell injected) -->
   <header id="app-topbar"></header>
+
+  <!-- 2. Application Layout -->
   <div class="app-layout">
+    <!-- Sidebar Navigation (Shell injected) -->
     <aside id="app-sidebar"></aside>
-    <main class="main-content" role="main">
-      <div class="page-header">
-        <div>
-          <h1 class="page-title">Payouts</h1>
-          <p class="page-subtitle">Track double-entry ledger payouts and schedule bank transfers.</p>
+
+    <!-- Main Content Canvas -->
+    <main class="main-content" id="payouts-main-region" role="main">
+      <div id="payouts-content-container">
+        <!-- Loading Skeleton (Initial State) -->
+        <div class="payouts-skeleton-wrap" id="payouts-skeleton" aria-busy="true" aria-label="Loading payout details">
+          <div class="skeleton-row" style="height: 38px; width: 260px; margin-bottom: 24px;"></div>
+          <div class="payouts-top-grid" style="margin-bottom: 24px;">
+            <div class="skeleton-row" style="height: 240px; border-radius: 14px;"></div>
+            <div class="skeleton-row" style="height: 240px; border-radius: 14px;"></div>
+          </div>
+          <div class="skeleton-row" style="height: 110px; border-radius: 14px; margin-bottom: 24px;"></div>
+          <div class="skeleton-row" style="height: 380px; border-radius: 14px;"></div>
         </div>
-      </div>
-      <div class="placeholder-card">
-        <div class="placeholder-icon"><i class="fa-solid fa-building-columns"></i></div>
-        <h2 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 8px;">Payouts Hub</h2>
-        <p style="color: var(--text-secondary); max-width: 440px; margin: 0 auto 20px;">
-          This is a placeholder page for payouts. Use the sidebar navigation or command palette (Ctrl+K) to browse other screens.
-        </p>
-        <a href="index.html" class="btn-header-action" style="text-decoration: none;">&larr; Back to Dashboard Home</a>
       </div>
     </main>
   </div>
+
+  <!-- 3. Add Payout Method Slide-Over Drawer (Full-Screen on Mobile) -->
+  <div class="payout-drawer-backdrop" id="add-method-drawer-backdrop" data-action="close-drawer"></div>
+  <aside class="payout-drawer" id="add-method-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" aria-hidden="true">
+    <div class="drawer-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="background: rgba(127, 183, 60, 0.15); color: var(--primary-green-dark); width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+        <div>
+          <h3 id="drawer-title" style="margin: 0; font-size: 16px; font-weight: 700; color: var(--text-main);">Add Payout Method</h3>
+          <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Direct Deposit (ACH) or Verified PayPal</p>
+        </div>
+      </div>
+      <button type="button" class="btn-method-menu" data-action="close-drawer" aria-label="Close drawer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Drawer Navigation Tabs: Bank (ACH) vs PayPal -->
+    <div style="padding: 16px 24px 0;">
+      <div class="drawer-tabs-nav" role="tablist">
+        <button type="button" class="drawer-tab-item active" id="tab-btn-bank" data-action="switch-drawer-tab" data-tab="bank" role="tab" aria-selected="true">
+          <i class="fa-solid fa-building-columns"></i> U.S. Bank (ACH)
+        </button>
+        <button type="button" class="drawer-tab-item" id="tab-btn-paypal" data-action="switch-drawer-tab" data-tab="paypal" role="tab" aria-selected="false">
+          <i class="fa-brands fa-paypal"></i> PayPal
+        </button>
+      </div>
+    </div>
+
+    <div class="drawer-body">
+      <!-- Form 1: Bank Account (ACH) -->
+      <form id="form-add-bank" novalidate>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="bank-holder-name" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-main);">Account Holder Full Name</label>
+          <input type="text" id="bank-holder-name" class="payout-form-input" placeholder="e.g. Ameza Official LLC" required
+            style="width: 100%; height: 46px; padding: 8px 14px; font-size: 16px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--bg-surface); color: var(--text-main); font-family: inherit;" />
+          <div style="font-size: 11.5px; color: var(--text-tertiary); margin-top: 4px;">Must match your registered IRS W-9 legal entity name.</div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="bank-name-input" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-main);">Bank Name</label>
+          <input type="text" id="bank-name-input" class="payout-form-input" placeholder="e.g. JPMorgan Chase Bank" required
+            style="width: 100%; height: 46px; padding: 8px 14px; font-size: 16px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--bg-surface); color: var(--text-main); font-family: inherit;" />
+        </div>
+
+        <!-- 9-Digit Routing Number with Live ABA Checksum Validation -->
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="bank-routing-num" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-main);">9-Digit Routing Transit Number (ABA)</label>
+          <input type="text" id="bank-routing-num" class="payout-form-input" maxlength="9" placeholder="9 digits (e.g. 021000021)" required
+            style="width: 100%; height: 46px; padding: 8px 14px; font-size: 16px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--bg-surface); color: var(--text-main); font-family: inherit; letter-spacing: 1px;" />
+          <div id="routing-checksum-msg" class="routing-valid-msg"></div>
+          <div style="font-size: 11.5px; color: var(--text-tertiary); margin-top: 4px;">Verified in real-time via the Federal Reserve ABA checksum invariant.</div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="bank-account-num" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-main);">Account Number</label>
+          <input type="password" id="bank-account-num" class="payout-form-input" placeholder="Enter checking or savings account #" required
+            style="width: 100%; height: 46px; padding: 8px 14px; font-size: 16px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--bg-surface); color: var(--text-main); font-family: inherit;" />
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="bank-account-confirm" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-main);">Confirm Account Number</label>
+          <input type="text" id="bank-account-confirm" class="payout-form-input" placeholder="Re-enter account #" required
+            style="width: 100%; height: 46px; padding: 8px 14px; font-size: 16px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--bg-surface); color: var(--text-main); font-family: inherit;" />
+          <div id="account-match-error" style="font-size: 11.5px; color: #DC2626; margin-top: 4px; display: none;">Account numbers do not match.</div>
+        </div>
+
+        <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid #BBF7D0; border-radius: 8px; padding: 12px 14px; font-size: 12px; color: #166534; line-height: 1.45; margin-bottom: 10px;">
+          <i class="fa-solid fa-shield-halved" style="margin-right: 4px;"></i>
+          <strong>Bank-Grade Encryption:</strong> Account numbers are encrypted and stored masked (e.g. <code>•••• 4821</code>).
+        </div>
+      </form>
+
+      <!-- Form 2: PayPal -->
+      <form id="form-add-paypal" style="display: none;" novalidate>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="paypal-email" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-main);">PayPal Account Email</label>
+          <input type="email" id="paypal-email" class="payout-form-input" placeholder="merchant@example.com" required
+            style="width: 100%; height: 46px; padding: 8px 14px; font-size: 16px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--bg-surface); color: var(--text-main); font-family: inherit;" />
+          <div style="font-size: 11.5px; color: var(--text-tertiary); margin-top: 4px;">Must be a verified U.S. Premier or Business PayPal account.</div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="paypal-email-confirm" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-main);">Confirm PayPal Email</label>
+          <input type="email" id="paypal-email-confirm" class="payout-form-input" placeholder="Re-enter merchant email" required
+            style="width: 100%; height: 46px; padding: 8px 14px; font-size: 16px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--bg-surface); color: var(--text-main); font-family: inherit;" />
+          <div id="paypal-match-error" style="font-size: 11.5px; color: #DC2626; margin-top: 4px; display: none;">Email addresses do not match.</div>
+        </div>
+
+        <div style="background: rgba(59, 130, 246, 0.08); border: 1px solid #BFDBFE; border-radius: 8px; padding: 12px 14px; font-size: 12px; color: #1E40AF; line-height: 1.45;">
+          <i class="fa-brands fa-paypal" style="margin-right: 4px;"></i>
+          Disbursements are sent via PayPal Mass Payments. Standard PayPal recipient terms apply.
+        </div>
+      </form>
+    </div>
+
+    <div class="drawer-footer">
+      <button type="button" class="btn-header-action" data-action="close-drawer" style="min-height: 44px; padding: 8px 18px;">Cancel</button>
+      <button type="button" class="btn-header-action" id="btn-submit-add-method" data-action="trigger-save-method"
+        style="background: #111827; color: #FFFFFF; border-color: #111827; min-height: 44px; padding: 8px 22px; font-weight: 700;">
+        Save Payout Method
+      </button>
+    </div>
+  </aside>
+
+  <!-- 4. Security Password Confirmation Modal -->
+  <div class="modal-overlay" id="password-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="pwd-modal-title" style="display: none;">
+    <div class="modal-card" style="max-width: 440px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="background: rgba(239, 68, 68, 0.12); color: #DC2626; width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px;">
+            <i class="fa-solid fa-lock"></i>
+          </div>
+          <div>
+            <h3 class="modal-title" id="pwd-modal-title" style="margin: 0; font-size: 15px; font-weight: 700;">Security Verification</h3>
+            <p style="margin: 0; font-size: 11.5px; color: var(--text-secondary);">Confirm password to authorize banking changes</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" data-action="close-pwd-modal" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="form-confirm-password" novalidate>
+        <div class="modal-body" style="padding: 20px;">
+          <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 14px;" id="pwd-modal-prompt">
+            Enter your merchant password to confirm this payout method update.
+          </p>
+          <div class="form-group">
+            <label for="merchant-pwd-input" style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Password</label>
+            <input type="password" id="merchant-pwd-input" class="payout-form-input" placeholder="Enter password (e.g. password123)" required
+              style="width: 100%; height: 46px; padding: 8px 14px; font-size: 16px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--bg-surface); color: var(--text-main); font-family: inherit;" />
+            <div id="pwd-error-msg" style="font-size: 12px; color: #DC2626; margin-top: 5px; display: none;"></div>
+          </div>
+        </div>
+
+        <div class="modal-footer" style="padding: 14px 20px; background: var(--bg-sidebar); border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn-header-action" data-action="close-pwd-modal" style="min-height: 44px; padding: 8px 18px;">Cancel</button>
+          <button type="submit" class="btn-header-action" style="background: #111827; color: #FFFFFF; border-color: #111827; min-height: 44px; padding: 8px 22px; font-weight: 700;">
+            Verify &amp; Continue
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. Request Payout Modal (Bottom Sheet on Mobile <= 768px) -->
+  <div class="modal-overlay" id="payout-request-modal" role="dialog" aria-modal="true" aria-labelledby="request-modal-title" style="display: none;">
+    <div class="modal-card payout-bottom-sheet-card" style="max-width: 480px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="background: rgba(16, 185, 129, 0.12); color: #059669; width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px;">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+          </div>
+          <div>
+            <h3 class="modal-title" id="request-modal-title" style="margin: 0; font-size: 16px; font-weight: 700;">Request Payout</h3>
+            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Direct Deposit to linked U.S. method</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" data-action="close-request-modal" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="form-request-payout" novalidate>
+        <div class="modal-body" style="padding: 20px;">
+          <!-- Available Balance Callout -->
+          <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 10px; padding: 14px 16px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-size: 11.5px; text-transform: uppercase; font-weight: 700; color: #166534; letter-spacing: 0.5px;">Available to Withdraw</div>
+              <div id="request-modal-available-val" style="font-size: 24px; font-weight: 800; color: #14532D; margin-top: 2px;">$0.00</div>
+            </div>
+            <span class="status-pill status-paid" style="background: #DCFCE7; color: #166534; font-weight: 700; font-size: 11px;">Cleared</span>
+          </div>
+
+          <!-- Withdrawal Amount -->
+          <div class="form-group" style="margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label for="payout-amount-input" style="font-size: 13px; font-weight: 600; color: var(--text-main);">Amount (USD)</label>
+              <button type="button" class="btn-text-action" id="btn-request-use-max" data-action="request-use-max" style="background: none; border: none; color: var(--primary-green-dark); font-size: 12px; font-weight: 700; cursor: pointer; padding: 2px 6px;">
+                Use Max
+              </button>
+            </div>
+            <div class="input-currency-wrap" style="position: relative; display: flex; align-items: center;">
+              <span style="position: absolute; left: 14px; font-size: 16px; font-weight: 700; color: var(--text-secondary); pointer-events: none;">$</span>
+              <input type="number" id="payout-amount-input" name="amount" min="50" step="0.01" placeholder="0.00" required
+                style="width: 100%; height: 46px; padding: 8px 14px 8px 30px; font-size: 16px; font-weight: 600; border: 1.5px solid var(--border); border-radius: 8px; background: var(--bg-surface); color: var(--text-main); font-family: inherit;" />
+            </div>
+            <div id="payout-val-error" style="font-size: 12px; color: #DC2626; margin-top: 5px; display: none;"></div>
+            <div style="font-size: 11.5px; color: var(--text-tertiary); margin-top: 4px;">Minimum threshold is <strong>$50.00</strong>. No transfer fees.</div>
+          </div>
+
+          <!-- Payout Method Select -->
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label for="payout-method-select" style="display: block; font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 6px;">Destination Method</label>
+            <select id="payout-method-select" class="payout-form-select" style="width: 100%; height: 46px; padding: 8px 14px; font-size: 16px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--bg-surface); color: var(--text-main); font-family: inherit; cursor: pointer;">
+              <!-- Populated dynamically from saved methods -->
+            </select>
+          </div>
+
+          <!-- ETA Disclosure -->
+          <div style="background: var(--bg-sidebar); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; font-size: 12px; color: var(--text-secondary); display: flex; align-items: flex-start; gap: 10px;">
+            <i class="fa-solid fa-clock" style="color: var(--text-tertiary); margin-top: 2px;"></i>
+            <div>
+              <div style="font-weight: 600; color: var(--text-main); margin-bottom: 2px;">Estimated Arrival: 2–3 Business Days</div>
+              <div>Direct ACH transfer. Requests submitted before 5:00 PM ET commence processing today.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer" style="padding: 14px 20px; background: var(--bg-sidebar); border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn-header-action" data-action="close-request-modal" style="min-height: 44px; padding: 8px 18px;">Cancel</button>
+          <button type="submit" class="btn-header-action" style="background: #111827; color: #FFFFFF; border-color: #111827; min-height: 44px; padding: 8px 22px; font-weight: 700;">
+            Confirm Payout
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 6. Printable Receipt Modal -->
+  <div class="modal-overlay" id="receipt-modal" role="dialog" aria-modal="true" aria-labelledby="receipt-modal-title" style="display: none;">
+    <div class="modal-card" style="max-width: 520px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="background: rgba(127, 183, 60, 0.12); color: var(--primary-green-dark); width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px;">
+            <i class="fa-solid fa-receipt"></i>
+          </div>
+          <div>
+            <h3 class="modal-title" id="receipt-modal-title" style="margin: 0; font-size: 16px; font-weight: 700;">Payout Disbursement Receipt</h3>
+            <p style="margin: 0; font-size: 11.5px; color: var(--text-secondary);" id="receipt-modal-ref">Reference: —</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" data-action="close-receipt-modal" aria-label="Close receipt">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body" id="receipt-modal-body" style="padding: 24px;">
+        <!-- Injected dynamically by js/payouts.js -->
+      </div>
+
+      <div class="modal-footer" style="padding: 14px 20px; background: var(--bg-sidebar); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+        <button type="button" class="btn-header-action" data-action="print-receipt" style="min-height: 44px; padding: 8px 16px;">
+          <i class="fa-solid fa-print"></i> Print Receipt
+        </button>
+        <button type="button" class="btn-header-action" data-action="close-receipt-modal" style="background: #111827; color: #FFFFFF; border-color: #111827; min-height: 44px; padding: 8px 20px; font-weight: 600;">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Bootstrap Script (ES Modules) -->
   <script type="module">
     import { initShell } from '../js/shell.js';
+    import { initPayouts } from '../js/payouts.js';
+
+    // 1. Initialize reusable shell with 'payouts' active
     initShell('payouts');
+
+    // 2. Initialize Payouts engine, balances, methods, and history
+    initPayouts();
   </script>
 </body>
 </html>

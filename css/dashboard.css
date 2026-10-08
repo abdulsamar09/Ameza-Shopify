@@ -3717,55 +3717,132 @@ body {
   .ledger-table tr {
     background: var(--bg-surface);
     border: 1px solid var(--border);
-    border-radius: 8px;
-    margin-bottom: 12px;
-    padding: 12px 14px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    border-radius: 14px;
+    margin-bottom: 14px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   }
 
   .ledger-table td {
-    padding: 6px 0;
+    padding: 8px 0;
     border: none;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
-    font-size: 13.5px;
-    min-height: 32px;
+    font-size: 14px;
+    min-height: 40px;
   }
 
-  .ledger-table td::before {
+  .ledger-table td::before,
+  .history-table td::before {
     content: attr(data-label);
-    font-weight: 600;
-    color: var(--text-secondary);
-    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
     flex-shrink: 0;
   }
 
-  .ledger-table td > div {
+  .ledger-table td > div,
+  .history-table td > div {
     text-align: right;
   }
 
-  .ledger-table td:last-child {
-    border-top: 1px dashed var(--border-subtle);
-    padding-top: 8px;
-    margin-top: 4px;
+  /* Description & Multi-line cells stack vertically on mobile */
+  .ledger-table td[data-label="Description"],
+  .history-table td[data-label="Description"],
+  .history-table td[data-label="Method"],
+  .history-table td[data-label="Reference"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
   }
 
-  /* Mobile Fullscreen Modals */
+  .ledger-table td[data-label="Description"]::before,
+  .history-table td[data-label="Description"]::before,
+  .history-table td[data-label="Method"]::before,
+  .history-table td[data-label="Reference"]::before {
+    margin-bottom: 2px;
+  }
+
+  .ledger-table td[data-label="Description"] > div,
+  .history-table td[data-label="Description"] > div,
+  .history-table td[data-label="Method"] > div,
+  .history-table td[data-label="Reference"] > div {
+    text-align: left !important;
+    width: 100% !important;
+    font-size: 14px !important;
+    line-height: 1.45;
+    word-break: break-word;
+  }
+
+  .ledger-table td:last-child,
+  .history-table td:last-child {
+    border-top: 1px dashed var(--border-subtle);
+    padding-top: 10px;
+    margin-top: 6px;
+  }
+
+  /* History Table Mobile Stacked Cards */
+  .history-table thead {
+    display: none;
+  }
+
+  .history-table, .history-table tbody, .history-table tr, .history-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .history-table tr {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 14px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  }
+
+  .history-table td {
+    padding: 8px 0;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    min-height: 40px;
+  }
+
+  /* Mobile Fullscreen Modals & Bottom Sheets */
   .modal-overlay {
     padding: 0;
+    align-items: flex-end; /* Bottom sheet on mobile */
   }
 
   .modal-card {
     max-width: 100% !important;
-    height: 100% !important;
-    max-height: 100% !important;
     border-radius: 0 !important;
     display: flex;
     flex-direction: column;
+  }
+
+  /* Request Payout Modal Bottom Sheet on Mobile */
+  .payout-bottom-sheet-card {
+    width: 100% !important;
+    max-height: 90vh !important;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.25) !important;
+    animation: bottomSheetUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  @keyframes bottomSheetUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
   }
 
   .modal-body {
@@ -3774,13 +3851,15 @@ body {
   }
 
   /* Touch Targets & Inputs */
-  .ledger-search-input, .ledger-filter-select, #payout-amount-input, #payout-method-select {
+  .ledger-search-input, .ledger-filter-select, #payout-amount-input, #payout-method-select,
+  .payout-form-input, .payout-form-select {
     font-size: 16px !important;
     min-height: 44px;
   }
 
-  .btn-header-action, .btn-page, .modal-close-btn {
+  .btn-header-action, .btn-page, .modal-close-btn, .btn-method-menu {
     min-height: 44px;
+    min-width: 44px;
   }
 
   body {
@@ -3823,6 +3902,512 @@ body {
     flex: 1;
     justify-content: center;
   }
+
+  .hero-balance-stats {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
+
+/* ==========================================================================
+   AMEZA PAYOUTS HUB & METHOD MANAGEMENT STYLES
+   ========================================================================== */
+
+.payouts-top-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 900px) {
+  .payouts-top-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hero Available Balance Card */
+.hero-balance-card {
+  background: linear-gradient(135deg, #111827 0%, #1F2937 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 24px;
+  color: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-balance-card::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(127, 183, 60, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-balance-lbl {
+  font-size: 13px;
+  font-weight: 600;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-balance-val {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #34D399;
+  line-height: 1.1;
+  margin: 10px 0 16px;
+}
+
+.hero-balance-stats {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+  font-size: 12.5px;
+  color: #D1D5DB;
+}
+
+.hero-stat-item strong {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.btn-hero-payout {
+  background: #111827;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 22px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  min-height: 44px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.btn-hero-payout:hover {
+  background: #1F2937;
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Payout Methods Card */
+.payout-methods-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.methods-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.methods-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.payout-methods-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.payout-method-row {
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color 0.15s ease;
+  position: relative;
+}
+
+.payout-method-row.is-default {
+  border-color: #86EFAC;
+  background: linear-gradient(90deg, rgba(240, 253, 244, 0.6) 0%, var(--bg-sidebar) 100%);
+}
+
+.method-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--text-main);
+  flex-shrink: 0;
+}
+
+.method-details {
+  flex: 1;
+  margin-left: 14px;
+}
+
+.method-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.method-account-num {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.btn-method-menu {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.15s ease;
+}
+
+.btn-method-menu:hover {
+  background: var(--bg-surface);
+  color: var(--text-main);
+}
+
+/* Method Action Menu Popover */
+.method-menu-popover {
+  position: absolute;
+  right: 16px;
+  top: 50px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+  min-width: 160px;
+  z-index: 100;
+  display: none;
+  overflow: hidden;
+}
+
+.method-menu-popover.active {
+  display: block;
+}
+
+.method-menu-item {
+  width: 100%;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-main);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s ease;
+}
+
+.method-menu-item:hover {
+  background: var(--bg-sidebar-hover);
+}
+
+.method-menu-item.danger-item {
+  color: #DC2626;
+}
+
+.method-menu-item.danger-item:hover {
+  background: #FEE2E2;
+}
+
+/* Payout Schedule Card */
+.payout-schedule-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.schedule-options-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+
+@media (max-width: 768px) {
+  .schedule-options-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+.schedule-option-item {
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--bg-surface);
+}
+
+.schedule-option-item:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-sidebar);
+}
+
+.schedule-option-item.selected {
+  border-color: var(--primary-green-dark);
+  background: rgba(127, 183, 60, 0.08);
+}
+
+.schedule-radio {
+  margin-top: 3px;
+  accent-color: var(--primary-green-dark);
+}
+
+/* History Card & Tabs */
+.payout-history-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-card);
+}
+
+.history-tabs-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.history-tab-btn {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  min-height: 40px;
+}
+
+.history-tab-btn:hover {
+  color: var(--text-main);
+  background: var(--bg-sidebar-hover);
+}
+
+.history-tab-btn.active {
+  background: #111827;
+  color: #FFFFFF;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  border-radius: 9999px;
+  letter-spacing: 0.2px;
+}
+
+.status-badge.status-paid {
+  background: #DCFCE7;
+  color: #166534;
+  border: 1px solid #BBF7D0;
+}
+
+.status-badge.status-processing {
+  background: #EFF6FF;
+  color: #1D4ED8;
+  border: 1px solid #BFDBFE;
+}
+
+.status-badge.status-requested {
+  background: #FEF3C7;
+  color: #B45309;
+  border: 1px solid #FDE68A;
+}
+
+.status-badge.status-rejected {
+  background: #FEE2E2;
+  color: #B91C1C;
+  border: 1px solid #FECACA;
+  cursor: help;
+}
+
+/* Slide-over Drawer for Add Payout Method */
+.payout-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 2100;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.payout-drawer-backdrop.open {
+  display: block;
+  opacity: 1;
+}
+
+.payout-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 480px;
+  max-width: 100%;
+  height: 100%;
+  background: var(--bg-surface);
+  box-shadow: -6px 0 25px rgba(0, 0, 0, 0.2);
+  z-index: 2200;
+  transform: translateX(100%);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.payout-drawer.open {
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .payout-drawer {
+    width: 100%;
+    transform: translateY(100%);
+  }
+
+  .payout-drawer.open {
+    transform: translateY(0);
+  }
+}
+
+.drawer-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawer-body {
+  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.drawer-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-sidebar);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.drawer-tabs-nav {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+
+.drawer-tab-item {
+  padding: 10px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.drawer-tab-item.active {
+  color: var(--text-main);
+  border-bottom-color: #111827;
+}
+
+/* Routing Number Validation Badge */
+.routing-valid-msg {
+  font-size: 11.5px;
+  font-weight: 600;
+  margin-top: 4px;
+  display: none;
+}
+
+.routing-valid-msg.valid {
+  color: #15803D;
+  display: block;
+}
+
+.routing-valid-msg.invalid {
+  color: #DC2626;
+  display: block;
+}
+
 
 
