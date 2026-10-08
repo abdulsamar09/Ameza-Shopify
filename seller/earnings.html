@@ -4,34 +4,157 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Earnings | AMEZA Seller Central</title>
+  <meta name="description" content="Track real-time merchant sales, platform commissions, double-entry ledger history, and payouts on AMEZA Marketplace.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/dashboard.css">
   <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
 </head>
-<body data-layout="none">
+<body data-layout="none" class="seller-body">
+
+  <!-- 1. Top Bar (Shell injected) -->
   <header id="app-topbar"></header>
+
+  <!-- 2. Application Layout -->
   <div class="app-layout">
+    <!-- Sidebar Navigation (Shell injected) -->
     <aside id="app-sidebar"></aside>
-    <main class="main-content" role="main">
-      <div class="page-header">
-        <div>
-          <h1 class="page-title">Earnings</h1>
-          <p class="page-subtitle">View real-time sales revenue, platform fees, and gross margins.</p>
+
+    <!-- Main Content Canvas -->
+    <main class="main-content" id="earnings-main-region" role="main">
+      <div id="earnings-content-container">
+        <!-- Rendered by js/earnings.js (Loading skeleton initial state) -->
+        <div class="earnings-skeleton-wrap" id="earnings-skeleton" aria-busy="true" aria-label="Loading earnings data">
+          <div class="skeleton-row" style="height: 38px; width: 280px; margin-bottom: 24px;"></div>
+          <div class="metrics-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 20px;">
+            <div class="skeleton-row" style="height: 120px;"></div>
+            <div class="skeleton-row" style="height: 120px;"></div>
+            <div class="skeleton-row" style="height: 120px;"></div>
+          </div>
+          <div class="skeleton-row" style="height: 140px; margin-bottom: 20px;"></div>
+          <div class="skeleton-row" style="height: 280px; margin-bottom: 20px;"></div>
+          <div class="skeleton-row" style="height: 360px;"></div>
         </div>
-      </div>
-      <div class="placeholder-card">
-        <div class="placeholder-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
-        <h2 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 8px;">Earnings Hub</h2>
-        <p style="color: var(--text-secondary); max-width: 440px; margin: 0 auto 20px;">
-          This is a placeholder page for earnings. Use the sidebar navigation or command palette (Ctrl+K) to browse other screens.
-        </p>
-        <a href="index.html" class="btn-header-action" style="text-decoration: none;">&larr; Back to Dashboard Home</a>
       </div>
     </main>
   </div>
+
+  <!-- 3. Modal: Request Payout -->
+  <div class="modal-overlay" id="payout-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="payout-modal-title" style="display: none;">
+    <div class="modal-card payout-modal-card">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="modal-header-icon" style="background: rgba(16, 185, 129, 0.12); color: #059669; width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px;">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+          </div>
+          <div>
+            <h3 class="modal-title" id="payout-modal-title" style="margin: 0; font-size: 16px; font-weight: 700;">Request Payout</h3>
+            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Direct Deposit ACH to linked U.S. bank</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-payout-modal" aria-label="Close modal" data-action="close-payout-modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="payout-request-form" novalidate>
+        <div class="modal-body" style="padding: 20px;">
+          <!-- Available Balance Callout -->
+          <div class="payout-balance-callout" style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 8px; padding: 14px 16px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-size: 11.5px; text-transform: uppercase; font-weight: 700; color: #166534; letter-spacing: 0.5px;">Available Balance</div>
+              <div id="payout-modal-available-val" style="font-size: 22px; font-weight: 800; color: #14532D; margin-top: 2px;">$0.00</div>
+            </div>
+            <span class="status-pill status-paid" style="background: #DCFCE7; color: #166534; font-weight: 700; font-size: 11px; padding: 4px 10px;">Cleared</span>
+          </div>
+
+          <!-- Payout Amount Input -->
+          <div class="form-group" style="margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label for="payout-amount-input" style="font-size: 13px; font-weight: 600; color: var(--text-main);">Withdrawal Amount (USD)</label>
+              <button type="button" class="btn-text-action" id="btn-payout-use-max" data-action="payout-use-max" style="background: none; border: none; color: var(--primary-green-dark); font-size: 12px; font-weight: 700; cursor: pointer; padding: 2px 6px;">
+                Use Max
+              </button>
+            </div>
+            <div class="input-currency-wrap" style="position: relative; display: flex; align-items: center;">
+              <span style="position: absolute; left: 14px; font-size: 16px; font-weight: 700; color: var(--text-secondary); pointer-events: none;">$</span>
+              <input type="number" id="payout-amount-input" name="amount" min="50" step="0.01" placeholder="0.00" required
+                style="width: 100%; height: 46px; padding: 8px 14px 8px 30px; font-size: 16px; font-weight: 600; border: 1.5px solid var(--border); border-radius: 8px; background: var(--bg-surface); color: var(--text-main); font-family: inherit; transition: border-color 0.15s ease;" />
+            </div>
+            <div id="payout-validation-msg" class="form-validation-msg" style="font-size: 12px; color: #DC2626; margin-top: 5px; min-height: 18px; display: none;"></div>
+            <div style="font-size: 11.5px; color: var(--text-tertiary); margin-top: 4px;">Minimum withdrawal threshold is <strong>$50.00</strong>.</div>
+          </div>
+
+          <!-- Payout Method Select -->
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label for="payout-method-select" style="display: block; font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 6px;">Destination Account</label>
+            <select id="payout-method-select" name="method" style="width: 100%; height: 46px; padding: 8px 14px; font-size: 16px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--bg-surface); color: var(--text-main); font-family: inherit; cursor: pointer;">
+              <option value="ach_chase" selected>JPMorgan Chase (Checking ••••9900) — Primary ACH</option>
+              <option value="ach_bofa">Bank of America (Checking ••••4892)</option>
+            </select>
+          </div>
+
+          <!-- ETA Disclosure Banner -->
+          <div class="payout-eta-box" style="background: var(--bg-sidebar); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; font-size: 12px; color: var(--text-secondary); display: flex; align-items: flex-start; gap: 10px;">
+            <i class="fa-solid fa-clock" style="color: var(--text-tertiary); margin-top: 2px; font-size: 13px;"></i>
+            <div>
+              <div style="font-weight: 600; color: var(--text-main); margin-bottom: 2px;">Estimated Arrival: 2–3 Business Days</div>
+              <div>Free standard ACH transfer. Requests submitted before 5:00 PM ET initiate processing same-day.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer" style="padding: 14px 20px; background: var(--bg-sidebar); border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn-header-action" id="btn-cancel-payout" data-action="close-payout-modal" style="min-height: 44px; padding: 8px 18px;">Cancel</button>
+          <button type="submit" class="btn-header-action btn-payout-confirm" id="btn-confirm-payout" style="background: #111827; color: #FFFFFF; border-color: #111827; min-height: 44px; padding: 8px 22px; font-weight: 700;">
+            Confirm Payout
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Modal: How Your Fee Was Calculated -->
+  <div class="modal-overlay" id="fee-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="fee-modal-title" style="display: none;">
+    <div class="modal-card fee-modal-card" style="max-width: 540px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="modal-header-icon" style="background: rgba(245, 158, 11, 0.12); color: #D97706; width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px;">
+            <i class="fa-solid fa-calculator"></i>
+          </div>
+          <div>
+            <h3 class="modal-title" id="fee-modal-title" style="margin: 0; font-size: 16px; font-weight: 700;">How Your Fee Was Calculated</h3>
+            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);" id="fee-modal-order-sub">Order Breakdown &amp; Commission Source</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-fee-modal" aria-label="Close modal" data-action="close-fee-modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body" id="fee-modal-body" style="padding: 20px;">
+        <!-- Injected dynamically by js/earnings.js -->
+      </div>
+
+      <div class="modal-footer" style="padding: 14px 20px; background: var(--bg-sidebar); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 12px; color: var(--text-tertiary);">AMEZA Fair Marketplace Rules</span>
+        <button type="button" class="btn-header-action" data-action="close-fee-modal" style="min-height: 44px; padding: 8px 20px; background: #111827; color: #FFFFFF; border-color: #111827; font-weight: 600;">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Bootstrap Script (ES Modules) -->
   <script type="module">
     import { initShell } from '../js/shell.js';
+    import { initEarnings } from '../js/earnings.js';
+
+    // 1. Initialize reusable shell with 'earnings' as active page
     initShell('earnings');
+
+    // 2. Initialize Earnings dataset, metrics, SVG chart, and ledger table
+    initEarnings();
   </script>
 </body>
 </html>
