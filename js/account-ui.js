@@ -6,6 +6,16 @@
 
 'use strict';
 
+function escapeHTML(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 const AccountUI = {
 
   // ─── Toast Notifications ──────────────────────────────────────
@@ -66,17 +76,24 @@ const AccountUI = {
   },
 
   // ─── Page Protection ──────────────────────────────────────────
-  requireAuth() {
-    if (!window.AmezaAuth || !window.AmezaAuth.isLoggedIn()) {
+  requireAuth(redirectBack = true) {
+    if (window.AmezaAuth && typeof window.AmezaAuth.requireAuth === 'function') {
+      return window.AmezaAuth.requireAuth(redirectBack);
+    }
+    const user = window.AmezaAuth?.getCurrentUser();
+    if (user) return user;
+    if (typeof window !== 'undefined' && window.location) {
       try {
         const page = window.location.pathname.split('/').pop() || 'account.html';
         const search = window.location.search || '';
-        const target = encodeURIComponent(page + search);
-        window.location.href = `login.html?redirect=${target}`;
-      } catch (e) {}
-      return false;
+        let target = page + search;
+        if (!redirectBack) target = 'account.html';
+        window.location.href = `login.html?redirect=${encodeURIComponent(target)}`;
+      } catch (e) {
+        window.location.href = 'login.html';
+      }
     }
-    return window.AmezaAuth.getCurrentUser() || false;
+    return null;
   },
 
   // ─── Sidebar Active State ─────────────────────────────────────
@@ -88,20 +105,36 @@ const AccountUI = {
     if (active) active.classList.add('active');
   },
 
-  // ─── Mobile Sidebar Toggle ────────────────────────────────────
+  // ─── Mobile Sidebar Toggle & Common Handlers ──────────────────
   initMobileSidebar() {
     const toggle = document.getElementById('account-mobile-nav-toggle');
     const sidebar = document.getElementById('account-sidebar');
-    if (!toggle || !sidebar) return;
+    if (toggle && sidebar) {
+      toggle.addEventListener('click', () => {
+        const open = sidebar.classList.toggle('mobile-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
 
-    toggle.addEventListener('click', () => {
-      const open = sidebar.classList.toggle('mobile-open');
-      toggle.innerHTML = open
-        ? `<span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> My Account</span>
-           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>`
-        : `<span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> My Account</span>
-           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
-    });
+    const logoutBtn = document.getElementById('sidebar-logout-btn');
+    if (logoutBtn && !logoutBtn.dataset.bound) {
+      logoutBtn.dataset.bound = 'true';
+      logoutBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const confirmed = await this.confirm({
+          title: 'Sign Out',
+          description: 'Are you sure you want to sign out of your account?',
+          confirmText: 'Sign Out',
+          cancelText: 'Stay'
+        });
+        if (confirmed) {
+          if (window.AmezaAuth) {
+            window.AmezaAuth.logout();
+          }
+          window.location.href = 'index.html';
+        }
+      });
+    }
   },
 
   // ─── Populate Sidebar User Info ───────────────────────────────
@@ -242,25 +275,43 @@ const AccountUI = {
 
   // ─── Shared sidebar HTML ──────────────────────────────────────
   sidebarHTML(user, activePage) {
+    if (!user) user = { firstName: 'Member', lastName: '', email: '' };
+    const esc = window.escapeHTML || (s => String(s || '').replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c])));
+
+    let pendingCount = 0;
+    try {
+      if (window.AmezaAuth && typeof window.AmezaAuth.getOrders === 'function') {
+        const orders = window.AmezaAuth.getOrders(user.id);
+        pendingCount = orders.filter(o => ['pending', 'processing', 'packed', 'shipped'].includes((o.status || '').toLowerCase())).length;
+      }
+    } catch (e) {}
+
+    const isSeller = user.role === 'seller' || user.isSeller === true;
+
     const pages = [
-      { key: 'overview', label: 'Account Overview', href: 'account.html', icon: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>' },
-      { key: 'orders', label: 'My Orders', href: 'account-orders.html', icon: '<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>' },
-      { key: 'profile', label: 'Personal Info', href: 'account-profile.html', icon: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>' },
-      { key: 'addresses', label: 'Addresses', href: 'account-addresses.html', icon: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>' },
+      { key: 'overview', label: 'Overview', href: 'account.html', icon: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>' },
+      { key: 'orders', label: 'Orders', href: 'account-orders.html', icon: '<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>', badge: pendingCount > 0 ? pendingCount : null },
+      { key: 'returns', label: 'Returns', href: 'account-orders.html?tab=returns', icon: '<polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>' },
       { key: 'wishlist', label: 'Wishlist', href: 'account-wishlist.html', icon: '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>' },
-      { key: 'security', label: 'Security', href: 'account-security.html', icon: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>' },
+      { key: 'addresses', label: 'Addresses', href: 'account-addresses.html', icon: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>' },
+      { key: 'profile', label: 'Profile', href: 'account-profile.html', icon: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>' },
     ];
+
+    const firstName = esc(user.firstName || 'Member');
+    const lastName = esc(user.lastName || '');
+    const email = esc(user.email || '');
+    const initial = esc((user.firstName || 'M').charAt(0).toUpperCase());
 
     return `
       <div class="account-sidebar-header">
         <div style="display: flex; align-items: center; gap: 12px;">
-          <div class="account-avatar" id="sidebar-avatar">${user.firstName.charAt(0).toUpperCase()}</div>
-          <div>
-            <div class="account-sidebar-name" id="sidebar-user-name">${user.firstName} ${user.lastName}</div>
-            <div class="account-sidebar-email" id="sidebar-user-email">${user.email}</div>
+          <div class="account-avatar" id="sidebar-avatar">${initial}</div>
+          <div style="min-width: 0;">
+            <div class="account-sidebar-name" id="sidebar-user-name">${firstName} ${lastName}</div>
+            <div class="account-sidebar-email" id="sidebar-user-email">${email}</div>
             <div class="account-sidebar-badge">
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Premium Member
+              ${user.role === 'seller' ? 'Verified Merchant' : (user.role === 'super_admin' ? 'Super Admin' : 'Active Account')}
             </div>
           </div>
         </div>
@@ -269,16 +320,26 @@ const AccountUI = {
         ${pages.map(p => `
           <a href="${p.href}" class="account-nav-item ${activePage === p.key ? 'active' : ''}" data-nav="${p.key}" aria-current="${activePage === p.key ? 'page' : 'false'}">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${p.icon}</svg>
-            ${p.label}
+            <span class="account-nav-label">${escapeHTML(p.label)}</span>
+            ${p.badge ? `<span class="account-nav-badge">${escapeHTML(p.badge)}</span>` : ''}
           </a>
         `).join('')}
-        <div style="margin: 12px 10px; padding: 12px; background: var(--primary-lighter); border: 1px dashed var(--primary); border-radius: var(--radius-md); text-align: center;">
-          <div style="font-size: 0.78rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 4px;">U.S. Merchants</div>
-          <a href="seller/index.html" style="font-size: 0.78rem; font-weight: 700; color: var(--dark); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px;">
-            <i class="fa-solid fa-briefcase" style="color: var(--primary);"></i> Merchant Portal &rarr;
-          </a>
-        </div>
-        <button class="account-nav-item nav-logout" id="sidebar-logout-btn" aria-label="Sign out">
+
+        ${isSeller ? `
+          <div class="account-sidebar-seller-card">
+            <div class="sidebar-seller-title"><i class="fa-solid fa-briefcase"></i> Seller Dashboard</div>
+            <p class="sidebar-seller-desc">Manage store products, orders, and payouts.</p>
+            <a href="seller/index.html" class="sidebar-seller-link">Open seller dashboard &rarr;</a>
+          </div>
+        ` : `
+          <div class="account-sidebar-seller-card">
+            <div class="sidebar-seller-title"><i class="fa-solid fa-store"></i> Become a seller</div>
+            <p class="sidebar-seller-desc">Sell to millions of shoppers across the U.S.</p>
+            <a href="onboarding/sell-with-us.html" class="sidebar-seller-link">Become a seller &rarr;</a>
+          </div>
+        `}
+
+        <button type="button" class="account-nav-item nav-logout" id="sidebar-logout-btn" aria-label="Sign out">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
           Sign Out
         </button>

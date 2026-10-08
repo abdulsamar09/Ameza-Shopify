@@ -7,6 +7,7 @@
 
 import { DEMO_IDENTITIES, SeedService } from './api/seed.js';
 import { CmsAPI, applyThemeVariables } from './api/cms.api.js';
+import { showToast } from './core/utils.js';
 
 export const DemoController = {
   init() {
@@ -82,8 +83,8 @@ export const DemoController = {
       });
 
       localStorage.setItem('ameza_ledger_entries', JSON.stringify(ledger));
-      alert(`⏱️ Virtual clock advanced by +${days} days!\n\nSimulated hold period elapsed. ${releasedCount} pending funds entries released into Available balance.`);
-      window.location.reload();
+      showToast(`⏱️ Virtual clock advanced by +${days} days! Simulated hold period elapsed. ${releasedCount} pending entries released into Available balance.`, 'success');
+      setTimeout(() => window.location.reload(), 1200);
     } catch (e) {
       console.error('Time advancement error:', e);
     }
@@ -93,8 +94,8 @@ export const DemoController = {
     if (confirm('⚠️ Are you sure you want to reset all demo data back to clean defaults?')) {
       SeedService.reset();
       localStorage.removeItem('ameza_time_offset_days');
-      alert('✨ Demo environment successfully re-seeded with realistic US marketplace data!');
-      window.location.href = 'index.html';
+      showToast('✨ Demo environment successfully re-seeded with realistic US marketplace data!', 'success');
+      setTimeout(() => { window.location.href = 'index.html'; }, 1000);
     }
   },
 

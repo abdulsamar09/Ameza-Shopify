@@ -371,20 +371,61 @@ function getSession() {
 function isLoggedIn() {
   const session = getSession();
   if (!session) return false;
-  if (Date.now() > session.expiresAt) {
+  if (session.expiresAt && Date.now() > session.expiresAt) {
     clearSession();
     return false;
   }
-  return true;
+  return !!(session.userId || (session.user && (session.user.id || session.user.userId)));
 }
 
 function getCurrentUser() {
   if (!isLoggedIn()) return null;
   const session = getSession();
-  const user = findUserById(session.userId);
-  if (!user) return null;
-  const { passwordHash, verifyToken, ...safeUser } = user;
-  return safeUser;
+  if (!session) return null;
+
+  // 1. Resolve from ameza_session.user when it exists (demo identities and API login)
+  if (session.user && typeof session.user === 'object') {
+    const { passwordHash, verifyToken, ...safeUser } = session.user;
+    if (!safeUser.id && session.userId) safeUser.id = session.userId;
+    if (!safeUser.role && session.role) safeUser.role = session.role;
+    if (!safeUser.firstName && safeUser.name) {
+      const parts = safeUser.name.split(' ');
+      safeUser.firstName = parts[0] || 'Member';
+      safeUser.lastName = parts.slice(1).join(' ') || '';
+    }
+    if (safeUser.emailVerified === undefined) safeUser.emailVerified = true;
+    return safeUser;
+  }
+
+  // 2. Otherwise resolve from ameza_users by userId
+  if (session.userId) {
+    const user = findUserById(session.userId);
+    if (user) {
+      const { passwordHash, verifyToken, ...safeUser } = user;
+      return safeUser;
+    }
+  }
+
+  return null;
+}
+
+function requireAuth(redirectBack = true) {
+  const user = getCurrentUser();
+  if (user) {
+    return user;
+  }
+  if (typeof window !== 'undefined' && window.location) {
+    try {
+      const page = window.location.pathname.split('/').pop() || 'account.html';
+      const search = window.location.search || '';
+      let target = page + search;
+      if (!redirectBack) target = 'account.html';
+      window.location.href = `login.html?redirect=${encodeURIComponent(target)}`;
+    } catch (e) {
+      window.location.href = 'login.html';
+    }
+  }
+  return null;
 }
 
 function createSession(userId, remember = true) {
@@ -542,16 +583,26 @@ function logout() {
 
 /**
  * Require authentication — redirects to login if not logged in.
+ * Returns the current user object when authenticated; redirects and returns null when not.
  */
 function requireAuth(redirectBack = true) {
-  if (!isLoggedIn()) {
-    const currentPage = encodeURIComponent(window.location.href);
-    window.location.href = redirectBack
-      ? `login.html?redirect=${currentPage}`
-      : 'login.html';
-    return false;
+  const user = getCurrentUser();
+  if (!user) {
+    try {
+      if (typeof window !== 'undefined') {
+        const page = window.location.pathname.split('/').pop() || 'account.html';
+        const search = window.location.search || '';
+        const target = encodeURIComponent(page + search);
+        window.location.href = redirectBack
+          ? `login.html?redirect=${target}`
+          : 'login.html';
+      }
+    } catch (e) {
+      console.warn('requireAuth redirect failed:', e);
+    }
+    return null;
   }
-  return true;
+  return user;
 }
 
 // ============================================================
@@ -726,7 +777,48 @@ async function changeEmail(userId, { newEmail, currentPassword }) {
 // ============================================================
 
 function getAddresses(userId) {
-  return JSON.parse(localStorage.getItem(`ameza_addresses_${userId}`) || '[]');
+  if (!userId) {
+    const curr = getCurrentUser();
+    userId = curr ? curr.id : 'cust_sarah_jenkins';
+  }
+  const addresses = JSON.parse(localStorage.getItem(`ameza_addresses_${userId}`) || '[]');
+  if (addresses.length === 0 && (userId === 'cust_sarah_jenkins' || userId === 'customer')) {
+    const seedAddresses = [
+      {
+        id: 'addr_sj_1',
+        firstName: 'Sarah',
+        lastName: 'Jenkins',
+        company: '',
+        line1: '1204 Congress Ave, Suite 300',
+        line2: 'Apt 4B',
+        city: 'Austin',
+        state: 'TX',
+        zip: '78701',
+        country: 'United States',
+        phone: '(555) 010-0142',
+        isDefault: true,
+        type: 'shipping'
+      },
+      {
+        id: 'addr_sj_2',
+        firstName: 'Sarah',
+        lastName: 'Jenkins',
+        company: 'Jenkins Studio',
+        line1: '450 W 2nd St, Unit 1802',
+        line2: '',
+        city: 'Austin',
+        state: 'TX',
+        zip: '78701',
+        country: 'United States',
+        phone: '(555) 010-0142',
+        isDefault: false,
+        type: 'billing'
+      }
+    ];
+    saveAddresses(userId, seedAddresses);
+    return seedAddresses;
+  }
+  return addresses;
 }
 
 function saveAddresses(userId, addresses) {
@@ -783,24 +875,44 @@ function setDefaultAddress(userId, addressId) {
 // ============================================================
 
 function getOrders(userId) {
+  if (!userId) {
+    const curr = getCurrentUser();
+    userId = curr ? (curr.id || curr.userId) : null;
+  }
+  if (!userId) return [];
+
   const localOrders = JSON.parse(localStorage.getItem(`ameza_orders_${userId}`) || '[]');
   try {
     const parentOrders = JSON.parse(localStorage.getItem('ameza_marketplace_parent_orders') || '[]');
+    const curr = getCurrentUser();
+    const currEmail = (curr && (curr.id === userId || curr.userId === userId) && curr.email)
+      ? curr.email.toLowerCase().trim()
+      : null;
+
     const matchingParents = parentOrders
-      .filter(p => p.customerId === userId || userId === 'cust_sarah_jenkins')
+      .filter(p => {
+        if (p.customerId === userId) return true;
+        if (currEmail && p.customerEmail && p.customerEmail.toLowerCase().trim() === currEmail) return true;
+        return false;
+      })
       .map(p => ({
         id: p.id,
-        date: new Date(p.createdAt).toLocaleDateString('en-AU'),
+        orderNumber: p.orderNumber || p.id,
+        date: new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(p.createdAt)),
         createdAt: p.createdAt,
-        total: p.grandTotalAUD || ((p.grandTotalCents || 0) / 100),
+        total: (p.grandTotalCents || 0) / 100,
+        grandTotalCents: p.grandTotalCents || 0,
         status: p.status || 'Confirmed',
-        paymentStatus: p.paymentStatus || 'Paid',
-        items: p.items || (p.vendorSplits || []).map(v => `${v.sellerName} (${v.subOrderId})`),
-        shippingAddress: p.shippingAddress?.line1 || 'On file'
+        paymentStatus: p.paymentStatus || 'Paid (Verified)',
+        carrier: p.carrier,
+        trackingNumber: p.trackingNumber,
+        trackingUrl: p.trackingUrl,
+        items: p.items || (p.vendorSplits || []).map(v => ({ name: `${v.sellerName} Order (${v.subOrderId})`, quantity: 1, price: (v.subtotalCents || 0) / 100 })),
+        shippingAddress: p.shippingAddress?.line1 || '401 Congress Ave, Suite 1500, Austin, TX 78701'
       }));
 
     const map = new Map();
-    [...localOrders, ...matchingParents].forEach(o => map.set(o.id, o));
+    [...localOrders, ...matchingParents].forEach(o => map.set(o.id || o.orderNumber, o));
     return Array.from(map.values()).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
   } catch (e) {
     return localOrders;

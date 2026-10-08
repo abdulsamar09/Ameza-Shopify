@@ -365,9 +365,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  min-width: 42px;
-  height: 42px;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
   border-radius: 50%;
   color: var(--text-main, #111827);
   background: var(--bg-surface, #FFFFFF);
@@ -1021,7 +1022,7 @@
 /* ==========================================================================
    7. RESPONSIVE BREAKPOINTS
    ========================================================================== */
-@media (max-width: 992px) {
+@media (max-width: 1100px) {
   .hamburger-btn {
     display: inline-flex;
   }
@@ -1123,9 +1124,10 @@
   }
 
   .action-btn {
-    width: 36px;
-    min-width: 36px;
-    height: 36px;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
   }
 
   .action-btn svg {
@@ -1199,8 +1201,10 @@
   .back-to-top-btn {
     bottom: 20px;
     right: 20px;
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     font-size: 14px;
   }
 }

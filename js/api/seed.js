@@ -17,23 +17,51 @@ import { PRODUCTS as CATALOG_PRODUCTS, CATEGORIES as CATALOG_CATEGORIES } from '
 export const DEMO_IDENTITIES = {
   GUEST: {
     id: 'guest',
+    userId: 'guest',
     role: 'guest',
+    firstName: 'Guest',
+    lastName: 'Shopper',
     name: 'Guest Shopper',
     email: '',
+    phone: '',
+    address: {
+      fullName: 'Guest Shopper',
+      line1: '100 Congress Ave',
+      city: 'Austin',
+      state: 'TX',
+      zip: '78701',
+      country: 'United States'
+    },
+    city: 'Austin',
+    state: 'TX',
+    zip: '78701',
+    country: 'United States',
+    emailVerified: false,
     avatar: 'assets/profile.jpg'
   },
   CUSTOMER: {
     id: 'cust_sarah_jenkins',
+    userId: 'cust_sarah_jenkins',
     role: 'customer',
     firstName: 'Sarah',
     lastName: 'Jenkins',
     name: 'Sarah Jenkins',
     email: 'sarah.jenkins@example.com',
-    phone: '(555) 010-0123',
+    phone: '(555) 010-0142',
+    address: {
+      fullName: 'Sarah Jenkins',
+      line1: '401 Congress Ave, Suite 1500',
+      city: 'Austin',
+      state: 'TX',
+      zip: '78701',
+      country: 'United States',
+      phone: '(555) 010-0142'
+    },
     city: 'Austin',
     state: 'TX',
     zip: '78701',
     country: 'United States',
+    emailVerified: true,
     avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80'
   },
   SELLER_1: {
@@ -44,8 +72,20 @@ export const DEMO_IDENTITIES = {
     slug: 'austin-leather-co',
     sellerName: 'Austin Leather Co',
     ownerName: 'Jack Callahan',
+    firstName: 'Jack',
+    lastName: 'Callahan',
+    name: 'Jack Callahan',
     email: 'jack.callahan@example.com',
     phone: '(555) 010-0123',
+    address: {
+      fullName: 'Jack Callahan',
+      line1: '100 Congress Ave',
+      city: 'Austin',
+      state: 'TX',
+      zip: '78701',
+      country: 'United States',
+      phone: '(555) 010-0123'
+    },
     ein: '12-3456789',
     taxIdType: 'EIN',
     einLast4: '4892',
@@ -60,6 +100,7 @@ export const DEMO_IDENTITIES = {
     ratingCount: 88,
     status: 'approved',
     isTrusted: true,
+    emailVerified: true,
     logoUrl: 'assets/wp_products/wp_52_0.webp',
     bannerUrl: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=80',
     description: 'Master leather crafters based in Austin, Texas. Hand-stitched full-grain American bovine leather goods.',
@@ -78,8 +119,20 @@ export const DEMO_IDENTITIES = {
     slug: 'pacific-coastal-living',
     sellerName: 'Pacific Coastal Living',
     ownerName: 'Emma Ross',
+    firstName: 'Emma',
+    lastName: 'Ross',
+    name: 'Emma Ross',
     email: 'emma.ross@example.com',
     phone: '(555) 010-0456',
+    address: {
+      fullName: 'Emma Ross',
+      line1: '300 Broadway',
+      city: 'San Diego',
+      state: 'CA',
+      zip: '92101',
+      country: 'United States',
+      phone: '(555) 010-0456'
+    },
     ein: '98-7654321',
     taxIdType: 'SSN',
     einLast4: '7120',
@@ -94,6 +147,7 @@ export const DEMO_IDENTITIES = {
     ratingCount: 64,
     status: 'approved',
     isTrusted: true,
+    emailVerified: true,
     logoUrl: 'assets/wp_products/wp_250_0.webp',
     bannerUrl: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80',
     description: 'Sustainable linen apparel and contemporary coastal home essentials crafted on the West Coast.',
@@ -112,8 +166,20 @@ export const DEMO_IDENTITIES = {
     slug: 'portland-artisan-goods',
     sellerName: 'Portland Artisan Goods',
     ownerName: 'Liam Chen',
+    firstName: 'Liam',
+    lastName: 'Chen',
+    name: 'Liam Chen',
     email: 'liam.chen@example.com',
     phone: '(555) 010-0789',
+    address: {
+      fullName: 'Liam Chen',
+      line1: '500 SW 5th Ave',
+      city: 'Portland',
+      state: 'OR',
+      zip: '97201',
+      country: 'United States',
+      phone: '(555) 010-0789'
+    },
     ein: '45-6789012',
     taxIdType: 'EIN',
     einLast4: '3319',
@@ -128,6 +194,7 @@ export const DEMO_IDENTITIES = {
     ratingCount: 42,
     status: 'approved',
     isTrusted: false,
+    emailVerified: true,
     logoUrl: 'assets/wp_products/wp_284_0.webp',
     bannerUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80',
     description: 'Small-batch specialty electronics, handcrafted desk gear, and precision horology accessories.',
@@ -140,18 +207,54 @@ export const DEMO_IDENTITIES = {
   },
   SUPER_ADMIN: {
     id: 'admin_alexander_vance',
+    userId: 'admin_alexander_vance',
     role: 'super_admin',
+    firstName: 'Alexander',
+    lastName: 'Vance',
     name: 'Alexander Vance',
     email: 'admin@example.com',
+    phone: '(555) 010-0900',
+    address: {
+      fullName: 'Alexander Vance',
+      line1: '100 Congress Ave',
+      city: 'Austin',
+      state: 'TX',
+      zip: '78701',
+      country: 'United States',
+      phone: '(555) 010-0900'
+    },
+    city: 'Austin',
+    state: 'TX',
+    zip: '78701',
+    country: 'United States',
+    emailVerified: true,
     title: 'Chief Marketplace Officer',
     avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80',
     permissions: ['all']
   },
   STAFF_SUPPORT: {
     id: 'staff_chloe_wright',
+    userId: 'staff_chloe_wright',
     role: 'staff',
+    firstName: 'Chloe',
+    lastName: 'Wright',
     name: 'Chloe Wright',
     email: 'chloe.support@example.com',
+    phone: '(555) 010-0901',
+    address: {
+      fullName: 'Chloe Wright',
+      line1: '100 Congress Ave',
+      city: 'Austin',
+      state: 'TX',
+      zip: '78701',
+      country: 'United States',
+      phone: '(555) 010-0901'
+    },
+    city: 'Austin',
+    state: 'TX',
+    zip: '78701',
+    country: 'United States',
+    emailVerified: true,
     title: 'Customer & Dispute Specialist',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
     permissions: [
@@ -166,9 +269,27 @@ export const DEMO_IDENTITIES = {
   },
   STAFF_CATALOG: {
     id: 'staff_marcus_reed',
+    userId: 'staff_marcus_reed',
     role: 'staff',
+    firstName: 'Marcus',
+    lastName: 'Reed',
     name: 'Marcus Reed',
     email: 'marcus.catalog@example.com',
+    phone: '(555) 010-0902',
+    address: {
+      fullName: 'Marcus Reed',
+      line1: '100 Congress Ave',
+      city: 'Austin',
+      state: 'TX',
+      zip: '78701',
+      country: 'United States',
+      phone: '(555) 010-0902'
+    },
+    city: 'Austin',
+    state: 'TX',
+    zip: '78701',
+    country: 'United States',
+    emailVerified: true,
     title: 'Catalog & Moderation Specialist',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
     permissions: [
@@ -507,29 +628,65 @@ function generateSeedOrders(products) {
       }
     });
 
+    const isSarah = (i <= 5);
+    const orderCustomerId = isSarah ? 'cust_sarah_jenkins' : `cust_${(i % 12) + 1}`;
+    const orderCustomerName = isSarah ? 'Sarah Jenkins' : `${firstNames[i % firstNames.length]} ${lastNames[i % lastNames.length]}`;
+    const orderCustomerEmail = isSarah ? 'sarah.jenkins@example.com' : `${orderCustomerName.toLowerCase().replace(' ', '.')}@example.com`;
+    const orderStatus = isSarah
+      ? (i === 1 ? 'shipped' : (i === 2 ? 'processing' : (i === 3 ? 'packed' : (i === 4 ? 'delivered' : 'confirmed'))))
+      : status;
+
     const parentGrandTotal = parentSubtotalCents + parentShippingCents;
+
+    const parentItems = chosenProducts.map(p => ({
+      productId: p.id,
+      name: p.name,
+      image: p.image || 'assets/wp_products/wp_52_0.webp',
+      thumbnail: p.image || 'assets/wp_products/wp_52_0.webp',
+      quantity: 1 + (i % 2),
+      price: (p.priceCents || p.price || 5999) / 100,
+      priceCents: p.priceCents || p.price || 5999
+    }));
+
+    const trackingUrl = carrier === 'USPS'
+      ? `https://tools.usps.com/go/TrackConfirmAction?tLabels=${encodeURIComponent(subOrders[subOrders.length - 1]?.trackingNumber || '9400111899562537628190')}`
+      : (carrier === 'UPS'
+        ? `https://www.ups.com/track?tracknum=${encodeURIComponent(subOrders[subOrders.length - 1]?.trackingNumber || '1Z9999990123456784')}`
+        : `https://www.fedex.com/fedextrack/?trknbr=${encodeURIComponent(subOrders[subOrders.length - 1]?.trackingNumber || '794612345678')}`);
 
     parentOrders.push({
       id: parentOrderId,
       orderNumber: parentOrderId,
-      customerId: `cust_${(i % 12) + 1}`,
-      customerName,
-      customerEmail: `${customerName.toLowerCase().replace(' ', '.')}@example.com`,
+      customerId: orderCustomerId,
+      customerName: orderCustomerName,
+      customerEmail: orderCustomerEmail,
       currency: 'USD',
       subtotalCents: parentSubtotalCents,
       shippingCents: parentShippingCents,
       grandTotalCents: parentGrandTotal,
       paymentMethod: (i % 8 === 0) ? 'cod' : 'card',
       paymentStatus: (i % 8 === 0) ? 'Payment on Delivery' : 'Paid (Verified)',
-      shippingAddress: {
-        fullName: customerName,
+      carrier: carrier,
+      trackingNumber: subOrders[subOrders.length - 1]?.trackingNumber || '9400111899562537628190',
+      trackingUrl,
+      items: parentItems,
+      shippingAddress: isSarah ? {
+        fullName: 'Sarah Jenkins',
+        line1: '401 Congress Ave, Suite 1500',
+        city: 'Austin',
+        state: 'TX',
+        zip: '78701',
+        country: 'United States',
+        phone: '(555) 010-0142'
+      } : {
+        fullName: orderCustomerName,
         line1: `${12 + (i % 80)} ${loc.street}`,
         city: loc.city,
         state: loc.state,
         zip: loc.zip,
         country: 'United States'
       },
-      status,
+      status: orderStatus,
       vendorSplits,
       createdAt: orderTime
     });
@@ -542,8 +699,11 @@ export const SeedService = {
   init(force = false) {
     if (typeof localStorage === 'undefined') return;
 
-    const isInitialized = localStorage.getItem('ameza_demo_seeded_usa_v4');
-    if (isInitialized && !force) {
+    const isInitialized = localStorage.getItem('ameza_demo_seeded_usa_v5');
+    const hasAddresses = localStorage.getItem('ameza_addresses_cust_sarah_jenkins');
+    const hasOrders = localStorage.getItem('ameza_orders_cust_sarah_jenkins');
+
+    if (isInitialized && hasAddresses && hasOrders && !force) {
       return;
     }
 
@@ -559,17 +719,106 @@ export const SeedService = {
     localStorage.setItem('ameza_sellers', JSON.stringify(sellers));
     localStorage.setItem('ameza_seller_applications', JSON.stringify(PENDING_APPLICATIONS));
 
-    // 2. Products
+    // 2. Users (all demo identities as valid registered users)
+    const allUsers = Object.values(DEMO_IDENTITIES).map(d => ({
+      id: d.id,
+      userId: d.userId || d.id,
+      role: d.role,
+      firstName: d.firstName || 'Member',
+      lastName: d.lastName || '',
+      name: d.name || `${d.firstName} ${d.lastName}`,
+      email: d.email,
+      phone: d.phone || '(555) 010-0100',
+      address: d.address || { line1: '100 Congress Ave', city: 'Austin', state: 'TX', zip: '78701', country: 'United States' },
+      city: d.city || 'Austin',
+      state: d.state || 'TX',
+      zip: d.zip || '78701',
+      country: d.country || 'United States',
+      emailVerified: d.emailVerified !== undefined ? d.emailVerified : true,
+      avatar: d.avatar,
+      createdAt: Date.now() - 86400000 * 60
+    }));
+    localStorage.setItem('ameza_users', JSON.stringify(allUsers));
+
+    // 3. Products
     const products = distributeProducts();
     localStorage.setItem('ameza_custom_products', JSON.stringify(products));
 
-    // 3. Orders & Ledger
+    // 4. Orders & Ledger
     const { parentOrders, subOrders, ledgerEntries } = generateSeedOrders(products);
     localStorage.setItem('ameza_marketplace_parent_orders', JSON.stringify(parentOrders));
     localStorage.setItem('ameza_marketplace_sub_orders', JSON.stringify(subOrders));
     localStorage.setItem('ameza_ledger_entries', JSON.stringify(ledgerEntries));
 
-    // 4. Default Payouts
+    // 5. Sarah Jenkins Orders store
+    const sarahOrders = parentOrders
+      .filter(p => p.customerId === 'cust_sarah_jenkins')
+      .map(p => ({
+        id: p.id,
+        orderNumber: p.orderNumber || p.id,
+        date: new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(p.createdAt)),
+        createdAt: p.createdAt,
+        total: (p.grandTotalCents || 0) / 100,
+        grandTotalCents: p.grandTotalCents || 0,
+        status: p.status,
+        paymentStatus: p.paymentStatus,
+        carrier: p.carrier,
+        trackingNumber: p.trackingNumber,
+        trackingUrl: p.trackingUrl,
+        items: p.items,
+        shippingAddress: p.shippingAddress?.line1 || '401 Congress Ave, Suite 1500, Austin, TX 78701'
+      }));
+    localStorage.setItem('ameza_orders_cust_sarah_jenkins', JSON.stringify(sarahOrders));
+
+    // 6. Sarah Jenkins 2 Saved US Addresses
+    const sarahAddresses = [
+      {
+        id: 'addr_sj_1',
+        fullName: 'Sarah Jenkins',
+        firstName: 'Sarah',
+        lastName: 'Jenkins',
+        line1: '401 Congress Ave, Suite 1500',
+        line2: 'Floor 15',
+        city: 'Austin',
+        state: 'TX',
+        zip: '78701',
+        country: 'United States',
+        phone: '(555) 010-0142',
+        isDefault: true,
+        isBillingDefault: true
+      },
+      {
+        id: 'addr_sj_2',
+        fullName: 'Sarah Jenkins',
+        firstName: 'Sarah',
+        lastName: 'Jenkins',
+        line1: '1209 West 6th St',
+        line2: '',
+        city: 'Austin',
+        state: 'TX',
+        zip: '78703',
+        country: 'United States',
+        phone: '(555) 010-0142',
+        isDefault: false,
+        isBillingDefault: false
+      }
+    ];
+    localStorage.setItem('ameza_addresses_cust_sarah_jenkins', JSON.stringify(sarahAddresses));
+
+    // 7. Sarah Jenkins Wishlist (3 items)
+    const seedWishlist = products.slice(0, 3).map(p => ({
+      id: p.id,
+      name: p.name,
+      price: (p.priceCents || p.price || 5999) / 100,
+      priceCents: p.priceCents || p.price || 5999,
+      salePrice: p.oldPrice ? (p.priceCents || p.price || 5999) / 100 : null,
+      image: p.image || 'assets/wp_products/wp_52_0.webp',
+      img: p.image || 'assets/wp_products/wp_52_0.webp',
+      inStock: true
+    }));
+    localStorage.setItem('ameza_wishlist', JSON.stringify(seedWishlist));
+
+    // 8. Default Payouts
     const seedPayouts = [
       {
         id: 'pay_austin_001',
@@ -609,7 +858,7 @@ export const SeedService = {
     ];
     localStorage.setItem('ameza_payout_requests', JSON.stringify(seedPayouts));
 
-    // 5. Default CMS & Platform Settings
+    // 9. Default CMS & Platform Settings
     const defaultSettings = {
       siteName: 'AMEZA Marketplace',
       baseCurrency: 'USD',
@@ -630,8 +879,9 @@ export const SeedService = {
     };
     localStorage.setItem('ameza_platform_settings', JSON.stringify(defaultSettings));
 
-    // 6. Active Session
-    if (!localStorage.getItem('ameza_session')) {
+    // 10. Active Session
+    const existingSession = JSON.parse(localStorage.getItem('ameza_session') || 'null');
+    if (!existingSession || existingSession.userId === 'cust_sarah_jenkins') {
       localStorage.setItem('ameza_session', JSON.stringify({
         userId: DEMO_IDENTITIES.CUSTOMER.id,
         user: DEMO_IDENTITIES.CUSTOMER,
@@ -640,8 +890,8 @@ export const SeedService = {
       }));
     }
 
-    localStorage.setItem('ameza_demo_seeded_usa_v4', 'true');
-    console.log('[AMEZA Seed Engine] Seed complete! 51 products, 65 orders, and realistic ledger generated.');
+    localStorage.setItem('ameza_demo_seeded_usa_v5', 'true');
+    console.log('[AMEZA Seed Engine] Seed complete! 51 products, 65 orders, addresses, wishlist, and users generated.');
   },
 
   reset() {
