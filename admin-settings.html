@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Settings & Staff Roles — AMEZA Marketplace USA</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/seller.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="seller-body">
+
+  <!-- Persistent Demo Control Bar -->
+  <script type="module" src="js/demo-bar.js"></script>
+
+  <div class="seller-layout">
+    <!-- Admin Sidebar -->
+    <aside class="seller-sidebar">
+      <div class="seller-brand">
+        <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;">
+          <img src="assets/ameza-logo.png" alt="AMEZA" style="height: 28px;">
+          <span style="font-weight: 800; font-size: 1.1rem; color: var(--dark);">Admin Console</span>
+        </a>
+      </div>
+      <nav class="seller-nav">
+        <a href="admin-moderation.html" class="seller-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          Moderation Queue
+        </a>
+        <a href="admin-finance.html" class="seller-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          Finance & Commission
+        </a>
+        <a href="admin-cms.html" class="seller-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+          CMS & Storefront
+        </a>
+        <a href="admin-categories.html" class="seller-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Categories & Taxonomy
+        </a>
+        <a href="admin-audit.html" class="seller-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          Platform Audit Log
+        </a>
+        <a href="admin-settings.html" class="seller-nav-item active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Settings & Staff Roles
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="seller-main">
+      <header class="seller-header">
+        <div>
+          <h1 style="font-size: 1.6rem; font-weight: 800; color: var(--dark); margin: 0;">Platform Settings & Staff RBAC</h1>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin: 4px 0 0;">Manage real feature toggles, live brand theme tokens, currency rates, and staff permission matrices.</p>
+        </div>
+        <button onclick="saveAllSettings()" class="btn-primary">
+          💾 Save Changes
+        </button>
+      </header>
+
+      <!-- Live Feature Toggles (Actually Disables Functionality) -->
+      <div class="seller-card" style="margin-bottom: 24px;">
+        <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--dark); margin-top: 0;">Marketplace Feature Toggles</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+          Toggling these flags immediately changes behavior on the customer storefront.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;">
+          <label style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: var(--bg-page); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer;">
+            <div>
+              <div style="font-weight: 700; color: var(--dark);">Product Reviews & Ratings</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Displays verified reviews on product pages</div>
+            </div>
+            <input type="checkbox" id="toggle-reviews" checked style="width: 18px; height: 18px;">
+          </label>
+
+          <label style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: var(--bg-page); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer;">
+            <div>
+              <div style="font-weight: 700; color: var(--dark);">Cash on Delivery (COD)</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Allows cash collection at delivery point</div>
+            </div>
+            <input type="checkbox" id="toggle-cod" checked style="width: 18px; height: 18px;">
+          </label>
+
+          <label style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: var(--bg-page); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer;">
+            <div>
+              <div style="font-weight: 700; color: var(--dark);">Promo Coupons & Discounts</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Enables coupon code input at checkout</div>
+            </div>
+            <input type="checkbox" id="toggle-coupons" checked style="width: 18px; height: 18px;">
+          </label>
+
+          <label style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: var(--bg-page); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer;">
+            <div>
+              <div style="font-weight: 700; color: var(--dark);">Buyer-Seller Messaging</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Enables direct inquiries to merchants</div>
+            </div>
+            <input type="checkbox" id="toggle-messaging" checked style="width: 18px; height: 18px;">
+          </label>
+
+          <label style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: var(--bg-page); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer;">
+            <div>
+              <div style="font-weight: 700; color: var(--dark);">Auto-Approve U.S. Sellers</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Bypasses moderation queue on valid EIN</div>
+            </div>
+            <input type="checkbox" id="toggle-auto-approve" style="width: 18px; height: 18px;">
+          </label>
+        </div>
+      </div>
+
+      <!-- Theme & Brand Customizer (Drives --primary CSS Variable) -->
+      <div class="seller-card" style="margin-bottom: 24px;">
+        <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--dark); margin-top: 0;">Marketplace Brand & Theme Engine</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+          Changes are dynamically bound to the real <code>--primary</code> CSS variable across all pages.
+        </p>
+
+        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+          <div>
+            <label style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted);">Brand Primary Accent Color:</label>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 6px;">
+              <input type="color" id="cfg-brand-color" value="#7FB73C" onchange="previewColor(this.value)" style="width: 48px; height: 38px; border: 1px solid var(--border); border-radius: 6px; cursor: pointer;">
+              <input type="text" id="cfg-brand-color-text" value="#7FB73C" onchange="previewColor(this.value)" style="padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; font-weight: 700; width: 110px;">
+            </div>
+          </div>
+          <div>
+            <label style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted);">Site Display Name:</label>
+            <input type="text" id="cfg-site-name" value="AMEZA USA" style="display: block; margin-top: 6px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; font-weight: 700;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Staff Roles & Permissions Matrix -->
+      <div class="seller-card" style="padding: 0; overflow: hidden; margin-bottom: 24px;">
+        <div style="padding: 16px 20px; border-bottom: 1px solid var(--border); font-weight: 800; font-size: 0.95rem; color: var(--dark); background: var(--bg-card);">
+          Staff Roles & Module Permission Matrix (RBAC)
+        </div>
+        <div style="overflow-x: auto;">
+          <table class="seller-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem;">
+            <thead>
+              <tr style="background: var(--bg-page); border-bottom: 1px solid var(--border);">
+                <th style="padding: 12px 16px;">Staff Identity</th>
+                <th style="padding: 12px 16px;">Role Title</th>
+                <th style="padding: 12px 16px; text-align: center;">Catalog</th>
+                <th style="padding: 12px 16px; text-align: center;">Orders</th>
+                <th style="padding: 12px 16px; text-align: center;">Finance & Payouts</th>
+                <th style="padding: 12px 16px; text-align: center;">Support</th>
+                <th style="padding: 12px 16px; text-align: center;">CMS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 12px 16px; font-weight: 700;">Alexander Vance</td>
+                <td style="padding: 12px 16px; color: var(--text-muted);">Super Admin</td>
+                <td style="padding: 12px 16px; text-align: center;">✅ All</td>
+                <td style="padding: 12px 16px; text-align: center;">✅ All</td>
+                <td style="padding: 12px 16px; text-align: center;">✅ All</td>
+                <td style="padding: 12px 16px; text-align: center;">✅ All</td>
+                <td style="padding: 12px 16px; text-align: center;">✅ All</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 12px 16px; font-weight: 700;">Chloe Wright</td>
+                <td style="padding: 12px 16px; color: var(--text-muted);">Support Specialist</td>
+                <td style="padding: 12px 16px; text-align: center; color: var(--text-muted);">View</td>
+                <td style="padding: 12px 16px; text-align: center;">✅ Edit</td>
+                <td style="padding: 12px 16px; text-align: center; color: #DC2626; font-weight: 700;">🚫 Blocked</td>
+                <td style="padding: 12px 16px; text-align: center;">✅ Edit</td>
+                <td style="padding: 12px 16px; text-align: center; color: #DC2626; font-weight: 700;">🚫 Blocked</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 12px 16px; font-weight: 700;">Marcus Reed</td>
+                <td style="padding: 12px 16px; color: var(--text-muted);">Catalog Specialist</td>
+                <td style="padding: 12px 16px; text-align: center;">✅ Edit</td>
+                <td style="padding: 12px 16px; text-align: center; color: var(--text-muted);">View</td>
+                <td style="padding: 12px 16px; text-align: center; color: #DC2626; font-weight: 700;">🚫 Blocked</td>
+                <td style="padding: 12px 16px; text-align: center; color: var(--text-muted);">View</td>
+                <td style="padding: 12px 16px; text-align: center;">✅ Edit</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Simulated Sent Emails Log -->
+      <div class="seller-card" style="padding: 0; overflow: hidden;">
+        <div style="padding: 16px 20px; border-bottom: 1px solid var(--border); font-weight: 800; font-size: 0.95rem; color: var(--dark); background: var(--bg-card);">
+          Simulated Notification & Sent Emails Log
+        </div>
+        <div style="padding: 16px; font-size: 0.85rem; color: var(--text-muted);">
+          <div style="padding: 10px; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 8px; background: var(--bg-page);">
+            <div style="font-weight: 700; color: var(--dark);">✉️ [DISBURSEMENT] $4,500.00 Sent to Austin Leather Co</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">To: jack@melbourneleather.com.au &bull; Reference: ABA-AMZ-202610-0981 &bull; Status: Delivered</div>
+          </div>
+          <div style="padding: 10px; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 8px; background: var(--bg-page);">
+            <div style="font-weight: 700; color: var(--dark);">✉️ [ORDER CONFIRMATION] Order #ORD-AU-100065 Confirmed</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">To: sarah.jenkins@example.com.au &bull; 2 Merchant Shipments &bull; Status: Delivered</div>
+          </div>
+          <div style="padding: 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page);">
+            <div style="font-weight: 700; color: var(--dark);">✉️ [MERCHANT APPLICATION] Under Review for Seattle Eco Essentials</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">To: zoe@pertheco.com.au &bull; Status: Sent</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    import { CmsAPI } from './js/api/cms.api.js';
+
+    function loadSettings() {
+      const settings = CmsAPI.getSettings();
+      if (settings.features) {
+        document.getElementById('toggle-reviews').checked = Boolean(settings.features.reviews);
+        document.getElementById('toggle-cod').checked = Boolean(settings.features.cod);
+        document.getElementById('toggle-coupons').checked = Boolean(settings.features.coupons);
+        document.getElementById('toggle-messaging').checked = Boolean(settings.features.messaging);
+        document.getElementById('toggle-auto-approve').checked = Boolean(settings.features.autoApproveSellers);
+      }
+
+      if (settings.brandColor) {
+        document.getElementById('cfg-brand-color').value = settings.brandColor;
+        document.getElementById('cfg-brand-color-text').value = settings.brandColor;
+      }
+      if (settings.siteName) {
+        document.getElementById('cfg-site-name').value = settings.siteName;
+      }
+    }
+
+    window.previewColor = function(color) {
+      document.getElementById('cfg-brand-color').value = color;
+      document.getElementById('cfg-brand-color-text').value = color;
+      document.documentElement.style.setProperty('--primary', color);
+    };
+
+    window.saveAllSettings = function() {
+      const color = document.getElementById('cfg-brand-color').value;
+      const siteName = document.getElementById('cfg-site-name').value;
+      const features = {
+        reviews: document.getElementById('toggle-reviews').checked,
+        cod: document.getElementById('toggle-cod').checked,
+        coupons: document.getElementById('toggle-coupons').checked,
+        messaging: document.getElementById('toggle-messaging').checked,
+        autoApproveSellers: document.getElementById('toggle-auto-approve').checked
+      };
+
+      CmsAPI.updateSettings({
+        brandColor: color,
+        siteName,
+        features
+      });
+
+      alert('🎉 Settings, Brand Theme, and Feature Toggles saved and applied live across storefront!');
+    };
+
+    window.addEventListener('DOMContentLoaded', loadSettings);
+  </script>
+</body>
+</html>

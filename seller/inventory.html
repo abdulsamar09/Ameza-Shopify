@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory | AMEZA Official</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
+</head>
+<body data-layout="none">
+  <!-- App Top Bar Component -->
+  <header id="app-topbar"></header>
+
+  <div class="app-layout">
+    <!-- App Sidebar Component -->
+    <aside id="app-sidebar"></aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content" role="main">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1 class="page-title">Inventory</h1>
+        <div class="page-header-actions">
+          <button class="btn-header-secondary" id="btn-export-inventory">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Export
+          </button>
+          <button class="btn-header-secondary" id="btn-import-inventory">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Import
+          </button>
+          <button class="btn-header-primary" id="btn-adjust-stock-top">
+            Adjust stock
+          </button>
+        </div>
+      </div>
+
+      <!-- Three Summary Metric Cards -->
+      <div class="orders-summary-grid">
+        <!-- Card 1 -->
+        <div class="order-summary-card">
+          <div class="order-summary-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <div>
+            <div style="font-size: 13px; color: var(--text-secondary);">Total units</div>
+            <div class="order-summary-val">
+              <span id="metric-total-units">1,842</span>
+              <span class="order-summary-delta">↑ 8%</span>
+              <span class="order-summary-comp">vs. last month</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="order-summary-card">
+          <div class="order-summary-icon" style="background-color: #FEF3C7; color: #D97706;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div>
+            <div style="font-size: 13px; color: var(--text-secondary);">Low stock items</div>
+            <div class="order-summary-val">
+              <span id="metric-low-stock-count" style="color: #D97706;">7</span>
+              <span class="order-summary-delta" style="color: #D97706;">↑ 2</span>
+              <span class="order-summary-comp">needs attention</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="order-summary-card">
+          <div class="order-summary-icon" style="background-color: #FEE2E2; color: #DC2626;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </div>
+          <div>
+            <div style="font-size: 13px; color: var(--text-secondary);">Out of stock</div>
+            <div class="order-summary-val">
+              <span id="metric-out-stock-count" style="color: #DC2626;">3</span>
+              <span class="order-summary-delta" style="color: var(--text-tertiary);">&bull; 0%</span>
+              <span class="order-summary-comp">no sales potential</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Inventory Card -->
+      <div class="table-card">
+        <!-- Tabs Row -->
+        <div class="tabs-row" id="inventory-tabs">
+          <button class="tab-btn active" data-tab="all">
+            All <span class="tab-count" id="count-tab-all">10</span>
+          </button>
+          <button class="tab-btn" data-tab="low">
+            Low stock <span class="tab-count" id="count-tab-low">3</span>
+          </button>
+          <button class="tab-btn" data-tab="out">
+            Out of stock <span class="tab-count" id="count-tab-out">3</span>
+          </button>
+        </div>
+
+        <!-- Normal Toolbar -->
+        <div class="products-toolbar" id="inventory-toolbar">
+          <div class="toolbar-left" style="flex: 1; max-width: 320px;">
+            <div class="search-input-wrapper">
+              <span class="search-input-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </span>
+              <input type="text" id="inventory-search-input" class="search-field" placeholder="Search by product or SKU">
+            </div>
+          </div>
+
+          <div class="toolbar-right">
+            <button class="btn-filter-dropdown" id="btn-location-dropdown">
+              Location: Main warehouse
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+
+            <!-- Threshold edit popover trigger -->
+            <div style="position: relative;">
+              <button class="btn-filter-dropdown" id="btn-threshold-trigger" title="Click to change low-stock alert threshold">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                <span id="label-threshold-btn">Low-stock threshold: 10</span>
+              </button>
+
+              <!-- Threshold Popover -->
+              <div class="threshold-popover" id="threshold-popover">
+                <div style="font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 8px;">Edit Low-Stock Threshold</div>
+                <p style="font-size: 11.5px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.4;">
+                  Items with available units at or below this number will be flagged as Low Stock.
+                </p>
+                <div style="margin-bottom: 12px;">
+                  <input type="number" id="threshold-input-val" class="form-input" style="width: 100%; height: 32px;" min="1" max="100" value="10">
+                </div>
+                <div style="display:flex; justify-content:flex-end; gap:8px;">
+                  <button class="btn-header-secondary" style="height:28px; padding:0 10px; font-size:12px;" id="btn-cancel-threshold">Cancel</button>
+                  <button class="btn-header-primary" style="height:28px; padding:0 12px; font-size:12px;" id="btn-save-threshold">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bulk Selection Bar (Hidden by default) -->
+        <div class="orders-bulk-bar" id="inventory-bulk-bar" style="display: none;">
+          <div class="bulk-bar-left">
+            <input type="checkbox" id="bulk-bar-checkbox" class="custom-checkbox" checked>
+            <span class="bulk-bar-count" id="bulk-selected-count">0 selected</span>
+          </div>
+          <div class="bulk-bar-actions">
+            <button class="bulk-btn" id="bulk-adjust-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Adjust stock
+            </button>
+            <button class="bulk-btn" id="bulk-export-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Export
+            </button>
+          </div>
+          <button class="bulk-bar-close" id="btn-close-bulk" title="Clear selection">&times;</button>
+        </div>
+
+        <!-- Inventory Table -->
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 44px;">
+                  <input type="checkbox" id="header-select-all" class="custom-checkbox">
+                </th>
+                <th class="sortable" id="th-product" style="min-width: 240px;">
+                  <div class="th-sort-wrapper">
+                    <span>Product</span>
+                    <span class="sort-icon">&varr;</span>
+                  </div>
+                </th>
+                <th style="width: 130px;">SKU</th>
+                <th style="width: 120px;">Committed</th>
+                <th class="sortable" id="th-available" style="width: 130px;">
+                  <div class="th-sort-wrapper">
+                    <span>Available</span>
+                    <span class="sort-icon">&varr;</span>
+                  </div>
+                </th>
+                <th style="width: 120px;">On hand</th>
+                <th style="width: 140px;">Status</th>
+              </tr>
+            </thead>
+            <tbody id="inventory-tbody">
+              <!-- Rendered dynamically by js/inventory.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table Footer / Pagination -->
+        <div class="table-footer">
+          <div class="footer-count" id="inventory-footer-count">Showing 1-10 of 10 variants</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Right-side Drawer: Stock History -->
+  <div class="drawer-overlay" id="history-drawer-overlay">
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <div>
+          <h3 class="drawer-title" id="drawer-product-title">Stock History</h3>
+          <span style="font-size: 12px; color: var(--text-secondary);" id="drawer-product-sku">SKU: WL-001</span>
+        </div>
+        <button class="modal-close-btn" id="btn-close-drawer">&times;</button>
+      </div>
+      <div class="drawer-body">
+        <!-- Current Numbers Stats -->
+        <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+          <div class="stock-stat-box">
+            <div class="lbl">Available</div>
+            <div class="val" id="drawer-stat-available" style="color: var(--primary-green-dark);">12</div>
+          </div>
+          <div class="stock-stat-box">
+            <div class="lbl">Committed</div>
+            <div class="val" id="drawer-stat-committed">3</div>
+          </div>
+          <div class="stock-stat-box">
+            <div class="lbl">On Hand</div>
+            <div class="val" id="drawer-stat-onhand">15</div>
+          </div>
+        </div>
+
+        <!-- 30-Day Stock Level Chart -->
+        <div style="background-color: var(--bg-sidebar); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px; margin-bottom: 24px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <span style="font-size: 12px; font-weight: 700; color: var(--text-tertiary); text-transform:uppercase;">Stock level (last 30 days)</span>
+            <span style="font-size: 11px; color: var(--primary-green-dark); font-weight: 600;">Live tracker</span>
+          </div>
+          <div id="drawer-chart-svg" style="width: 100%; height: 75px;">
+            <!-- SVG Trend line generated in JS -->
+          </div>
+        </div>
+
+        <!-- Movements Timeline -->
+        <div>
+          <span style="font-size: 13px; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 16px;">Movements & Activity</span>
+          <div class="timeline-container" id="drawer-movements-list">
+            <!-- Movements rendered by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bulk Adjust Modal -->
+  <div class="modal-overlay" id="adjust-modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="adjust-modal-title">Adjust stock</h3>
+        <button class="modal-close-btn" id="btn-close-adjust-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 12.5px; color: var(--text-secondary); margin-bottom: 16px;" id="adjust-modal-target-desc">
+          Adjusting stock for selected variants.
+        </p>
+
+        <div style="margin-bottom: 14px;">
+          <label style="display:block; font-size:12.5px; font-weight:600; margin-bottom:6px;">Adjustment action</label>
+          <div style="display:flex; gap:10px;">
+            <label style="flex:1; border:1px solid var(--border); border-radius:var(--radius-md); padding:8px 12px; display:flex; align-items:center; gap:8px; cursor:pointer; font-size:13px;">
+              <input type="radio" name="adjust-mode" value="add" checked> Add to available
+            </label>
+            <label style="flex:1; border:1px solid var(--border); border-radius:var(--radius-md); padding:8px 12px; display:flex; align-items:center; gap:8px; cursor:pointer; font-size:13px;">
+              <input type="radio" name="adjust-mode" value="remove"> Remove
+            </label>
+            <label style="flex:1; border:1px solid var(--border); border-radius:var(--radius-md); padding:8px 12px; display:flex; align-items:center; gap:8px; cursor:pointer; font-size:13px;">
+              <input type="radio" name="adjust-mode" value="set"> Set exact
+            </label>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <label style="display:block; font-size:12.5px; font-weight:600; margin-bottom:6px;">Quantity</label>
+          <input type="number" id="adjust-quantity-input" class="form-input" min="1" value="10" style="width:100%;">
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <label style="display:block; font-size:12.5px; font-weight:600; margin-bottom:6px;">Reason</label>
+          <select class="form-input" id="adjust-reason-select" style="width:100%;">
+            <option value="Restock">Restock / Supplier delivery</option>
+            <option value="Damaged">Damaged goods</option>
+            <option value="Correction">Inventory count correction</option>
+            <option value="Return">Customer return</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="display:block; font-size:12.5px; font-weight:600; margin-bottom:6px;">Note (optional)</label>
+          <input type="text" id="adjust-note-input" class="form-input" placeholder="e.g. Inbound shipment PO-8491" style="width:100%;">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-header-secondary" id="btn-cancel-adjust">Cancel</button>
+        <button class="btn-header-primary" id="btn-confirm-adjust">Apply adjustment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module">
+    import { initShell } from '../js/shell.js';
+    import { initInventory } from '../js/inventory.js';
+
+    initShell('inventory');
+    initInventory();
+  </script>
+</body>
+</html>

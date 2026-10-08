@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMEZA Component Library & UI Kit</title>
+  <meta name="description" content="Official AMEZA Multi-Vendor Marketplace Design System & UI Component Showcase.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
+  <style>
+    /* UI Kit Page Layout Specifics */
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+    }
+    .uikit-header {
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: var(--z-sticky);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(8px);
+    }
+    .uikit-header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .uikit-header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .uikit-layout {
+      display: flex;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px;
+      gap: 32px;
+    }
+    .uikit-nav {
+      width: 220px;
+      position: sticky;
+      top: 88px;
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-right: 8px;
+    }
+    .uikit-nav-link {
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      font-size: var(--font-xs);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .uikit-nav-link:hover, .uikit-nav-link.active {
+      color: var(--primary-dark);
+      background-color: var(--primary-light);
+    }
+    .uikit-content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    .component-section {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--shadow-xs);
+    }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: var(--font-xl);
+      font-weight: 800;
+      margin: 0 0 4px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-desc {
+      font-size: var(--font-sm);
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .component-group {
+      margin-bottom: 24px;
+    }
+    .component-group:last-child {
+      margin-bottom: 0;
+    }
+    .group-label {
+      font-size: var(--font-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-light);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .component-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+    @media (max-width: 900px) {
+      .uikit-nav { display: none; }
+      .uikit-layout { padding: 16px; }
+      .component-section { padding: 20px; }
+    }
+    @media (max-width: 768px) {
+      .uikit-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 12px 16px;
+      }
+      .uikit-header-left {
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        gap: 8px;
+      }
+      .uikit-header-right {
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        width: 100%;
+      }
+      .uikit-header-right .btn {
+        padding: 6px 10px;
+        font-size: 11px;
+      }
+      @media (max-width: 600px) {
+        .proto-badge-hide { display: none !important; }
+        .proto-dir-text { display: none !important; }
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- UI KIT TOP BAR -->
+  <header class="uikit-header">
+    <div class="uikit-header-left">
+      <a href="../prototype-index.html" class="sidebar-brand">
+        <span class="brand-logo-circle">A</span>
+        <div>
+          <span class="brand-title">AMEZA</span>
+          <span class="brand-subtitle">UI Component System</span>
+        </div>
+      </a>
+      <span class="badge badge-primary proto-badge-hide">Foundation v1.0</span>
+      <a href="../prototype-index.html" class="btn btn-ghost btn-xs" title="Return to Prototype Directory">
+        <i class="fa-solid fa-arrow-left"></i> <span class="proto-dir-text">Prototype Directory</span>
+      </a>
+    </div>
+
+    <div class="uikit-header-right">
+      <!-- Live Accent Picker -->
+      <div class="dropdown" id="topbar-color-dropdown">
+        <button class="btn btn-secondary btn-sm" id="btn-color-picker-toggle">
+          <i class="fa-solid fa-palette text-primary"></i>
+          <span>Theme Color</span>
+        </button>
+        <div class="dropdown-menu p-3" style="min-width:220px; right:0;">
+          <div class="text-xs font-bold text-muted mb-2">SELECT ACCENT COLOR</div>
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px;">
+            <button class="swatch-btn" data-color="#7FB73C" style="background:#7FB73C; height:28px; border-radius:6px; border:none; cursor:pointer;" title="AMEZA Green"></button>
+            <button class="swatch-btn" data-color="#0284C7" style="background:#0284C7; height:28px; border-radius:6px; border:none; cursor:pointer;" title="Pacific Blue"></button>
+            <button class="swatch-btn" data-color="#8B5CF6" style="background:#8B5CF6; height:28px; border-radius:6px; border:none; cursor:pointer;" title="Royal Purple"></button>
+            <button class="swatch-btn" data-color="#D97706" style="background:#D97706; height:28px; border-radius:6px; border:none; cursor:pointer;" title="Amber"></button>
+            <button class="swatch-btn" data-color="#E11D48" style="background:#E11D48; height:28px; border-radius:6px; border:none; cursor:pointer;" title="Crimson"></button>
+            <button class="swatch-btn" data-color="#059669" style="background:#059669; height:28px; border-radius:6px; border:none; cursor:pointer;" title="Emerald"></button>
+          </div>
+        </div>
+      </div>
+
+
+<!-- Theme Switcher -->
+      <button class="btn btn-secondary btn-sm" id="theme-toggle-btn" title="Toggle Light / Dark Mode">
+        <i class="fa-regular fa-moon" id="theme-btn-icon"></i>
+        <span id="theme-btn-label">Dark Mode</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN SHOWCASE LAYOUT -->
+  <div class="uikit-layout">
+    <!-- JUMP NAVIGATION -->
+    <aside class="uikit-nav">
+      <div class="text-xs font-bold text-muted p-2">COMPONENTS</div>
+      <a href="#sec-buttons" class="uikit-nav-link active"><i class="fa-solid fa-hand-pointer"></i> Buttons</a>
+      <a href="#sec-forms" class="uikit-nav-link"><i class="fa-solid fa-align-left"></i> Form Inputs</a>
+      <a href="#sec-toggles" class="uikit-nav-link"><i class="fa-solid fa-toggle-on"></i> Switches & Radios</a>
+      <a href="#sec-badges" class="uikit-nav-link"><i class="fa-solid fa-tag"></i> Chips & Badges</a>
+      <a href="#sec-tabs" class="uikit-nav-link"><i class="fa-solid fa-folder-open"></i> Tabs</a>
+      <a href="#sec-kpi" class="uikit-nav-link"><i class="fa-solid fa-chart-simple"></i> KPI Cards</a>
+      <a href="#sec-charts" class="uikit-nav-link"><i class="fa-solid fa-chart-line"></i> SVG Charts</a>
+      <a href="#sec-tables" class="uikit-nav-link"><i class="fa-solid fa-table"></i> Interactive Table</a>
+      <a href="#sec-overlays" class="uikit-nav-link"><i class="fa-solid fa-window-restore"></i> Modals & Drawers</a>
+      <a href="#sec-toasts" class="uikit-nav-link"><i class="fa-solid fa-bell"></i> Toast Alerts</a>
+      <a href="#sec-stepper" class="uikit-nav-link"><i class="fa-solid fa-bars-progress"></i> Stepper & Progress</a>
+      <a href="#sec-dropzone" class="uikit-nav-link"><i class="fa-solid fa-cloud-arrow-up"></i> Dropzone Upload</a>
+      <a href="#sec-ratings" class="uikit-nav-link"><i class="fa-solid fa-star"></i> Star Ratings</a>
+      <a href="#sec-feedback" class="uikit-nav-link"><i class="fa-solid fa-circle-question"></i> Empty & Skeletons</a>
+      <a href="#sec-extras" class="uikit-nav-link"><i class="fa-solid fa-sliders"></i> Accordion & Pickers</a>
+    </aside>
+
+    <!-- CONTENT DISPLAY -->
+    <main class="uikit-content">
+
+      <!-- 1. BUTTONS -->
+      <section class="component-section" id="sec-buttons">
+        <h2 class="section-title"><i class="fa-solid fa-hand-pointer text-primary"></i> Buttons</h2>
+        <p class="section-desc">Accessible, interactive buttons with hover, active, focus-visible states and loading spinners.</p>
+
+        <div class="component-group">
+          <span class="group-label">Button Variants</span>
+          <div class="component-row">
+            <button class="btn btn-primary"><i class="fa-solid fa-check"></i> Primary Action</button>
+            <button class="btn btn-secondary"><i class="fa-regular fa-file"></i> Secondary</button>
+            <button class="btn btn-outline">Outline Green</button>
+            <button class="btn btn-ghost">Ghost Button</button>
+            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Danger Action</button>
+            <button class="btn btn-danger-outline">Danger Outline</button>
+          </div>
+        </div>
+
+        <div class="component-group">
+          <span class="group-label">Button Sizes</span>
+          <div class="component-row">
+            <button class="btn btn-primary btn-xs">Extra Small (xs)</button>
+            <button class="btn btn-primary btn-sm">Small (sm)</button>
+            <button class="btn btn-primary btn-md">Medium (md)</button>
+            <button class="btn btn-primary btn-lg">Large (lg)</button>
+            <button class="btn btn-secondary btn-icon" title="Settings"><i class="fa-solid fa-gear"></i></button>
+            <button class="btn btn-primary btn-pill">Pill Button</button>
+          </div>
+        </div>
+
+        <div class="component-group">
+          <span class="group-label">Interactive Loading & Disabled States</span>
+          <div class="component-row">
+            <button class="btn btn-primary btn-loading">Processing Order</button>
+            <button class="btn btn-secondary btn-loading">Loading</button>
+            <button class="btn btn-primary" id="btn-simulate-loading">Click to Simulate Loading</button>
+            <button class="btn btn-primary" disabled>Disabled Button</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. FORM INPUTS & SELECTS -->
+      <section class="component-section" id="sec-forms">
+        <h2 class="section-title"><i class="fa-solid fa-align-left text-primary"></i> Form Inputs & Controls</h2>
+        <p class="section-desc">Structured form elements with floating hint copy, required asterisks, and validation error states.</p>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
+          <div class="form-group">
+            <label class="form-label" for="inp-store-name">Store Name <span class="required">*</span></label>
+            <input type="text" id="inp-store-name" class="form-control" value="Austin Leather Co" placeholder="e.g. Acme Studio" />
+            <span class="form-hint">Public merchant display name.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inp-search-icon">Input with Left Icon</label>
+            <div class="input-group">
+              <i class="fa-solid fa-magnifying-glass input-icon-left"></i>
+              <input type="text" id="inp-search-icon" class="form-control has-icon-left" placeholder="Search catalog..." />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inp-select-category">Category Dropdown</label>
+            <select id="inp-select-category" class="form-select">
+              <option value="leather">Leather Goods & Belts</option>
+              <option value="apparel">Linen & Casual Clothing</option>
+              <option value="watches">Horology & Chronographs</option>
+              <option value="electronics">Audio & Accessories</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inp-error-field">Validation Error State</label>
+            <input type="text" id="inp-error-field" class="form-control is-invalid" value="invalid-email@" />
+            <div class="form-error"><i class="fa-solid fa-circle-exclamation"></i> Please enter a valid U.S. business email address.</div>
+          </div>
+        </div>
+
+        <div class="form-group mt-3">
+          <label class="form-label" for="inp-bio">Store Bio & Dispatch Policy</label>
+          <textarea id="inp-bio" class="form-textarea" placeholder="Describe your artisan workshop and shipping guarantee...">Handcrafted full-grain leather accessories made in Fitzroy, Austin. Same-day dispatch on orders placed before 2 PM AEST.</textarea>
+        </div>
+      </section>
+
+      <!-- 3. SWITCHES, CHECKBOXES & RADIOS -->
+      <section class="component-section" id="sec-toggles">
+        <h2 class="section-title"><i class="fa-solid fa-toggle-on text-primary"></i> Switches, Checkboxes & Radios</h2>
+        <p class="section-desc">Accessible custom form controls with keyboard focus support.</p>
+
+        <div class="component-row" style="gap:28px;">
+          <!-- Switch -->
+          <label class="switch-label">
+            <span class="switch">
+              <input type="checkbox" id="switch-express" checked />
+              <span class="switch-slider"></span>
+            </span>
+            <span>Enable Express USPS Shipping</span>
+          </label>
+
+          <label class="switch-label">
+            <span class="switch">
+              <input type="checkbox" id="switch-instant" />
+              <span class="switch-slider"></span>
+            </span>
+            <span>Instant Auto-Payouts</span>
+          </label>
+
+          <!-- Checkboxes -->
+          <label class="checkbox-label">
+            <input type="checkbox" class="custom-checkbox" checked />
+            <span>Notify on New Orders</span>
+          </label>
+
+          <label class="checkbox-label">
+            <input type="checkbox" class="custom-checkbox" />
+            <span>Low Stock Alert</span>
+          </label>
+
+          <!-- Radios -->
+          <label class="radio-label">
+            <input type="radio" name="payout-freq" class="custom-radio" checked />
+            <span>Weekly Payout</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="payout-freq" class="custom-radio" />
+            <span>Monthly Payout</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- 4. CHIPS & BADGES -->
+      <section class="component-section" id="sec-badges">
+        <h2 class="section-title"><i class="fa-solid fa-tag text-primary"></i> Chips & Status Badges</h2>
+        <p class="section-desc">Color-coded badges adhering to AA contrast tokens for order and merchant lifecycles.</p>
+
+        <div class="component-group">
+          <span class="group-label">Status Badges</span>
+          <div class="component-row">
+            <span class="badge badge-success"><i class="fa-solid fa-check"></i> Delivered</span>
+            <span class="badge badge-primary"><i class="fa-solid fa-truck-fast"></i> Shipped</span>
+            <span class="badge badge-warning"><i class="fa-solid fa-clock"></i> Pending Review</span>
+            <span class="badge badge-danger"><i class="fa-solid fa-ban"></i> Cancelled</span>
+            <span class="badge badge-info"><i class="fa-solid fa-rotate-left"></i> Refunded</span>
+            <span class="badge badge-neutral">Archived</span>
+            <span class="badge badge-pill badge-primary">Pill Badge</span>
+            <span class="badge badge-dot badge-success">Live Status</span>
+          </div>
+        </div>
+
+        <div class="component-group">
+          <span class="group-label">Interactive Removable Chips</span>
+          <div class="component-row">
+            <span class="chip chip-removable">U.S. Made <button class="chip-remove" title="Remove">&times;</button></span>
+            <span class="chip chip-removable">Full-Grain Leather <button class="chip-remove" title="Remove">&times;</button></span>
+            <span class="chip chip-removable">Free Shipping <button class="chip-remove" title="Remove">&times;</button></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. TABS -->
+      <section class="component-section" id="sec-tabs">
+        <h2 class="section-title"><i class="fa-solid fa-folder-open text-primary"></i> Tabbed Navigation</h2>
+        <p class="section-desc">Clean tab switches with smooth content transitions.</p>
+
+        <nav class="tab-nav" id="demo-tab-nav">
+          <button class="tab-btn active" data-tab="tab-overview"><i class="fa-solid fa-chart-line"></i> Store Overview</button>
+          <button class="tab-btn" data-tab="tab-inventory"><i class="fa-solid fa-boxes-stacked"></i> Inventory Health</button>
+          <button class="tab-btn" data-tab="tab-payouts"><i class="fa-solid fa-receipt"></i> Split Payouts</button>
+        </nav>
+
+        <div class="tab-panels">
+          <div class="tab-panel active" id="tab-overview">
+            <div class="card p-3">
+              <div class="font-bold text-sm">Store Performance Overview</div>
+              <div class="text-xs text-muted mt-1">Total revenue generated over the last 90 days across 65 active orders.</div>
+            </div>
+          </div>
+          <div class="tab-panel" id="tab-inventory">
+            <div class="card p-3">
+              <div class="font-bold text-sm">Stock & SKU Health Matrix</div>
+              <div class="text-xs text-muted mt-1">48 products published, 3 SKUs running low in the Austin warehouse.</div>
+            </div>
+          </div>
+          <div class="tab-panel" id="tab-payouts">
+            <div class="card p-3">
+              <div class="font-bold text-sm">Merchant Ledger & Banking</div>
+              <div class="text-xs text-muted mt-1">Available balance held under 7-day delivery escrow rule.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. KPI CARDS -->
+      <section class="component-section" id="sec-kpi">
+        <h2 class="section-title"><i class="fa-solid fa-chart-simple text-primary"></i> KPI Metric Cards</h2>
+        <p class="section-desc">Executive summary cards with micro-trends, icons, and live currency formatting.</p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px;">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-label">Total Revenue</span>
+              <div class="kpi-icon-wrap"><i class="fa-solid fa-dollar-sign"></i></div>
+            </div>
+            <div class="kpi-value" data-money="48920" id="kpi-val-revenue">$48,920.00</div>
+            <div class="kpi-footer">
+              <span class="kpi-trend trend-up"><i class="fa-solid fa-arrow-up"></i> +14.2%</span>
+              <span class="text-muted text-xs">vs. last month</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-label">Active Orders</span>
+              <div class="kpi-icon-wrap" style="background-color:var(--info-bg); color:var(--info);"><i class="fa-solid fa-bag-shopping"></i></div>
+            </div>
+            <div class="kpi-value">184</div>
+            <div class="kpi-footer">
+              <span class="kpi-trend trend-up"><i class="fa-solid fa-arrow-up"></i> +8.6%</span>
+              <span class="text-muted text-xs">98.4% fulfillment rate</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-label">Available Balance</span>
+              <div class="kpi-icon-wrap" style="background-color:var(--success-bg); color:var(--success);"><i class="fa-solid fa-wallet"></i></div>
+            </div>
+            <div class="kpi-value" data-money="7315.80" id="kpi-val-balance">$7,315.80</div>
+            <div class="kpi-footer">
+              <span class="badge badge-success text-xs">Ready for payout</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-label">Store Rating</span>
+              <div class="kpi-icon-wrap" style="background-color:var(--warning-bg); color:var(--warning);"><i class="fa-solid fa-star"></i></div>
+            </div>
+            <div class="kpi-value">4.9 <span class="text-xs text-muted font-normal">/ 5.0</span></div>
+            <div class="kpi-footer">
+              <span class="kpi-trend trend-up"><i class="fa-solid fa-check"></i> 88 reviews</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. SVG CHARTS -->
+      <section class="component-section" id="sec-charts">
+        <h2 class="section-title"><i class="fa-solid fa-chart-line text-primary"></i> Data Visualizations (SVG Charts)</h2>
+        <p class="section-desc">Responsive vector line, bar, and donut charts built with zero external charting dependencies.</p>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:24px;">
+          <!-- Line Chart -->
+          <div class="card p-3">
+            <div class="font-bold text-sm mb-2">90-Day Revenue Trend (Line Chart)</div>
+            <div class="chart-container" style="height:200px;">
+              <svg class="chart-svg" viewBox="0 0 500 200" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="chart-gradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.4" />
+                    <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.0" />
+                  </linearGradient>
+                </defs>
+                <!-- Grid Lines -->
+                <line x1="40" y1="30" x2="480" y2="30" class="chart-grid-line" />
+                <line x1="40" y1="80" x2="480" y2="80" class="chart-grid-line" />
+                <line x1="40" y1="130" x2="480" y2="130" class="chart-grid-line" />
+                <line x1="40" y1="170" x2="480" y2="170" stroke="var(--border)" stroke-width="1.5" />
+
+                <!-- Axis Labels -->
+                <text x="10" y="35" class="chart-axis-text">$15k</text>
+                <text x="10" y="85" class="chart-axis-text">$10k</text>
+                <text x="10" y="135" class="chart-axis-text">$5k</text>
+                <text x="10" y="175" class="chart-axis-text">$0</text>
+
+                <!-- Area Fill -->
+                <polygon points="40,170 40,120 100,105 160,135 220,90 280,75 340,60 400,80 460,40 460,170" class="chart-area" />
+
+                <!-- Line Path -->
+                <polyline points="40,120 100,105 160,135 220,90 280,75 340,60 400,80 460,40" class="chart-line" />
+
+                <!-- Data Dots -->
+                <circle cx="40" cy="120" r="4.5" class="chart-point" data-tooltip="Day 1: $6,200" />
+                <circle cx="100" cy="105" r="4.5" class="chart-point" data-tooltip="Day 15: $7,800" />
+                <circle cx="160" cy="135" r="4.5" class="chart-point" data-tooltip="Day 30: $5,100" />
+                <circle cx="220" cy="90" r="4.5" class="chart-point" data-tooltip="Day 45: $9,400" />
+                <circle cx="280" cy="75" r="4.5" class="chart-point" data-tooltip="Day 60: $11,200" />
+                <circle cx="340" cy="60" r="4.5" class="chart-point" data-tooltip="Day 75: $12,800" />
+                <circle cx="400" cy="80" r="4.5" class="chart-point" data-tooltip="Day 80: $10,500" />
+                <circle cx="460" cy="40" r="5.5" class="chart-point" data-tooltip="Today: $14,900" />
+              </svg>
+            </div>
+            <div class="d-flex justify-content-between text-xs text-muted mt-2">
+              <span>90 Days Ago</span>
+              <span>45 Days Ago</span>
+              <span>Today</span>
+            </div>
+          </div>
+
+          <!-- Bar Chart -->
+          <div class="card p-3">
+            <div class="font-bold text-sm mb-2">Weekly Order Volume (Bar Chart)</div>
+            <div class="chart-container" style="height:200px;">
+              <svg class="chart-svg" viewBox="0 0 500 200" preserveAspectRatio="none">
+                <line x1="40" y1="170" x2="480" y2="170" stroke="var(--border)" stroke-width="1.5" />
+                <rect x="60" y="80" width="36" height="90" class="chart-bar" data-tooltip="W1: 42 orders" />
+                <rect x="120" y="55" width="36" height="115" class="chart-bar" data-tooltip="W2: 58 orders" />
+                <rect x="180" y="95" width="36" height="75" class="chart-bar" data-tooltip="W3: 38 orders" />
+                <rect x="240" y="40" width="36" height="130" class="chart-bar" data-tooltip="W4: 65 orders" />
+                <rect x="300" y="65" width="36" height="105" class="chart-bar" data-tooltip="W5: 52 orders" />
+                <rect x="360" y="30" width="36" height="140" class="chart-bar" data-tooltip="W6: 74 orders" />
+                <rect x="420" y="45" width="36" height="125" class="chart-bar" data-tooltip="W7: 62 orders" />
+              </svg>
+            </div>
+            <div class="d-flex justify-content-around text-xs text-muted mt-2">
+              <span>W1</span><span>W2</span><span>W3</span><span>W4</span><span>W5</span><span>W6</span><span>W7</span>
+            </div>
+          </div>
+
+          <!-- Donut Chart -->
+          <div class="card p-3">
+            <div class="font-bold text-sm mb-2">Category Share (Donut Chart)</div>
+            <div style="display:flex; align-items:center; justify-content:center; gap:20px; height:200px;">
+              <svg width="150" height="150" viewBox="0 0 42 42">
+                <circle cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#E5E7EB" stroke-width="5"></circle>
+                <!-- Segment 1: Leather (40%) -->
+                <circle cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="var(--primary)" stroke-width="5" stroke-dasharray="40 60" stroke-dashoffset="25"></circle>
+                <!-- Segment 2: Apparel (30%) -->
+                <circle cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#0284C7" stroke-width="5" stroke-dasharray="30 70" stroke-dashoffset="85"></circle>
+                <!-- Segment 3: Watches (20%) -->
+                <circle cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#D97706" stroke-width="5" stroke-dasharray="20 80" stroke-dashoffset="55"></circle>
+                <!-- Segment 4: Electronics (10%) -->
+                <circle cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#8B5CF6" stroke-width="5" stroke-dasharray="10 90" stroke-dashoffset="35"></circle>
+                <text x="21" y="22" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="6" text-anchor="middle" dominant-baseline="middle" fill="var(--text-main)">100%</text>
+              </svg>
+              <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
+                <div class="d-flex align-items-center gap-2"><span style="width:10px; height:10px; border-radius:50%; background:var(--primary);"></span> Leather (40%)</div>
+                <div class="d-flex align-items-center gap-2"><span style="width:10px; height:10px; border-radius:50%; background:#0284C7;"></span> Apparel (30%)</div>
+                <div class="d-flex align-items-center gap-2"><span style="width:10px; height:10px; border-radius:50%; background:#D97706;"></span> Watches (20%)</div>
+                <div class="d-flex align-items-center gap-2"><span style="width:10px; height:10px; border-radius:50%; background:#8B5CF6;"></span> Tech (10%)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. INTERACTIVE TABLE KIT -->
+      <section class="component-section" id="sec-tables">
+        <h2 class="section-title"><i class="fa-solid fa-table text-primary"></i> Data Table Engine (TableKit)</h2>
+        <p class="section-desc">Sticky header, sortable columns, density switcher, column chooser, live search, bulk bar, and CSV export.</p>
+
+        <!-- Mount point for TableKit -->
+        <div id="uikit-table-mount"></div>
+      </section>
+
+      <!-- 9. MODALS & SLIDE-OVER DRAWERS -->
+      <section class="component-section" id="sec-overlays">
+        <h2 class="section-title"><i class="fa-solid fa-window-restore text-primary"></i> Modals & Slide-Over Drawers</h2>
+        <p class="section-desc">Accessible dialogs with blurred backdrops and focus trap handling.</p>
+
+        <div class="component-row">
+          <button class="btn btn-primary" id="btn-trigger-modal"><i class="fa-regular fa-window-maximize"></i> Open Sample Modal</button>
+          <button class="btn btn-secondary" id="btn-trigger-drawer"><i class="fa-solid fa-sliders"></i> Open Slide-Over Drawer</button>
+        </div>
+
+        <!-- Sample Modal -->
+        <div class="modal-backdrop" id="demo-modal">
+          <div class="modal-dialog">
+            <div class="modal-header">
+              <h3 class="modal-title font-bold text-base">Approve Merchant Application</h3>
+              <button class="modal-close" id="demo-modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+              <p class="text-sm text-body">Are you sure you want to approve <strong>Seattle Eco Essentials</strong>? This will enable their public storefront and allow them to upload products.</p>
+              <div class="form-group mt-3">
+                <label class="form-label">Commission Override Rate (%)</label>
+                <input type="number" class="form-control" value="10.0" step="0.5" />
+                <span class="form-hint">Standard marketplace commission rate is 10.0%.</span>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary btn-sm" id="demo-modal-cancel">Cancel</button>
+              <button class="btn btn-primary btn-sm" id="demo-modal-confirm">Confirm Approval</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sample Drawer -->
+        <div class="drawer-backdrop" id="demo-drawer">
+          <div class="drawer-panel drawer-right">
+            <div class="drawer-header">
+              <h3 class="modal-title font-bold text-base"><i class="fa-solid fa-box text-primary me-2"></i>Product Details Drawer</h3>
+              <button class="modal-close" id="demo-drawer-close">&times;</button>
+            </div>
+            <div class="drawer-body">
+              <div class="font-bold text-base mb-1">Austin Saddle Leather Belt</div>
+              <span class="badge badge-success mb-3">In Stock (18 units)</span>
+              <p class="text-xs text-muted">Full-grain U.S. saddle leather with solid antiqued brass hardware.</p>
+              <div class="form-group mt-3">
+                <label class="form-label">Base Retail Price</label>
+                <input type="text" class="form-control" value="$95.00" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">SKU Code</label>
+                <input type="text" class="form-control" value="SKU-100-BLK" readonly />
+              </div>
+            </div>
+            <div class="drawer-footer">
+              <button class="btn btn-secondary btn-sm" id="demo-drawer-cancel">Close</button>
+              <button class="btn btn-primary btn-sm" id="demo-drawer-save">Save Changes</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. TOAST NOTIFICATIONS -->
+      <section class="component-section" id="sec-toasts">
+        <h2 class="section-title"><i class="fa-solid fa-bell text-primary"></i> Toast Notifications</h2>
+        <p class="section-desc">Floating non-blocking status alerts that slide in and auto-dismiss.</p>
+
+        <div class="component-row">
+          <button class="btn btn-primary btn-sm" id="btn-toast-success"><i class="fa-solid fa-circle-check"></i> Trigger Success Toast</button>
+          <button class="btn btn-secondary btn-sm" id="btn-toast-warning"><i class="fa-solid fa-triangle-exclamation"></i> Trigger Warning Toast</button>
+          <button class="btn btn-danger btn-sm" id="btn-toast-danger"><i class="fa-solid fa-circle-exclamation"></i> Trigger Error Toast</button>
+          <button class="btn btn-ghost btn-sm" id="btn-toast-info"><i class="fa-solid fa-circle-info"></i> Trigger Info Toast</button>
+        </div>
+      </section>
+
+      <!-- 11. STEPPER & PROGRESS TRACKERS -->
+      <section class="component-section" id="sec-stepper">
+        <h2 class="section-title"><i class="fa-solid fa-bars-progress text-primary"></i> Stepper & Progress Tracker</h2>
+        <p class="section-desc">Multi-step checkout and merchant onboarding state progression.</p>
+
+        <div class="stepper">
+          <div class="step-item is-complete">
+            <div class="step-circle"><i class="fa-solid fa-check"></i></div>
+            <div class="step-label">EIN Verification</div>
+          </div>
+          <div class="step-item is-complete">
+            <div class="step-circle"><i class="fa-solid fa-check"></i></div>
+            <div class="step-label">Banking Setup</div>
+          </div>
+          <div class="step-item is-active">
+            <div class="step-circle">3</div>
+            <div class="step-label">First Product</div>
+          </div>
+          <div class="step-item">
+            <div class="step-circle">4</div>
+            <div class="step-label">Store Live</div>
+          </div>
+        </div>
+
+        <div class="form-group mt-4">
+          <div class="d-flex justify-content-between text-xs mb-1">
+            <span class="font-semibold">Storage & Bandwidth Usage</span>
+            <span class="text-muted">68% of 50GB</span>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" style="width: 68%;"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. DROPZONE WITH PREVIEW -->
+      <section class="component-section" id="sec-dropzone">
+        <h2 class="section-title"><i class="fa-solid fa-cloud-arrow-up text-primary"></i> Dropzone with Image Preview</h2>
+        <p class="section-desc">Accessible drag & drop file upload zone with interactive thumbnails and removal.</p>
+
+        <div class="dropzone" id="demo-dropzone">
+          <input type="file" id="dropzone-file-input" multiple accept="image/*" style="display:none;" />
+          <i class="fa-solid fa-cloud-arrow-up dropzone-icon"></i>
+          <div class="dropzone-text">Click or drag product photos here to upload</div>
+          <div class="dropzone-subtext">SVG, PNG, JPG, or WEBP up to 5MB</div>
+        </div>
+
+        <div class="dropzone-previews" id="dropzone-previews-container">
+          <!-- Injected via JS -->
+        </div>
+      </section>
+
+      <!-- 13. RATING STARS & PAGINATION -->
+      <section class="component-section" id="sec-ratings">
+        <h2 class="section-title"><i class="fa-solid fa-star text-primary"></i> Rating Stars & Pagination</h2>
+        <p class="section-desc">Interactive 5-star rater and accessible pagination controls.</p>
+
+        <div class="component-group">
+          <span class="group-label">Interactive 5-Star Rating Picker</span>
+          <div class="component-row">
+            <div class="rating-stars interactive" id="interactive-star-rater">
+              <i class="fa-solid fa-star star-filled" data-idx="1"></i>
+              <i class="fa-solid fa-star star-filled" data-idx="2"></i>
+              <i class="fa-solid fa-star star-filled" data-idx="3"></i>
+              <i class="fa-solid fa-star star-filled" data-idx="4"></i>
+              <i class="fa-solid fa-star star-filled" data-idx="5"></i>
+            </div>
+            <span class="text-sm font-semibold" id="star-rating-label">5.0 / 5.0 (Click to change)</span>
+          </div>
+        </div>
+
+        <div class="component-group">
+          <span class="group-label">Pagination Component</span>
+          <div class="pagination">
+            <button class="page-btn"><i class="fa-solid fa-chevron-left" style="font-size:10px;"></i></button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <span class="px-2 text-muted">...</span>
+            <button class="page-btn">12</button>
+            <button class="page-btn"><i class="fa-solid fa-chevron-right" style="font-size:10px;"></i></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 14. SKELETONS & EMPTY STATES -->
+      <section class="component-section" id="sec-feedback">
+        <h2 class="section-title"><i class="fa-solid fa-circle-question text-primary"></i> Skeletons & Empty States</h2>
+        <p class="section-desc">Graceful loading placeholders and helpful empty states.</p>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px;">
+          <!-- Skeleton Card -->
+          <div class="card p-3">
+            <div class="font-bold text-xs text-muted mb-3">LOADING SKELETON</div>
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+              <div class="skeleton skeleton-avatar"></div>
+              <div style="flex:1;">
+                <div class="skeleton skeleton-title"></div>
+                <div class="skeleton skeleton-text" style="width:40%;"></div>
+              </div>
+            </div>
+            <div class="skeleton skeleton-text"></div>
+            <div class="skeleton skeleton-text" style="width:75%;"></div>
+          </div>
+
+          <!-- Empty State -->
+          <div class="empty-state">
+            <div class="empty-state-icon"><i class="fa-solid fa-box-open"></i></div>
+            <div class="empty-state-title">No Pending Disputes</div>
+            <div class="empty-state-desc">All customer return requests and order inquiries have been resolved.</div>
+            <button class="btn btn-secondary btn-sm"><i class="fa-solid fa-arrow-rotate-right"></i> Refresh Queue</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 15. AVATAR, BREADCRUMB, ACCORDION & DATE PICKER -->
+      <section class="component-section" id="sec-extras">
+        <h2 class="section-title"><i class="fa-solid fa-sliders text-primary"></i> Extras: Avatars, Accordion & Date Range</h2>
+        <p class="section-desc">Finishing UI primitives for admin navigation, FAQs, and reports.</p>
+
+        <div class="component-group">
+          <span class="group-label">Avatars & Stacked Group</span>
+          <div class="component-row">
+            <div class="avatar avatar-xs">AV</div>
+            <div class="avatar avatar-sm">JC</div>
+            <div class="avatar avatar-md">MR<span class="avatar-badge-dot"></span></div>
+            <div class="avatar avatar-lg" style="background:#0284C7;">ER</div>
+            <div class="avatar-group ms-3">
+              <div class="avatar avatar-sm">SJ</div>
+              <div class="avatar avatar-sm" style="background:#D97706;">DW</div>
+              <div class="avatar avatar-sm" style="background:#8B5CF6;">LT</div>
+              <div class="avatar avatar-sm" style="background:#111827;">+4</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="component-group">
+          <span class="group-label">Collapsible Accordion</span>
+          <div class="accordion" id="demo-accordion">
+            <div class="accordion-item active">
+              <button class="accordion-header">
+                <span>How are multi-vendor commission rates calculated?</span>
+                <i class="fa-solid fa-chevron-down accordion-chevron"></i>
+              </button>
+              <div class="accordion-content">
+                Commission rates are snapshotted at the exact time of order placement. Standard rates are 10.0% for apparel and leather goods, and 12.0% for horology and electronics. AMEZA Official flagship items are 0.0%.
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>What is the 7-day escrow payout rule?</span>
+                <i class="fa-solid fa-chevron-down accordion-chevron"></i>
+              </button>
+              <div class="accordion-content">
+                To protect against fraudulent chargebacks and return disputes, order funds are held in the "Pending" bucket until 7 days post confirmed United States Post delivery before moving to "Available".
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="component-group">
+          <span class="group-label">Date-Range Picker with "Compare to Previous"</span>
+          <div class="date-range-popover" style="max-width:320px;">
+            <div class="date-presets">
+              <button class="btn btn-ghost btn-xs active">Last 30 Days</button>
+              <button class="btn btn-ghost btn-xs">Last 7 Days</button>
+              <button class="btn btn-ghost btn-xs">Today</button>
+              <button class="btn btn-ghost btn-xs">This Quarter</button>
+            </div>
+            <div class="d-flex gap-2">
+              <input type="date" class="form-control form-control-sm" value="2026-09-01" />
+              <input type="date" class="form-control form-control-sm" value="2026-10-01" />
+            </div>
+            <label class="checkbox-label text-xs">
+              <input type="checkbox" class="custom-checkbox" checked />
+              <span>Compare to previous period</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ES MODULE INITIALIZATION SCRIPT -->
+  <script type="module">
+    import { escapeHTML, formatMoney, showToast } from '../js/core/utils.js';
+    import { TableKit } from '../js/table-kit.js';
+    import { MarketplaceAPI } from '../js/api/marketplace.api.js';
+
+    // 1. Initialize Interactive Table Kit with Mock Data
+    async function initShowcaseTable() {
+      const products = await MarketplaceAPI.getProducts();
+
+      const columns = [
+        { id: 'image', label: 'Item', sortable: false, render: (val, row) => `
+          <div style="display:flex; align-items:center; gap:10px;">
+            <img src="${val}" alt="${escapeHTML(row.title)}" style="width:36px; height:36px; border-radius:6px; object-fit:cover; border:1px solid var(--border);" />
+            <div>
+              <div class="font-bold text-xs text-main">${escapeHTML(row.title)}</div>
+              <div class="text-xs text-muted">${escapeHTML(row.sellerName)}</div>
+            </div>
+          </div>
+        `},
+        { id: 'category', label: 'Category', render: (val) => `<span class="badge badge-neutral">${escapeHTML(val)}</span>` },
+        { id: 'price', label: 'Price (USD)', sortValue: r => r.price, render: (val) => `<span class="font-semibold">${formatMoney(val)}</span>` },
+        { id: 'ratingAvg', label: 'Rating', sortValue: r => r.ratingAvg, render: (val, row) => `
+          <div class="d-flex align-items-center gap-1 text-xs">
+            <i class="fa-solid fa-star text-warning"></i>
+            <span class="font-bold">${val}</span>
+            <span class="text-muted">(${row.ratingCount})</span>
+          </div>
+        `},
+        { id: 'stockCount', label: 'Stock', sortValue: r => r.stockCount, render: (val) => {
+          if (val <= 5) return `<span class="badge badge-danger">Low: ${val} left</span>`;
+          return `<span class="badge badge-success">${val} in stock</span>`;
+        }},
+        { id: 'status', label: 'Status', render: (val) => `<span class="badge badge-success badge-dot">${escapeHTML(val)}</span>` }
+      ];
+
+      const tableKit = new TableKit({
+        container: 'uikit-table-mount',
+        tableId: 'showcase-products-table',
+        columns,
+        data: products,
+        pageSize: 6
+      });
+
+      // Currency change listener to update KPI and table values
+      window.addEventListener('ameza:currency-change', () => {
+        document.querySelectorAll('[data-money]').forEach(el => {
+          const val = parseFloat(el.getAttribute('data-money'));
+          el.textContent = formatMoney(val);
+        });
+        tableKit.renderTableBody();
+      });
+    }
+
+    initShowcaseTable();
+
+    // 2. Modals & Drawers Interactive Handlers
+    const demoModal = document.getElementById('demo-modal');
+    document.getElementById('btn-trigger-modal')?.addEventListener('click', () => demoModal?.classList.add('active'));
+    document.getElementById('demo-modal-close')?.addEventListener('click', () => demoModal?.classList.remove('active'));
+    document.getElementById('demo-modal-cancel')?.addEventListener('click', () => demoModal?.classList.remove('active'));
+    document.getElementById('demo-modal-confirm')?.addEventListener('click', () => {
+      demoModal?.classList.remove('active');
+      showToast('Merchant approved successfully!', 'success');
+    });
+
+    const demoDrawer = document.getElementById('demo-drawer');
+    document.getElementById('btn-trigger-drawer')?.addEventListener('click', () => demoDrawer?.classList.add('active'));
+    document.getElementById('demo-drawer-close')?.addEventListener('click', () => demoDrawer?.classList.remove('active'));
+    document.getElementById('demo-drawer-cancel')?.addEventListener('click', () => demoDrawer?.classList.remove('active'));
+    document.getElementById('demo-drawer-save')?.addEventListener('click', () => {
+      demoDrawer?.classList.remove('active');
+      showToast('Product changes saved to catalog', 'success');
+    });
+
+    // 3. Toast Buttons
+    document.getElementById('btn-toast-success')?.addEventListener('click', () => showToast('Order #ORD-AU-10065 marked as dispatched!', 'success'));
+    document.getElementById('btn-toast-warning')?.addEventListener('click', () => showToast('Inventory low: Only 2 units remaining', 'warning'));
+    document.getElementById('btn-toast-danger')?.addEventListener('click', () => showToast('Payment processing failed. Card declined.', 'danger'));
+    document.getElementById('btn-toast-info')?.addEventListener('click', () => showToast('Automatic weekly payout scheduled for Monday 09:00 AEST', 'info'));
+
+    // 4. Tab Navigation
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-tab');
+        document.getElementById(targetId)?.classList.add('active');
+      });
+    });
+
+    // 5. Accordion Toggle
+    document.querySelectorAll('.accordion-header').forEach(hdr => {
+      hdr.addEventListener('click', () => {
+        const item = hdr.closest('.accordion-item');
+        item?.classList.toggle('active');
+      });
+    });
+
+    // 6. Interactive Star Rating
+    const starContainer = document.getElementById('interactive-star-rater');
+    const starLabel = document.getElementById('star-rating-label');
+    starContainer?.querySelectorAll('.fa-star').forEach(star => {
+      star.addEventListener('click', () => {
+        const idx = parseInt(star.getAttribute('data-idx'));
+        starContainer.querySelectorAll('.fa-star').forEach((s, i) => {
+          if (i < idx) {
+            s.className = 'fa-solid fa-star star-filled';
+          } else {
+            s.className = 'fa-regular fa-star star-empty';
+          }
+        });
+        if (starLabel) starLabel.textContent = `${idx}.0 / 5.0 Rating Selected`;
+        showToast(`Rated ${idx} out of 5 stars`, 'info');
+      });
+    });
+
+    // 7. Theme Switcher
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    const themeIcon = document.getElementById('theme-btn-icon');
+    const themeLabel = document.getElementById('theme-btn-label');
+
+    const updateThemeDisplay = (theme) => {
+      document.documentElement.setAttribute('data-theme', theme);
+      if (themeIcon) themeIcon.className = theme === 'dark' ? 'fa-regular fa-sun' : 'fa-regular fa-moon';
+      if (themeLabel) themeLabel.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const themeParam = urlParams.get('theme');
+    const savedTheme = themeParam || localStorage.getItem('ameza_theme') || 'light';
+    updateThemeDisplay(savedTheme);
+
+    themeBtn?.addEventListener('click', () => {
+      const nextTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('ameza_theme', nextTheme);
+      updateThemeDisplay(nextTheme);
+      showToast(`Switched to ${nextTheme} mode`, 'info');
+    });
+
+    // 8. Accent Color Picker
+    document.querySelectorAll('.swatch-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const c = btn.getAttribute('data-color');
+        document.documentElement.style.setProperty('--primary', c);
+        localStorage.setItem('ameza_accent_color', c);
+        showToast(`Primary theme set to ${c}`, 'info');
+      });
+    });
+
+});
+
+    // 10. Simulate Button Loading
+    const simBtn = document.getElementById('btn-simulate-loading');
+    simBtn?.addEventListener('click', () => {
+      simBtn.classList.add('btn-loading');
+      setTimeout(() => {
+        simBtn.classList.remove('btn-loading');
+        showToast('Operation completed successfully!', 'success');
+      }, 1500);
+    });
+
+    // 11. Dropzone preview simulation
+    const dropzone = document.getElementById('demo-dropzone');
+    const previewContainer = document.getElementById('dropzone-previews-container');
+    const samplePreviews = [
+      'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="%23854D0E"><rect width="100" height="100" rx="8" fill="%23854D0E"/><text x="50" y="55" font-size="32" text-anchor="middle" dominant-baseline="middle">👜</text></svg>',
+      'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="%230284C7"><rect width="100" height="100" rx="8" fill="%230284C7"/><text x="50" y="55" font-size="32" text-anchor="middle" dominant-baseline="middle">👕</text></svg>'
+    ];
+
+    function renderPreviews(list) {
+      if (!previewContainer) return;
+      previewContainer.innerHTML = list.map((src, i) => `
+        <div class="preview-item">
+          <img src="${src}" alt="Preview ${i+1}" />
+          <button class="preview-remove" data-idx="${i}">&times;</button>
+        </div>
+      `).join('');
+
+      previewContainer.querySelectorAll('.preview-remove').forEach(b => {
+        b.addEventListener('click', (e) => {
+          const idx = parseInt(e.target.getAttribute('data-idx'));
+          samplePreviews.splice(idx, 1);
+          renderPreviews(samplePreviews);
+          showToast('Image removed from upload queue', 'info');
+        });
+      });
+    }
+
+    renderPreviews(samplePreviews);
+
+    dropzone?.addEventListener('click', () => {
+      const newImg = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="%237FB73C"><rect width="100" height="100" rx="8" fill="%237FB73C"/><text x="50" y="55" font-size="32" text-anchor="middle" dominant-baseline="middle">✨</text></svg>';
+      samplePreviews.push(newImg);
+      renderPreviews(samplePreviews);
+      showToast('Simulated image added to upload list', 'success');
+    });
+
+    // Dropdown toggles
+    document.querySelectorAll('.dropdown > button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const menu = btn.parentElement.querySelector('.dropdown-menu');
+        document.querySelectorAll('.dropdown-menu').forEach(m => {
+          if (m !== menu) m.classList.remove('show');
+        });
+        menu?.classList.toggle('show');
+      });
+    });
+
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders | AMEZA Seller Central</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
+</head>
+<body data-layout="none">
+  <header id="app-topbar"></header>
+
+  <div class="app-layout">
+    <aside id="app-sidebar"></aside>
+
+    <main class="main-content" role="main">
+      <!-- Page Header -->
+      <div class="page-header" style="margin-bottom: 20px;">
+        <div>
+          <h1 class="page-title">Orders</h1>
+        </div>
+        <div class="page-header-actions">
+          <button id="btn-export-orders" class="btn-header-secondary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Export
+          </button>
+          <button id="btn-create-order" class="btn-header-primary">
+            Create order
+          </button>
+        </div>
+      </div>
+
+      <!-- Three Summary Metric Cards -->
+      <div class="orders-summary-grid">
+        <!-- Card 1 -->
+        <div class="order-summary-card">
+          <div class="order-summary-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+          <div>
+            <div style="font-size: 13px; color: var(--text-secondary);">Orders today</div>
+            <div class="order-summary-val">
+              <span>24</span>
+              <span class="order-summary-delta">↑ 20%</span>
+              <span class="order-summary-comp">vs. yesterday</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="order-summary-card">
+          <div class="order-summary-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <div>
+            <div style="font-size: 13px; color: var(--text-secondary);">Items ordered</div>
+            <div class="order-summary-val">
+              <span>138</span>
+              <span class="order-summary-delta">↑ 17%</span>
+              <span class="order-summary-comp">vs. yesterday</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="order-summary-card">
+          <div class="order-summary-icon icon-green">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="16 10 11 15 8 12"/></svg>
+          </div>
+          <div>
+            <div style="font-size: 13px; color: var(--text-secondary);">Orders fulfilled</div>
+            <div class="order-summary-val">
+              <span>18</span>
+              <span class="order-summary-delta">↑ 12%</span>
+              <span class="order-summary-comp">vs. yesterday</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Orders Card -->
+      <div class="card-products">
+        <!-- Tabs Row with Counts -->
+        <div class="products-tabs-row" id="orders-tabs" role="tablist">
+          <button class="tab-btn active" data-tab="all" role="tab">
+            <span class="tab-label">All</span>
+            <span class="tab-badge">10</span>
+          </button>
+          <button class="tab-btn" data-tab="unfulfilled" role="tab">
+            <span class="tab-label">Unfulfilled</span>
+            <span class="tab-badge">4</span>
+          </button>
+          <button class="tab-btn" data-tab="unpaid" role="tab">
+            <span class="tab-label">Unpaid</span>
+            <span class="tab-badge">2</span>
+          </button>
+          <button class="tab-btn" data-tab="shipped" role="tab">
+            <span class="tab-label">Shipped</span>
+            <span class="tab-badge">3</span>
+          </button>
+          <button class="tab-btn" data-tab="delivered" role="tab">
+            <span class="tab-label">Delivered</span>
+            <span class="tab-badge">1</span>
+          </button>
+          <button class="tab-btn" data-tab="returns" role="tab">
+            <span class="tab-label">Returns</span>
+            <span class="tab-badge">0</span>
+          </button>
+          <button class="tab-btn" data-tab="cancelled" role="tab">
+            <span class="tab-label">Cancelled</span>
+            <span class="tab-badge">0</span>
+          </button>
+        </div>
+
+        <!-- Orders Toolbar -->
+        <div class="products-toolbar">
+          <div class="toolbar-left">
+            <div class="search-input-wrapper">
+              <span class="search-input-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </span>
+              <input type="text" id="orders-search" class="search-field" placeholder="Search orders" aria-label="Search orders">
+            </div>
+          </div>
+
+          <div class="toolbar-right">
+            <!-- Filter Button & Popover -->
+            <div style="position: relative;">
+              <button class="btn-filter-dropdown" id="btn-order-filter" aria-haspopup="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                Filter
+              </button>
+              <div class="filter-popover" id="popover-orders-filter" style="width: 250px;">
+                <div style="font-size: 11px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 12px;">Filter Orders</div>
+                <div style="margin-bottom: 10px;">
+                  <label class="form-label" style="font-size:12px;">Payment Status</label>
+                  <select id="filter-order-payment" class="form-input" style="height: 32px; font-size:12px;">
+                    <option value="all">All</option>
+                    <option value="Paid">Paid</option>
+                    <option value="COD pending">COD pending</option>
+                    <option value="Refunded">Refunded</option>
+                  </select>
+                </div>
+                <div style="margin-bottom: 10px;">
+                  <label class="form-label" style="font-size:12px;">Fulfillment Status</label>
+                  <select id="filter-order-fulfillment" class="form-input" style="height: 32px; font-size:12px;">
+                    <option value="all">All</option>
+                    <option value="Fulfilled">Fulfilled</option>
+                    <option value="Unfulfilled">Unfulfilled</option>
+                  </select>
+                </div>
+                <div style="margin-bottom: 14px;">
+                  <label style="display:flex; align-items:center; gap: 8px; font-size: 12.5px; cursor: pointer;">
+                    <input type="checkbox" id="filter-order-cod" class="custom-checkbox">
+                    COD orders only
+                  </label>
+                </div>
+                <button class="btn-header-primary" id="btn-apply-order-filters" style="width: 100%; height: 32px; justify-content: center; font-size: 12px;">Apply filters</button>
+              </div>
+            </div>
+
+            <!-- Sort Button & Popover -->
+            <div style="position: relative;">
+              <button class="btn-filter-dropdown" id="btn-order-sort" aria-haspopup="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5h10M11 9h7M11 13h4M3 17l3 3 3-3M6 18V4"/></svg>
+                Sort
+              </button>
+              <div class="filter-popover" id="popover-orders-sort" style="width: 180px;">
+                <div style="font-size: 11px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 8px;">Sort by</div>
+                <button class="menu-item-btn" data-sort-opt="date-desc">Date (newest)</button>
+                <button class="menu-item-btn" data-sort-opt="date-asc">Date (oldest)</button>
+                <button class="menu-item-btn" data-sort-opt="total-desc">Total (high to low)</button>
+                <button class="menu-item-btn" data-sort-opt="total-asc">Total (low to high)</button>
+                <button class="menu-item-btn" data-sort-opt="customer-asc">Customer name (A-Z)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Light Green Bulk Bar -->
+        <div class="order-bulk-bar" id="orders-bulk-bar">
+          <div style="display:flex; align-items:center; gap: 14px;">
+            <span id="orders-bulk-count" style="font-weight: 600;">0 selected</span>
+            <button class="btn-bulk" id="btn-bulk-mark-packed">Mark as packed</button>
+            <button class="btn-bulk" id="btn-bulk-print-slips">Print slips</button>
+            <button class="btn-bulk" id="btn-bulk-add-tracking">Add tracking</button>
+          </div>
+          <button class="modal-close-btn" id="btn-close-order-bulk" aria-label="Close selection" style="color:#166534;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 44px;">
+                  <input type="checkbox" id="checkbox-select-all-orders" class="custom-checkbox" aria-label="Select all orders">
+                </th>
+                <th>Order</th>
+                <th id="th-date-sort" style="cursor: pointer;">
+                  <div class="th-sort-wrapper">
+                    <span>Date</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+                  </div>
+                </th>
+                <th>Customer</th>
+                <th>Payment status</th>
+                <th>Fulfillment status</th>
+                <th>Items</th>
+                <th>Total</th>
+                <th style="width: 44px; text-align: right;"></th>
+              </tr>
+            </thead>
+            <tbody id="orders-table-body">
+              <!-- Rendered dynamically by js/orders.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Orders Footer -->
+        <div class="table-footer">
+          <div id="orders-pagination-info">Showing 1-10 of 10 orders</div>
+          <div class="pagination-controls" id="orders-pagination-controls">
+            <!-- Rendered by js/orders.js -->
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    import { initShell } from '../js/shell.js';
+    import { initOrders } from '../js/orders.js';
+
+    initShell('orders');
+    initOrders();
+  </script>
+</body>
+</html>
+

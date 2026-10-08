@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | AMEZA Seller Central</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
+</head>
+<body data-layout="none">
+  <header id="app-topbar"></header>
+
+  <div class="app-layout">
+    <aside id="app-sidebar"></aside>
+
+    <main class="main-content" role="main">
+      <!-- Page Header -->
+      <div class="page-header" style="margin-bottom: 20px;">
+        <div>
+          <h1 class="page-title">Products</h1>
+        </div>
+        <div class="page-header-actions">
+          <button id="btn-export-products" class="btn-header-secondary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Export
+          </button>
+          <button id="btn-import-products" class="btn-header-secondary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Import
+          </button>
+          <a href="add-product.html" class="btn-header-primary">
+            Add product
+          </a>
+        </div>
+      </div>
+
+      <!-- Main Products Card -->
+      <div class="card-products">
+        <!-- Tabs Row -->
+        <div class="products-tabs-row" id="products-tabs" role="tablist">
+          <button class="tab-btn active" data-tab="all" role="tab" aria-selected="true">All</button>
+          <button class="tab-btn" data-tab="active" role="tab" aria-selected="false">Active</button>
+          <button class="tab-btn" data-tab="draft" role="tab" aria-selected="false">Draft</button>
+          <button class="tab-btn" data-tab="pending" role="tab" aria-selected="false">Pending review</button>
+          <button class="tab-btn" data-tab="rejected" role="tab" aria-selected="false">Rejected</button>
+          <button class="tab-btn" data-tab="lowstock" role="tab" aria-selected="false">Low stock</button>
+        </div>
+
+        <!-- Toolbar Row -->
+        <div class="products-toolbar">
+          <div class="toolbar-left">
+            <div class="search-input-wrapper">
+              <span class="search-input-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </span>
+              <input type="text" id="products-search" class="search-field" placeholder="Search products..." aria-label="Search products">
+            </div>
+          </div>
+
+          <div class="toolbar-right">
+            <!-- Status Dropdown -->
+            <div style="position: relative;">
+              <button class="btn-filter-dropdown" id="btn-filter-status" aria-haspopup="true">
+                Status
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="filter-popover" id="popover-filter-status">
+                <div style="font-size: 11px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 8px;">Filter by status</div>
+                <button class="menu-item-btn" data-status-opt="all">All statuses</button>
+                <button class="menu-item-btn" data-status-opt="Active">Active</button>
+                <button class="menu-item-btn" data-status-opt="Draft">Draft</button>
+                <button class="menu-item-btn" data-status-opt="Pending review">Pending review</button>
+                <button class="menu-item-btn" data-status-opt="Rejected">Rejected</button>
+              </div>
+            </div>
+
+            <!-- Category Dropdown -->
+            <div style="position: relative;">
+              <button class="btn-filter-dropdown" id="btn-filter-category" aria-haspopup="true">
+                Category
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="filter-popover" id="popover-filter-category">
+                <div style="font-size: 11px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 8px;">Filter by category</div>
+                <button class="menu-item-btn" data-cat-opt="all">All categories</button>
+                <button class="menu-item-btn" data-cat-opt="Accessories">Accessories</button>
+                <button class="menu-item-btn" data-cat-opt="Bags">Bags</button>
+                <button class="menu-item-btn" data-cat-opt="Clothing">Clothing</button>
+                <button class="menu-item-btn" data-cat-opt="Electronics">Electronics</button>
+                <button class="menu-item-btn" data-cat-opt="Footwear">Footwear</button>
+                <button class="menu-item-btn" data-cat-opt="Home & Living">Home & Living</button>
+              </div>
+            </div>
+
+            <!-- Price Range Dropdown -->
+            <div style="position: relative;">
+              <button class="btn-filter-dropdown" id="btn-filter-price" aria-haspopup="true">
+                Price range
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="filter-popover" id="popover-filter-price">
+                <div style="font-size: 11px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 8px;">Filter by price</div>
+                <button class="menu-item-btn" data-price-opt="all">Any price</button>
+                <button class="menu-item-btn" data-price-opt="under25">Under $25</button>
+                <button class="menu-item-btn" data-price-opt="25to50">$25 to $50</button>
+                <button class="menu-item-btn" data-price-opt="50to100">$50 to $100</button>
+                <button class="menu-item-btn" data-price-opt="over100">Over $100</button>
+              </div>
+            </div>
+
+            <!-- More Filters Button -->
+            <div style="position: relative;">
+              <button class="btn-filter-dropdown" id="btn-more-filters" aria-haspopup="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                More filters
+              </button>
+              <div class="filter-popover" id="popover-more-filters" style="width: 250px;">
+                <div style="font-size: 11px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 12px;">Advanced Filters</div>
+                <div style="margin-bottom: 12px;">
+                  <label style="display:block; font-size: 12px; font-weight: 500; margin-bottom: 4px;">Minimum Sales</label>
+                  <input type="number" id="input-min-sales" min="0" placeholder="0" class="search-field" style="height: 32px; font-size: 12px;">
+                </div>
+                <div style="margin-bottom: 16px;">
+                  <label style="display:flex; align-items:center; gap: 8px; font-size: 13px; cursor: pointer;">
+                    <input type="checkbox" id="checkbox-in-stock-only" class="custom-checkbox">
+                    In stock only
+                  </label>
+                </div>
+                <button class="btn-header-primary" id="btn-apply-more-filters" style="width: 100%; height: 32px; justify-content: center; font-size: 12px;">Apply filters</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Filter Chips Bar (Conditional) -->
+        <div class="filter-chips-bar" id="filter-chips-bar" style="display: none;">
+          <span style="color: var(--text-tertiary); font-size: 12px;">Filters:</span>
+          <div id="chips-list" style="display:flex; align-items:center; gap: 6px; flex-wrap: wrap;"></div>
+        </div>
+
+        <!-- Bulk Selection Bar -->
+        <div class="bulk-selection-bar" id="bulk-selection-bar">
+          <div class="bulk-bar-left">
+            <span id="bulk-selected-count">0 selected</span>
+          </div>
+          <div class="bulk-bar-actions">
+            <button class="btn-bulk" id="bulk-publish">Publish</button>
+            <button class="btn-bulk" id="bulk-unpublish">Unpublish</button>
+            <button class="btn-bulk" id="bulk-change-price">Change price</button>
+            <button class="btn-bulk btn-bulk-danger" id="bulk-delete">Delete</button>
+          </div>
+        </div>
+
+        <!-- Products Table -->
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 44px;">
+                  <input type="checkbox" id="checkbox-select-all" class="custom-checkbox" aria-label="Select all products">
+                </th>
+                <th class="sortable" data-sort="name">
+                  <div class="th-sort-wrapper">
+                    <span>Product</span>
+                    <span class="sort-arrow" style="display: none;"></span>
+                  </div>
+                </th>
+                <th>Status</th>
+                <th class="sortable" data-sort="inventory">
+                  <div class="th-sort-wrapper">
+                    <span>Inventory</span>
+                    <span class="sort-arrow" style="display: none;"></span>
+                  </div>
+                </th>
+                <th>Category</th>
+                <th class="sortable" data-sort="price">
+                  <div class="th-sort-wrapper">
+                    <span>Price</span>
+                    <span class="sort-arrow" style="display: none;"></span>
+                  </div>
+                </th>
+                <th class="sortable" data-sort="sales">
+                  <div class="th-sort-wrapper">
+                    <span>Sales</span>
+                    <span class="sort-arrow" style="display: none;"></span>
+                  </div>
+                </th>
+                <th style="width: 44px; text-align: right;"></th>
+              </tr>
+            </thead>
+            <tbody id="products-table-body">
+              <!-- Rendered dynamically by js/products.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Products Footer -->
+        <div class="table-footer">
+          <div id="pagination-info">Showing 1-8 of 8 products</div>
+          <div class="pagination-controls" id="pagination-controls">
+            <!-- Rendered by js/products.js -->
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Reusable Modal Overlay -->
+  <div class="modal-overlay" id="products-modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card" id="products-modal-container">
+      <!-- Filled dynamically by js/products.js -->
+    </div>
+  </div>
+
+  <script type="module">
+    import { initShell } from '../js/shell.js';
+    import { initProducts } from '../js/products.js';
+    import { initImportModal } from '../js/import-modal.js';
+
+    initShell('products');
+    initProducts();
+    initImportModal();
+  </script>
+</body>
+</html>

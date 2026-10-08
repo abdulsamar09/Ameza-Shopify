@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMEZA | Premium Modern E-Commerce Store</title>
+  <meta name="description" content="Discover premium clothing, smart tech electronics, luxury watches, handcrafted leather bags & accessories at AMEZA.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/account.css">
+  <link rel="icon" type="image/png" href="assets/ameza-logo.png">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/cart-drawer.css">
+</head>
+<body data-layout="storefront">
+  <div id="site-header"></div>
+
+  <!-- Persistent Demo Control Bar -->
+  <script type="module" src="js/demo-bar.js"></script>
+
+
+  <main>
+    <!-- 3. HERO / DISCOVERY SEARCH HUB (Booking.com Layout Structure) -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 3.84L19.53 19H4.47L12 5.84zM11 10h2v4h-2zm0 6h2v2h-2z"/></svg>
+            <span>INNOVATION THAT SIMPLIFIES</span>
+          </div>
+          <h1 class="hero-title">Discover Your Style &amp; <span>Smart Tech</span></h1>
+          <p class="hero-subtitle">
+            Shop premium clothing, electronics, smartwatches, handcrafted leather bags, belts and lifestyle essentials with authentic quality.
+          </p>
+
+          <!-- Booking.com-inspired Multi-Attribute Discovery Bar -->
+          <div class="discovery-box">
+            <div class="discovery-field discovery-field-main">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="hero-search-input" placeholder="Search products, categories &amp; brands..." aria-label="Product Search">
+            </div>
+
+            <div class="discovery-field discovery-field-cat">
+              <select id="hero-category-select" aria-label="Select Category">
+                <option value="all">All Categories</option>
+                <option value="clothing">Clothing</option>
+                <option value="electronics">Electronics</option>
+                <option value="watches">Watches</option>
+                <option value="leather-canvas">Leather &amp; Canvas</option>
+                <option value="leather-belts">Leather Belts</option>
+                <option value="leather-wallets">Leather Wallets</option>
+                <option value="bags">Bags</option>
+              </select>
+            </div>
+
+            <div class="discovery-field discovery-field-price">
+              <select id="hero-price-select" aria-label="Select Price Range">
+                <option value="all">Any Price</option>
+                <option value="0-50">Under $50</option>
+                <option value="50-100">$50 to $100</option>
+                <option value="100+">$100 &amp; Above</option>
+              </select>
+            </div>
+
+            <button class="discovery-btn" id="hero-search-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <span>Search</span>
+            </button>
+          </div>
+
+          <!-- Category Shortcut Pills -->
+          <div class="hero-shortcuts">
+            <span class="shortcut-label">Popular:</span>
+            <a href="category.html?cat=clothing" class="shortcut-pill">Clothing</a>
+            <a href="category.html?cat=electronics" class="shortcut-pill">Electronics</a>
+            <a href="category.html?cat=watches" class="shortcut-pill">Watches</a>
+            <a href="category.html?cat=leather-belts" class="shortcut-pill">Leather Belts</a>
+            <a href="category.html?cat=leather-wallets" class="shortcut-pill">Wallets</a>
+            <a href="category.html?cat=bags" class="shortcut-pill">Bags &amp; Totes</a>
+          </div>
+        </div>
+
+        <!-- Right Hero Showcase Banner -->
+        <div class="hero-showcase">
+          <div class="hero-banner-card">
+            <img src="assets/banners/hero-smart-tech.png" alt="SMART TECH BETTER LIFE" loading="eager">
+            <div class="hero-banner-overlay">
+              <div class="hero-overlay-text">
+                <h4>SMART TECH BETTER LIFE</h4>
+                <p>Smarter Tools &bull; Seamless Experience</p>
+              </div>
+              <button class="btn-hero-cta" data-action="scroll-section" data-target="section-electronics-watches">
+                Explore Now &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DYNAMIC SEARCH & FILTER RESULTS HUB -->
+    <section class="section search-results-section" id="section-search-results" style="display: none;">
+      <div class="container">
+        <div class="search-results-banner">
+          <div class="search-results-info">
+            <div class="search-results-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <span>Filtered Catalog View</span>
+            </div>
+            <h2 id="search-results-heading">Showing Search Results</h2>
+            <p id="search-results-subtext">Found 0 products matching your criteria</p>
+          </div>
+          <div class="search-results-actions">
+            <button class="btn-clear-search" id="btn-clear-search" data-action="clear-search-filter">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span>Clear Filter</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filtered Products Grid -->
+        <div class="products-grid-5" id="grid-search-results">
+          <!-- Dynamically populated via JS -->
+        </div>
+
+        <!-- Empty State Message -->
+        <div class="search-empty-state" id="search-empty-state" style="display: none;">
+          <div class="empty-search-icon">🔍</div>
+          <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-bottom: 8px;">No Products Found</h3>
+          <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 18px; max-width: 440px; margin-left: auto; margin-right: auto;">
+            We couldn't find any products matching your selected search or filter criteria. Try searching with different keywords or clear filters.
+          </p>
+          <button class="btn-primary" data-action="clear-search-filter">
+            Reset Filters &amp; View All
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. BEST SELLING CATEGORIES (Circular Cards with Clean Spacing) -->
+    <section class="section" id="section-categories">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Best Selling Categories</h2>
+            <p>Explore curated collections crafted for style, durability, and daily elegance</p>
+          </div>
+          <a href="category.html?cat=clothing" class="view-all-link">
+            View All Categories &rarr;
+          </a>
+        </div>
+
+        <div class="categories-grid" id="categories-container">
+          <!-- Dynamic Category Cards Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. FEATURED PROMOTIONAL BANNER ("TECH THAT ELEVATES EVERY DAY") -->
+    <section class="featured-promo-section">
+      <div class="container">
+        <div class="promo-wide-card">
+          <div class="promo-wide-img">
+            <img src="assets/banners/promo-elevates.png" alt="TECH THAT ELEVATES EVERY DAY">
+          </div>
+          <div class="promo-wide-body">
+            <span class="promo-pill">PROMOTIONAL SPOTLIGHT</span>
+            <h2 class="promo-wide-title">TECH THAT ELEVATES EVERY DAY.</h2>
+            <p class="promo-wide-desc">
+              Experience ultra-crisp audio, high-definition AMOLED displays, and extended battery life with our cutting-edge smart wear accessories.
+            </p>
+            <div class="promo-features-list">
+              <div class="promo-feat-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Active Noise Canceling</span>
+              </div>
+              <div class="promo-feat-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Wireless Fast Charging</span>
+              </div>
+              <div class="promo-feat-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Up to 10-Day Battery</span>
+              </div>
+              <div class="promo-feat-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>IP68 Water Resistance</span>
+              </div>
+            </div>
+            <button class="btn-primary" data-action="scroll-section" data-target="section-electronics-watches">
+              Shop Tech Collection &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ELECTRONICS & WATCHES (5-Column Grid on Desktop) -->
+    <section class="section" id="section-electronics-watches">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Electronics &amp; Watches</h2>
+            <p>High-performance smartwatches, wireless audio, and precision timepieces</p>
+          </div>
+          <a href="#" class="view-all-link" data-action="open-search">
+            Browse All Electronics &rarr;
+          </a>
+        </div>
+
+        <div class="products-grid-5" id="grid-electronics-watches">
+          <!-- Dynamic Products Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. COLLECTION SPOTLIGHT (3 Promotional Cards Grid) -->
+    <section class="section" style="padding-top: 10px;">
+      <div class="container">
+        <div class="tri-banner-grid">
+          <!-- Banner 1: Leather -->
+          <div class="tri-banner-card" data-action="scroll-section" data-target="section-leather-collection">
+            <img src="assets/banners/promo-leather.png" alt="LEATHER PRODUCTS">
+            <div class="tri-banner-content">
+              <span class="tri-banner-badge">GENUINE LEATHER</span>
+              <h3 class="tri-banner-title">LEATHER PRODUCTS</h3>
+              <p class="tri-banner-desc">Handcrafted Bags, Belts &amp; RFID Wallets</p>
+              <span class="tri-banner-btn">SHOP LEATHER &rarr;</span>
+            </div>
+          </div>
+
+          <!-- Banner 2: Clothes -->
+          <div class="tri-banner-card" data-action="scroll-section" data-target="section-clothes-jewellery">
+            <img src="assets/banners/promo-clothes.png" alt="CLOTHES COLLECTION">
+            <div class="tri-banner-content">
+              <span class="tri-banner-badge">UP TO 40% OFF</span>
+              <h3 class="tri-banner-title">CLOTHES COLLECTION</h3>
+              <p class="tri-banner-desc">Organic Cotton Tees, Hoodies &amp; Cargos</p>
+              <span class="tri-banner-btn">EXPLORE APPAREL &rarr;</span>
+            </div>
+          </div>
+
+          <!-- Banner 3: Electronics -->
+          <div class="tri-banner-card" data-action="scroll-section" data-target="section-electronics-watches">
+            <img src="assets/banners/promo-electronics.png" alt="ELECTRONICS COLLECTION">
+            <div class="tri-banner-content">
+              <span class="tri-banner-badge">LATEST TECH</span>
+              <h3 class="tri-banner-title">ELECTRONICS COLLECTION</h3>
+              <p class="tri-banner-desc">ANC Earbuds, Smartwatches &amp; Speakers</p>
+              <span class="tri-banner-btn">DISCOVER TECH &rarr;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. CLOTHES & JEWELLERY (5-Column Grid on Desktop) -->
+    <section class="section" id="section-clothes-jewellery">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Clothes &amp; Jewellery</h2>
+            <p>Elevate your wardrobe with premium heavyweight cottons and modern silhouettes</p>
+          </div>
+          <a href="#" class="view-all-link" data-action="open-search">
+            View All Apparel &rarr;
+          </a>
+        </div>
+
+        <div class="products-grid-5" id="grid-clothes-jewellery">
+          <!-- Dynamic Products Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. LARGE LIFESTYLE PROMOTIONAL BANNER ("ELEVATE YOUR EVERYDAY STYLE") -->
+    <section class="lifestyle-banner-section">
+      <div class="container">
+        <div class="lifestyle-card">
+          <div class="lifestyle-img">
+            <img src="assets/banners/banner-everyday-style.png" alt="ELEVATE YOUR EVERYDAY STYLE">
+          </div>
+          <div class="lifestyle-body">
+            <span class="lifestyle-tag">FLASH PROMOTION &bull; UP TO 50% OFF</span>
+            <h2 class="lifestyle-title">ELEVATE YOUR EVERYDAY STYLE</h2>
+            <p class="lifestyle-desc">
+              Premium tailored pieces, rugged denim complements, and relaxed luxury wear designed to last season after season.
+            </p>
+
+            <div class="countdown-wrap">
+              <div class="countdown-box">
+                <div class="countdown-num" id="cd-hours">18</div>
+                <div class="countdown-lbl">Hours</div>
+              </div>
+              <div class="countdown-box">
+                <div class="countdown-num" id="cd-mins">45</div>
+                <div class="countdown-lbl">Mins</div>
+              </div>
+              <div class="countdown-box">
+                <div class="countdown-num" id="cd-secs">30</div>
+                <div class="countdown-lbl">Secs</div>
+              </div>
+            </div>
+
+            <button class="btn-primary" data-action="scroll-section" data-target="section-clothes-jewellery">
+              Shop Collection Now &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. LEATHER COLLECTION (5-Column Grid on Desktop) -->
+    <section class="section" id="section-leather-collection">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Leather Collection</h2>
+            <p>Full-grain Italian cowhide belts, artisan buckles, and messenger carry bags</p>
+          </div>
+          <a href="#" class="view-all-link" data-action="open-search">
+            View All Leather &rarr;
+          </a>
+        </div>
+
+        <div class="products-grid-5" id="grid-leather-collection">
+          <!-- Dynamic Products Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. LATEST RANGE (Bags, Satchels, Wallets, Totes - 4-Col Grid) -->
+    <section class="section" id="section-latest-range">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Latest Range</h2>
+            <p>Newly released canvas totes, emerald hobo bags, luxury duffles, and RFID bifolds</p>
+          </div>
+          <a href="#" class="view-all-link" data-action="open-search">
+            Explore All New &rarr;
+          </a>
+        </div>
+
+        <div class="products-grid-5" id="grid-latest-range">
+          <!-- Dynamic Products Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. LIMITED TIME DEALS (Booking.com "Deals for the weekend" inspiration) -->
+    <section class="section" id="section-deals" style="padding-top: 20px;">
+      <div class="container">
+        <div class="deals-banner-header">
+          <div class="deals-title">
+            <h3>⚡ Limited Time Deals</h3>
+            <p>Exclusive discounts on best-selling smart tech and handcrafted leather</p>
+          </div>
+          <div class="deals-timer-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span id="deals-live-timer">18h : 45m : 30s</span>
+          </div>
+        </div>
+        <div class="deals-body-box">
+          <div class="products-grid-5" id="grid-limited-deals">
+            <!-- Deal Products Rendered via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. TRUST / SERVICE BENEFITS SECTION -->
+    <section class="trust-section">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          </div>
+          <div class="trust-text">
+            <h4>FREE SHIPPING</h4>
+            <p>On all orders over $100</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          </div>
+          <div class="trust-text">
+            <h4>EASY RETURNS</h4>
+            <p>30-day hassle-free policy</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <div class="trust-text">
+            <h4>SECURE PAYMENT</h4>
+            <p>256-bit encrypted checkout</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <div class="trust-text">
+            <h4>QUALITY PRODUCTS</h4>
+            <p>100% authentic guarantee</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          </div>
+          <div class="trust-text">
+            <h4>24/7 SUPPORT</h4>
+            <p>Dedicated customer care</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14. LUXURY NEWSLETTER SECTION ("Discover Something You'll Love") -->
+    <section class="newsletter-section" id="newsletter-section">
+      <div class="newsletter-ambient-glow"></div>
+      <div class="container newsletter-content">
+        <div class="newsletter-badge">
+          <i class="fa-solid fa-sparkles"></i> EXCLUSIVE VIP ACCESS &bull; GET 10% OFF
+        </div>
+        <h2 class="newsletter-title">Discover Something You'll Love</h2>
+        <p class="newsletter-desc">
+          Subscribe to the AMEZA newsletter for early access to product drops, VIP discounts, and curated American artisan collections.
+        </p>
+        <form class="newsletter-form" id="newsletter-form">
+          <div class="newsletter-input-wrap">
+            <i class="fa-regular fa-envelope newsletter-input-icon"></i>
+            <input type="email" id="newsletter-email" placeholder="Enter your email address" required aria-label="Email address for newsletter">
+          </div>
+          <button type="submit" class="btn-newsletter" id="btn-newsletter-submit">
+            <span>Subscribe &amp; Save 10%</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+        <div class="newsletter-guarantee">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Instant discount code delivered upon signup. Zero spam &bull; Unsubscribe anytime.</span>
+        </div>
+        <div class="newsletter-success-msg" id="newsletter-success-msg" style="display: none;">
+          <i class="fa-solid fa-circle-check"></i>
+          <div>
+            <strong>You're in! Use coupon code <span class="coupon-pill">SAVE10</span> at checkout for 10% off.</strong>
+            <p style="margin: 2px 0 0; font-size: 11.5px; opacity: 0.85;">We've sent a welcome confirmation to your inbox.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 15. MULTI-COLUMN FOOTER -->
+  <div id="site-footer"></div>
+
+
+  <!-- 17. WISHLIST DRAWER -->
+  <div class="drawer-backdrop" id="wishlist-backdrop" data-action="close-wishlist"></div>
+  <aside class="cart-drawer" id="wishlist-drawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        <span>Saved Wishlist</span>
+      </div>
+      <button class="btn-close-drawer" data-action="close-wishlist" aria-label="Close Wishlist">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div class="cart-items-wrap" id="wishlist-items-container">
+      <!-- Items dynamically populated via JS -->
+    </div>
+    <div class="drawer-footer" id="wishlist-drawer-footer" style="display: none;">
+      <div class="drawer-subtotal">
+        <span>Saved Items</span>
+        <strong id="wishlist-drawer-count">0 items</strong>
+      </div>
+      <button class="btn-primary" style="width: 100%; justify-content: center; margin-bottom: 8px; height: 46px;" data-action="wishlist-move-all">
+        Move All to Cart &rarr;
+      </button>
+      <div style="display: flex; gap: 8px;">
+        <a href="wishlist.html" class="btn-clear-search" style="flex: 1; justify-content: center; text-decoration: none;">
+          View Full Page
+        </a>
+        <button class="btn-clear-search" style="flex: 1; justify-content: center;" data-action="wishlist-clear-all">
+          Clear All
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 18. QUICK VIEW & PRODUCT DETAIL MODAL -->
+  <div class="modal-backdrop" id="product-modal">
+    <div class="modal-card">
+      <button class="btn-close-modal" data-action="close-quick-view" aria-label="Close Modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div id="product-modal-content">
+        <!-- Content injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 19. LIVE SEARCH MODAL / OVERLAY -->
+  <div class="search-modal" id="search-modal">
+    <div class="search-modal-box">
+      <div class="search-modal-header">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="live-search-input" placeholder="Type to search smartwatches, hoodies, belts, bags..." autofocus>
+        <button class="btn-close-drawer" data-action="close-search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="search-results-wrap" id="live-search-results">
+        <!-- Live search matches -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 20. CHECKOUT SIMULATION MODAL -->
+  <div class="modal-backdrop" id="checkout-modal">
+    <div class="modal-card checkout-modal-card">
+      <button class="btn-close-modal" data-action="close-checkout" aria-label="Close Modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div id="checkout-modal-content">
+        <h2 class="checkout-title">Express Secure Checkout</h2>
+        <div id="checkout-order-summary"></div>
+
+        <form id="checkout-form">
+          <div class="checkout-form-grid">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" required placeholder="John" value="Alex">
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" required placeholder="Doe" value="Morgan">
+            </div>
+            <div class="form-group full">
+              <label>Email Address</label>
+              <input type="email" required placeholder="alex.morgan@example.com" value="alex.morgan@example.com">
+            </div>
+            <div class="form-group full">
+              <label>Shipping Address</label>
+              <input type="text" required placeholder="123 Luxury Avenue, Suite 400" value="742 Evergreen Terrace">
+            </div>
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" required placeholder="New York" value="Springfield">
+            </div>
+            <div class="form-group">
+              <label>Postal Code</label>
+              <input type="text" required placeholder="10001" value="97477">
+            </div>
+            <div class="form-group full">
+              <label>Payment Method</label>
+              <select required>
+                <option value="card">💳 Credit / Debit Card (Visa, MasterCard, Amex)</option>
+                <option value="paypal">🅿️ PayPal Express</option>
+                <option value="apple"> Apple Pay</option>
+                <option value="cod">💵 Cash on Delivery</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; padding: 14px; font-size: 1rem;">
+            Place Order &bull; Complete Payment &rarr;
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21. USER ACCOUNT MODAL -->
+  <div class="modal-backdrop" id="account-modal">
+    <div class="modal-card" style="max-width: 580px;">
+      <button class="btn-close-modal" data-action="close-account" aria-label="Close Modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div id="account-modal-content">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 22. TOAST NOTIFICATIONS CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Currency Engine -->
+  <script src="js/currency.js"></script>
+  <!-- Auth engine for account icon state & profile dropdown -->
+  <script src="js/auth.js"></script>
+  <script type="module" src="js/app.js"></script>
+  <!-- Unified Layout Module -->
+  <script type="module" src="js/core/layout.js"></script>
+</body>
+</html>

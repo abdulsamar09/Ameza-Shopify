@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order #AM-1042 | AMEZA Seller Central</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
+</head>
+<body data-layout="none">
+  <header id="app-topbar"></header>
+
+  <div class="app-layout">
+    <aside id="app-sidebar"></aside>
+
+    <main class="main-content" role="main">
+      <!-- Page Header -->
+      <div class="page-header" style="margin-bottom: 20px;">
+        <div>
+          <div style="display:flex; align-items:center; gap: 12px; margin-bottom: 4px;">
+            <a href="orders.html" class="btn-icon-dots" aria-label="Back to Orders" style="color:var(--text-main); text-decoration:none;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            </a>
+            <h1 class="page-title" id="order-title-code" style="font-size: 22px;">#AM-1042</h1>
+            <span class="badge badge-success" id="header-pay-badge">Paid</span>
+            <span class="badge badge-warning" id="header-ful-badge">Unfulfilled</span>
+          </div>
+          <p class="page-subtitle" id="order-subtitle-text" style="margin-left: 44px; font-size: 12.5px;">
+            April 29, 2025 at 10:24 AM from Online Store
+          </p>
+        </div>
+
+        <div class="page-header-actions" style="position: relative;">
+          <button class="btn-header-secondary" id="btn-print-slip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print slip
+          </button>
+
+          <!-- More Actions Dropdown -->
+          <div style="position: relative;">
+            <button class="btn-header-secondary" id="btn-more-actions">
+              More actions
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-popover" id="popover-order-more" style="width: 170px;">
+              <button class="menu-item-btn" id="action-print-invoice">Print invoice</button>
+              <button class="menu-item-btn" id="action-add-tracking">Add tracking</button>
+              <button class="menu-item-btn" id="action-message-buyer">Message buyer</button>
+              <button class="menu-item-btn danger" id="action-cancel-order">Cancel order</button>
+            </div>
+          </div>
+
+          <button class="btn-header-primary" id="btn-header-mark-packed">
+            Mark as packed
+          </button>
+        </div>
+      </div>
+
+      <!-- Two-Column Order Layout -->
+      <div class="order-detail-grid">
+        <!-- LEFT COLUMN (2/3) -->
+        <div class="order-detail-left">
+          <!-- Card 1: Fulfillment items -->
+          <div class="order-items-card">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 14px;">
+              <div style="display:flex; align-items:center; gap: 8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                <span class="form-card-title" id="fulfillment-card-title" style="margin-bottom:0;">Unfulfilled (2)</span>
+              </div>
+              <span class="badge badge-warning" style="font-size:11px;">Unfulfilled</span>
+            </div>
+
+            <!-- Items List -->
+            <div id="order-items-list">
+              <!-- Rendered by js/order-detail.js -->
+            </div>
+
+            <!-- Fulfill Button -->
+            <div style="display:flex; justify-content:flex-end; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-subtle);">
+              <button class="btn-header-primary" id="btn-fulfill-items">Fulfill items</button>
+            </div>
+          </div>
+
+          <!-- Card 2: Paid & Payment Details -->
+          <div class="order-items-card">
+            <div style="display:flex; align-items:center; gap: 8px; margin-bottom: 14px;">
+              <div style="width: 24px; height: 24px; border-radius: 5px; background: var(--primary-green-light); color: var(--primary-green-dark); display:flex; align-items:center; justify-content:center;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span class="form-card-title" style="margin-bottom:0;">Paid</span>
+            </div>
+
+            <div class="order-payment-box">
+              <!-- Left Box: Summary Breakdown -->
+              <div class="payment-summary-col">
+                <div style="font-size: 12px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 12px;">Payment summary</div>
+                <div class="summary-row">
+                  <span style="color: var(--text-secondary);">Subtotal (2 items)</span>
+                  <span id="summary-subtotal-val" style="font-weight: 500;">$248.00</span>
+                </div>
+                <div class="summary-row">
+                  <span style="color: var(--text-secondary);">Shipping</span>
+                  <span id="summary-shipping-val" style="font-weight: 500;">$10.00</span>
+                </div>
+                <div class="summary-row">
+                  <span style="color: var(--text-secondary);">Commission (10%)</span>
+                  <span id="summary-commission-val" style="font-weight: 500; color: #DC2626;">-$24.80</span>
+                </div>
+                <div class="summary-row total-earn-row">
+                  <span>You earn</span>
+                  <span id="summary-earn-val">$233.20</span>
+                </div>
+              </div>
+
+              <!-- Right Box: Method -->
+              <div>
+                <div style="font-size: 12px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 12px;">Payment method</div>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 12px;">
+                  <div style="display:flex; align-items:center; gap: 8px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                    <span style="font-weight: 600; font-size: 13px;">Credit Card **** 4242</span>
+                  </div>
+                  <span class="badge badge-success" style="font-size: 10.5px; padding: 1px 7px;">Paid</span>
+                </div>
+                <div style="font-size: 12px; color: var(--text-tertiary);">Paid on Apr 29, 2025 at 10:24 AM</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Timeline -->
+          <div class="order-items-card">
+            <span class="form-card-title">Timeline</span>
+            <div class="timeline-container">
+              <div class="timeline-line"></div>
+              <div id="timeline-items-list">
+                <!-- Rendered dynamically by js/order-detail.js -->
+              </div>
+            </div>
+
+            <!-- Comment Box -->
+            <div class="comment-input-box">
+              <div class="user-avatar-circle" style="width: 32px; height: 32px; font-size: 11px;">AO</div>
+              <input type="text" id="timeline-comment-input" class="search-field" placeholder="Add a comment..." style="flex:1;">
+              <button class="btn-header-secondary" id="btn-post-comment" style="height: 36px; padding: 0 16px;">Post</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN (1/3) -->
+        <div class="order-detail-right">
+          <!-- Right Card 1: Customer -->
+          <div class="form-card">
+            <span class="form-card-title">Customer</span>
+            <div style="display:flex; align-items:center; gap: 12px; margin-bottom: 10px;">
+              <div style="width: 36px; height: 36px; border-radius: 50%; background: #E5E7EB; color: #4B5563; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px;">
+                JC
+              </div>
+              <div style="flex: 1;">
+                <div style="font-weight: 600; color: var(--text-main); font-size: 13.5px;">John Carter</div>
+                <div style="font-size: 12px; color: var(--text-secondary); display: flex; align-items: center; gap: 6px;">
+                  <span>john@example.com</span>
+                  <button id="btn-copy-email" style="background:none; border:none; color:var(--text-tertiary); cursor:pointer; padding:0;" title="Copy email">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <button id="link-view-customer" style="background:none; border:none; color:var(--primary-green-dark); font-size:12px; font-weight:600; cursor:pointer; padding:0;">
+              View customer
+            </button>
+          </div>
+
+          <!-- Right Card 2: Shipping Address -->
+          <div class="form-card">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 10px;">
+              <div style="display:flex; align-items:center; gap: 6px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span class="form-card-title" style="margin-bottom:0;">Shipping address</span>
+              </div>
+              <button id="btn-copy-address" style="background:none; border:none; color:var(--text-tertiary); cursor:pointer;" title="Copy address">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              </button>
+            </div>
+            <div id="shipping-address-text" style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; white-space: pre-line; margin-bottom: 10px;"></div>
+            <a href="#" id="link-view-map" target="_blank" style="font-size:12px; font-weight:600; color:var(--primary-green-dark); text-decoration:none;">
+              View map &rarr;
+            </a>
+          </div>
+
+          <!-- Right Card 3: Billing Address -->
+          <div class="form-card">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 6px;">
+              <span class="form-card-title" style="margin-bottom:0;">Billing address</span>
+              <span style="font-size: 11px; color: var(--text-tertiary);">Same as shipping</span>
+            </div>
+            <div style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.4;">
+              John Carter<br>
+              123 Oak Street, Apt 4B<br>
+              New York, NY 10001, United States
+            </div>
+          </div>
+
+          <!-- Right Card 4: Notes -->
+          <div class="form-card">
+            <span class="form-card-title">Notes</span>
+            <div style="font-size: 12.5px; color: var(--text-tertiary); margin-bottom: 10px;">
+              No notes from customer
+            </div>
+            <button class="btn-header-secondary" style="height: 30px; font-size: 12px; padding: 0 12px;" onclick="prompt('Add customer note:');">
+              Add note
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Fulfill Modal -->
+  <div class="modal-overlay" id="fulfill-modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Fulfill items (2 items)</h3>
+        <button class="modal-close-btn" id="btn-close-fulfill">${Icons.close}</button>
+      </div>
+      <div class="modal-body">
+        <div style="margin-bottom: 14px;">
+          <label style="display:block; font-size:12.5px; font-weight:600; margin-bottom:6px;">Carrier</label>
+          <select class="form-input" style="width:100%;">
+            <option>United States Post</option>
+            <option>DHL Express</option>
+            <option>FedEx</option>
+          </select>
+        </div>
+        <div style="margin-bottom: 14px;">
+          <label style="display:block; font-size:12.5px; font-weight:600; margin-bottom:6px;">Tracking number</label>
+          <input type="text" id="fulfill-tracking-input" class="form-input" placeholder="e.g. AP-982471923AU" value="AP-982471923AU">
+        </div>
+        <div>
+          <label style="display:flex; align-items:center; gap:8px; font-size:12.5px; cursor:pointer;">
+            <input type="checkbox" checked class="custom-checkbox">
+            Notify customer by email with tracking details
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-header-secondary" id="btn-cancel-fulfill">Cancel</button>
+        <button class="btn-header-primary" id="btn-confirm-fulfill">Fulfill items</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initShell } from '../js/shell.js';
+    import { initOrderDetail } from '../js/order-detail.js';
+
+    initShell('orders');
+    initOrderDetail();
+  </script>
+</body>
+</html>

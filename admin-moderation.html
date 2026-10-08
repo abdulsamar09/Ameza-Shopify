@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Moderation Queue | AMEZA USA</title>
+  <meta name="description" content="Admin moderation portal for approving U.S. merchants and catalog items.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/account.css">
+  <link rel="stylesheet" href="css/seller.css">
+  <link rel="icon" type="image/png" href="assets/ameza-logo.png">
+</head>
+<body>
+
+  <!-- Persistent Demo Control Bar -->
+  <script type="module" src="js/demo-bar.js"></script>
+
+  <!-- HEADER -->
+  <header class="header-sticky">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-wrap">
+        <img src="assets/ameza-logo.png" alt="AMEZA Logo" onerror="this.style.display='none'">
+      </a>
+      <nav class="main-nav">
+        <a href="admin-moderation.html" class="nav-link active"><span>Compliance &amp; Moderation</span></a>
+        <a href="admin-finance.html" class="nav-link"><span>Finance &amp; Ledger</span></a>
+        <a href="admin-cms.html" class="nav-link"><span>CMS &amp; Banners</span></a>
+        <a href="admin-categories.html" class="nav-link"><span>Categories</span></a>
+        <a href="admin-audit.html" class="nav-link"><span>Audit Log</span></a>
+        <a href="admin-settings.html" class="nav-link"><span>Settings &amp; Roles</span></a>
+      </nav>
+      <div class="header-actions">
+        <a href="seller/index.html" class="btn-outline" style="font-size: 0.8rem; padding: 6px 12px;">Merchant Portal →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <div class="account-page-wrapper">
+    <div class="container">
+
+      <div style="margin-bottom: 24px;">
+        <h1 style="font-size: 1.8rem; font-weight: 800; color: var(--dark); letter-spacing: -0.5px;">Merchant &amp; Catalog Moderation</h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Approve U.S. merchant applications, verify EIN compliance, and moderate catalog listings.</p>
+      </div>
+
+      <!-- TABS -->
+      <div style="display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px;">
+        <button class="btn-primary" id="tab-sellers-btn" style="padding: 9px 18px; font-size: 0.85rem;">
+          <i class="fa-solid fa-user-check"></i> Pending Sellers (<span id="cnt-sellers">0</span>)
+        </button>
+        <button class="btn-modal-cancel" id="tab-products-btn" style="padding: 9px 18px; font-size: 0.85rem;">
+          <i class="fa-solid fa-boxes-packing"></i> Pending Products (<span id="cnt-products">0</span>)
+        </button>
+      </div>
+
+      <!-- TAB 1: PENDING SELLERS -->
+      <div id="tab-sellers-view">
+        <div class="seller-table-wrap">
+          <table class="seller-table">
+            <thead>
+              <tr>
+                <th>Applicant / Store</th>
+                <th>EIN &amp; Structure</th>
+                <th>Location</th>
+                <th>AU Bank Payouts</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="pending-sellers-tbody">
+              <tr><td colspan="6" style="text-align: center; padding: 30px;">Loading applications...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 2: PENDING PRODUCTS -->
+      <div id="tab-products-view" style="display: none;">
+        <div class="seller-table-wrap">
+          <table class="seller-table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Merchant</th>
+                <th>Category</th>
+                <th>Price (USD)</th>
+                <th>Stock</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="pending-products-tbody">
+              <tr><td colspan="6" style="text-align: center; padding: 30px;">Loading pending products...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="account-toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/currency.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/account-ui.js"></script>
+  <script type="module">
+    import { SellerAPI } from './js/api/seller.api.js';
+    import { escapeHTML } from './js/core/utils.js';
+
+    async function loadData() {
+      const apps = await SellerAPI.getPendingApplications();
+      document.getElementById('cnt-sellers').textContent = apps.length;
+
+      const sellersBody = document.getElementById('pending-sellers-tbody');
+      if (apps.length === 0) {
+        sellersBody.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted);">
+              <i class="fa-solid fa-circle-check" style="font-size: 2rem; color: var(--success); margin-bottom: 8px;"></i>
+              <p style="font-weight: 700; color: var(--dark);">All caught up!</p>
+              <p style="font-size: 0.85rem;">There are no merchant applications currently awaiting review.</p>
+            </td>
+          </tr>
+        `;
+      } else {
+        sellersBody.innerHTML = apps.map(a => `
+          <tr>
+            <td>
+              <div style="font-weight: 700; color: var(--dark); font-size: 0.95rem;">${escapeHTML(a.storeName)}</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">${escapeHTML(a.userEmail)}</div>
+            </td>
+            <td>
+              <div style="font-weight: 700; color: var(--dark); font-size: 0.85rem;">EIN: ${escapeHTML(a.details?.businessDetails?.ein || a.details?.ein || 'Not provided')}</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: capitalize;">${escapeHTML(a.details?.businessDetails?.businessType || 'LLC')}</div>
+            </td>
+            <td>${escapeHTML(a.details?.city || 'Austin')}, ${escapeHTML(a.details?.state || 'TX')}</td>
+            <td>
+              <div style="font-size: 0.82rem; font-weight: 600;">Routing #: ${escapeHTML(a.details?.payoutMethod?.routingNumber || a.details?.bankDetails?.routingNumber || '—')}</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">${escapeHTML(a.details?.payoutMethod?.accountNumber || a.details?.bankDetails?.accountNumber || '—')}</div>
+            </td>
+            <td style="font-size: 0.82rem; color: var(--text-muted);">${new Date(a.submittedAt).toLocaleDateString('en-US')}</td>
+            <td>
+              <div style="display: flex; gap: 8px;">
+                <button class="btn-primary btn-approve-seller" data-id="${escapeHTML(a.sellerId)}" style="padding: 6px 12px; font-size: 0.78rem;">
+                  <i class="fa-solid fa-check"></i> Approve
+                </button>
+                <button class="btn-modal-cancel btn-reject-seller" data-id="${escapeHTML(a.sellerId)}" style="padding: 6px 12px; font-size: 0.78rem; color: #DC2626;">
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+        `).join('');
+
+        document.querySelectorAll('.btn-approve-seller').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            const sellerId = btn.getAttribute('data-id');
+            const res = await SellerAPI.approveSeller(sellerId);
+            if (res.success) {
+              window.AccountUI.toast('Merchant approved! Storefront is now live.', 'success');
+              await loadData();
+            }
+          });
+        });
+
+        document.querySelectorAll('.btn-reject-seller').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            const sellerId = btn.getAttribute('data-id');
+            const reason = prompt('Please enter rejection reason:');
+            if (reason) {
+              await SellerAPI.rejectSeller(sellerId, reason);
+              window.AccountUI.toast('Application rejected.', 'danger');
+              await loadData();
+            }
+          });
+        });
+      }
+
+      // Pending products
+      const pendingProducts = await SellerAPI.getPendingProducts();
+      document.getElementById('cnt-products').textContent = pendingProducts.length;
+
+      const prodsBody = document.getElementById('pending-products-tbody');
+      if (pendingProducts.length === 0) {
+        prodsBody.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted);">
+              <i class="fa-solid fa-circle-check" style="font-size: 2rem; color: var(--success); margin-bottom: 8px;"></i>
+              <p style="font-weight: 700; color: var(--dark);">Catalog queue clear</p>
+              <p style="font-size: 0.85rem;">No products are currently awaiting moderation.</p>
+            </td>
+          </tr>
+        `;
+      } else {
+        prodsBody.innerHTML = pendingProducts.map(p => `
+          <tr>
+            <td>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="${escapeHTML(p.image)}" style="width: 44px; height: 44px; border-radius: 6px; object-fit: cover;">
+                <div style="font-weight: 700; color: var(--dark); font-size: 0.88rem;">${escapeHTML(p.name)}</div>
+              </div>
+            </td>
+            <td>${escapeHTML(p.sellerName || 'Merchant')}</td>
+            <td>${escapeHTML(p.category)}</td>
+            <td style="font-weight: 800;">$${Number(p.price || 0).toFixed(2)}</td>
+            <td>${p.stockCount} units</td>
+            <td>
+              <div style="display: flex; gap: 8px;">
+                <button class="btn-primary btn-approve-prod" data-id="${escapeHTML(p.id)}" style="padding: 6px 12px; font-size: 0.78rem;">
+                  <i class="fa-solid fa-check"></i> Approve
+                </button>
+              </div>
+            </td>
+          </tr>
+        `).join('');
+
+        document.querySelectorAll('.btn-approve-prod').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            const prodId = btn.getAttribute('data-id');
+            const res = await SellerAPI.approveProduct(prodId);
+            if (res.success) {
+              window.AccountUI.toast('Product approved and published to storefront!', 'success');
+              await loadData();
+            }
+          });
+        });
+      }
+    }
+
+    document.getElementById('tab-sellers-btn').addEventListener('click', () => {
+      document.getElementById('tab-sellers-btn').className = 'btn-primary';
+      document.getElementById('tab-products-btn').className = 'btn-modal-cancel';
+      document.getElementById('tab-sellers-view').style.display = 'block';
+      document.getElementById('tab-products-view').style.display = 'none';
+    });
+
+    document.getElementById('tab-products-btn').addEventListener('click', () => {
+      document.getElementById('tab-products-btn').className = 'btn-primary';
+      document.getElementById('tab-sellers-btn').className = 'btn-modal-cancel';
+      document.getElementById('tab-sellers-view').style.display = 'none';
+      document.getElementById('tab-products-view').style.display = 'block';
+    });
+
+    document.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>

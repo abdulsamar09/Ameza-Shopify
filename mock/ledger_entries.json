@@ -1,0 +1,1542 @@
+[
+  {
+    "id": "led_sale_1_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10001-S1",
+    "entryType": "sale",
+    "amountCents": 5998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10001-S1",
+    "createdAt": 1791245846055
+  },
+  {
+    "id": "led_comm_1_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10001-S1",
+    "entryType": "commission",
+    "amountCents": 600,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10001-S1",
+    "createdAt": 1791245846055
+  },
+  {
+    "id": "led_sale_2_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10002-S1",
+    "entryType": "sale",
+    "amountCents": 19999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10002-S1",
+    "createdAt": 1791158211488
+  },
+  {
+    "id": "led_comm_2_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10002-S1",
+    "entryType": "commission",
+    "amountCents": 2000,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10002-S1",
+    "createdAt": 1791158211488
+  },
+  {
+    "id": "led_sale_3_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10003-S1",
+    "entryType": "sale",
+    "amountCents": 8998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10003-S1",
+    "createdAt": 1790984176921
+  },
+  {
+    "id": "led_comm_3_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10003-S1",
+    "entryType": "commission",
+    "amountCents": 900,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10003-S1",
+    "createdAt": 1790984176921
+  },
+  {
+    "id": "led_sale_3_1",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10003-S2",
+    "entryType": "sale",
+    "amountCents": 4998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10003-S2",
+    "createdAt": 1790984176921
+  },
+  {
+    "id": "led_comm_3_1",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10003-S2",
+    "entryType": "commission",
+    "amountCents": 500,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10003-S2",
+    "createdAt": 1790984176921
+  },
+  {
+    "id": "led_sale_4_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10004-S1",
+    "entryType": "sale",
+    "amountCents": 3999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10004-S1",
+    "createdAt": 1790896542354
+  },
+  {
+    "id": "led_comm_4_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10004-S1",
+    "entryType": "commission",
+    "amountCents": 400,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10004-S1",
+    "createdAt": 1790896542354
+  },
+  {
+    "id": "led_sale_5_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10005-S1",
+    "entryType": "sale",
+    "amountCents": 11998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10005-S1",
+    "createdAt": 1790808907787
+  },
+  {
+    "id": "led_comm_5_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10005-S1",
+    "entryType": "commission",
+    "amountCents": 1200,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10005-S1",
+    "createdAt": 1790808907787
+  },
+  {
+    "id": "led_sale_6_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10006-S1",
+    "entryType": "sale",
+    "amountCents": 3999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10006-S1",
+    "createdAt": 1790634873220
+  },
+  {
+    "id": "led_comm_6_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10006-S1",
+    "entryType": "commission",
+    "amountCents": 400,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10006-S1",
+    "createdAt": 1790634873220
+  },
+  {
+    "id": "led_sale_6_1",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10006-S2",
+    "entryType": "sale",
+    "amountCents": 13999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10006-S2",
+    "createdAt": 1790634873220
+  },
+  {
+    "id": "led_sale_7_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10007-S1",
+    "entryType": "sale",
+    "amountCents": 5998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10007-S1",
+    "createdAt": 1790547238653
+  },
+  {
+    "id": "led_comm_7_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10007-S1",
+    "entryType": "commission",
+    "amountCents": 600,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10007-S1",
+    "createdAt": 1790547238653
+  },
+  {
+    "id": "led_ref_7_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10007-S1",
+    "entryType": "refund_reversal",
+    "amountCents": 5998,
+    "bucket": "available",
+    "description": "Refund reversal for Order ORD-10007-S1",
+    "createdAt": 1790720038653
+  },
+  {
+    "id": "led_sale_8_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10008-S1",
+    "entryType": "sale",
+    "amountCents": 2499,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10008-S1",
+    "createdAt": 1790459604086
+  },
+  {
+    "id": "led_comm_8_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10008-S1",
+    "entryType": "commission",
+    "amountCents": 250,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10008-S1",
+    "createdAt": 1790459604086
+  },
+  {
+    "id": "led_sale_9_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10009-S1",
+    "entryType": "sale",
+    "amountCents": 17998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10009-S1",
+    "createdAt": 1790285569519
+  },
+  {
+    "id": "led_comm_9_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10009-S1",
+    "entryType": "commission",
+    "amountCents": 2160,
+    "bucket": "pending",
+    "description": "Platform fee (12%) for Order ORD-10009-S1",
+    "createdAt": 1790285569519
+  },
+  {
+    "id": "led_sale_9_1",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10009-S2",
+    "entryType": "sale",
+    "amountCents": 7998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10009-S2",
+    "createdAt": 1790285569519
+  },
+  {
+    "id": "led_comm_9_1",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10009-S2",
+    "entryType": "commission",
+    "amountCents": 800,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10009-S2",
+    "createdAt": 1790285569519
+  },
+  {
+    "id": "led_sale_10_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10010-S1",
+    "entryType": "sale",
+    "amountCents": 3499,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10010-S1",
+    "createdAt": 1790197934952
+  },
+  {
+    "id": "led_comm_10_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10010-S1",
+    "entryType": "commission",
+    "amountCents": 420,
+    "bucket": "available",
+    "description": "Platform fee (12%) for Order ORD-10010-S1",
+    "createdAt": 1790197934952
+  },
+  {
+    "id": "led_sale_11_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10011-S1",
+    "entryType": "sale",
+    "amountCents": 11998,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10011-S1",
+    "createdAt": 1790110300385
+  },
+  {
+    "id": "led_comm_11_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10011-S1",
+    "entryType": "commission",
+    "amountCents": 1440,
+    "bucket": "available",
+    "description": "Platform fee (12%) for Order ORD-10011-S1",
+    "createdAt": 1790110300385
+  },
+  {
+    "id": "led_sale_12_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10012-S1",
+    "entryType": "sale",
+    "amountCents": 5999,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10012-S1",
+    "createdAt": 1789936265818
+  },
+  {
+    "id": "led_sale_13_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10013-S1",
+    "entryType": "sale",
+    "amountCents": 33998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10013-S1",
+    "createdAt": 1789848631251
+  },
+  {
+    "id": "led_sale_14_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10014-S1",
+    "entryType": "sale",
+    "amountCents": 3499,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10014-S1",
+    "createdAt": 1789760996684
+  },
+  {
+    "id": "led_sale_15_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10015-S1",
+    "entryType": "sale",
+    "amountCents": 27998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10015-S1",
+    "createdAt": 1789586962117
+  },
+  {
+    "id": "led_sale_15_1",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10015-S2",
+    "entryType": "sale",
+    "amountCents": 7998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10015-S2",
+    "createdAt": 1789586962117
+  },
+  {
+    "id": "led_comm_15_1",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10015-S2",
+    "entryType": "commission",
+    "amountCents": 800,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10015-S2",
+    "createdAt": 1789586962117
+  },
+  {
+    "id": "led_sale_16_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10016-S1",
+    "entryType": "sale",
+    "amountCents": 5999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10016-S1",
+    "createdAt": 1789499327550
+  },
+  {
+    "id": "led_comm_16_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10016-S1",
+    "entryType": "commission",
+    "amountCents": 600,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10016-S1",
+    "createdAt": 1789499327550
+  },
+  {
+    "id": "led_sale_17_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10017-S1",
+    "entryType": "sale",
+    "amountCents": 5998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10017-S1",
+    "createdAt": 1789325292983
+  },
+  {
+    "id": "led_comm_17_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10017-S1",
+    "entryType": "commission",
+    "amountCents": 600,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10017-S1",
+    "createdAt": 1789325292983
+  },
+  {
+    "id": "led_ref_17_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10017-S1",
+    "entryType": "refund_reversal",
+    "amountCents": 5998,
+    "bucket": "available",
+    "description": "Refund reversal for Order ORD-10017-S1",
+    "createdAt": 1789498092983
+  },
+  {
+    "id": "led_sale_18_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10018-S1",
+    "entryType": "sale",
+    "amountCents": 19999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10018-S1",
+    "createdAt": 1789237658416
+  },
+  {
+    "id": "led_comm_18_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10018-S1",
+    "entryType": "commission",
+    "amountCents": 2000,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10018-S1",
+    "createdAt": 1789237658416
+  },
+  {
+    "id": "led_sale_18_1",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10018-S2",
+    "entryType": "sale",
+    "amountCents": 5999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10018-S2",
+    "createdAt": 1789237658416
+  },
+  {
+    "id": "led_comm_18_1",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10018-S2",
+    "entryType": "commission",
+    "amountCents": 720,
+    "bucket": "pending",
+    "description": "Platform fee (12%) for Order ORD-10018-S2",
+    "createdAt": 1789237658416
+  },
+  {
+    "id": "led_sale_19_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10019-S1",
+    "entryType": "sale",
+    "amountCents": 8998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10019-S1",
+    "createdAt": 1789150023849
+  },
+  {
+    "id": "led_comm_19_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10019-S1",
+    "entryType": "commission",
+    "amountCents": 900,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10019-S1",
+    "createdAt": 1789150023849
+  },
+  {
+    "id": "led_sale_20_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10020-S1",
+    "entryType": "sale",
+    "amountCents": 3999,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10020-S1",
+    "createdAt": 1788975989282
+  },
+  {
+    "id": "led_comm_20_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10020-S1",
+    "entryType": "commission",
+    "amountCents": 400,
+    "bucket": "available",
+    "description": "Platform fee (10%) for Order ORD-10020-S1",
+    "createdAt": 1788975989282
+  },
+  {
+    "id": "led_sale_21_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10021-S1",
+    "entryType": "sale",
+    "amountCents": 11998,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10021-S1",
+    "createdAt": 1788888354715
+  },
+  {
+    "id": "led_comm_21_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10021-S1",
+    "entryType": "commission",
+    "amountCents": 1200,
+    "bucket": "available",
+    "description": "Platform fee (10%) for Order ORD-10021-S1",
+    "createdAt": 1788888354715
+  },
+  {
+    "id": "led_sale_21_1",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10021-S2",
+    "entryType": "sale",
+    "amountCents": 39998,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10021-S2",
+    "createdAt": 1788888354715
+  },
+  {
+    "id": "led_comm_21_1",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10021-S2",
+    "entryType": "commission",
+    "amountCents": 4000,
+    "bucket": "available",
+    "description": "Platform fee (10%) for Order ORD-10021-S2",
+    "createdAt": 1788888354715
+  },
+  {
+    "id": "led_sale_22_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10022-S1",
+    "entryType": "sale",
+    "amountCents": 3999,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10022-S1",
+    "createdAt": 1788800720148
+  },
+  {
+    "id": "led_comm_22_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10022-S1",
+    "entryType": "commission",
+    "amountCents": 400,
+    "bucket": "available",
+    "description": "Platform fee (10%) for Order ORD-10022-S1",
+    "createdAt": 1788800720148
+  },
+  {
+    "id": "led_sale_23_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10023-S1",
+    "entryType": "sale",
+    "amountCents": 5998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10023-S1",
+    "createdAt": 1788626685581
+  },
+  {
+    "id": "led_comm_23_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10023-S1",
+    "entryType": "commission",
+    "amountCents": 600,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10023-S1",
+    "createdAt": 1788626685581
+  },
+  {
+    "id": "led_sale_24_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10024-S1",
+    "entryType": "sale",
+    "amountCents": 2499,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10024-S1",
+    "createdAt": 1788539051014
+  },
+  {
+    "id": "led_comm_24_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10024-S1",
+    "entryType": "commission",
+    "amountCents": 250,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10024-S1",
+    "createdAt": 1788539051014
+  },
+  {
+    "id": "led_sale_24_1",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10024-S2",
+    "entryType": "sale",
+    "amountCents": 8999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10024-S2",
+    "createdAt": 1788539051014
+  },
+  {
+    "id": "led_comm_24_1",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10024-S2",
+    "entryType": "commission",
+    "amountCents": 1080,
+    "bucket": "pending",
+    "description": "Platform fee (12%) for Order ORD-10024-S2",
+    "createdAt": 1788539051014
+  },
+  {
+    "id": "led_sale_25_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10025-S1",
+    "entryType": "sale",
+    "amountCents": 17998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10025-S1",
+    "createdAt": 1788451416447
+  },
+  {
+    "id": "led_comm_25_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10025-S1",
+    "entryType": "commission",
+    "amountCents": 2160,
+    "bucket": "pending",
+    "description": "Platform fee (12%) for Order ORD-10025-S1",
+    "createdAt": 1788451416447
+  },
+  {
+    "id": "led_sale_26_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10026-S1",
+    "entryType": "sale",
+    "amountCents": 3499,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10026-S1",
+    "createdAt": 1788277381880
+  },
+  {
+    "id": "led_comm_26_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10026-S1",
+    "entryType": "commission",
+    "amountCents": 420,
+    "bucket": "pending",
+    "description": "Platform fee (12%) for Order ORD-10026-S1",
+    "createdAt": 1788277381880
+  },
+  {
+    "id": "led_sale_27_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10027-S1",
+    "entryType": "sale",
+    "amountCents": 11998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10027-S1",
+    "createdAt": 1788189747313
+  },
+  {
+    "id": "led_comm_27_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10027-S1",
+    "entryType": "commission",
+    "amountCents": 1440,
+    "bucket": "pending",
+    "description": "Platform fee (12%) for Order ORD-10027-S1",
+    "createdAt": 1788189747313
+  },
+  {
+    "id": "led_ref_27_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10027-S1",
+    "entryType": "refund_reversal",
+    "amountCents": 11998,
+    "bucket": "available",
+    "description": "Refund reversal for Order ORD-10027-S1",
+    "createdAt": 1788362547313
+  },
+  {
+    "id": "led_sale_27_1",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10027-S2",
+    "entryType": "sale",
+    "amountCents": 11998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10027-S2",
+    "createdAt": 1788189747313
+  },
+  {
+    "id": "led_comm_27_1",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10027-S2",
+    "entryType": "commission",
+    "amountCents": 1200,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10027-S2",
+    "createdAt": 1788189747313
+  },
+  {
+    "id": "led_ref_27_1",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10027-S2",
+    "entryType": "refund_reversal",
+    "amountCents": 11998,
+    "bucket": "available",
+    "description": "Refund reversal for Order ORD-10027-S2",
+    "createdAt": 1788362547313
+  },
+  {
+    "id": "led_sale_28_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10028-S1",
+    "entryType": "sale",
+    "amountCents": 5999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10028-S1",
+    "createdAt": 1788102112746
+  },
+  {
+    "id": "led_sale_29_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10029-S1",
+    "entryType": "sale",
+    "amountCents": 33998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10029-S1",
+    "createdAt": 1787928078179
+  },
+  {
+    "id": "led_sale_30_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10030-S1",
+    "entryType": "sale",
+    "amountCents": 3499,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10030-S1",
+    "createdAt": 1787840443612
+  },
+  {
+    "id": "led_sale_30_1",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10030-S2",
+    "entryType": "sale",
+    "amountCents": 2999,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10030-S2",
+    "createdAt": 1787840443612
+  },
+  {
+    "id": "led_comm_30_1",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10030-S2",
+    "entryType": "commission",
+    "amountCents": 300,
+    "bucket": "available",
+    "description": "Platform fee (10%) for Order ORD-10030-S2",
+    "createdAt": 1787840443612
+  },
+  {
+    "id": "led_sale_31_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10031-S1",
+    "entryType": "sale",
+    "amountCents": 27998,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10031-S1",
+    "createdAt": 1787752809045
+  },
+  {
+    "id": "led_sale_32_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10032-S1",
+    "entryType": "sale",
+    "amountCents": 5999,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10032-S1",
+    "createdAt": 1787578774478
+  },
+  {
+    "id": "led_comm_32_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10032-S1",
+    "entryType": "commission",
+    "amountCents": 600,
+    "bucket": "available",
+    "description": "Platform fee (10%) for Order ORD-10032-S1",
+    "createdAt": 1787578774478
+  },
+  {
+    "id": "led_sale_33_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10033-S1",
+    "entryType": "sale",
+    "amountCents": 5998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10033-S1",
+    "createdAt": 1787491139911
+  },
+  {
+    "id": "led_comm_33_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10033-S1",
+    "entryType": "commission",
+    "amountCents": 600,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10033-S1",
+    "createdAt": 1787491139911
+  },
+  {
+    "id": "led_sale_33_1",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10033-S2",
+    "entryType": "sale",
+    "amountCents": 6998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10033-S2",
+    "createdAt": 1787491139911
+  },
+  {
+    "id": "led_sale_34_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10034-S1",
+    "entryType": "sale",
+    "amountCents": 19999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10034-S1",
+    "createdAt": 1787317105344
+  },
+  {
+    "id": "led_comm_34_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10034-S1",
+    "entryType": "commission",
+    "amountCents": 2000,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10034-S1",
+    "createdAt": 1787317105344
+  },
+  {
+    "id": "led_sale_35_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10035-S1",
+    "entryType": "sale",
+    "amountCents": 8998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10035-S1",
+    "createdAt": 1787272670777
+  },
+  {
+    "id": "led_comm_35_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10035-S1",
+    "entryType": "commission",
+    "amountCents": 900,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10035-S1",
+    "createdAt": 1787272670777
+  },
+  {
+    "id": "led_sale_36_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10036-S1",
+    "entryType": "sale",
+    "amountCents": 3999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10036-S1",
+    "createdAt": 1787185036210
+  },
+  {
+    "id": "led_comm_36_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10036-S1",
+    "entryType": "commission",
+    "amountCents": 400,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10036-S1",
+    "createdAt": 1787185036210
+  },
+  {
+    "id": "led_sale_36_1",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10036-S2",
+    "entryType": "sale",
+    "amountCents": 5999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10036-S2",
+    "createdAt": 1787185036210
+  },
+  {
+    "id": "led_comm_36_1",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10036-S2",
+    "entryType": "commission",
+    "amountCents": 600,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10036-S2",
+    "createdAt": 1787185036210
+  },
+  {
+    "id": "led_sale_37_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10037-S1",
+    "entryType": "sale",
+    "amountCents": 11998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10037-S1",
+    "createdAt": 1787011001643
+  },
+  {
+    "id": "led_comm_37_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10037-S1",
+    "entryType": "commission",
+    "amountCents": 1200,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10037-S1",
+    "createdAt": 1787011001643
+  },
+  {
+    "id": "led_ref_37_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10037-S1",
+    "entryType": "refund_reversal",
+    "amountCents": 11998,
+    "bucket": "available",
+    "description": "Refund reversal for Order ORD-10037-S1",
+    "createdAt": 1787183801643
+  },
+  {
+    "id": "led_sale_38_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10038-S1",
+    "entryType": "sale",
+    "amountCents": 3999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10038-S1",
+    "createdAt": 1786923367076
+  },
+  {
+    "id": "led_comm_38_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10038-S1",
+    "entryType": "commission",
+    "amountCents": 400,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10038-S1",
+    "createdAt": 1786923367076
+  },
+  {
+    "id": "led_sale_39_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10039-S1",
+    "entryType": "sale",
+    "amountCents": 5998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10039-S1",
+    "createdAt": 1786835732509
+  },
+  {
+    "id": "led_comm_39_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10039-S1",
+    "entryType": "commission",
+    "amountCents": 600,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10039-S1",
+    "createdAt": 1786835732509
+  },
+  {
+    "id": "led_sale_39_1",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10039-S2",
+    "entryType": "sale",
+    "amountCents": 11998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10039-S2",
+    "createdAt": 1786835732509
+  },
+  {
+    "id": "led_sale_40_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10040-S1",
+    "entryType": "sale",
+    "amountCents": 2499,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10040-S1",
+    "createdAt": 1786661697942
+  },
+  {
+    "id": "led_comm_40_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10040-S1",
+    "entryType": "commission",
+    "amountCents": 250,
+    "bucket": "available",
+    "description": "Platform fee (10%) for Order ORD-10040-S1",
+    "createdAt": 1786661697942
+  },
+  {
+    "id": "led_sale_41_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10041-S1",
+    "entryType": "sale",
+    "amountCents": 17998,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10041-S1",
+    "createdAt": 1786574063375
+  },
+  {
+    "id": "led_comm_41_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10041-S1",
+    "entryType": "commission",
+    "amountCents": 2160,
+    "bucket": "available",
+    "description": "Platform fee (12%) for Order ORD-10041-S1",
+    "createdAt": 1786574063375
+  },
+  {
+    "id": "led_sale_42_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10042-S1",
+    "entryType": "sale",
+    "amountCents": 3499,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10042-S1",
+    "createdAt": 1786486428808
+  },
+  {
+    "id": "led_comm_42_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10042-S1",
+    "entryType": "commission",
+    "amountCents": 420,
+    "bucket": "available",
+    "description": "Platform fee (12%) for Order ORD-10042-S1",
+    "createdAt": 1786486428808
+  },
+  {
+    "id": "led_sale_42_1",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10042-S2",
+    "entryType": "sale",
+    "amountCents": 4499,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10042-S2",
+    "createdAt": 1786486428808
+  },
+  {
+    "id": "led_comm_42_1",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10042-S2",
+    "entryType": "commission",
+    "amountCents": 450,
+    "bucket": "available",
+    "description": "Platform fee (10%) for Order ORD-10042-S2",
+    "createdAt": 1786486428808
+  },
+  {
+    "id": "led_sale_43_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10043-S1",
+    "entryType": "sale",
+    "amountCents": 11998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10043-S1",
+    "createdAt": 1786312394241
+  },
+  {
+    "id": "led_comm_43_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10043-S1",
+    "entryType": "commission",
+    "amountCents": 1440,
+    "bucket": "pending",
+    "description": "Platform fee (12%) for Order ORD-10043-S1",
+    "createdAt": 1786312394241
+  },
+  {
+    "id": "led_sale_44_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10044-S1",
+    "entryType": "sale",
+    "amountCents": 5999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10044-S1",
+    "createdAt": 1786224759674
+  },
+  {
+    "id": "led_sale_45_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10045-S1",
+    "entryType": "sale",
+    "amountCents": 33998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10045-S1",
+    "createdAt": 1786137125107
+  },
+  {
+    "id": "led_sale_45_1",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10045-S2",
+    "entryType": "sale",
+    "amountCents": 6998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10045-S2",
+    "createdAt": 1786137125107
+  },
+  {
+    "id": "led_comm_45_1",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10045-S2",
+    "entryType": "commission",
+    "amountCents": 840,
+    "bucket": "pending",
+    "description": "Platform fee (12%) for Order ORD-10045-S2",
+    "createdAt": 1786137125107
+  },
+  {
+    "id": "led_sale_46_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10046-S1",
+    "entryType": "sale",
+    "amountCents": 3499,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10046-S1",
+    "createdAt": 1785963090540
+  },
+  {
+    "id": "led_sale_47_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10047-S1",
+    "entryType": "sale",
+    "amountCents": 27998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10047-S1",
+    "createdAt": 1785875455973
+  },
+  {
+    "id": "led_ref_47_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10047-S1",
+    "entryType": "refund_reversal",
+    "amountCents": 27998,
+    "bucket": "available",
+    "description": "Refund reversal for Order ORD-10047-S1",
+    "createdAt": 1786048255973
+  },
+  {
+    "id": "led_sale_48_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10048-S1",
+    "entryType": "sale",
+    "amountCents": 5999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10048-S1",
+    "createdAt": 1785787821406
+  },
+  {
+    "id": "led_comm_48_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10048-S1",
+    "entryType": "commission",
+    "amountCents": 600,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10048-S1",
+    "createdAt": 1785787821406
+  },
+  {
+    "id": "led_sale_49_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10049-S1",
+    "entryType": "sale",
+    "amountCents": 5998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10049-S1",
+    "createdAt": 1785613786839
+  },
+  {
+    "id": "led_comm_49_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10049-S1",
+    "entryType": "commission",
+    "amountCents": 600,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10049-S1",
+    "createdAt": 1785613786839
+  },
+  {
+    "id": "led_sale_50_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10050-S1",
+    "entryType": "sale",
+    "amountCents": 19999,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10050-S1",
+    "createdAt": 1785526152272
+  },
+  {
+    "id": "led_comm_50_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10050-S1",
+    "entryType": "commission",
+    "amountCents": 2000,
+    "bucket": "available",
+    "description": "Platform fee (10%) for Order ORD-10050-S1",
+    "createdAt": 1785526152272
+  },
+  {
+    "id": "led_sale_51_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10051-S1",
+    "entryType": "sale",
+    "amountCents": 8998,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10051-S1",
+    "createdAt": 1785352117705
+  },
+  {
+    "id": "led_comm_51_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10051-S1",
+    "entryType": "commission",
+    "amountCents": 900,
+    "bucket": "available",
+    "description": "Platform fee (10%) for Order ORD-10051-S1",
+    "createdAt": 1785352117705
+  },
+  {
+    "id": "led_sale_51_1",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10051-S2",
+    "entryType": "sale",
+    "amountCents": 4998,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10051-S2",
+    "createdAt": 1785352117705
+  },
+  {
+    "id": "led_comm_51_1",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10051-S2",
+    "entryType": "commission",
+    "amountCents": 500,
+    "bucket": "available",
+    "description": "Platform fee (10%) for Order ORD-10051-S2",
+    "createdAt": 1785352117705
+  },
+  {
+    "id": "led_sale_52_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10052-S1",
+    "entryType": "sale",
+    "amountCents": 3999,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10052-S1",
+    "createdAt": 1785264483138
+  },
+  {
+    "id": "led_comm_52_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10052-S1",
+    "entryType": "commission",
+    "amountCents": 400,
+    "bucket": "available",
+    "description": "Platform fee (10%) for Order ORD-10052-S1",
+    "createdAt": 1785264483138
+  },
+  {
+    "id": "led_sale_53_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10053-S1",
+    "entryType": "sale",
+    "amountCents": 11998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10053-S1",
+    "createdAt": 1785176848571
+  },
+  {
+    "id": "led_comm_53_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10053-S1",
+    "entryType": "commission",
+    "amountCents": 1200,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10053-S1",
+    "createdAt": 1785176848571
+  },
+  {
+    "id": "led_sale_54_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10054-S1",
+    "entryType": "sale",
+    "amountCents": 3999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10054-S1",
+    "createdAt": 1785002814004
+  },
+  {
+    "id": "led_comm_54_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10054-S1",
+    "entryType": "commission",
+    "amountCents": 400,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10054-S1",
+    "createdAt": 1785002814004
+  },
+  {
+    "id": "led_sale_54_1",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10054-S2",
+    "entryType": "sale",
+    "amountCents": 13999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10054-S2",
+    "createdAt": 1785002814004
+  },
+  {
+    "id": "led_sale_55_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10055-S1",
+    "entryType": "sale",
+    "amountCents": 5998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10055-S1",
+    "createdAt": 1784915179437
+  },
+  {
+    "id": "led_comm_55_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10055-S1",
+    "entryType": "commission",
+    "amountCents": 600,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10055-S1",
+    "createdAt": 1784915179437
+  },
+  {
+    "id": "led_sale_56_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10056-S1",
+    "entryType": "sale",
+    "amountCents": 2499,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10056-S1",
+    "createdAt": 1784827544870
+  },
+  {
+    "id": "led_comm_56_0",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10056-S1",
+    "entryType": "commission",
+    "amountCents": 250,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10056-S1",
+    "createdAt": 1784827544870
+  },
+  {
+    "id": "led_sale_57_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10057-S1",
+    "entryType": "sale",
+    "amountCents": 17998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10057-S1",
+    "createdAt": 1784653510303
+  },
+  {
+    "id": "led_comm_57_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10057-S1",
+    "entryType": "commission",
+    "amountCents": 2160,
+    "bucket": "pending",
+    "description": "Platform fee (12%) for Order ORD-10057-S1",
+    "createdAt": 1784653510303
+  },
+  {
+    "id": "led_ref_57_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10057-S1",
+    "entryType": "refund_reversal",
+    "amountCents": 17998,
+    "bucket": "available",
+    "description": "Refund reversal for Order ORD-10057-S1",
+    "createdAt": 1784826310303
+  },
+  {
+    "id": "led_sale_57_1",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10057-S2",
+    "entryType": "sale",
+    "amountCents": 7998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10057-S2",
+    "createdAt": 1784653510303
+  },
+  {
+    "id": "led_comm_57_1",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10057-S2",
+    "entryType": "commission",
+    "amountCents": 800,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10057-S2",
+    "createdAt": 1784653510303
+  },
+  {
+    "id": "led_ref_57_1",
+    "sellerId": "seller_syd_456",
+    "subOrderId": "ORD-10057-S2",
+    "entryType": "refund_reversal",
+    "amountCents": 7998,
+    "bucket": "available",
+    "description": "Refund reversal for Order ORD-10057-S2",
+    "createdAt": 1784826310303
+  },
+  {
+    "id": "led_sale_58_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10058-S1",
+    "entryType": "sale",
+    "amountCents": 3499,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10058-S1",
+    "createdAt": 1784565875736
+  },
+  {
+    "id": "led_comm_58_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10058-S1",
+    "entryType": "commission",
+    "amountCents": 420,
+    "bucket": "pending",
+    "description": "Platform fee (12%) for Order ORD-10058-S1",
+    "createdAt": 1784565875736
+  },
+  {
+    "id": "led_sale_59_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10059-S1",
+    "entryType": "sale",
+    "amountCents": 11998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10059-S1",
+    "createdAt": 1784478241169
+  },
+  {
+    "id": "led_comm_59_0",
+    "sellerId": "seller_bris_789",
+    "subOrderId": "ORD-10059-S1",
+    "entryType": "commission",
+    "amountCents": 1440,
+    "bucket": "pending",
+    "description": "Platform fee (12%) for Order ORD-10059-S1",
+    "createdAt": 1784478241169
+  },
+  {
+    "id": "led_sale_60_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10060-S1",
+    "entryType": "sale",
+    "amountCents": 5999,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10060-S1",
+    "createdAt": 1784304206602
+  },
+  {
+    "id": "led_sale_61_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10061-S1",
+    "entryType": "sale",
+    "amountCents": 33998,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10061-S1",
+    "createdAt": 1784216572035
+  },
+  {
+    "id": "led_sale_62_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10062-S1",
+    "entryType": "sale",
+    "amountCents": 3499,
+    "bucket": "available",
+    "description": "Sale proceeds for Order ORD-10062-S1",
+    "createdAt": 1784128937468
+  },
+  {
+    "id": "led_sale_63_0",
+    "sellerId": "seller_house_001",
+    "subOrderId": "ORD-10063-S1",
+    "entryType": "sale",
+    "amountCents": 27998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10063-S1",
+    "createdAt": 1783954902901
+  },
+  {
+    "id": "led_sale_63_1",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10063-S2",
+    "entryType": "sale",
+    "amountCents": 7998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10063-S2",
+    "createdAt": 1783954902901
+  },
+  {
+    "id": "led_comm_63_1",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10063-S2",
+    "entryType": "commission",
+    "amountCents": 800,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10063-S2",
+    "createdAt": 1783954902901
+  },
+  {
+    "id": "led_sale_64_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10064-S1",
+    "entryType": "sale",
+    "amountCents": 5999,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10064-S1",
+    "createdAt": 1783867268334
+  },
+  {
+    "id": "led_comm_64_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10064-S1",
+    "entryType": "commission",
+    "amountCents": 600,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10064-S1",
+    "createdAt": 1783867268334
+  },
+  {
+    "id": "led_sale_65_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10065-S1",
+    "entryType": "sale",
+    "amountCents": 5998,
+    "bucket": "pending",
+    "description": "Sale proceeds for Order ORD-10065-S1",
+    "createdAt": 1783693233767
+  },
+  {
+    "id": "led_comm_65_0",
+    "sellerId": "seller_melb_123",
+    "subOrderId": "ORD-10065-S1",
+    "entryType": "commission",
+    "amountCents": 600,
+    "bucket": "pending",
+    "description": "Platform fee (10%) for Order ORD-10065-S1",
+    "createdAt": 1783693233767
+  }
+]

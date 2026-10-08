@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed &mdash; AMEZA Marketplace</title>
+  <meta name="description" content="Thank you for your purchase. Your order has been placed successfully and dispatched to our verified U.S. sellers.">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/checkout.css">
+  <style>
+    .order-conf-container {
+      max-width: 900px;
+      margin: 40px auto 80px;
+      padding: 0 24px;
+    }
+    .order-conf-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 36px 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    .order-success-header {
+      text-align: center;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #F1F5F9;
+      margin-bottom: 32px;
+    }
+    .success-icon-badge {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #DCFCE7;
+      color: #16A34A;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+    .order-number-pill {
+      display: inline-block;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 12px;
+    }
+    .seller-suborder-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+    .seller-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #E2E8F0;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .seller-name-tag {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tracking-badge {
+      font-size: 12px;
+      background: #EEF2FF;
+      color: #4F46E5;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px dashed #E2E8F0;
+    }
+    .item-row:last-child {
+      border-bottom: none;
+    }
+    .item-info-col {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .item-img-thumb {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #F1F5F9;
+      border: 1px solid #E2E8F0;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+      padding-top: 28px;
+      border-top: 1px solid #F1F5F9;
+    }
+    @media (max-width: 680px) {
+      .summary-grid { grid-template-columns: 1fr; }
+      .order-conf-card { padding: 24px 20px; }
+    }
+    .summary-block h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0F172A;
+      margin: 0 0 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .summary-block p {
+      margin: 0 0 6px;
+      font-size: 13.5px;
+      color: #475569;
+      line-height: 1.5;
+    }
+    .totals-table-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 13.5px;
+      color: #475569;
+    }
+    .totals-table-row.grand-total {
+      border-top: 1px solid #E2E8F0;
+      margin-top: 10px;
+      padding-top: 12px;
+      font-size: 16px;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .action-buttons-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+    .btn-action-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #7FB73C;
+      color: #FFFFFF;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-action-primary:hover {
+      background: #6ea332;
+    }
+    .btn-action-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      color: #334155;
+      border: 1px solid #CBD5E1;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-action-secondary:hover {
+      background: #F8FAFC;
+      border-color: #94A3B8;
+    }
+    @media print {
+      body { background: #FFF !important; }
+      .checkout-standalone-topbar, .checkout-standalone-footer, .action-buttons-row { display: none !important; }
+      .order-conf-card { border: none !important; box-shadow: none !important; padding: 0 !important; }
+      .order-conf-container { margin: 0 !important; max-width: 100% !important; }
+    }
+  </style>
+</head>
+<body class="checkout-body" data-layout="none">
+  <!-- Minimal Standalone Checkout Topbar -->
+  <header class="checkout-standalone-topbar" style="background:#FFFFFF; border-bottom:1px solid #E5E7EB; padding:16px 24px;">
+    <div style="max-width:1240px; margin:0 auto; display:flex; align-items:center; justify-content:space-between;">
+      <a href="store.html" style="display:inline-flex; align-items:center; gap:10px; text-decoration:none;">
+        <img src="assets/ameza-logo.png" alt="AMEZA" style="height:32px; width:auto;" onerror="this.src='assets/logo.png'">
+        <span style="font-family:var(--font-heading, 'Plus Jakarta Sans', sans-serif); font-size:20px; font-weight:800; color:#111827; letter-spacing:-0.4px;">AMEZA</span>
+      </a>
+      <div style="display:flex; align-items:center; gap:16px; font-size:13px; color:#64748B;">
+        <span style="display:inline-flex; align-items:center; gap:6px;"><i class="fa-solid fa-lock" style="color:#7FB73C;"></i> Verified Order Receipt</span>
+        <span style="color:#CBD5E1;">|</span>
+        <a href="store.html" style="color:#7FB73C; font-weight:600; text-decoration:none;">Continue Shopping &rarr;</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="order-conf-container" id="order-confirmation-root">
+    <!-- Populated dynamically by js/order-confirmation.js -->
+    <div style="text-align:center; padding: 60px 0;">
+      <i class="fa-solid fa-spinner fa-spin" style="font-size:36px; color:#7FB73C;"></i>
+      <p style="margin-top:16px; color:#64748B;">Loading your order confirmation...</p>
+    </div>
+  </main>
+
+  <!-- Minimal Standalone Checkout Footer -->
+  <footer class="checkout-standalone-footer" style="padding:28px 24px; text-align:center; font-size:12px; color:#94A3B8; border-top:1px solid #E5E7EB; margin-top:48px;">
+    <div style="max-width:1240px; margin:0 auto; display:flex; flex-direction:column; gap:6px; align-items:center;">
+      <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap; justify-content:center;">
+        <a href="legal/shipping-policy.html" style="color:#64748B; text-decoration:none;">Shipping Policy</a>
+        <a href="legal/returns-policy.html" style="color:#64748B; text-decoration:none;">Refund Policy</a>
+        <a href="legal/privacy.html" style="color:#64748B; text-decoration:none;">Privacy Policy</a>
+        <a href="legal/terms.html" style="color:#64748B; text-decoration:none;">Terms of Service</a>
+      </div>
+      <div style="margin-top:4px;">&copy; 2026 AMEZA Marketplace Inc. &bull; All rights reserved &bull; U.S. Domestic Shipping</div>
+    </div>
+  </footer>
+
+  <!-- Currency Engine -->
+  <script src="js/currency.js"></script>
+
+  <!-- Order Confirmation Module -->
+  <script type="module" src="js/order-confirmation.js"></script>
+</body>
+</html>

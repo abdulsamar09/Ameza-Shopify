@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMEZA Seller Central | AMEZA Admin Style Dashboard</title>
+  <meta name="description" content="Manage your AMEZA seller dashboard, orders, inventory, sales over time, and setup guide.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
+</head>
+<body data-layout="none">
+
+  <!-- 1. Top Bar (Shell injected) -->
+  <header id="app-topbar"></header>
+
+  <!-- 2. Application Layout -->
+  <div class="app-layout">
+    <!-- Sidebar Navigation (Shell injected) -->
+    <aside id="app-sidebar"></aside>
+
+    <!-- Main Content Canvas -->
+    <main class="main-content" id="main-content-region" role="main">
+      <div id="home-content-container">
+        <!-- Rendered by js/home.js -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Application Bootstrap Script (ES Modules) -->
+  <script type="module">
+    import { initShell } from '../js/shell.js';
+    import { initHome } from '../js/home.js';
+
+    // Initialize reusable shell with 'home' as active page
+    initShell('home');
+
+    // Initialize Home widgets, SVG charts, and interactive handlers
+    initHome();
+  </script>
+</body>
+</html>

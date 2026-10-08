@@ -1,0 +1,37 @@
+[
+  {
+    "id": "thread_001",
+    "contactName": "David Wilson",
+    "contactRole": "Customer",
+    "subject": "Sizing inquiry for Classic Saddle Belt",
+    "unread": true,
+    "lastUpdated": 1791326280622,
+    "messages": [
+      {
+        "sender": "customer",
+        "text": "Hi Jack, is the belt measured to the center hole or overall length?",
+        "time": 1791322680622
+      },
+      {
+        "sender": "seller",
+        "text": "Hi David! It is measured from the buckle fold to the center hole.",
+        "time": 1791326280622
+      }
+    ]
+  },
+  {
+    "id": "thread_002",
+    "contactName": "Alexander Vance (Admin)",
+    "contactRole": "Platform Support",
+    "subject": "Featured Merchant Showcase Selection",
+    "unread": false,
+    "lastUpdated": 1791247080622,
+    "messages": [
+      {
+        "sender": "admin",
+        "text": "Hi Jack, Austin Leather Co has been selected for the autumn banner spotlight!",
+        "time": 1791247080622
+      }
+    ]
+  }
+]

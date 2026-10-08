@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merchant Payouts & Banking — AMEZA Marketplace USA</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/seller.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="seller-body">
+
+  <!-- Persistent Demo Control Bar -->
+  <script type="module" src="js/demo-bar.js"></script>
+
+  <div class="seller-layout">
+    <!-- Sidebar -->
+    <aside class="seller-sidebar">
+      <div class="seller-brand">
+        <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;">
+          <img src="assets/ameza-logo.png" alt="AMEZA" style="height: 28px;">
+          <span style="font-weight: 800; font-size: 1.1rem; color: var(--dark);">Merchant Portal</span>
+        </a>
+      </div>
+      <div style="padding: 12px 14px; background: rgba(127,183,60,0.1); border-radius: 8px; margin-bottom: 20px;">
+        <div style="font-size: 0.72rem; text-transform: uppercase; font-weight: 800; color: var(--primary-dark);">Current Merchant</div>
+        <div id="sidebar-store-name" style="font-weight: 800; font-size: 0.92rem; color: var(--dark); margin-top: 2px;">Austin Leather Co</div>
+        <div style="font-size: 0.75rem; color: var(--text-muted);">🇺🇸 Verified U.S. Vendor</div>
+      </div>
+      <nav class="seller-nav">
+        <a href="seller/index.html" class="seller-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Overview
+        </a>
+        <a href="seller-products.html" class="seller-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          Products
+        </a>
+        <a href="seller-orders.html" class="seller-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Orders & Fulfilment
+        </a>
+        <a href="seller-payouts.html" class="seller-nav-item active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+          Payouts & Banking
+        </a>
+        <a href="store.html?slug=austin-leather-co" id="sidebar-view-store" class="seller-nav-item" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          View Public Store
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="seller-main">
+      <header class="seller-header">
+        <div>
+          <h1 style="font-size: 1.6rem; font-weight: 800; color: var(--dark); margin: 0;">Payouts & U.S. Banking</h1>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin: 4px 0 0;">View cleared ledger balances and withdraw earnings directly to U.S. bank accounts or PayID.</p>
+        </div>
+        <button onclick="openRequestPayoutModal()" class="btn-primary" style="display: flex; align-items: center; gap: 6px;">
+          <span>💸 Request Payout</span>
+        </button>
+      </header>
+
+      <!-- Balance Metrics -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 28px;">
+        <div class="seller-card">
+          <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Available for Withdrawal</div>
+          <div id="stat-available" style="font-size: 1.8rem; font-weight: 800; color: var(--primary-dark); margin: 6px 0;">$0.00</div>
+          <div style="font-size: 0.78rem; color: var(--text-muted);">Cleared funds eligible for immediate payout (Min $50.00)</div>
+        </div>
+
+        <div class="seller-card">
+          <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Pending Clearance (7-Day Hold)</div>
+          <div id="stat-pending" style="font-size: 1.8rem; font-weight: 800; color: var(--dark); margin: 6px 0;">$0.00</div>
+          <div style="font-size: 0.78rem; color: var(--text-muted);">Held until 7 days post-delivery. Advance clock via top bar to clear.</div>
+        </div>
+
+        <div class="seller-card">
+          <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Total Paid Out</div>
+          <div id="stat-paid-out" style="font-size: 1.8rem; font-weight: 800; color: var(--dark); margin: 6px 0;">$0.00</div>
+          <div style="font-size: 0.78rem; color: var(--text-muted);">Historical lifetime disbursements processed to your bank</div>
+        </div>
+      </div>
+
+      <!-- Bank Details Summary Card -->
+      <div class="seller-card" style="margin-bottom: 28px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h3 style="font-size: 1rem; font-weight: 800; color: var(--dark); margin: 0;">U.S. Direct Deposit Destination</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 4px 0 0;" id="bank-account-summary">Routing #: 083-004 &bull; Account: &bull;&bull;&bull;&bull;4892 &bull; PayID: jack@melbourneleather.com.au</p>
+          </div>
+          <span class="badge-pass" style="background: #ECFDF5; color: #065F46; padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 0.75rem;">VERIFIED (AU)</span>
+        </div>
+      </div>
+
+      <!-- Payouts History Table -->
+      <div class="seller-card" style="padding: 0; overflow: hidden;">
+        <div style="padding: 16px 20px; border-bottom: 1px solid var(--border); font-weight: 800; font-size: 0.95rem; color: var(--dark); background: var(--bg-card);">
+          Payout Request History
+        </div>
+        <div style="overflow-x: auto;">
+          <table class="seller-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+            <thead>
+              <tr style="background: var(--bg-page); border-bottom: 1px solid var(--border);">
+                <th style="padding: 12px 16px;">Reference #</th>
+                <th style="padding: 12px 16px;">Requested</th>
+                <th style="padding: 12px 16px;">Amount</th>
+                <th style="padding: 12px 16px;">Destination</th>
+                <th style="padding: 12px 16px;">Status</th>
+                <th style="padding: 12px 16px; text-align: right;">Receipt Proof</th>
+              </tr>
+            </thead>
+            <tbody id="payouts-table-body">
+              <tr>
+                <td colspan="6" style="padding: 40px; text-align: center; color: var(--text-muted);">Loading payout records...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Request Payout Modal -->
+  <div id="request-payout-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+    <div style="background: #FFFFFF; border-radius: 12px; width: 100%; max-width: 440px; padding: 26px; box-shadow: var(--shadow-lg);">
+      <h3 style="margin-top: 0; color: var(--dark); font-weight: 800;">Request Payout Withdrawal</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">Enter the amount to withdraw to your verified U.S. bank account.</p>
+
+      <div style="margin: 18px 0;">
+        <label style="font-size: 0.82rem; font-weight: 700; color: var(--dark);">Withdrawal Amount ($):</label>
+        <div style="position: relative; margin-top: 6px;">
+          <span style="position: absolute; left: 12px; top: 10px; font-weight: 700; color: var(--text-muted);">$</span>
+          <input type="number" id="payout-amount-input" step="1" min="50" placeholder="50.00" style="width: 100%; padding: 10px 12px 10px 48px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; font-weight: 700; box-sizing: border-box;">
+        </div>
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Minimum withdrawal: $50.00</div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px;">
+        <button onclick="closeRequestPayoutModal()" class="btn-outline">Cancel</button>
+        <button onclick="submitPayoutRequest()" class="btn-primary">Submit Request →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Proof Receipt Modal -->
+  <div id="proof-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+    <div style="background: #FFFFFF; border-radius: 12px; width: 100%; max-width: 440px; padding: 24px; box-shadow: var(--shadow-lg); text-align: center;">
+      <h3 style="margin-top: 0; color: var(--dark); font-weight: 800;">Banking Transfer Receipt</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted);" id="proof-reference-label">ABA Reference: ABA-AMZ-XXXXXX</p>
+      <div style="margin: 16px 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+        <img id="proof-img" src="" alt="Transfer Proof" style="width: 100%; height: 220px; object-fit: cover;">
+      </div>
+      <button onclick="document.getElementById('proof-modal').style.display='none'" class="btn-primary" style="width: 100%;">
+        Close Receipt
+      </button>
+    </div>
+  </div>
+
+  <script type="module">
+    import { escapeHTML } from './js/core/utils.js';
+    import { LedgerAPI } from './js/api/ledger.api.js';
+    import { PayoutsAPI } from './js/api/payouts.api.js';
+
+    let currentSellerId = 'seller_melb_123';
+    let currentSellerName = 'Austin Leather Co';
+    let maxAvailableCents = 0;
+
+    function initPayoutsView() {
+      try {
+        const session = JSON.parse(localStorage.getItem('ameza_session') || 'null');
+        if (session && session.user && session.user.id) {
+          currentSellerId = session.user.id;
+          currentSellerName = session.user.storeName || session.user.name || 'Merchant';
+          document.getElementById('sidebar-store-name').textContent = currentSellerName;
+          const viewStoreLink = document.getElementById('sidebar-view-store');
+          if (viewStoreLink && session.user.slug) {
+            viewStoreLink.href = `store.html?slug=${session.user.slug}`;
+          }
+          if (session.user.bankDetails) {
+            const b = session.user.bankDetails;
+            document.getElementById('bank-account-summary').textContent = `Routing #: ${b.routingNumber || '121000358'} • Account: ${b.accountNumber || '••••4892'}`;
+          }
+        }
+      } catch (e) {}
+
+      loadBalances();
+      loadPayoutHistory();
+    }
+
+    function loadBalances() {
+      const bal = LedgerAPI.getSellerBalance(currentSellerId);
+      maxAvailableCents = bal.availableCents;
+      document.getElementById('stat-available').textContent = `$${(bal.availableCents / 100).toFixed(2)}`;
+      document.getElementById('stat-pending').textContent = `$${(bal.pendingCents / 100).toFixed(2)}`;
+      document.getElementById('stat-paid-out').textContent = `$${(bal.paidOutCents / 100).toFixed(2)}`;
+    }
+
+    async function loadPayoutHistory() {
+      const container = document.getElementById('payouts-table-body');
+      const list = await PayoutsAPI.getPayouts(currentSellerId);
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <tr>
+            <td colspan="6" style="padding: 40px; text-align: center; color: var(--text-muted);">
+              No payout requests found yet.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      container.innerHTML = list.map(p => {
+        const dateStr = new Date(p.requestedAt).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
+        const usd = (p.amountCents / 100).toFixed(2);
+        let badge = '<span style="background: #FEF3C7; color: #92400E; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">PROCESSING</span>';
+        if (p.status === 'paid') {
+          badge = '<span style="background: #DCFCE7; color: #166534; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">PAID (ACH)</span>';
+        } else if (p.status === 'rejected') {
+          badge = '<span style="background: #FEE2E2; color: #991B1B; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">REJECTED</span>';
+        }
+
+        return `
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 12px 16px; font-weight: 700; color: var(--dark);">${escapeHTML(p.reference || p.id)}</td>
+            <td style="padding: 12px 16px; color: var(--text-muted); font-size: 0.82rem;">${dateStr}</td>
+            <td style="padding: 12px 16px; font-weight: 800; color: var(--primary-dark);">$${usd}</td>
+            <td style="padding: 12px 16px; font-size: 0.82rem; color: var(--text-muted);">Routing #: ${escapeHTML(p.bankDetails?.routingNumber || '121000358')}</td>
+            <td style="padding: 12px 16px;">${badge}</td>
+            <td style="padding: 12px 16px; text-align: right;">
+              ${p.proofUrl ? `
+                <button onclick="viewProof('${escapeHTML(p.reference || p.id)}', '${escapeHTML(p.proofUrl)}')" style="background: none; border: 1px solid var(--border); border-radius: 4px; padding: 4px 8px; font-size: 0.76rem; font-weight: 600; cursor: pointer;">
+                  View Receipt
+                </button>
+              ` : '<span style="color: var(--text-muted); font-size: 0.75rem;">Pending Dispatch</span>'}
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    window.openRequestPayoutModal = function() {
+      const availAUD = (maxAvailableCents / 100).toFixed(2);
+      const input = document.getElementById('payout-amount-input');
+      input.value = maxAvailableCents >= 5000 ? (maxAvailableCents / 100).toFixed(0) : '50.00';
+      document.getElementById('request-payout-modal').style.display = 'flex';
+    };
+
+    window.closeRequestPayoutModal = function() {
+      document.getElementById('request-payout-modal').style.display = 'none';
+    };
+
+    window.submitPayoutRequest = async function() {
+      const val = parseFloat(document.getElementById('payout-amount-input').value);
+      if (isNaN(val) || val < 50) {
+        alert('⚠️ Minimum withdrawal amount is $50.00');
+        return;
+      }
+
+      const cents = Math.round(val * 100);
+      const res = await PayoutsAPI.requestPayout({
+        sellerId: currentSellerId,
+        sellerName: currentSellerName,
+        amountCents: cents
+      });
+
+      if (!res.success) {
+        alert(`❌ ${res.error}`);
+        return;
+      }
+
+      closeRequestPayoutModal();
+      loadBalances();
+      loadPayoutHistory();
+      alert(`🎉 Payout request for $${val.toFixed(2)} submitted successfully! Super Admin will review and process payment.`);
+    };
+
+    window.viewProof = function(ref, url) {
+      document.getElementById('proof-reference-label').textContent = `Transfer Reference: ${ref}`;
+      document.getElementById('proof-img').src = url;
+      document.getElementById('proof-modal').style.display = 'flex';
+    };
+
+    window.addEventListener('DOMContentLoaded', initPayoutsView);
+  </script>
+</body>
+</html>

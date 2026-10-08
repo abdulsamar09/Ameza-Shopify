@@ -1,0 +1,301 @@
+/**
+ * AMEZA Marketplace - Dedicated Category, Subcategory & Tag Pages Styles (taxonomy.css)
+ * Matches Reference Screenshot:
+ * - Breadcrumbs
+ * - Subtle Gray Box Hero Banner with Serif Typography (Playfair Display)
+ * - Horizontal Filter Pills Bar with Black Outlines & Sort By: Relevance
+ * - Home Page Product Cards (.product-card)
+ */
+
+@import url('./tokens.css');
+
+.taxonomy-page-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 24px 80px;
+}
+
+@media (max-width: 768px) {
+  .taxonomy-page-container {
+    padding: 16px 16px 60px;
+  }
+}
+
+/* ============================================================
+   BREADCRUMBS
+   ============================================================ */
+.tax-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: #64748B;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tax-breadcrumbs a {
+  color: #64748B;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.tax-breadcrumbs a:hover {
+  color: #0F172A;
+}
+
+.tax-breadcrumbs .sep {
+  color: #94A3B8;
+  font-size: 12px;
+}
+
+.tax-breadcrumbs .current {
+  color: #0F172A;
+  font-weight: 600;
+}
+
+/* ============================================================
+   GRAY BOX HERO BANNER (MATCHES SCREENSHOT 4)
+   ============================================================ */
+.tax-gray-hero-box {
+  background-color: #F4F4F5;
+  border-radius: 8px;
+  padding: 38px 44px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.tax-serif-title {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .tax-gray-hero-box {
+    padding: 24px 20px;
+  }
+  .tax-serif-title {
+    font-size: 26px;
+  }
+}
+
+/* ============================================================
+   HORIZONTAL FILTER PILLS BAR (MATCHES SCREENSHOT 4)
+   ============================================================ */
+.tax-filter-pills-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.tax-pills-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tax-pills-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.tax-pill-wrapper {
+  position: relative;
+}
+
+.tax-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: #FFFFFF;
+  border: 1px solid #1E293B;
+  border-radius: 9999px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #0F172A;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  font-family: var(--font-body, 'Inter', -apple-system, sans-serif);
+}
+
+.tax-pill-btn:hover {
+  background: #F8FAFC;
+  border-color: #000000;
+}
+
+.tax-pill-btn.active {
+  background: #0F172A;
+  color: #FFFFFF;
+  border-color: #0F172A;
+}
+
+.tax-pill-btn.active .tax-pill-chevron,
+.tax-pill-btn.active .tax-pill-sort-icon {
+  color: #FFFFFF;
+}
+
+.tax-pill-chevron {
+  font-size: 11px;
+  color: #475569;
+  transition: transform 0.2s ease;
+}
+
+.tax-pill-sort-icon {
+  font-size: 13px;
+  margin-left: 2px;
+}
+
+.tax-pill-wrapper.open .tax-pill-chevron {
+  transform: rotate(180deg);
+}
+
+/* Dropdowns */
+.tax-pill-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 100;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  min-width: 180px;
+  padding: 6px;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tax-pill-dropdown.tax-dropdown-right {
+  left: auto;
+  right: 0;
+  min-width: 190px;
+}
+
+.tax-pill-wrapper.open .tax-pill-dropdown {
+  display: flex;
+}
+
+.tax-drop-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.tax-drop-item:hover {
+  background: #F1F5F9;
+  color: #0F172A;
+}
+
+.tax-drop-item.selected {
+  background: #F0FDF4;
+  color: #15803D;
+  font-weight: 700;
+}
+
+/* ============================================================
+   PRODUCT CARDS GRID (4 Cols Desktop, 3 Tablet, 2 Mobile)
+   ============================================================ */
+.tax-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+@media (max-width: 1100px) {
+  .tax-products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tax-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tax-products-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.tax-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 64px 20px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+}
+
+.tax-empty-icon {
+  font-size: 48px;
+  color: #CBD5E1;
+  margin-bottom: 16px;
+}
+
+.tax-empty-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 8px;
+}
+
+.tax-empty-desc {
+  font-size: 14px;
+  color: #64748B;
+  margin: 0 0 24px;
+}
+
+.tax-btn-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 9999px;
+  background: #72B02E;
+  color: #FFFFFF;
+  font-size: 13.5px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tax-btn-reset:hover {
+  background: #5f9526;
+  transform: translateY(-1px);
+}

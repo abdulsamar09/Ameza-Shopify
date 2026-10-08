@@ -1,0 +1,17 @@
+{
+  "defaultRatePct": 10,
+  "categoryOverrides": {
+    "electronics": 12,
+    "watches": 12,
+    "clothing": 10,
+    "leather-goods": 10
+  },
+  "sellerOverrides": {
+    "seller_house_001": 0,
+    "seller_melb_123": 10,
+    "seller_syd_456": 10,
+    "seller_bris_789": 12
+  },
+  "payoutSchedule": "Weekly (Every Monday 09:00 ET)",
+  "holdPeriodDays": 7
+}

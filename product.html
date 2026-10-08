@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handcrafted Leather Backpack | AMEZA Marketplace</title>
+  <meta name="description" content="Handcrafted full-grain leather backpack built for everyday carry and travel. Solid brass hardware, double-stitched durability, and lifetime craftsmanship guarantee.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/store.css">
+  <link rel="stylesheet" href="css/product.css">
+  <link rel="icon" type="image/png" href="assets/ameza-logo.png">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/cart-drawer.css">
+</head>
+<body class="product-page" data-layout="storefront">
+  <div id="site-header"></div>
+
+  <!-- Persistent Demo Control Bar -->
+  <script type="module" src="js/demo-bar.js"></script>
+
+
+
+  <!-- MAIN PAGE CONTAINER -->
+  <main class="pdp-container">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="pdp-breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">&gt;</span>
+      <a href="category.html?cat=leather-belts" id="pdp-crumb-cat">Leather Goods</a>
+      <span class="breadcrumb-sep">&gt;</span>
+      <a href="subcategory.html?sub=backpacks&cat=bags" id="pdp-crumb-sub">Bags</a>
+      <span class="breadcrumb-sep">&gt;</span>
+      <span class="breadcrumb-current" id="breadcrumb-product-name">Handcrafted Leather Backpack</span>
+    </nav>
+
+    <!-- ===================================================================== -->
+    <!-- 2-COLUMN PDP GRID (Matches Screenshot: Gallery Left + Purchase Box Right) -->
+    <!-- ===================================================================== -->
+    <section class="pdp-main-grid">
+      
+      <!-- Left Column: Gallery Showcase -->
+      <div class="pdp-gallery-wrap">
+        
+        <!-- Vertical Thumbnails Column -->
+        <div class="pdp-thumbs-column" id="pdp-thumbs-column" aria-label="Product thumbnails">
+          <!-- Populated by product-page.js -->
+        </div>
+
+        <!-- Main Showcase Frame -->
+        <div class="pdp-main-image-box">
+          <span class="badge-gallery-corner">
+            <i class="fa-solid fa-gem"></i> Full-Grain Leather
+          </span>
+          <button class="btn-gallery-wishlist" id="btn-pdp-wishlist" aria-label="Save to wishlist">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <!-- Image Slide Arrow Controls (User requirement: arrows & dots working) -->
+          <button class="pdp-gallery-arrow prev" id="gallery-prev" aria-label="Previous image">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="pdp-gallery-arrow next" id="gallery-next" aria-label="Next image">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+
+          <img 
+            src="assets/products/ul-backpack.jpg" 
+            alt="Handcrafted Leather Backpack" 
+            id="pdp-main-image"
+          >
+          <!-- Carousel Dots Indicator -->
+          <div class="pdp-carousel-dots" id="pdp-carousel-dots">
+            <!-- Populated by product-page.js -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Purchase Information Box -->
+      <div class="pdp-info-column">
+        
+        <!-- In-Stock Pill Badge -->
+        <div class="pdp-stock-badge">
+          <span class="stock-dot"></span> In Stock &middot; Ready to Ship
+        </div>
+
+        <!-- Product Title -->
+        <h1 class="pdp-product-title" id="pdp-product-title">Handcrafted Leather Backpack</h1>
+
+        <!-- Rating & Reviews Line -->
+        <div class="pdp-reviews-meta-row">
+          <div class="stars-gold" aria-label="4.8 out of 5 stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <strong style="color: var(--text);">4.8</strong>
+          <span class="pdp-reviews-link" onclick="document.querySelector('[data-tab=reviews]').click()">(78 reviews)</span>
+          <span style="color: var(--text-light);">&middot;</span>
+          <button class="pdp-write-review-btn">Write a review</button>
+        </div>
+
+        <!-- Price Line -->
+        <div class="pdp-price-row">
+          <span class="pdp-price-current" id="pdp-price-current">$129.99</span>
+          <span class="pdp-price-compare" id="pdp-price-compare">$169.99</span>
+          <span class="pdp-discount-tag" id="pdp-discount-tag">-24%</span>
+        </div>
+
+        <!-- Short Description -->
+        <p class="pdp-short-desc">
+          Upgrade your everyday carry with the Urban Leather Co. Handcrafted Backpack. Cut from thick full-grain cowhide, outfitted with heavy solid brass zippers and reinforced dual shoulder straps for superior comfort and timeless aesthetics.
+        </p>
+
+        <!-- Size / Dimensions / Length Dropdown (User Requirement) -->
+        <div class="pdp-option-block">
+          <div class="option-label-line">
+            <span>Size / Capacity:</span>
+            <span style="font-size: 12px; color: var(--text-muted);">Selected: <strong id="selected-size-label">Standard Commuter &middot; 24L</strong></span>
+          </div>
+          <select class="pdp-select-custom" id="pdp-size-select" aria-label="Select size or length">
+            <option value="compact">Compact Daily (14" &times; 10" &times; 4") &middot; 18L</option>
+            <option value="standard" selected>Standard Commuter (16" &times; 12" &times; 5") &middot; 24L</option>
+            <option value="extended">Extended Travel (18" &times; 13" &times; 6") &middot; 30L (+$20.00)</option>
+            <option value="weekender">Weekender Large (20" &times; 14" &times; 7") &middot; 36L (+$35.00)</option>
+          </select>
+        </div>
+
+        <!-- Color Variant Options with Color Circles (User Requirement) -->
+        <div class="pdp-option-block">
+          <div class="option-label-line">
+            <span>Color:</span>
+            <span style="font-size: 12px; color: var(--text-muted);">Selected: <strong id="selected-color-label">Tan Brown</strong></span>
+          </div>
+          <div class="pdp-swatches-row">
+            <button class="color-swatch-btn active" data-color="tan" data-name="Tan Brown" style="background-color: #B46C38;" title="Tan Brown" aria-label="Tan Brown"></button>
+            <button class="color-swatch-btn" data-color="saddle" data-name="Saddle Brown" style="background-color: #78350F;" title="Saddle Brown" aria-label="Saddle Brown"></button>
+            <button class="color-swatch-btn" data-color="black" data-name="Classic Black" style="background-color: #1E293B;" title="Classic Black" aria-label="Classic Black"></button>
+            <button class="color-swatch-btn" data-color="cognac" data-name="Vintage Cognac" style="background-color: #9A3412;" title="Vintage Cognac" aria-label="Vintage Cognac"></button>
+          </div>
+        </div>
+
+        <!-- Quantity & Wishlist in ONE ROW (User Explicit Requirement) -->
+        <div class="pdp-qty-wishlist-row">
+          <div class="qty-stepper-wrap">
+            <span class="qty-label">Quantity:</span>
+            <div class="quantity-stepper">
+              <button class="stepper-btn" id="btn-qty-minus" aria-label="Decrease quantity">&minus;</button>
+              <input type="number" class="stepper-input" id="pdp-quantity-input" value="1" min="1" max="99" aria-label="Quantity">
+              <button class="stepper-btn" id="btn-qty-plus" aria-label="Increase quantity">&#43;</button>
+            </div>
+          </div>
+          <button class="btn-pdp-wishlist-row" id="btn-pdp-wishlist-action" aria-label="Save to wishlist">
+            <i class="fa-regular fa-heart"></i>
+            <span id="wishlist-btn-text">Add to Wishlist</span>
+          </button>
+        </div>
+
+        <!-- Action Buttons: Add to Cart + Buy Now in ONE ROW (User Explicit Requirement) -->
+        <div class="pdp-action-buttons-row">
+          <button class="btn-add-to-cart-row" id="btn-add-to-cart">
+            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+          </button>
+          <button class="btn-buy-now-row" id="btn-buy-now">
+            <i class="fa-solid fa-bolt"></i> Buy Now
+          </button>
+        </div>
+
+        <!-- 3 Micro Trust Perks Below Buttons (Matches Screenshot) -->
+        <div class="pdp-micro-perks">
+          <div class="micro-perk-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <div>
+              <strong>Trackable Shipping</strong>
+              <span>Fast 1-2 day dispatch</span>
+            </div>
+          </div>
+          <div class="micro-perk-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div>
+              <strong>Secure Payment</strong>
+              <span>100% Safe &amp; Encrypted</span>
+            </div>
+          </div>
+          <div class="micro-perk-item">
+            <i class="fa-solid fa-rotate-left"></i>
+            <div>
+              <strong>Easy Returns</strong>
+              <span>30-Day Return Policy</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Tags Section in a Single Horizontal Row -->
+        <div class="pdp-tags-section">
+          <span class="pdp-tags-label"><i class="fa-solid fa-tags"></i> Tags:</span>
+          <div id="pdp-tags-container" class="pdp-tags-row">
+            <a href="tag.html?tag=handcrafted" class="tax-mini-tag">#Handcrafted</a>
+            <a href="tag.html?tag=leather" class="tax-mini-tag">#Full-Grain</a>
+            <a href="tag.html?tag=artisan" class="tax-mini-tag">#Artisan Made</a>
+            <a href="tag.html?tag=bestseller" class="tax-mini-tag">#Best Seller</a>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 5 HORIZONTAL TRUST BADGES STRIP (Matches Reference Screenshot)        -->
+    <!-- ===================================================================== -->
+    <section class="pdp-trust-badges-strip">
+      <div class="trust-badge-card">
+        <div class="trust-badge-icon"><i class="fa-solid fa-award"></i></div>
+        <div>
+          <div class="trust-badge-title">Premium quality</div>
+          <div class="trust-badge-sub">Guaranteed authentic</div>
+        </div>
+      </div>
+      <div class="trust-badge-card">
+        <div class="trust-badge-icon"><i class="fa-solid fa-truck-fast"></i></div>
+        <div>
+          <div class="trust-badge-title">Fast &amp; reliable shipping</div>
+          <div class="trust-badge-sub">Delivering nationwide</div>
+        </div>
+      </div>
+      <div class="trust-badge-card">
+        <div class="trust-badge-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div>
+          <div class="trust-badge-title">Secure payments</div>
+          <div class="trust-badge-sub">SSL 256-bit encrypted</div>
+        </div>
+      </div>
+      <div class="trust-badge-card">
+        <div class="trust-badge-icon"><i class="fa-solid fa-headset"></i></div>
+        <div>
+          <div class="trust-badge-title">24/7 Support</div>
+          <div class="trust-badge-sub">We're here for you</div>
+        </div>
+      </div>
+      <div class="trust-badge-card">
+        <div class="trust-badge-icon"><i class="fa-solid fa-users"></i></div>
+        <div>
+          <div class="trust-badge-title">100k+ Customers</div>
+          <div class="trust-badge-sub">Worldwide satisfaction</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- PDP TABS SECTION (Description, Specifications, Shipping, Reviews, Images) -->
+    <!-- ===================================================================== -->
+    <section class="pdp-tabs-wrapper">
+      
+      <div class="pdp-tab-headers" role="tablist">
+        <button class="pdp-tab-nav-btn active" data-tab="desc" role="tab">Description</button>
+        <button class="pdp-tab-nav-btn" data-tab="specs" role="tab">Specifications</button>
+        <button class="pdp-tab-nav-btn" data-tab="shipping" role="tab">Shipping &amp; Returns</button>
+        <button class="pdp-tab-nav-btn" data-tab="reviews" role="tab">Reviews (78)</button>
+        <button class="pdp-tab-nav-btn" data-tab="images" role="tab">Product Images (8)</button>
+      </div>
+
+      <div class="pdp-tab-body">
+        
+        <!-- Tab 1: Description -->
+        <div class="pdp-tab-panel active" id="tab-desc">
+          <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin: 0 0 12px;">Artisan Crafted Full-Grain Leather Backpack</h3>
+          <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
+            Constructed from hand-selected vegetable-tanned full-grain cowhide, this backpack balances heritage aesthetics with modern daily practicality. Designed to hold up to a 15.6-inch laptop in a dedicated padded sleeve, alongside books, notebooks, water bottles, and accessories.
+          </p>
+          <ul style="font-size: 14px; color: var(--text-muted); line-height: 1.8; padding-left: 20px;">
+            <li><strong>Material:</strong> 100% Full-grain vegetable-tanned cowhide leather.</li>
+            <li><strong>Hardware:</strong> Solid antique brass zippers, buckles, and rivets.</li>
+            <li><strong>Interior:</strong> Heavy-duty cotton herringbone lining with multiple organizer slip pockets.</li>
+            <li><strong>Straps:</strong> Ergonomically padded, adjustable leather shoulder straps with breathable underside.</li>
+            <li><strong>Capacity:</strong> Spacious 22-liter main compartment with dual exterior quick-access pockets.</li>
+          </ul>
+        </div>
+
+        <!-- Tab 2: Specifications -->
+        <div class="pdp-tab-panel" id="tab-specs">
+          <table class="pdp-specs-table">
+            <tbody>
+              <tr><td>Dimensions</td><td>16.5" H x 12.0" W x 5.5" D (42 x 30.5 x 14 cm)</td></tr>
+              <tr><td>Weight</td><td>2.8 lbs (1.27 kg)</td></tr>
+              <tr><td>Laptop Sleeve</td><td>Fits up to 15.6" MacBook Pro / PC laptop</td></tr>
+              <tr><td>Primary Material</td><td>Full-Grain Vegetable Tanned Cowhide</td></tr>
+              <tr><td>Hardware</td><td>Solid Cast Antique Brass</td></tr>
+              <tr><td>Closure</td><td>Heavy-gauge dual brass zipper with leather pull tabs</td></tr>
+              <tr><td>Country of Origin</td><td>Handcrafted in Austin, TX, USA</td></tr>
+              <tr><td>Warranty</td><td>Lifetime Craftsmanship Guarantee</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Tab 3: Shipping & Returns -->
+        <div class="pdp-tab-panel" id="tab-shipping">
+          <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin: 0 0 12px;">Fast Domestic &amp; Worldwide Shipping</h3>
+          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 12px;">
+            All orders are processed and dispatched directly from our Austin studio within 1–2 business days. Orders over $100 receive free domestic standard shipping via USPS Priority Mail or UPS Ground.
+          </p>
+          <h4 style="font-size: 15px; font-weight: 700; margin: 16px 0 8px;">30-Day Risk-Free Returns</h4>
+          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.7;">
+            We want you to love your leather goods. If for any reason you are not completely satisfied, return the item in its original condition within 30 days for a full refund or free exchange.
+          </p>
+        </div>
+
+        <!-- Tab 4: Reviews with Interactive "Write a Review" Form (User Explicit Requirement) -->
+        <div class="pdp-tab-panel" id="tab-reviews">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 24px; flex-wrap:wrap; gap:12px;">
+            <div>
+              <h3 style="font-family: var(--font-heading); font-size: 20px; font-weight: 800; margin:0;" id="tab-reviews-heading">Customer Reviews (78)</h3>
+              <p style="font-size: 13.5px; color: var(--text-muted); margin: 4px 0 0;">Overall rating 4.8 out of 5 based on verified purchases</p>
+            </div>
+            <button class="btn-follow-primary" id="btn-toggle-review-form" style="height: 40px; padding: 0 20px; font-size: 13.5px; display:inline-flex; align-items:center; gap:8px;">
+              <i class="fa-solid fa-pen-to-square"></i> <span>Write a Review</span>
+            </button>
+          </div>
+
+          <!-- WRITE A REVIEW FORM CONTAINER (Expandable) -->
+          <div class="pdp-review-form-box" id="pdp-review-form-box">
+            <h4 style="font-family: var(--font-heading); font-size: 17px; font-weight: 700; margin: 0 0 16px; color: var(--text);">
+              Share Your Experience with this Product
+            </h4>
+            <form id="pdp-add-review-form">
+              <div class="review-form-row">
+                <div class="review-form-group">
+                  <label class="review-form-label">Your Rating <span style="color:#DC2626;">*</span></label>
+                  <div class="interactive-star-picker" id="star-picker" role="radiogroup" aria-label="Select star rating">
+                    <button type="button" class="star-pick-btn active" data-rating="1" aria-label="1 star"><i class="fa-solid fa-star"></i></button>
+                    <button type="button" class="star-pick-btn active" data-rating="2" aria-label="2 stars"><i class="fa-solid fa-star"></i></button>
+                    <button type="button" class="star-pick-btn active" data-rating="3" aria-label="3 stars"><i class="fa-solid fa-star"></i></button>
+                    <button type="button" class="star-pick-btn active" data-rating="4" aria-label="4 stars"><i class="fa-solid fa-star"></i></button>
+                    <button type="button" class="star-pick-btn active" data-rating="5" aria-label="5 stars"><i class="fa-solid fa-star"></i></button>
+                    <span id="star-rating-text" style="font-size:13px; font-weight:600; color:var(--text); margin-left:8px;">5.0 - Excellent</span>
+                  </div>
+                  <input type="hidden" id="review-input-rating" value="5">
+                </div>
+              </div>
+
+              <div class="review-form-grid-2">
+                <div class="review-form-group">
+                  <label class="review-form-label" for="review-input-name">Your Full Name <span style="color:#DC2626;">*</span></label>
+                  <input type="text" class="review-form-input" id="review-input-name" placeholder="e.g. Michael Cooper" required>
+                </div>
+                <div class="review-form-group">
+                  <label class="review-form-label" for="review-input-email">Email Address <span style="color:#DC2626;">*</span></label>
+                  <input type="email" class="review-form-input" id="review-input-email" placeholder="e.g. michael@example.com" required>
+                </div>
+              </div>
+
+              <div class="review-form-group">
+                <label class="review-form-label" for="review-input-title">Review Title <span style="color:#DC2626;">*</span></label>
+                <input type="text" class="review-form-input" id="review-input-title" placeholder="e.g. Outstanding craftsmanship and durable leather" required>
+              </div>
+
+              <div class="review-form-group">
+                <label class="review-form-label" for="review-input-body">Detailed Review <span style="color:#DC2626;">*</span></label>
+                <textarea class="review-form-textarea" id="review-input-body" rows="4" placeholder="Tell other shoppers what you loved, how the fit/finish is, and how it holds up..." required></textarea>
+              </div>
+
+              <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:16px;">
+                <button type="button" class="review-form-cancel" id="btn-cancel-review">Cancel</button>
+                <button type="submit" class="review-form-submit" id="btn-submit-review">
+                  <i class="fa-solid fa-paper-plane"></i> Submit Review
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Existing Reviews List -->
+          <div id="pdp-reviews-feed" style="display:flex; flex-direction:column; gap:16px;">
+            <div class="pdp-review-card" style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 16px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px;">
+                <strong>Sarah Jenkins <span style="font-size:11px; background:#EBF8EC; color:#166534; padding:2px 6px; border-radius:4px; font-weight:600; margin-left:6px;"><i class="fa-solid fa-circle-check"></i> Verified Buyer</span></strong>
+                <div style="color:var(--star); font-size:12px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              </div>
+              <h5 style="font-size:14px; font-weight:700; margin:0 0 4px; color:var(--text);">Unbeatable leather quality and aroma</h5>
+              <p style="font-size: 13.5px; color: var(--text-muted); margin:0 0 6px;">The leather thickness and aroma are top tier. Comfortable for walking across campus and looks professional in meetings.</p>
+              <span style="font-size: 12px; color: var(--text-light);">Austin, TX &middot; 2 days ago</span>
+            </div>
+
+            <div class="pdp-review-card" style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 16px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px;">
+                <strong>David Miller <span style="font-size:11px; background:#EBF8EC; color:#166534; padding:2px 6px; border-radius:4px; font-weight:600; margin-left:6px;"><i class="fa-solid fa-circle-check"></i> Verified Buyer</span></strong>
+                <div style="color:var(--star); font-size:12px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              </div>
+              <h5 style="font-size:14px; font-weight:700; margin:0 0 4px; color:var(--text);">Heavy brass hardware is indestructible</h5>
+              <p style="font-size: 13.5px; color: var(--text-muted); margin:0 0 6px;">Solid brass zippers glide smoothly without catching. The laptop compartment is well padded. Highly recommend!</p>
+              <span style="font-size: 12px; color: var(--text-light);">Denver, CO &middot; 1 week ago</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 5: Images (8-Grid Gallery Matching Reference Screenshot) -->
+        <div class="pdp-tab-panel" id="tab-images">
+          <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin: 0 0 16px;">
+            <i class="fa-regular fa-image" style="color:var(--primary);"></i> Product Photo Gallery
+          </h3>
+          <div class="pdp-images-gallery-grid">
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-backpack.jpg" alt="Front View" loading="lazy"></div>
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-messenger.jpg" alt="Messenger Style" loading="lazy"></div>
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-wallet.jpg" alt="Wallet Match" loading="lazy"></div>
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-belt.jpg" alt="Belt Hardware" loading="lazy"></div>
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-tote.jpg" alt="Full Leather Grain" loading="lazy"></div>
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-cardholder.jpg" alt="Card Holder Detail" loading="lazy"></div>
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-doppkit.jpg" alt="Dopp Kit Interior" loading="lazy"></div>
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-notebook.jpg" alt="Journal Leather Strap" loading="lazy"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- YOU MAY ALSO LIKE (SLIDER / CAROUSEL with Navigation Controls)        -->
+    <!-- ===================================================================== -->
+    <section class="pdp-related-section">
+      <div class="related-head-row">
+        <div>
+          <h2 class="related-section-title">You May Also Like</h2>
+          <p class="related-section-sub">More handcrafted artisan leather products you will love</p>
+        </div>
+        <div class="related-slider-controls">
+          <button class="slider-arrow-btn" id="slider-arrow-prev" aria-label="Previous products">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="slider-arrow-btn" id="slider-arrow-next" aria-label="Next products">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      <div class="related-slider-container" id="pdp-related-slider">
+        <div class="related-cards-track" id="pdp-related-grid">
+          <!-- Rendered by product-page.js -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- STORE GLOBAL TOAST NOTIFICATION CONTAINER -->
+  <div class="store-toast" id="store-global-toast" role="alert"></div>
+
+  <!-- ========================================================================= -->
+  <!-- MODERN DARK NAVY FOOTER (Matches user screenshot 1: #0B111E with 4 cols)  -->
+  <!-- ========================================================================= -->
+  <div id="site-footer"></div>
+
+  <!-- Currency Engine -->
+  <script src="js/currency.js"></script>
+
+  <!-- Product Page Logic Module Initialization -->
+  <script type="module">
+    import { initProductPage } from './js/product-page.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      initProductPage();
+    });
+  </script>
+
+  <!-- Unified Layout Module -->
+  <script type="module" src="js/core/layout.js"></script>
+</body>
+</html>

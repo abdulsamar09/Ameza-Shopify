@@ -1,0 +1,462 @@
+``````
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merchant Orders — AMEZA Marketplace USA</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/seller.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+
+      #printable-slip,
+      #printable-slip * {
+        visibility: visible;
+      }
+
+      #printable-slip {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body class="seller-body">
+
+  <!-- Persistent Demo Control Bar -->
+  <script type="module" src="js/demo-bar.js"></script>
+
+  <div class="seller-layout">
+    <!-- Sidebar -->
+    <aside class="seller-sidebar">
+      <div class="seller-brand">
+        <a href="index.html"
+          style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;">
+          <img src="assets/ameza-logo.png" alt="AMEZA" style="height: 28px;">
+          <span style="font-weight: 800; font-size: 1.1rem; color: var(--dark);">Merchant Portal</span>
+        </a>
+      </div>
+      <div style="padding: 12px 14px; background: rgba(127,183,60,0.1); border-radius: 8px; margin-bottom: 20px;">
+        <div style="font-size: 0.72rem; text-transform: uppercase; font-weight: 800; color: var(--primary-dark);">
+          Current Merchant</div>
+        <div id="sidebar-store-name" style="font-weight: 800; font-size: 0.92rem; color: var(--dark); margin-top: 2px;">
+          Austin Leather Co</div>
+        <div style="font-size: 0.75rem; color: var(--text-muted);">🇺🇸 Verified U.S. Vendor</div>
+      </div>
+      <nav class="seller-nav">
+        <a href="seller/index.html" class="seller-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          Overview
+        </a>
+        <a href="seller-products.html" class="seller-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          Products
+        </a>
+        <a href="seller-orders.html" class="seller-nav-item active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Orders & Fulfilment
+        </a>
+        <a href="seller-payouts.html" class="seller-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <line x1="12" y1="8" x2="12" y2="16"></line>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+          </svg>
+          Payouts & Banking
+        </a>
+        <a href="store.html?slug=austin-leather-co" id="sidebar-view-store" class="seller-nav-item" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          View Public Store
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="seller-main">
+      <header class="seller-header">
+        <div>
+          <h1 style="font-size: 1.6rem; font-weight: 800; color: var(--dark); margin: 0;">Orders & Fulfilment</h1>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin: 4px 0 0;">Manage shipments, dispatch via
+            United States Post, print packing slips, and track payouts.</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button onclick="exportOrdersCSV()" class="btn-outline" style="display: flex; align-items: center; gap: 6px;">
+            <span>📥 Export CSV</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Status Filter Tabs -->
+      <div style="display: flex; gap: 8px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 4px;">
+        <button class="status-tab active" onclick="filterByStatus('all', this)">All Orders</button>
+        <button class="status-tab" onclick="filterByStatus('confirmed', this)">Confirmed</button>
+        <button class="status-tab" onclick="filterByStatus('packed', this)">Packed</button>
+        <button class="status-tab" onclick="filterByStatus('shipped', this)">Shipped</button>
+        <button class="status-tab" onclick="filterByStatus('delivered', this)">Delivered</button>
+        <button class="status-tab" onclick="filterByStatus('refunded', this)">Refunded</button>
+        <button class="status-tab" onclick="filterByStatus('disputed', this)">Disputed</button>
+      </div>
+
+      <!-- Orders Table Card -->
+      <div class="seller-card" style="padding: 0; overflow: hidden;">
+        <div
+          style="padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--bg-card);">
+          <input type="text" id="order-search" placeholder="Search order ID or tracking #..."
+            oninput="handleOrderSearch(this.value)"
+            style="max-width: 320px; padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.85rem;">
+          <div id="orders-count-label" style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);">Showing
+            all orders</div>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="seller-table"
+            style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+            <thead>
+              <tr style="background: var(--bg-page); border-bottom: 1px solid var(--border);">
+                <th style="padding: 12px 16px;">Sub-Order #</th>
+                <th style="padding: 12px 16px;">Date</th>
+                <th style="padding: 12px 16px;">Items</th>
+                <th style="padding: 12px 16px;">Gross Total</th>
+                <th style="padding: 12px 16px;">Platform Fee</th>
+                <th style="padding: 12px 16px;">Net Payout</th>
+                <th style="padding: 12px 16px;">Status</th>
+                <th style="padding: 12px 16px;">USPS Tracking</th>
+                <th style="padding: 12px 16px; text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="orders-table-body">
+              <tr>
+                <td colspan="9" style="padding: 40px; text-align: center; color: var(--text-muted);">Loading merchant
+                  orders...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Fulfilment / Status Modal -->
+  <div id="order-status-modal"
+    style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+    <div
+      style="background: #FFFFFF; border-radius: 12px; width: 100%; max-width: 480px; padding: 24px; box-shadow: var(--shadow-lg);">
+      <h3 style="margin-top: 0; color: var(--dark); font-weight: 800;">Update Shipment Status</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted);" id="modal-order-subtitle">Sub-Order: #AMZ-AU-XXXXXX</p>
+
+      <div style="margin: 16px 0;">
+        <label style="font-size: 0.82rem; font-weight: 700; color: var(--dark);">Fulfilment Status:</label>
+        <select id="modal-status-select"
+          style="width: 100%; padding: 8px; margin-top: 6px; border: 1px solid var(--border); border-radius: 6px;">
+          <option value="confirmed">Confirmed</option>
+          <option value="packed">Packed & Ready for Courier</option>
+          <option value="shipped">Shipped / Dispatched</option>
+          <option value="delivered">Delivered to Customer</option>
+        </select>
+      </div>
+
+      <div style="margin: 16px 0;">
+        <label style="font-size: 0.82rem; font-weight: 700; color: var(--dark);">United States Post Tracking
+          Number:</label>
+        <input type="text" id="modal-tracking-input" placeholder="e.g. AP982341908"
+          style="width: 100%; padding: 8px; margin-top: 6px; border: 1px solid var(--border); border-radius: 6px;">
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px;">
+        <button onclick="closeStatusModal()" class="btn-outline">Cancel</button>
+        <button onclick="saveOrderStatus()" class="btn-primary">Update Fulfilment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Packing Slip Printable Modal -->
+  <div id="packing-slip-modal"
+    style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+    <div
+      style="background: #FFFFFF; border-radius: 12px; width: 100%; max-width: 650px; max-height: 90vh; overflow-y: auto; padding: 30px; box-shadow: var(--shadow-lg);">
+      <div id="printable-slip">
+        <!-- Rendered dynamically -->
+      </div>
+      <div
+        style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; border-top: 1px solid var(--border); padding-top: 16px;">
+        <button onclick="document.getElementById('packing-slip-modal').style.display='none'"
+          class="btn-outline">Close</button>
+        <button onclick="window.print()" class="btn-primary">🖨️ Print Packing Slip</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { escapeHTML } from './js/core/utils.js';
+    import { DEMO_IDENTITIES } from './js/api/seed.js';
+
+    let currentSellerId = 'seller_melb_123';
+    let allSellerOrders = [];
+    let activeFilter = 'all';
+    let activeEditOrderId = null;
+
+    function initSellerContext() {
+      try {
+        const session = JSON.parse(localStorage.getItem('ameza_session') || 'null');
+        if (session && session.user && session.user.id) {
+          currentSellerId = session.user.id;
+          document.getElementById('sidebar-store-name').textContent = session.user.storeName || session.user.name || 'Merchant';
+          const viewStoreLink = document.getElementById('sidebar-view-store');
+          if (viewStoreLink && session.user.slug) {
+            viewStoreLink.href = `store.html?slug=${session.user.slug}`;
+          }
+        }
+      } catch (e) { }
+
+      loadOrders();
+    }
+
+    function loadOrders() {
+      try {
+        const raw = localStorage.getItem('ameza_marketplace_sub_orders');
+        const list = raw ? JSON.parse(raw) : [];
+        allSellerOrders = list.filter(o => o.sellerId === currentSellerId);
+        renderOrders();
+      } catch (e) {
+        console.error('Error loading orders:', e);
+      }
+    }
+
+    function renderOrders(filteredList = null) {
+      const container = document.getElementById('orders-table-body');
+      let orders = filteredList || allSellerOrders;
+
+      if (activeFilter !== 'all') {
+        orders = orders.filter(o => o.status === activeFilter);
+      }
+
+      document.getElementById('orders-count-label').textContent = `Showing ${orders.length} orders`;
+
+      if (orders.length === 0) {
+        container.innerHTML = `
+          <tr>
+            <td colspan="9" style="padding: 40px; text-align: center; color: var(--text-muted);">
+              No orders found matching the filter.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      container.innerHTML = orders.map(o => {
+        const dateStr = new Date(o.createdAt).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
+        const grossAUD = (o.subtotalCents + (o.shippingCents || 0)) / 100;
+        const commAUD = (o.commissionTotalCents || 0) / 100;
+        const netAUD = (o.sellerNetEarningsCents || 0) / 100;
+        const itemCount = (o.items || []).reduce((sum, i) => sum + (i.quantity || 1), 0);
+
+        let badgeStyle = 'background: #E0E7FF; color: #3730A3;';
+        if (o.status === 'delivered') badgeStyle = 'background: #DCFCE7; color: #166534;';
+        else if (o.status === 'shipped') badgeStyle = 'background: #FEF3C7; color: #92400E;';
+        else if (o.status === 'refunded') badgeStyle = 'background: #FEE2E2; color: #991B1B;';
+
+        return `
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 12px 16px; font-weight: 700; color: var(--dark);">${escapeHTML(o.id)}</td>
+            <td style="padding: 12px 16px; color: var(--text-muted); font-size: 0.82rem;">${dateStr}</td>
+            <td style="padding: 12px 16px;">${itemCount} unit${itemCount > 1 ? 's' : ''}</td>
+            <td style="padding: 12px 16px; font-weight: 700;">$${grossAUD.toFixed(2)}</td>
+            <td style="padding: 12px 16px; color: var(--text-muted);">-$${commAUD.toFixed(2)}</td>
+            <td style="padding: 12px 16px; font-weight: 800; color: var(--primary-dark);">$${netAUD.toFixed(2)}</td>
+            <td style="padding: 12px 16px;">
+              <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; ${badgeStyle}">
+                ${escapeHTML(o.status)}
+              </span>
+            </td>
+            <td style="padding: 12px 16px; font-size: 0.82rem; color: var(--dark);">
+              <span style="font-family: monospace; font-weight: 700;">${escapeHTML(o.trackingNumber || 'Pending')}</span>
+            </td>
+            <td style="padding: 12px 16px; text-align: right;">
+              <button onclick="openStatusModal('${o.id}')" style="background: none; border: 1px solid var(--border); border-radius: 4px; padding: 4px 8px; font-size: 0.76rem; font-weight: 600; cursor: pointer; margin-right: 4px;">
+                Update
+              </button>
+              <button onclick="openPackingSlip('${o.id}')" style="background: var(--bg-page); border: 1px solid var(--border); border-radius: 4px; padding: 4px 8px; font-size: 0.76rem; font-weight: 600; cursor: pointer;">
+                Slip
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    window.filterByStatus = function (status, btn) {
+      activeFilter = status;
+      document.querySelectorAll('.status-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderOrders();
+    };
+
+    window.handleOrderSearch = function (query) {
+      const q = query.toLowerCase().trim();
+      const filtered = allSellerOrders.filter(o =>
+        o.id.toLowerCase().includes(q) ||
+        (o.trackingNumber && o.trackingNumber.toLowerCase().includes(q))
+      );
+      renderOrders(filtered);
+    };
+
+    window.openStatusModal = function (subOrderId) {
+      activeEditOrderId = subOrderId;
+      const order = allSellerOrders.find(o => o.id === subOrderId);
+      if (!order) return;
+
+      document.getElementById('modal-order-subtitle').textContent = `Sub-Order: #${order.id}`;
+      document.getElementById('modal-status-select').value = order.status || 'confirmed';
+      document.getElementById('modal-tracking-input').value = order.trackingNumber || '';
+      document.getElementById('order-status-modal').style.display = 'flex';
+    };
+
+    window.closeStatusModal = function () {
+      document.getElementById('order-status-modal').style.display = 'none';
+      activeEditOrderId = null;
+    };
+
+    window.saveOrderStatus = function () {
+      if (!activeEditOrderId) return;
+      const order = allSellerOrders.find(o => o.id === activeEditOrderId);
+      if (!order) return;
+
+      const newStatus = document.getElementById('modal-status-select').value;
+      const newTracking = document.getElementById('modal-tracking-input').value.trim();
+
+      order.status = newStatus;
+      if (newTracking) order.trackingNumber = newTracking;
+      if (newStatus === 'delivered' && !order.deliveredAt) {
+        order.deliveredAt = Date.now();
+        order.holdUntil = Date.now() + 7 * 86400000;
+      }
+
+      // Persist to localStorage
+      try {
+        const raw = localStorage.getItem('ameza_marketplace_sub_orders');
+        const list = raw ? JSON.parse(raw) : [];
+        const idx = list.findIndex(o => o.id === activeEditOrderId);
+        if (idx !== -1) {
+          list[idx] = order;
+          localStorage.setItem('ameza_marketplace_sub_orders', JSON.stringify(list));
+        }
+      } catch (e) { }
+
+      closeStatusModal();
+      renderOrders();
+      alert(`✅ Order #${order.id} status updated to ${newStatus.toUpperCase()}`);
+    };
+
+    window.openPackingSlip = function (subOrderId) {
+      const order = allSellerOrders.find(o => o.id === subOrderId);
+      if (!order) return;
+
+      const slipContainer = document.getElementById('printable-slip');
+      slipContainer.innerHTML = `
+        <div style="border-bottom: 2px solid #111827; padding-bottom: 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-start;">
+          <div>
+            <h2 style="margin: 0; font-size: 1.4rem; font-weight: 800; color: #111827;">AMEZA MARKETPLACE</h2>
+            <div style="font-size: 0.85rem; color: #4B5563; margin-top: 4px;">Merchant Dispatch Packing Slip</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 1.1rem; font-weight: 800; color: #111827;">#${escapeHTML(order.id)}</div>
+            <div style="font-size: 0.82rem; color: #6B7280;">Date: ${new Date(order.createdAt).toLocaleDateString('en-AU')}</div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; font-size: 0.85rem;">
+          <div>
+            <strong>Dispatched From:</strong>
+            <p style="margin: 4px 0 0; color: #4B5563;">${escapeHTML(order.sellerName)}<br>Austin, Victoria 3000<br>United States</p>
+          </div>
+          <div>
+            <strong>Carrier & Tracking:</strong>
+            <p style="margin: 4px 0 0; color: #4B5563;">Carrier: United States Post Express<br>Tracking #: <strong>${escapeHTML(order.trackingNumber || 'Pending')}</strong></p>
+          </div>
+        </div>
+
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 20px;">
+          <thead>
+            <tr style="border-bottom: 1px solid #E5E7EB; text-align: left; background: #F9FAFB;">
+              <th style="padding: 8px;">Product</th>
+              <th style="padding: 8px; text-align: center;">Qty</th>
+              <th style="padding: 8px; text-align: right;">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${(order.items || []).map(i => `
+              <tr style="border-bottom: 1px solid #F3F4F6;">
+                <td style="padding: 8px;">${escapeHTML(i.productName || 'Item')}</td>
+                <td style="padding: 8px; text-align: center;">${i.quantity || 1}</td>
+                <td style="padding: 8px; text-align: right;">$${((i.lineSubtotalCents || 0) / 100).toFixed(2)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+
+        <div style="border-top: 1px solid #E5E7EB; padding-top: 12px; text-align: right; font-size: 0.9rem;">
+          <div>Subtotal: <strong>$${((order.subtotalCents || 0) / 100).toFixed(2)}</strong></div>
+          <div>Shipping: <strong>$${((order.shippingCents || 0) / 100).toFixed(2)}</strong></div>
+          <div style="font-size: 1.05rem; font-weight: 800; margin-top: 6px; color: #111827;">Total: $${(((order.subtotalCents || 0) + (order.shippingCents || 0)) / 100).toFixed(2)}</div>
+        </div>
+      `;
+
+      document.getElementById('packing-slip-modal').style.display = 'flex';
+    };
+
+    window.exportOrdersCSV = function () {
+      if (allSellerOrders.length === 0) {
+        alert('No orders to export.');
+        return;
+      }
+      const headers = ['SubOrderID', 'Date', 'GrossCents', 'NetCents', 'Status', 'TrackingNumber'];
+      const rows = allSellerOrders.map(o => [
+        o.id,
+        new Date(o.createdAt).toISOString(),
+        o.subtotalCents + (o.shippingCents || 0),
+        o.sellerNetEarningsCents,
+        o.status,
+        o.trackingNumber || ''
+      ]);
+      const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `orders_${currentSellerId}_${Date.now()}.csv`;
+      a.click();
+    };
+
+    window.addEventListener('DOMContentLoaded', initSellerContext);
+  </script>
+</body>
+
+</html>

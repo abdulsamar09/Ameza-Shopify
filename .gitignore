@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# QA and test artifacts
+qa-shots/
+design-review/
+
+# Archives
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local IDE
+.vscode/
+.idea/
