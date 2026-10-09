@@ -6,6 +6,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
 
 :root {
+  color-scheme: light;
+  color-scheme: light only;
+
   /* --- Brand Core --- */
   --primary: #7FB73C;
   --primary-dark: #6CA030;
@@ -198,58 +201,8 @@
 }
 
 /* ==========================================================================
-   Dark Mode Overrides (Via [data-theme="dark"] or OS prefers-color-scheme)
+   Dark Mode Overrides (Explicit [data-theme="dark"] Only)
    ========================================================================== */
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --dark: #F9FAFB;
-    --dark-card: #111827;
-    --text-main: #F9FAFB;
-    --text-body: #E5E7EB;
-    --text-muted: #9CA3AF;
-    --text-light: #6B7280;
-    --text-inverse: #111827;
-
-    --bg-page: #0B0F19;
-    --bg-surface: #111827;
-    --bg-surface-alt: #161F30;
-    --bg-elevated: #1F2937;
-    --bg-hover: #1E293B;
-    --bg-active: #334155;
-
-    --border: #26334D;
-    --border-subtle: #1E293B;
-    --border-hover: #374768;
-
-    --primary-light: rgba(127, 183, 60, 0.18);
-    --primary-lighter: rgba(127, 183, 60, 0.08);
-
-    --success-bg: rgba(16, 185, 129, 0.15);
-    --success-border: rgba(16, 185, 129, 0.35);
-    --success-text: #6EE7B7;
-
-    --warning-bg: rgba(245, 158, 11, 0.15);
-    --warning-border: rgba(245, 158, 11, 0.35);
-    --warning-text: #FCD34D;
-
-    --danger-bg: rgba(239, 68, 68, 0.15);
-    --danger-border: rgba(239, 68, 68, 0.35);
-    --danger-text: #FCA5A5;
-
-    --info-bg: rgba(59, 130, 246, 0.15);
-    --info-border: rgba(59, 130, 246, 0.35);
-    --info-text: #93C5FD;
-
-    --badge-neutral-bg: rgba(107, 114, 128, 0.2);
-    --badge-neutral-text: #D1D5DB;
-    --badge-neutral-border: rgba(107, 114, 128, 0.35);
-
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
-    --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.5);
-    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.6);
-  }
-}
 
 [data-theme="dark"] {
   --dark: #F9FAFB;

@@ -16,15 +16,20 @@
 }
 
 html {
+  color-scheme: light;
+  color-scheme: light only;
   font-size: 16px;
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  background-color: var(--bg-page);
 }
 
 body {
+  color-scheme: light;
+  color-scheme: light only;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

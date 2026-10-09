@@ -1,6 +1,14 @@
 @import url('../../css/tokens.css');
 
+html {
+  color-scheme: light;
+  color-scheme: light only;
+  background-color: var(--bg-page);
+}
+
 body.onb {
+  color-scheme: light;
+  color-scheme: light only;
   /* Mapped to master tokens */
   --surface: var(--bg-surface);
   --text: var(--text-main);

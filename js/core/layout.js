@@ -342,6 +342,25 @@ function initTravelDrawer(base) {
  * Initializes and mounts universal header and footer.
  */
 export function initLayout() {
+  // Ensure mobile OS dark mode does not invert or auto-darken website background
+  try {
+    if (typeof document !== 'undefined') {
+      document.documentElement.style.colorScheme = 'light';
+      if (!document.querySelector('meta[name="color-scheme"]')) {
+        const meta = document.createElement('meta');
+        meta.name = 'color-scheme';
+        meta.content = 'light';
+        document.head.prepend(meta);
+      }
+      if (!document.querySelector('meta[name="theme-color"]')) {
+        const meta = document.createElement('meta');
+        meta.name = 'theme-color';
+        meta.content = '#FFFFFF';
+        document.head.prepend(meta);
+      }
+    }
+  } catch (e) {}
+
   const layoutType = document.body.getAttribute('data-layout') || 'storefront';
   if (layoutType === 'none') {
     return; // Dashboards handle their own shell
