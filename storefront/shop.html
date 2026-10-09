@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop all products | AMEZA</title>
+  <meta name="description" content="Shop handcrafted artisan goods, clothing, smart electronics, luxury watches, leather belts, and bags across the United States on AMEZA.">
+  <link rel="canonical" href="shop.html">
+  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core & Shared Styles -->
+  <link rel="stylesheet" href="/shared/css/tokens.css">
+  <link rel="stylesheet" href="/shared/css/layout.css">
+  <link rel="stylesheet" href="/shared/css/base.css">
+  <link rel="stylesheet" href="/storefront/css/cart-drawer.css">
+  <link rel="stylesheet" href="/storefront/css/shop.css">
+
+  <!-- Structured Data JSON-LD for ItemList (Dynamic in JS) -->
+  <script type="application/ld+json" id="shop-jsonld">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "AMEZA Catalog Products",
+    "itemListElement": []
+  }
+  </script>
+</head>
+<body class="shop" data-layout="storefront">
+  <!-- Shared Header (Rendered by js/core/layout.js) -->
+  <div id="site-header"></div>
+
+  <!-- Persistent Demo Control Bar -->
+  <script type="module" src="/shared/js/demo-bar.js"></script>
+
+  <!-- SHORT HERO SECTION (160–220px desktop, ~120px mobile) -->
+  <section class="shop-hero" id="shop-hero-section">
+    <div class="shop-hero-container">
+      <nav class="shop-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="shop-breadcrumb-sep">/</span>
+        <span class="shop-breadcrumb-current" id="shop-crumb-current">Shop</span>
+      </nav>
+
+      <div class="shop-hero-header">
+        <div class="shop-hero-title-wrap">
+          <h1 class="shop-title" id="shop-main-title">Shop all products</h1>
+          <p class="shop-subtitle-count" id="shop-hero-count" aria-live="polite">Loading catalog...</p>
+        </div>
+
+        <div class="shop-hero-search-wrap">
+          <input
+            type="search"
+            class="shop-hero-search-input"
+            id="shop-search-input"
+            placeholder="Search catalog..."
+            aria-label="Search catalog products"
+            autocomplete="off"
+          >
+          <button type="button" class="shop-hero-search-btn" id="shop-search-btn" aria-label="Submit search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Quick Chips (Horizontally Scrollable) -->
+      <div class="shop-category-chips" id="shop-quick-chips" role="tablist" aria-label="Quick category filter chips">
+        <!-- Rendered dynamically via js/shop-page.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN SHOP TWO-COLUMN AREA -->
+  <div class="shop-main-layout">
+    <!-- LEFT COLUMN: STICKY FILTERS SIDEBAR (280px) -->
+    <aside class="shop-sidebar" id="shop-sidebar" aria-label="Product filters">
+      <div class="shop-sidebar-header">
+        <div class="shop-sidebar-title">
+          <i class="fa-solid fa-sliders" style="color:var(--primary, #7FB73C);"></i>
+          <span>Filters</span>
+        </div>
+        <button type="button" class="btn-reset-filters" data-action="reset-filters" id="btn-reset-filters">Reset all</button>
+        <button type="button" class="btn-mobile-sidebar-close" id="btn-close-mobile-filters" aria-label="Close filters">&times;</button>
+      </div>
+
+      <!-- Scrollable Inner Content Area -->
+      <div class="shop-sidebar-content" id="shop-sidebar-content">
+        <!-- Filter Group: Categories -->
+        <div class="filter-group" data-group="categories" id="filter-group-categories">
+          <button type="button" class="filter-group-header" aria-expanded="true" aria-controls="filter-body-categories">
+            <span>Categories</span>
+            <svg class="filter-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="filter-group-body" id="filter-body-categories">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+
+        <!-- Filter Group: Brands -->
+        <div class="filter-group" data-group="brands" id="filter-group-brands">
+          <button type="button" class="filter-group-header" aria-expanded="true" aria-controls="filter-body-brands">
+            <span>Brands</span>
+            <svg class="filter-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="filter-group-body" id="filter-body-brands">
+            <div class="brand-search-box">
+              <input type="text" class="brand-search-input" id="brand-search-input" placeholder="Search brands..." aria-label="Search brand names">
+            </div>
+            <div class="brands-list-container" id="brands-checkbox-list">
+              <!-- Populated dynamically via JS -->
+            </div>
+            <button type="button" class="btn-show-more-brands" id="btn-toggle-more-brands" style="display:none;">
+              + Show more brands
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Group: Price Range Dual Slider -->
+        <div class="filter-group" data-group="price" id="filter-group-price">
+          <button type="button" class="filter-group-header" aria-expanded="true" aria-controls="filter-body-price">
+            <span>Price Range</span>
+            <svg class="filter-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="filter-group-body" id="filter-body-price">
+            <div class="price-slider-wrap">
+              <div class="price-inputs-row">
+                <div class="price-input-group">
+                  <span class="price-input-prefix">$</span>
+                  <input type="number" class="price-input-field" id="price-input-min" min="0" max="1000" step="5" value="0" aria-label="Minimum price in dollars">
+                </div>
+                <div class="price-input-group">
+                  <span class="price-input-prefix">$</span>
+                  <input type="number" class="price-input-field" id="price-input-max" min="0" max="1000" step="5" value="500" aria-label="Maximum price in dollars">
+                </div>
+              </div>
+
+              <div class="range-slider-container">
+                <div class="range-slider-track"></div>
+                <div class="range-slider-progress" id="range-slider-progress"></div>
+                <input type="range" class="range-input" id="range-slider-min" min="0" max="500" step="1" value="0" aria-label="Minimum price slider">
+                <input type="range" class="range-input" id="range-slider-max" min="0" max="500" step="1" value="500" aria-label="Maximum price slider">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Group: Rating -->
+        <div class="filter-group" data-group="rating" id="filter-group-rating">
+          <button type="button" class="filter-group-header" aria-expanded="true" aria-controls="filter-body-rating">
+            <span>Customer Rating</span>
+            <svg class="filter-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="filter-group-body" id="filter-body-rating">
+            <div class="rating-stars-list" id="rating-filters-list">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Group: Availability -->
+        <div class="filter-group" data-group="availability" id="filter-group-availability">
+          <button type="button" class="filter-group-header" aria-expanded="true" aria-controls="filter-body-availability">
+            <span>Availability</span>
+            <svg class="filter-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="filter-group-body" id="filter-body-availability">
+            <label class="filter-option">
+              <div class="filter-option-left">
+                <input type="checkbox" class="filter-checkbox" id="chk-instock" data-filter="availability" value="in-stock">
+                <span>In Stock</span>
+              </div>
+              <span class="filter-option-count" id="count-instock">0</span>
+            </label>
+            <label class="filter-option">
+              <div class="filter-option-left">
+                <input type="checkbox" class="filter-checkbox" id="chk-outofstock" data-filter="availability" value="out-of-stock">
+                <span>Out of Stock</span>
+              </div>
+              <span class="filter-option-count" id="count-outofstock">0</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Filter Group: On Sale Toggle -->
+        <div class="filter-group" data-group="sale" id="filter-group-sale">
+          <div class="filter-group-body" style="padding-top:16px;">
+            <label class="toggle-switch-wrap" for="toggle-on-sale">
+              <span style="font-size:0.92rem; font-weight:700; color:var(--dark, #0F172A);">On Sale Deals Only</span>
+              <div class="toggle-switch">
+                <input type="checkbox" id="toggle-on-sale" data-filter="deals" value="1">
+                <span class="toggle-slider"></span>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Bottom Sheet Footer Sticky Buttons (< 768px and < 1100px) -->
+      <div class="mobile-filter-drawer-footer">
+        <button type="button" class="btn-mobile-reset" data-action="reset-filters">Reset</button>
+        <button type="button" class="btn-mobile-apply" id="btn-mobile-apply">Show 0 results</button>
+      </div>
+    </aside>
+
+    <!-- RIGHT COLUMN: TOOLBAR & PRODUCT GRID -->
+    <main class="shop-products-column">
+      <!-- Toolbar -->
+      <div class="shop-toolbar" id="shop-toolbar">
+        <div class="shop-toolbar-top">
+          <p class="shop-results-announcement" id="shop-results-announcement" aria-live="polite">
+            Showing 0-0 of 0 products
+          </p>
+
+          <div class="shop-toolbar-controls">
+            <!-- Mobile Filter Trigger Button -->
+            <button type="button" class="btn-mobile-filters-trigger" id="btn-mobile-filters-trigger" aria-label="Open filter menu">
+              <i class="fa-solid fa-filter"></i>
+              <span>Filters</span>
+              <span id="mobile-filter-badge" style="display:none; background:var(--primary, #7FB73C); color:#FFF; font-size:11px; padding:2px 6px; border-radius:9999px;"></span>
+            </button>
+
+            <!-- Sort Dropdown -->
+            <div class="shop-sort-wrap">
+              <label for="shop-sort-select" class="shop-sort-label">Sort by:</label>
+              <select class="shop-sort-select" id="shop-sort-select" aria-label="Sort products">
+                <option value="featured">Featured</option>
+                <option value="newest">Newest</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="rating">Top Rated</option>
+                <option value="best-selling">Best Selling</option>
+                <option value="discount">Biggest Discount</option>
+              </select>
+            </div>
+
+            <!-- Grid / List Switcher -->
+            <div class="shop-view-switcher" role="radiogroup" aria-label="Product layout mode">
+              <button type="button" class="btn-view-toggle active" data-view="3-col" id="view-mode-3" aria-label="3 columns grid" title="3 Column Grid">
+                <i class="fa-solid fa-table-cells"></i>
+              </button>
+              <button type="button" class="btn-view-toggle" data-view="4-col" id="view-mode-4" aria-label="4 columns grid" title="4 Column Grid">
+                <i class="fa-solid fa-table-cells-large"></i>
+              </button>
+              <button type="button" class="btn-view-toggle" data-view="list" id="view-mode-list" aria-label="List view" title="List View">
+                <i class="fa-solid fa-list"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Removable Active Filters Row -->
+        <div class="active-filters-row" id="active-filters-container" style="display:none;">
+          <span class="active-filters-label">Active Filters:</span>
+          <div class="active-tags-list" id="active-tags-list" style="display:inline-flex; gap:6px; flex-wrap:wrap;"></div>
+          <button type="button" class="btn-clear-all-tags" data-action="reset-filters" id="btn-clear-all-tags">Clear all</button>
+        </div>
+      </div>
+
+      <!-- Product Cards Grid Container -->
+      <div class="products-grid" id="shop-products-grid" aria-live="polite">
+        <!-- Rendered dynamically via js/shop-page.js -->
+      </div>
+
+      <!-- Empty State Container (shown when 0 matches) -->
+      <div class="shop-empty-state" id="shop-empty-state" style="display:none;">
+        <div class="shop-empty-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <h3 class="shop-empty-title">No products match your filters</h3>
+        <p class="shop-empty-desc">We couldn't find any products matching all of your selected criteria. Try adjusting or clearing your filters to see more results.</p>
+        <button type="button" class="btn-clear-filters-cta" data-action="reset-filters" id="btn-empty-clear">
+          Clear all filters
+        </button>
+      </div>
+
+      <!-- Pagination / Infinite Scroll Progress Area -->
+      <div class="shop-pagination-wrap" id="shop-pagination-wrap">
+        <div class="progress-bar-container">
+          <span class="progress-label" id="shop-progress-label">Showing 12 of 51 products</span>
+          <div class="progress-track">
+            <div class="progress-fill" id="shop-progress-fill" style="width: 24%;"></div>
+          </div>
+        </div>
+        <button type="button" class="btn-load-more" id="btn-load-more" data-action="load-more">
+          <span>Load more products</span>
+        </button>
+        <!-- IntersectionObserver Sentinel -->
+        <div id="shop-infinite-sentinel" style="height:20px; width:100%; pointer-events:none;"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div class="mobile-filter-backdrop" id="mobile-filter-backdrop"></div>
+
+  <!-- Quick View Modal Overlay -->
+  <div class="shop-modal-overlay" id="shop-quickview-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="qv-product-title">
+    <div class="shop-modal-box" id="shop-quickview-content">
+      <!-- Populated dynamically -->
+    </div>
+  </div>
+
+  <!-- Shared Footer (Rendered by js/core/layout.js) -->
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="/shared/js/currency.js"></script>
+  <script src="js/auth.js"></script>
+  <script type="module" src="/shared/js/cart-drawer.js"></script>
+  <script type="module" src="/shared/js/core/layout.js"></script>
+  <script type="module" src="/storefront/js/shop-page.js"></script>
+</body>
+</html>

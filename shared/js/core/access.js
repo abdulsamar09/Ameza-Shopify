@@ -30,7 +30,7 @@ export function checkAccess() {
 
     case 'seller':
       if (role !== 'seller' && role !== 'admin') {
-        window.location.href = '/onboarding/sell-with-us.html';
+        window.location.href = '/seller/onboarding/sell-with-us.html';
         return false;
       }
       break;

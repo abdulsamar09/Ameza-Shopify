@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Details | AMEZA Account</title>
+  <meta name="description" content="View your order details.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/shared/css/style.css">
+  <link rel="stylesheet" href="/buyer/css/account.css">
+  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
+  <link rel="stylesheet" href="/shared/css/tokens.css">
+  <link rel="stylesheet" href="/shared/css/layout.css">
+  <link rel="stylesheet" href="/shared/css/base.css">
+<body class="buyer" data-layout="storefront" data-access="buyer" data-area="buyer">
+  <div id="site-header"></div>
+
+  
+
+  
+
+  <div class="account-page-wrapper">
+    <div class="container">
+      <button class="account-mobile-nav-toggle" id="account-mobile-nav-toggle">
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> My Account</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+      <div class="account-layout">
+        <aside class="account-sidebar" id="account-sidebar"></aside>
+        <main class="account-content" id="order-detail-main">
+          <!-- Populated by JS -->
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+  <div class="account-toast-container" id="account-toast-container"></div>
+
+  <!-- Page Bootstrap Module -->
+  <script type="module" src="/buyer/js/pages/order-detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout &mdash; AMEZA Marketplace</title>
+  <meta name="description" content="Complete your purchase with AMEZA 256-bit SSL encrypted secure checkout. Express checkout with Apple Pay, PayPal, and credit card.">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/shared/css/tokens.css">
+  <link rel="stylesheet" href="/shared/css/layout.css">
+  <link rel="stylesheet" href="/shared/css/base.css">
+  <link rel="stylesheet" href="/storefront/css/cart-drawer.css">
+  <link rel="stylesheet" href="/storefront/css/checkout.css">
+  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
+</head>
+<body class="checkout-body" data-layout="none">
+  <div id="checkout-app-root">
+    <!-- Populated dynamically by checkout-page.js -->
+  </div>
+
+  <div class="checkout-currency-notice" style="text-align: center; padding: 12px 16px; font-size: 13px; color: #64748B; background: #F8FAFC; border-top: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB;">
+    <i class="fa-solid fa-circle-info" style="color: #7FB73C; margin-right: 6px;"></i> All transactions are processed in U.S. Dollars &mdash; <strong>You will be charged in USD</strong>.
+  </div>
+
+  <!-- Scripts -->
+  <script src="/shared/js/currency.js"></script>
+  <script src="js/auth.js"></script>
+  <script type="module" src="/shared/js/cart-drawer.js"></script>
+
+  <!-- Checkout Logic Module -->
+  <script type="module">
+    import { initCheckoutPage } from './js/checkout-page.js';
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        initCheckoutPage();
+      });
+    } else {
+      initCheckoutPage();
+    }
+  </script>
+
+  <!-- Unified Layout Module -->
+  <script type="module" src="/shared/js/core/layout.js"></script>
+</body>
+</html>

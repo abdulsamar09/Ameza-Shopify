@@ -1549,7 +1549,7 @@ function buildHeavyMobileDrawer() {
         <a href="stays.html" class="heavy-drawer-link">
           <div class="heavy-drawer-link-left">
             <span class="heavy-drawer-icon" style="color:var(--primary, #7DBA35);"><i class="fa-solid fa-bed"></i></span>
-            <span>Stay (Hotels &amp; Resorts)</span>
+            <span>AMEZA Hotels</span>
           </div>
           <i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:#CBD5E1;"></i>
         </a>

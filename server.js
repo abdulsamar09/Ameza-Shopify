@@ -24,10 +24,103 @@ const MIME_TYPES = {
   '.txt': 'text/plain; charset=utf-8',
 };
 
+// 301 Permanent Redirects Map (Old -> New)
+const REDIRECTS_301 = {
+  '/account.html': '/buyer/',
+  '/account-orders.html': '/buyer/orders.html',
+  '/account-order-detail.html': '/buyer/order-detail.html',
+  '/account-wishlist.html': '/buyer/wishlist.html',
+  '/account-addresses.html': '/buyer/addresses.html',
+  '/account-profile.html': '/buyer/profile.html',
+  '/account-security.html': '/buyer/security.html',
+
+  '/login.html': '/auth/login.html',
+  '/signup.html': '/auth/signup.html',
+  '/forgot-password.html': '/auth/forgot-password.html',
+  '/reset-password.html': '/auth/reset-password.html',
+  '/verify-email.html': '/auth/verify-email.html',
+
+  '/shop.html': '/storefront/shop.html',
+  '/product.html': '/storefront/product.html',
+  '/category.html': '/storefront/category.html',
+  '/subcategory.html': '/storefront/subcategory.html',
+  '/tag.html': '/storefront/tag.html',
+  '/stores.html': '/storefront/stores.html',
+  '/store.html': '/storefront/seller-store.html',
+  '/cart.html': '/storefront/cart.html',
+  '/checkout.html': '/storefront/checkout.html',
+  '/order-confirmation.html': '/storefront/order-confirmation.html',
+  '/wishlist.html': '/storefront/wishlist.html',
+
+  '/stays.html': '/travel/stays.html',
+  '/stays-search.html': '/travel/stays-search.html',
+  '/flights.html': '/travel/flights.html',
+  '/car-rental.html': '/travel/car-rental.html',
+  '/attractions.html': '/travel/attractions.html',
+  '/airport-taxis.html': '/travel/airport-taxis.html',
+
+  '/seller-orders.html': '/seller/orders.html',
+  '/seller-products.html': '/seller/products.html',
+  '/seller-payouts.html': '/seller/payouts.html',
+
+  '/admin-audit.html': '/admin/audit.html',
+  '/admin-categories.html': '/admin/categories.html',
+  '/admin-cms.html': '/admin/content.html',
+  '/admin-finance.html': '/admin/finance.html',
+  '/admin-moderation.html': '/admin/products.html',
+  '/admin-settings.html': '/admin/settings.html',
+
+  '/prototype-index.html': '/dev/prototype-index.html',
+  '/selftest.html': '/dev/selftest.html',
+  '/ui-kit.html': '/dev/ui-kit.html',
+  '/account': '/buyer/'
+};
+
+// Clean URLs rewrites map
+const REWRITES = {
+  '/shop': '/storefront/shop.html',
+  '/cart': '/storefront/cart.html',
+  '/checkout': '/storefront/checkout.html',
+  '/login': '/auth/login.html',
+  '/signup': '/auth/signup.html',
+  '/seller': '/seller/index.html',
+  '/admin': '/admin/index.html',
+  '/buyer': '/buyer/index.html'
+};
+
 const server = http.createServer((req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
 
-  let reqPath = decodeURI(req.url.split('?')[0]);
+  const [rawPath, queryString] = req.url.split('?');
+  const query = queryString ? `?${queryString}` : '';
+  let reqPath = decodeURI(rawPath);
+
+  // Check 301 redirects
+  if (REDIRECTS_301[reqPath]) {
+    res.writeHead(301, {
+      'Location': `${REDIRECTS_301[reqPath]}${query}`,
+      'Cache-Control': 'public, max-age=3600'
+    });
+    res.end();
+    return;
+  }
+
+  // Handle /onboarding/* redirect
+  if (reqPath.startsWith('/onboarding/')) {
+    const newPath = reqPath.replace(/^\/onboarding\//, '/seller/onboarding/');
+    res.writeHead(301, {
+      'Location': `${newPath}${query}`,
+      'Cache-Control': 'public, max-age=3600'
+    });
+    res.end();
+    return;
+  }
+
+  // Handle Clean URL rewrites
+  if (REWRITES[reqPath]) {
+    reqPath = REWRITES[reqPath];
+  }
+
   if (reqPath === '/' || reqPath === '') {
     reqPath = '/index.html';
   }
