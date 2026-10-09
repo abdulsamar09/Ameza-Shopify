@@ -1,0 +1,5 @@
+_trash
+_trash/**
+.git
+.gitignore
+*.ps1

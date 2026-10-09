@@ -95,6 +95,14 @@ const server = http.createServer((req, res) => {
   const query = queryString ? `?${queryString}` : '';
   let reqPath = decodeURI(rawPath);
 
+  // Block access to _trash/ (always return 404)
+  if (reqPath.startsWith('/_trash/') || reqPath === '/_trash') {
+    res.statusCode = 404;
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.end('<h1>404 Not Found</h1><p><a href="/">Return to Home</a></p>');
+    return;
+  }
+
   // Check 301 redirects
   if (REDIRECTS_301[reqPath]) {
     res.writeHead(301, {

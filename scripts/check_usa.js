@@ -37,6 +37,7 @@ const EXCLUDED_PATHS = [
   'scripts/apply_pricing_to_products_data.js', // migration helper containing regexes
   'scripts/crop_logo.js',
   'fix.md', // historical audit log
+  '_trash',
   '.system_generated',
   'scratch'
 ];
