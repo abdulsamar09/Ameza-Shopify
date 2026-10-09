@@ -1,0 +1,322 @@
+/* ==========================================================================
+   AMEZA DESIGN TOKENS — css/tokens.css
+   Universal Token System for AMEZA Multi-Vendor Marketplace
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+:root {
+  color-scheme: light;
+  color-scheme: light only;
+
+  /* --- Brand Core --- */
+  --primary: #7FB73C;
+  --primary-dark: #6CA030;
+  --primary-darker: #5B8828;
+  --primary-light: #F3F8EE;
+  --primary-lighter: #FAFCF8;
+  --primary-glow: rgba(127, 183, 60, 0.25);
+  --primary-contrast: #FFFFFF;
+
+  /* --- Neutrals (Light Mode Default) --- */
+  --dark: #111827;
+  --dark-card: #1F2937;
+  --text-main: #111827;
+  --text-body: #374151;
+  --text-muted: #6B7280;
+  --text-light: #9CA3AF;
+  --text-inverse: #FFFFFF;
+
+  --bg-page: #F8FAF7;
+  --bg-surface: #FFFFFF;
+  --bg-surface-alt: #F9FAFB;
+  --bg-elevated: #FFFFFF;
+  --bg-hover: #F3F4F6;
+  --bg-active: #E5E7EB;
+
+  --border: #E5E7EB;
+  --border-subtle: #F3F4F6;
+  --border-hover: #D1D5DB;
+  --border-focus: #7FB73C;
+  --star: #FFBF00;
+
+  /* --- Status & Feedback Colors --- */
+  --success: #10B981;
+  --success-bg: #ECFDF5;
+  --success-border: #A7F3D0;
+  --success-text: #065F46;
+
+  --warning: #F59E0B;
+  --warning-bg: #FFFBEB;
+  --warning-border: #FDE68A;
+  --warning-text: #92400E;
+
+  --danger: #EF4444;
+  --danger-bg: #FEF2F2;
+  --danger-border: #FECACA;
+  --danger-text: #991B1B;
+
+  --info: #3B82F6;
+  --info-bg: #EFF6FF;
+  --info-border: #BFDBFE;
+  --info-text: #1E40AF;
+
+  --badge-neutral-bg: #F3F4F6;
+  --badge-neutral-text: #4B5563;
+  --badge-neutral-border: #E5E7EB;
+
+  /* --- Accents --- */
+  --star-yellow: #F59E0B;
+  --badge-sale: #E11D48;
+  --badge-deal: #D97706;
+
+  /* --- Spacing Scale --- */
+  --space-3xs: 2px;
+  --space-2xs: 4px;
+  --space-xs: 6px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-base: 16px;
+  --space-lg: 20px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 40px;
+  --space-4xl: 48px;
+  --space-5xl: 64px;
+
+  /* --- Radii Scale --- */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+  --radius-pill: 9999px;
+  --radius-full: 4px;
+
+  /* --- Shadows --- */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.09);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 10px 25px rgba(127, 183, 60, 0.18);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+
+  /* --- Focus Ring --- */
+  --focus-ring: 0 0 0 3px rgba(127, 183, 60, 0.35);
+  --focus-ring-danger: 0 0 0 3px rgba(239, 68, 68, 0.35);
+
+  /* --- Typography --- */
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+
+  --font-xs: 0.75rem;
+  /* 12px */
+  --font-sm: 0.875rem;
+  /* 14px */
+  --font-base: 1rem;
+  /* 16px */
+  --font-md: 1.125rem;
+  /* 18px */
+  --font-lg: 1.25rem;
+  /* 20px */
+  --font-xl: 1.5rem;
+  /* 24px */
+  --font-2xl: 1.875rem;
+  /* 30px */
+  --font-3xl: 2.25rem;
+  /* 36px */
+
+  /* --- Transitions --- */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- Z-Index Stack --- */
+  --z-base: 1;
+  --z-sticky: 100;
+  --z-dropdown: 200;
+  --z-drawer-backdrop: 400;
+  --z-drawer: 500;
+  --z-modal-backdrop: 800;
+  --z-modal: 900;
+  --z-toast: 1000;
+  --z-tooltip: 1100;
+
+  /* --- Dashboard Layout Defaults --- */
+  --topbar-height: 60px;
+  --sidebar-width: 240px;
+  --topbar-bg: #1A1A1A;
+  --topbar-search-bg: #2A2A2A;
+  --topbar-border: #383838;
+  --topbar-text: #E3E3E3;
+  --topbar-text-muted: #8C9196;
+  --bg-dashboard: #F1F1F1;
+  --bg-sidebar: #F7F7F7;
+  --bg-sidebar-hover: #ECECEC;
+  --bg-active-pill: #FFFFFF;
+  --btn-primary-dashboard: #303030;
+
+  /* --- Checkout & Dashboard Tokens --- */
+  --ameza-font: var(--font-body);
+  --ameza-heading: var(--font-heading);
+  --ameza-bg: var(--bg-surface);
+  --ameza-sidebar-bg: var(--bg-page);
+  --ameza-border: var(--border-hover);
+  --ameza-border-light: var(--border);
+  --ameza-text: var(--text-main);
+  --ameza-text-muted: var(--text-muted);
+  --ameza-text-light: var(--text-light);
+  --ameza-green: var(--primary);
+  --ameza-green-dark: var(--primary-dark);
+  --ameza-green-bg: var(--primary-light);
+  --ameza-green-deep: var(--primary-darker);
+  --ameza-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ameza-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --ameza-bg: #FFFFFF;
+  --ameza-sidebar-bg: #F8FAF7;
+  --ameza-border: #D1D5DB;
+  --ameza-border-light: #E5E7EB;
+  --ameza-text: #111827;
+  --ameza-text-muted: #6B7280;
+  --ameza-text-light: #9CA3AF;
+  --container-max: 1280px;
+
+  --primary-green: var(--primary);
+  --primary-green-dark: var(--primary-dark);
+  --primary-green-light: var(--primary-light);
+  --primary-green-glow: var(--primary-glow);
+  --shadow-card: var(--shadow-sm);
+  --shadow-dropdown: var(--shadow-lg);
+
+  /* --- Admin Layout Theme Defaults --- */
+  --sidebar-admin-bg: #111827;
+  --sidebar-admin-text: #E5E7EB;
+  --sidebar-admin-hover: #1F2937;
+  --sidebar-admin-active: rgba(127, 183, 60, 0.16);
+  --sidebar-admin-active-text: #7FB73C;
+  --sidebar-admin-border: #1F2937;
+}
+
+/* ==========================================================================
+   Dark Mode Overrides (Explicit [data-theme="dark"] Only)
+   ========================================================================== */
+
+[data-theme="dark"] {
+  --dark: #F9FAFB;
+  --dark-card: #111827;
+  --text-main: #F9FAFB;
+  --text-body: #E5E7EB;
+  --text-muted: #9CA3AF;
+  --text-light: #6B7280;
+  --text-inverse: #111827;
+
+  --bg-page: #0B0F19;
+  --bg-surface: #111827;
+  --bg-surface-alt: #161F30;
+  --bg-elevated: #1F2937;
+  --bg-hover: #1E293B;
+  --bg-active: #334155;
+
+  --border: #26334D;
+  --border-subtle: #1E293B;
+  --border-hover: #374768;
+
+  --primary-light: rgba(127, 183, 60, 0.18);
+  --primary-lighter: rgba(127, 183, 60, 0.08);
+
+  --success-bg: rgba(16, 185, 129, 0.15);
+  --success-border: rgba(16, 185, 129, 0.35);
+  --success-text: #6EE7B7;
+
+  --warning-bg: rgba(245, 158, 11, 0.15);
+  --warning-border: rgba(245, 158, 11, 0.35);
+  --warning-text: #FCD34D;
+
+  --danger-bg: rgba(239, 68, 68, 0.15);
+  --danger-border: rgba(239, 68, 68, 0.35);
+  --danger-text: #FCA5A5;
+
+  --info-bg: rgba(59, 130, 246, 0.15);
+  --info-border: rgba(59, 130, 246, 0.35);
+  --info-text: #93C5FD;
+
+  --badge-neutral-bg: rgba(107, 114, 128, 0.2);
+  --badge-neutral-text: #D1D5DB;
+  --badge-neutral-border: rgba(107, 114, 128, 0.35);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="light"] {
+  --dark: #111827;
+  --dark-card: #1F2937;
+  --text-main: #111827;
+  --text-body: #374151;
+  --text-muted: #6B7280;
+  --text-light: #9CA3AF;
+  --text-inverse: #FFFFFF;
+
+  --bg-page: #F8FAF7;
+  --bg-surface: #FFFFFF;
+  --bg-surface-alt: #F9FAFB;
+  --bg-elevated: #FFFFFF;
+  --bg-hover: #F3F4F6;
+  --bg-active: #E5E7EB;
+
+  --border: #E5E7EB;
+  --border-subtle: #F3F4F6;
+  --border-hover: #D1D5DB;
+
+  --primary-light: #F3F8EE;
+  --primary-lighter: #FAFCF8;
+
+  --success-bg: #ECFDF5;
+  --success-border: #A7F3D0;
+  --success-text: #065F46;
+
+  --warning-bg: #FFFBEB;
+  --warning-border: #FDE68A;
+  --warning-text: #92400E;
+
+  --danger-bg: #FEF2F2;
+  --danger-border: #FECACA;
+  --danger-text: #991B1B;
+
+  --info-bg: #EFF6FF;
+  --info-border: #BFDBFE;
+  --info-text: #1E40AF;
+
+  --badge-neutral-bg: #F3F4F6;
+  --badge-neutral-text: #4B5563;
+  --badge-neutral-border: #E5E7EB;
+}
+
+/* ==========================================================================
+   Reduced Motion Accessibility
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+tr[data-payout-id] td {
+  border-bottom: 1px solid #80808057;
+  padding: 7px 0px;
+}
+
+.quick-view-btn {
+  display: none;
+}

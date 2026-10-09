@@ -1,0 +1,66 @@
+[
+  {
+    "id": "rev_001",
+    "productId": "prod_100",
+    "productTitle": "Classic Saddle Leather Belt",
+    "customerName": "David Wilson",
+    "rating": 5,
+    "title": "Remarkable quality and sturdy brass buckle",
+    "comment": "The full grain leather is thick and smells incredible. Easily beats luxury retail brands at double the price.",
+    "verified": true,
+    "createdAt": 1790901480622,
+    "sellerReply": {
+      "sellerName": "Austin Leather Co",
+      "comment": "Thank you David! We source all our full-grain leather domestically, glad you love the grain.",
+      "repliedAt": 1790987880622
+    }
+  },
+  {
+    "id": "rev_002",
+    "productId": "prod_101",
+    "productTitle": "Full-Grain Slim Wallet",
+    "customerName": "Sarah Mitchell",
+    "rating": 5,
+    "title": "Perfect minimalist front-pocket wallet",
+    "comment": "Fits 6 cards and cash comfortably without any bulk. Stitching is immaculate.",
+    "verified": true,
+    "createdAt": 1790642280622,
+    "sellerReply": {
+      "sellerName": "Austin Leather Co",
+      "comment": "Cheers Sarah! We spent months perfecting that ultra-slim profile.",
+      "repliedAt": 1790728680622
+    }
+  },
+  {
+    "id": "rev_003",
+    "productId": "prod_114",
+    "productTitle": "Relaxed Linen Shirt",
+    "customerName": "Michael Roberts",
+    "rating": 5,
+    "title": "Ultimate summer shirt",
+    "comment": "Light, airy, and breathes exceptionally well in summer heat. Highly recommend.",
+    "verified": true,
+    "createdAt": 1790296680622,
+    "sellerReply": {
+      "sellerName": "Pacific Coastal Living",
+      "comment": "Thanks Michael! That organic linen gets even softer with every single wash.",
+      "repliedAt": 1790383080622
+    }
+  },
+  {
+    "id": "rev_004",
+    "productId": "prod_126",
+    "productTitle": "Precision Chronograph 41mm",
+    "customerName": "Emily Carter",
+    "rating": 4,
+    "title": "Gorgeous watch, slightly stiff strap initially",
+    "comment": "The dial details and meca-quartz movement are spot on. Leather strap took 3 days to soften up.",
+    "verified": true,
+    "createdAt": 1790037480622,
+    "sellerReply": {
+      "sellerName": "Portland Artisan Goods",
+      "comment": "Thanks Emily! The vegetable-tanned strap molds to your wrist over the first few days of wear.",
+      "repliedAt": 1790123880622
+    }
+  }
+]

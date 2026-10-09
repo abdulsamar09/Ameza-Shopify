@@ -1,0 +1,45 @@
+[
+  {
+    "id": "role_admin",
+    "title": "Super Administrator",
+    "user": "Alexander Vance",
+    "permissions": [
+      "all"
+    ],
+    "email": "admin@example.com"
+  },
+  {
+    "id": "role_support",
+    "title": "Customer Support Specialist",
+    "user": "Chloe Wright",
+    "permissions": [
+      "orders:view",
+      "orders:edit",
+      "customers:view",
+      "reviews:view"
+    ],
+    "email": "chloe.support@example.com"
+  },
+  {
+    "id": "role_moderator",
+    "title": "Catalog & Moderation Specialist",
+    "user": "Marcus Reed",
+    "permissions": [
+      "catalog:view",
+      "catalog:edit",
+      "sellers:view"
+    ],
+    "email": "marcus.catalog@example.com"
+  },
+  {
+    "id": "role_finance",
+    "title": "Finance & Payouts Officer",
+    "user": "Sarah Lin",
+    "permissions": [
+      "finance:view",
+      "finance:edit",
+      "payouts:approve"
+    ],
+    "email": "sarah.finance@example.com"
+  }
+]

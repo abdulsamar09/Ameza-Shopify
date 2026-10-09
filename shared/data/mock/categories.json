@@ -1,0 +1,98 @@
+[
+  {
+    "id": "clothing",
+    "name": "Clothing & Fashion",
+    "slug": "clothing",
+    "emoji": "👗",
+    "itemCount": 16,
+    "subcategories": [
+      {
+        "id": "mens-clothing",
+        "name": "Men's Apparel",
+        "slug": "mens-clothing"
+      },
+      {
+        "id": "womens-clothing",
+        "name": "Women's Apparel",
+        "slug": "womens-clothing"
+      },
+      {
+        "id": "linen-collection",
+        "name": "Linen & Casuals",
+        "slug": "linen-collection"
+      }
+    ]
+  },
+  {
+    "id": "leather-goods",
+    "name": "Leather Belts & Wallets",
+    "slug": "leather-goods",
+    "emoji": "👜",
+    "itemCount": 14,
+    "subcategories": [
+      {
+        "id": "belts",
+        "name": "Full Grain Belts",
+        "slug": "belts"
+      },
+      {
+        "id": "wallets",
+        "name": "Slim Wallets & Cardholders",
+        "slug": "wallets"
+      },
+      {
+        "id": "leather-bags",
+        "name": "Weekender Bags & Totes",
+        "slug": "leather-bags"
+      }
+    ]
+  },
+  {
+    "id": "electronics",
+    "name": "Smart Electronics",
+    "slug": "electronics",
+    "emoji": "🎧",
+    "itemCount": 12,
+    "subcategories": [
+      {
+        "id": "audio",
+        "name": "Wireless Audio & Earbuds",
+        "slug": "audio"
+      },
+      {
+        "id": "accessories",
+        "name": "MagSafe & Fast Chargers",
+        "slug": "accessories"
+      },
+      {
+        "id": "smart-home",
+        "name": "Connected Home Hubs",
+        "slug": "smart-home"
+      }
+    ]
+  },
+  {
+    "id": "watches",
+    "name": "Horology & Watches",
+    "slug": "watches",
+    "emoji": "⌚",
+    "itemCount": 9,
+    "subcategories": [
+      {
+        "id": "automatic-watches",
+        "name": "Automatic Mechanical",
+        "slug": "automatic-watches"
+      },
+      {
+        "id": "chronographs",
+        "name": "Chronographs",
+        "slug": "chronographs"
+      },
+      {
+        "id": "minimalist-watches",
+        "name": "Minimalist Quartz",
+        "slug": "minimalist-watches"
+      }
+    ]
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "pay_001",
+    "sellerId": "seller_melb_123",
+    "sellerName": "Austin Leather Co",
+    "amountCents": 450000,
+    "status": "paid",
+    "reference": "PAY-US-98210",
+    "bankAccount": "••••4892 (Bank of America)",
+    "requestedAt": 1789605480622,
+    "processedAt": 1789691880622
+  },
+  {
+    "id": "pay_002",
+    "sellerId": "seller_syd_456",
+    "sellerName": "Pacific Coastal Living",
+    "amountCents": 320000,
+    "status": "paid",
+    "reference": "PAY-US-98211",
+    "bankAccount": "••••7120 (Wells Fargo)",
+    "requestedAt": 1790469480622,
+    "processedAt": 1790555880622
+  },
+  {
+    "id": "pay_003",
+    "sellerId": "seller_bris_789",
+    "sellerName": "Portland Artisan Goods",
+    "amountCents": 185000,
+    "status": "processing",
+    "reference": "PAY-US-98212",
+    "bankAccount": "••••3319 (U.S. Bank)",
+    "requestedAt": 1791160680622,
+    "processedAt": null
+  },
+  {
+    "id": "pay_004",
+    "sellerId": "seller_melb_123",
+    "sellerName": "Austin Leather Co",
+    "amountCents": 295000,
+    "status": "pending",
+    "reference": "PAY-US-98213",
+    "bankAccount": "••••4892 (Bank of America)",
+    "requestedAt": 1791247080622,
+    "processedAt": null
+  },
+  {
+    "id": "pay_005",
+    "sellerId": "seller_bris_789",
+    "sellerName": "Portland Artisan Goods",
+    "amountCents": 65000,
+    "status": "on_hold",
+    "reference": "PAY-US-98214",
+    "bankAccount": "••••3319 (U.S. Bank)",
+    "requestedAt": 1790987880622,
+    "notes": "Held pending verification of updated W-9 documentation"
+  }
+]
