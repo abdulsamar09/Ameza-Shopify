@@ -71,7 +71,10 @@ export const CATEGORIES = [
   }
 ];
 
+export const PROMOTIONAL_BANNERS = [];
+
 export const PRODUCTS = [
+
   {
     "id": "549",
     "name": "Small Driftwood Tote",
@@ -105,7 +108,9 @@ export const PRODUCTS = [
       "Red",
       "Yellow"
     ],
-    "sizes": null
+    "sizes": null,
+    "brand": "Pacific Coastal Living",
+    "brandSlug": "pacific-coastal-living"
   },
   {
     "id": "536",
@@ -139,7 +144,9 @@ export const PRODUCTS = [
     "colors": [
       "Blue"
     ],
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "530",
@@ -171,7 +178,9 @@ export const PRODUCTS = [
       "Black",
       "Tan"
     ],
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "520",
@@ -206,7 +215,9 @@ export const PRODUCTS = [
       "Green",
       "Black"
     ],
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "510",
@@ -241,7 +252,9 @@ export const PRODUCTS = [
       "Black/Cognac",
       "Red/Cognac"
     ],
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "500",
@@ -281,7 +294,9 @@ export const PRODUCTS = [
       "38",
       "40",
       "42"
-    ]
+    ],
+    "brand": "Austin Leather Co",
+    "brandSlug": "austin-leather-co"
   },
   {
     "id": "490",
@@ -321,7 +336,9 @@ export const PRODUCTS = [
       "38",
       "40",
       "42"
-    ]
+    ],
+    "brand": "Austin Leather Co",
+    "brandSlug": "austin-leather-co"
   },
   {
     "id": "456",
@@ -362,7 +379,9 @@ export const PRODUCTS = [
       "40",
       "42",
       "44"
-    ]
+    ],
+    "brand": "Austin Leather Co",
+    "brandSlug": "austin-leather-co"
   },
   {
     "id": "435",
@@ -404,7 +423,9 @@ export const PRODUCTS = [
       "38",
       "40",
       "42"
-    ]
+    ],
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "407",
@@ -447,7 +468,9 @@ export const PRODUCTS = [
       "38",
       "40",
       "42 44"
-    ]
+    ],
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "284",
@@ -477,7 +500,9 @@ export const PRODUCTS = [
     "stockCount": 29,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "CASIO",
+    "brandSlug": "casio"
   },
   {
     "id": "281",
@@ -507,7 +532,9 @@ export const PRODUCTS = [
     "stockCount": 26,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Pacific Coastal Living",
+    "brandSlug": "pacific-coastal-living"
   },
   {
     "id": "278",
@@ -537,7 +564,9 @@ export const PRODUCTS = [
     "stockCount": 23,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "AMEZA Official",
+    "brandSlug": "ameza-official"
   },
   {
     "id": "274",
@@ -567,7 +596,9 @@ export const PRODUCTS = [
     "stockCount": 19,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "AMEZA Official",
+    "brandSlug": "ameza-official"
   },
   {
     "id": "270",
@@ -597,7 +628,9 @@ export const PRODUCTS = [
     "stockCount": 15,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "AMEZA Official",
+    "brandSlug": "ameza-official"
   },
   {
     "id": "267",
@@ -627,7 +660,9 @@ export const PRODUCTS = [
     "stockCount": 42,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Pacific Coastal Living",
+    "brandSlug": "pacific-coastal-living"
   },
   {
     "id": "264",
@@ -657,7 +692,9 @@ export const PRODUCTS = [
     "stockCount": 39,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "AMEZA Official",
+    "brandSlug": "ameza-official"
   },
   {
     "id": "260",
@@ -687,7 +724,9 @@ export const PRODUCTS = [
     "stockCount": 35,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "AMEZA Official",
+    "brandSlug": "ameza-official"
   },
   {
     "id": "257",
@@ -717,7 +756,9 @@ export const PRODUCTS = [
     "stockCount": 32,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Pacific Coastal Living",
+    "brandSlug": "pacific-coastal-living"
   },
   {
     "id": "254",
@@ -747,7 +788,9 @@ export const PRODUCTS = [
     "stockCount": 29,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "AMEZA Official",
+    "brandSlug": "ameza-official"
   },
   {
     "id": "250",
@@ -777,7 +820,9 @@ export const PRODUCTS = [
     "stockCount": 25,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Pacific Coastal Living",
+    "brandSlug": "pacific-coastal-living"
   },
   {
     "id": "246",
@@ -807,7 +852,9 @@ export const PRODUCTS = [
     "stockCount": 21,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Pacific Coastal Living",
+    "brandSlug": "pacific-coastal-living"
   },
   {
     "id": "239",
@@ -837,7 +884,9 @@ export const PRODUCTS = [
     "stockCount": 44,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Seattle Eco Essentials",
+    "brandSlug": "seattle-eco-essentials"
   },
   {
     "id": "236",
@@ -867,7 +916,9 @@ export const PRODUCTS = [
     "stockCount": 41,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Pacific Coastal Living",
+    "brandSlug": "pacific-coastal-living"
   },
   {
     "id": "233",
@@ -897,7 +948,9 @@ export const PRODUCTS = [
     "stockCount": 38,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Seattle Eco Essentials",
+    "brandSlug": "seattle-eco-essentials"
   },
   {
     "id": "208",
@@ -927,7 +980,9 @@ export const PRODUCTS = [
     "stockCount": 43,
     "isDeal": true,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Austin Leather Co",
+    "brandSlug": "austin-leather-co"
   },
   {
     "id": "204",
@@ -957,7 +1012,9 @@ export const PRODUCTS = [
     "stockCount": 39,
     "isDeal": true,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Austin Leather Co",
+    "brandSlug": "austin-leather-co"
   },
   {
     "id": "201",
@@ -987,7 +1044,9 @@ export const PRODUCTS = [
     "stockCount": 36,
     "isDeal": true,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "196",
@@ -1017,7 +1076,9 @@ export const PRODUCTS = [
     "stockCount": 31,
     "isDeal": true,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "154",
@@ -1047,7 +1108,9 @@ export const PRODUCTS = [
     "stockCount": 19,
     "isDeal": true,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "149",
@@ -1077,7 +1140,9 @@ export const PRODUCTS = [
     "stockCount": 44,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "AMEZA Official",
+    "brandSlug": "ameza-official"
   },
   {
     "id": "146",
@@ -1106,7 +1171,9 @@ export const PRODUCTS = [
     "stockCount": 41,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "AMEZA Official",
+    "brandSlug": "ameza-official"
   },
   {
     "id": "144",
@@ -1136,7 +1203,9 @@ export const PRODUCTS = [
     "stockCount": 39,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "AMEZA Official",
+    "brandSlug": "ameza-official"
   },
   {
     "id": "139",
@@ -1166,7 +1235,9 @@ export const PRODUCTS = [
     "stockCount": 34,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Pacific Coastal Living",
+    "brandSlug": "pacific-coastal-living"
   },
   {
     "id": "133",
@@ -1196,7 +1267,9 @@ export const PRODUCTS = [
     "stockCount": 28,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "AMEZA Official",
+    "brandSlug": "ameza-official"
   },
   {
     "id": "115",
@@ -1226,7 +1299,9 @@ export const PRODUCTS = [
     "stockCount": 40,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "112",
@@ -1256,7 +1331,9 @@ export const PRODUCTS = [
     "stockCount": 37,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Austin Leather Co",
+    "brandSlug": "austin-leather-co"
   },
   {
     "id": "107",
@@ -1286,7 +1363,9 @@ export const PRODUCTS = [
     "stockCount": 32,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "103",
@@ -1316,7 +1395,9 @@ export const PRODUCTS = [
     "stockCount": 28,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "99",
@@ -1346,7 +1427,9 @@ export const PRODUCTS = [
     "stockCount": 24,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "97",
@@ -1376,7 +1459,9 @@ export const PRODUCTS = [
     "stockCount": 22,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "94",
@@ -1406,7 +1491,9 @@ export const PRODUCTS = [
     "stockCount": 19,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Austin Leather Co",
+    "brandSlug": "austin-leather-co"
   },
   {
     "id": "88",
@@ -1436,7 +1523,9 @@ export const PRODUCTS = [
     "stockCount": 43,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Austin Leather Co",
+    "brandSlug": "austin-leather-co"
   },
   {
     "id": "83",
@@ -1466,7 +1555,9 @@ export const PRODUCTS = [
     "stockCount": 38,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "79",
@@ -1496,7 +1587,9 @@ export const PRODUCTS = [
     "stockCount": 34,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "76",
@@ -1526,7 +1619,9 @@ export const PRODUCTS = [
     "stockCount": 31,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "56",
@@ -1557,7 +1652,9 @@ export const PRODUCTS = [
     "stockCount": 41,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "54",
@@ -1588,7 +1685,9 @@ export const PRODUCTS = [
     "stockCount": 39,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "52",
@@ -1618,7 +1717,9 @@ export const PRODUCTS = [
     "stockCount": 37,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Portland Artisan Goods",
+    "brandSlug": "portland-artisan-goods"
   },
   {
     "id": "49",
@@ -1649,7 +1750,9 @@ export const PRODUCTS = [
     "stockCount": 34,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Pacific Coastal Living",
+    "brandSlug": "pacific-coastal-living"
   },
   {
     "id": "47",
@@ -1679,8 +1782,35 @@ export const PRODUCTS = [
     "stockCount": 32,
     "isDeal": false,
     "colors": null,
-    "sizes": null
+    "sizes": null,
+    "brand": "Pacific Coastal Living",
+    "brandSlug": "pacific-coastal-living"
   }
 ];
 
-export const PROMOTIONAL_BANNERS = [];
+export function getProductById(id) {
+  return PRODUCTS.find(p => String(p.id) === String(id));
+}
+
+export function getProductsByCategory(categorySlug) {
+  if (!categorySlug || categorySlug === 'all') return PRODUCTS;
+  return PRODUCTS.filter(p => (p.categorySlug || '').toLowerCase() === categorySlug.toLowerCase());
+}
+
+export function getProductsByBrand(brandSlug) {
+  if (!brandSlug || brandSlug === 'all') return PRODUCTS;
+  return PRODUCTS.filter(p => (p.brandSlug || '').toLowerCase() === brandSlug.toLowerCase());
+}
+
+export function getBrandList() {
+  const brandMap = new Map();
+  PRODUCTS.forEach(p => {
+    const b = p.brand || 'AMEZA Official';
+    const slug = p.brandSlug || b.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    if (!brandMap.has(slug)) {
+      brandMap.set(slug, { name: b, slug, count: 0 });
+    }
+    brandMap.get(slug).count++;
+  });
+  return Array.from(brandMap.values()).sort((a, b) => b.count - a.count);
+}

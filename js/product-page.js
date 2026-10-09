@@ -12,6 +12,7 @@
 
 import { STORE_DATA } from './store-page.js';
 import { PRODUCTS as CATALOG_PRODUCTS } from './products-data.js';
+import { getAllStoreProducts } from './data/stores-data.js';
 import { initCartDrawer } from './cart-drawer.js';
 import { formatMoney } from './core/utils.js';
 
@@ -22,10 +23,11 @@ export function initProductPage() {
   const params = new URLSearchParams(window.location.search);
   const productId = params.get('id') || 'ul-1';
 
-  // Find product from catalog data or store catalog or default to backpack
+  // Find product from catalog data or store catalog or all stores registry or default to backpack
   const catalogMatch = CATALOG_PRODUCTS.find(p => String(p.id) === String(productId));
   const storeMatch = STORE_DATA.products.find(p => String(p.id) === String(productId));
-  const product = catalogMatch || storeMatch || STORE_DATA.products[0];
+  const allStoresMatch = getAllStoreProducts().find(p => String(p.id) === String(productId));
+  const product = catalogMatch || storeMatch || allStoresMatch || STORE_DATA.products[0];
 
   // Gallery Images List for this product (8 images total)
   const galleryImages = [
@@ -475,30 +477,41 @@ export function initProductPage() {
 
   if (relatedGrid) {
     const relatedProducts = STORE_DATA.products.filter(p => p.id !== product.id);
+    let wishlist = [];
+    try {
+      wishlist = JSON.parse(localStorage.getItem('ameza_wishlist') || '[]');
+    } catch (e) {}
+
     relatedGrid.innerHTML = relatedProducts.map(p => {
       const formattedPrice = (p.price / 100).toFixed(2);
+      const comparePrice = ((p.price * 1.25) / 100).toFixed(2);
+      const isWish = wishlist.some(w => String(w.id) === String(p.id));
       return `
-        <div class="store-product-card" data-id="${p.id}">
-          <div class="card-media-box">
+        <div class="store-product-card product-card" data-id="${p.id}" data-product-id="${p.id}">
+          <div class="card-media-box product-img-wrap">
             <span class="card-badge-pill badge-new">NEW</span>
-            <a href="product.html?id=${p.id}" style="display:block; width:100%; height:100%;">
+            <button class="card-wishlist-btn btn-wishlist ${isWish ? 'active' : ''}" data-rel-wishlist="${p.id}" aria-label="Add to wishlist" title="Add to wishlist">
+              <i class="${isWish ? 'fa-solid' : 'fa-regular'} fa-heart" style="${isWish ? 'color:#E11D48;' : ''}"></i>
+            </button>
+            <a href="product.html?id=${p.id}" class="product-card-img-link" style="display:block; width:100%; height:100%;">
               <img src="${p.image}" alt="${p.name}" loading="lazy">
             </a>
           </div>
-          <div class="card-info-body">
-            <h3 class="card-product-title">
+          <div class="card-info-body product-info">
+            <h3 class="card-product-title product-name">
               <a href="product.html?id=${p.id}" style="color:inherit; text-decoration:none;">${p.name}</a>
             </h3>
-            <div class="card-rating-line">
+            <div class="card-rating-line product-rating">
               <i class="fa-solid fa-star" style="color: #111827; font-size: 12px;"></i>
-              <span class="card-rating-num">${p.rating}</span>
-              <span class="card-rating-reviews">(${p.reviews})</span>
+              <span class="card-rating-num rating-num">${p.rating}</span>
+              <span class="card-rating-reviews review-count">(${p.reviews})</span>
             </div>
-            <div class="card-price-row">
-              <span class="card-price-current">$${formattedPrice}</span>
-              <span class="card-discount-tag">-20%</span>
+            <div class="card-price-row price-wrap">
+              <span class="card-price-current price-current">$${formattedPrice}</span>
+              <span class="price-old">$${comparePrice}</span>
+              <span class="card-discount-tag price-discount-tag">-20%</span>
             </div>
-            <button class="btn-card-add-cart" data-rel-cart="${p.id}">
+            <button class="btn-card-add-cart btn-add-cart" data-rel-cart="${p.id}">
               <i class="fa-solid fa-cart-shopping"></i> Add to cart
             </button>
           </div>
@@ -518,8 +531,50 @@ export function initProductPage() {
       });
     }
 
-    // Related cards add to cart
+    // Related cards interactions (add to cart & wishlist)
     relatedGrid.addEventListener('click', (e) => {
+      const wishBtn = e.target.closest('[data-rel-wishlist]');
+      if (wishBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const id = wishBtn.dataset.relWishlist;
+        const relProd = STORE_DATA.products.find(p => p.id === id);
+        if (relProd) {
+          let wishlist = [];
+          try {
+            wishlist = JSON.parse(localStorage.getItem('ameza_wishlist') || '[]');
+          } catch (err) {}
+          const idx = wishlist.findIndex(w => String(w.id) === String(relProd.id));
+          const heartIcon = wishBtn.querySelector('i');
+          if (idx >= 0) {
+            wishlist.splice(idx, 1);
+            wishBtn.classList.remove('active');
+            if (heartIcon) {
+              heartIcon.className = 'fa-regular fa-heart';
+              heartIcon.style.color = '';
+            }
+            showToast(`Removed "${relProd.name}" from wishlist`);
+          } else {
+            wishlist.push({
+              id: relProd.id,
+              name: relProd.name,
+              price: relProd.price,
+              image: relProd.image,
+              rating: relProd.rating
+            });
+            wishBtn.classList.add('active');
+            if (heartIcon) {
+              heartIcon.className = 'fa-solid fa-heart';
+              heartIcon.style.color = '#E11D48';
+            }
+            showToast(`Added "${relProd.name}" to wishlist`);
+          }
+          localStorage.setItem('ameza_wishlist', JSON.stringify(wishlist));
+          updateWishlistBadge();
+        }
+        return;
+      }
+
       const btn = e.target.closest('[data-rel-cart]');
       if (btn) {
         const id = btn.dataset.relCart;

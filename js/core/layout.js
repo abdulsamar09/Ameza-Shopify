@@ -199,6 +199,146 @@ export function renderCurrencyChanger(wrapper) {
 }
 
 /**
+ * Injects mobile drawer structure and backdrop for travel pages so mobile navigation works consistently.
+ */
+function initTravelDrawer(base) {
+  const session = getSession();
+  const cartCount = getCartCount();
+  const wishlistCount = getWishlistCount();
+
+  let nav = document.getElementById('main-nav-menu') || document.querySelector('header .main-nav, .header-sticky .main-nav, nav.main-nav');
+  if (!nav) {
+    const header = document.getElementById('main-header') || document.querySelector('header');
+    if (header) {
+      nav = document.createElement('nav');
+      nav.className = 'main-nav';
+      nav.id = 'main-nav-menu';
+      header.appendChild(nav);
+    } else {
+      return;
+    }
+  }
+
+  if (!nav.id) {
+    nav.id = 'main-nav-menu';
+  }
+
+  // Prepend icons to top links if missing
+  const iconMap = {
+    'store': 'fa-house',
+    'home': 'fa-house',
+    'stay': 'fa-bed',
+    'flight': 'fa-plane-departure',
+    'car': 'fa-car',
+    'attraction': 'fa-ticket',
+    'taxi': 'fa-taxi'
+  };
+  nav.querySelectorAll('.nav-link').forEach(link => {
+    if (!link.querySelector('.nav-icon') && !link.closest('.mobile-nav-extras')) {
+      const text = link.textContent.toLowerCase();
+      let iconClass = 'fa-arrow-right';
+      for (const [key, icon] of Object.entries(iconMap)) {
+        if (text.includes(key)) {
+          iconClass = icon;
+          break;
+        }
+      }
+      const icon = document.createElement('i');
+      icon.className = `fa-solid ${iconClass} nav-icon`;
+      link.insertBefore(icon, link.firstChild);
+    }
+  });
+
+  // Prepend drawer header if not already present
+  if (!nav.querySelector('.mobile-nav-drawer-header')) {
+    const drawerHeader = document.createElement('div');
+    drawerHeader.className = 'mobile-nav-drawer-header';
+    drawerHeader.innerHTML = `
+      <a href="${base}index.html" class="logo-wrap" style="display:inline-flex; align-items:center;">
+        <img src="${base}assets/ameza-logo.png" alt="AMEZA Logo" style="height:32px; width:auto;" onerror="this.src='${base}assets/logo.png'">
+      </a>
+      <button type="button" class="btn-mobile-nav-close" id="btn-mobile-nav-close" aria-label="Close navigation">&times;</button>
+    `;
+    nav.insertBefore(drawerHeader, nav.firstChild);
+  }
+
+  // Ensure extras exist
+  if (!nav.querySelector('.mobile-nav-extras')) {
+    const extras = document.createElement('div');
+    extras.className = 'mobile-nav-extras';
+    extras.innerHTML = `
+      <!-- Store & Catalog Categories -->
+      <div class="mobile-nav-section-title">Store &amp; Catalog</div>
+      <a href="${base}shop.html?category=clothing" class="nav-link">
+        <i class="fa-solid fa-shirt nav-icon"></i>
+        <span>Clothing</span>
+      </a>
+      <a href="${base}shop.html?category=electronics" class="nav-link">
+        <i class="fa-solid fa-headphones nav-icon"></i>
+        <span>Electronics</span>
+      </a>
+      <a href="${base}shop.html?category=watches" class="nav-link">
+        <i class="fa-solid fa-clock nav-icon"></i>
+        <span>Watches</span>
+      </a>
+      <a href="${base}shop.html?category=leather-belts" class="nav-link">
+        <i class="fa-solid fa-shield-halved nav-icon"></i>
+        <span>Leather Belts</span>
+      </a>
+      <a href="${base}shop.html?category=leather-wallets" class="nav-link">
+        <i class="fa-solid fa-wallet nav-icon"></i>
+        <span>Wallets</span>
+      </a>
+      <a href="${base}shop.html?category=bags" class="nav-link">
+        <i class="fa-solid fa-bag-shopping nav-icon"></i>
+        <span>Bags &amp; Totes</span>
+        <span class="badge-new">NEW</span>
+      </a>
+
+      <!-- Customer Account & Cart -->
+      <div class="mobile-nav-section-title">My Account</div>
+      <a href="${base}${session ? 'account.html' : 'login.html'}" class="nav-link">
+        <i class="fa-solid fa-user nav-icon"></i>
+        <span>${session ? (session.name || 'Account Dashboard') : 'Sign In / Register'}</span>
+      </a>
+      <a href="${base}account-wishlist.html" class="nav-link">
+        <i class="fa-solid fa-heart nav-icon"></i>
+        <span>Wishlist</span>
+        <span class="mobile-nav-count" style="${wishlistCount > 0 ? '' : 'display: none;'}">${wishlistCount}</span>
+      </a>
+      <a href="${base}cart.html" class="nav-link">
+        <i class="fa-solid fa-cart-shopping nav-icon"></i>
+        <span>Cart</span>
+        <span class="mobile-nav-count" style="${cartCount > 0 ? '' : 'display: none;'}">${cartCount}</span>
+      </a>
+
+      <!-- Merchant Link -->
+      <div class="mobile-nav-section-title">Merchant &amp; Support</div>
+      <a href="${base}onboarding/sell-with-us.html" class="nav-link">
+        <i class="fa-solid fa-store nav-icon" style="color:var(--primary, #7DBA35);"></i>
+        <span style="font-weight:700; color:var(--primary, #7DBA35);">Become a Seller</span>
+      </a>
+    `;
+    nav.appendChild(extras);
+  }
+
+  // Ensure backdrop exists
+  if (!document.getElementById('main-nav-backdrop')) {
+    const backdrop = document.createElement('div');
+    backdrop.className = 'main-nav-backdrop';
+    backdrop.id = 'main-nav-backdrop';
+    document.body.appendChild(backdrop);
+  }
+
+  // Update layout cart count badge if present
+  const layoutCartCount = document.getElementById('layout-cart-count');
+  if (layoutCartCount) {
+    layoutCartCount.textContent = cartCount;
+    layoutCartCount.style.display = cartCount > 0 ? 'inline-flex' : 'none';
+  }
+}
+
+/**
  * Initializes and mounts universal header and footer.
  */
 export function initLayout() {
@@ -215,6 +355,8 @@ export function initLayout() {
     if (wrapper) {
       renderCurrencyChanger(wrapper);
     }
+    initTravelDrawer(base);
+    bindLayoutEvents(base);
     return;
   }
 
@@ -354,36 +496,107 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
 
         <!-- Center Nav -->
         <nav class="main-nav" id="main-nav-menu">
+          <div class="mobile-nav-drawer-header">
+            <a href="${base}index.html" class="logo-wrap" style="display:inline-flex; align-items:center;">
+              <img src="${base}assets/ameza-logo.png" alt="AMEZA Logo" style="height:32px; width:auto;" onerror="this.src='${base}assets/logo.png'">
+            </a>
+            <button type="button" class="btn-mobile-nav-close" id="btn-mobile-nav-close" aria-label="Close navigation">&times;</button>
+          </div>
           <a href="${base}index.html" class="nav-link" id="nav-home">
             <i class="fa-solid fa-house nav-icon"></i>
             <span>Home</span>
           </a>
-          <a href="${base}category.html?cat=clothing" class="nav-link" id="nav-clothing">
+          <a href="${base}shop.html?category=clothing" class="nav-link" id="nav-clothing">
             <i class="fa-solid fa-shirt nav-icon"></i>
             <span>Clothing</span>
           </a>
-          <a href="${base}category.html?cat=electronics" class="nav-link" id="nav-electronics">
+          <a href="${base}shop.html?category=electronics" class="nav-link" id="nav-electronics">
             <i class="fa-solid fa-headphones nav-icon"></i>
             <span>Electronics</span>
           </a>
-          <a href="${base}category.html?cat=watches" class="nav-link" id="nav-watches">
+          <a href="${base}shop.html?category=watches" class="nav-link" id="nav-watches">
             <i class="fa-solid fa-clock nav-icon"></i>
             <span>Watches</span>
           </a>
-          <a href="${base}category.html?cat=leather-belts" class="nav-link" id="nav-leather">
+          <a href="${base}shop.html?category=leather-belts" class="nav-link" id="nav-leather">
             <i class="fa-solid fa-shield-halved nav-icon"></i>
             <span>Leather Belts</span>
           </a>
-          <a href="${base}category.html?cat=leather-wallets" class="nav-link" id="nav-wallets">
+          <a href="${base}shop.html?category=leather-wallets" class="nav-link" id="nav-wallets">
             <i class="fa-solid fa-wallet nav-icon"></i>
             <span>Wallets</span>
           </a>
-          <a href="${base}category.html?cat=bags" class="nav-link" id="nav-bags">
+          <a href="${base}shop.html?category=bags" class="nav-link" id="nav-bags">
             <i class="fa-solid fa-bag-shopping nav-icon"></i>
             <span>Bags &amp; Totes</span>
             <span class="badge-new">NEW</span>
           </a>
+          <a href="${base}stores.html" class="nav-link" id="nav-stores">
+            <i class="fa-solid fa-store nav-icon"></i>
+            <span>Stores</span>
+          </a>
+
+          <!-- Mobile Navigation Sections (Categories, Travel Services, and My Account) -->
+          <div class="mobile-nav-extras">
+            <!-- Travel & Booking Services -->
+            <div class="mobile-nav-section-title">Travel &amp; Booking Services</div>
+            <a href="${base}stays.html" class="nav-link" id="mobile-nav-stays">
+              <i class="fa-solid fa-bed nav-icon"></i>
+              <span>Stays &amp; Hotels</span>
+            </a>
+            <a href="${base}car-rental.html" class="nav-link" id="mobile-nav-cars">
+              <i class="fa-solid fa-car nav-icon"></i>
+              <span>Car Rental</span>
+            </a>
+            <a href="${base}attractions.html" class="nav-link" id="mobile-nav-attractions">
+              <i class="fa-solid fa-ticket nav-icon"></i>
+              <span>Attractions &amp; Tours</span>
+            </a>
+            <a href="${base}airport-taxis.html" class="nav-link" id="mobile-nav-taxis">
+              <i class="fa-solid fa-taxi nav-icon"></i>
+              <span>Airport Taxis</span>
+            </a>
+            <a href="${base}flights.html" class="nav-link" id="mobile-nav-flights">
+              <i class="fa-solid fa-plane-departure nav-icon"></i>
+              <span>Flights</span>
+            </a>
+
+            <!-- Customer Account & Cart -->
+            <div class="mobile-nav-section-title">My Account</div>
+            <a href="${base}${session ? 'account.html' : 'login.html'}" class="nav-link" id="mobile-nav-account">
+              <i class="fa-solid fa-user nav-icon"></i>
+              <span>${session ? (session.name || 'Account Dashboard') : 'Sign In / Register'}</span>
+            </a>
+            <a href="${base}account-wishlist.html" class="nav-link" id="mobile-nav-wishlist">
+              <i class="fa-solid fa-heart nav-icon"></i>
+              <span>Wishlist</span>
+              <span class="mobile-nav-count" id="mobile-nav-wishlist-count" style="${wishlistCount > 0 ? '' : 'display: none;'}">${wishlistCount}</span>
+            </a>
+            <a href="${base}cart.html" class="nav-link" id="mobile-nav-cart">
+              <i class="fa-solid fa-cart-shopping nav-icon"></i>
+              <span>Cart</span>
+              <span class="mobile-nav-count" id="mobile-nav-cart-count" style="${cartCount > 0 ? '' : 'display: none;'}">${cartCount}</span>
+            </a>
+            <a href="${base}account-orders.html" class="nav-link" id="mobile-nav-orders">
+              <i class="fa-solid fa-truck-fast nav-icon"></i>
+              <span>Track Orders</span>
+            </a>
+
+            <!-- Merchant / Seller Link -->
+            <div class="mobile-nav-section-title">Merchant &amp; Support</div>
+            <a href="${base}onboarding/sell-with-us.html" class="nav-link" id="mobile-nav-seller">
+              <i class="fa-solid fa-store nav-icon" style="color:var(--primary, #7DBA35);"></i>
+              <span style="font-weight:700; color:var(--primary, #7DBA35);">Become a Seller</span>
+            </a>
+
+            ${session ? `
+            <button type="button" class="nav-link mobile-nav-logout" id="mobile-nav-logout">
+              <i class="fa-solid fa-right-from-bracket nav-icon"></i>
+              <span>Sign Out</span>
+            </button>` : ''}
+          </div>
         </nav>
+        <div class="main-nav-backdrop" id="main-nav-backdrop"></div>
 
         <!-- Right Utility Actions -->
         <div class="header-actions">
@@ -563,13 +776,13 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
           <nav class="footer-col footer-col-nav" aria-label="Shop Categories">
             <h4 class="footer-heading">Shop Categories</h4>
             <ul class="footer-links-list">
-              <li><a href="${base}category.html?cat=clothing" class="footer-nav-link">Clothing</a></li>
-              <li><a href="${base}category.html?cat=electronics" class="footer-nav-link">Electronics</a></li>
-              <li><a href="${base}category.html?cat=watches" class="footer-nav-link">Watches</a></li>
-              <li><a href="${base}category.html?cat=leather-belts" class="footer-nav-link">Leather Belts</a></li>
-              <li><a href="${base}category.html?cat=leather-wallets" class="footer-nav-link">Leather Wallets</a></li>
-              <li><a href="${base}category.html?cat=bags" class="footer-nav-link">Bags &amp; Totes</a></li>
-              <li><a href="${base}store.html" class="footer-nav-link" style="color:var(--primary, #7DBA35); font-weight:600;">Browse All &rarr;</a></li>
+              <li><a href="${base}shop.html?category=clothing" class="footer-nav-link">Clothing</a></li>
+              <li><a href="${base}shop.html?category=electronics" class="footer-nav-link">Electronics</a></li>
+              <li><a href="${base}shop.html?category=watches" class="footer-nav-link">Watches</a></li>
+              <li><a href="${base}shop.html?category=leather-belts" class="footer-nav-link">Leather Belts</a></li>
+              <li><a href="${base}shop.html?category=leather-wallets" class="footer-nav-link">Leather Wallets</a></li>
+              <li><a href="${base}shop.html?category=bags" class="footer-nav-link">Bags &amp; Totes</a></li>
+              <li><a href="${base}shop.html" class="footer-nav-link" style="color:var(--primary, #7DBA35); font-weight:600;">Browse All Products &rarr;</a></li>
             </ul>
           </nav>
 
@@ -637,23 +850,29 @@ function highlightActiveNav() {
   if (path.endsWith('index.html') || path === '/' || path.endsWith('/')) {
     const homeLink = document.getElementById('nav-home');
     if (homeLink) homeLink.classList.add('active');
-  } else if (path.includes('store.html')) {
-    if (search.includes('clothing')) {
+  } else if (path.includes('shop.html') || path.includes('store.html')) {
+    if (search.includes('clothing') || search.includes('apparel')) {
       const el = document.getElementById('nav-clothing');
       if (el) el.classList.add('active');
-    } else if (search.includes('electronics')) {
+    } else if (search.includes('electronics') || search.includes('tech')) {
       const el = document.getElementById('nav-electronics');
       if (el) el.classList.add('active');
     } else if (search.includes('watches')) {
       const el = document.getElementById('nav-watches');
       if (el) el.classList.add('active');
-    } else if (search.includes('leather')) {
+    } else if (search.includes('belt') || search.includes('leather-belts')) {
       const el = document.getElementById('nav-leather');
       if (el) el.classList.add('active');
-    } else if (search.includes('bags')) {
+    } else if (search.includes('wallet') || search.includes('leather-wallets')) {
+      const el = document.getElementById('nav-wallets');
+      if (el) el.classList.add('active');
+    } else if (search.includes('bag') || search.includes('totes')) {
       const el = document.getElementById('nav-bags');
       if (el) el.classList.add('active');
     }
+  } else if (path.includes('stores.html')) {
+    const el = document.getElementById('nav-stores');
+    if (el) el.classList.add('active');
   }
 }
 
@@ -742,13 +961,125 @@ function bindLayoutEvents(base) {
     }
   }, { passive: true });
 
-  // 3. Mobile menu toggle
+  // 3. Mobile menu drawer toggle
   const mobileToggle = document.getElementById('header-mobile-toggle');
   const navMenu = document.getElementById('main-nav-menu');
+  const navBackdrop = document.getElementById('main-nav-backdrop');
+  const closeNavBtn = document.getElementById('btn-mobile-nav-close');
+
+  const closeMobileNav = () => {
+    if (navMenu) navMenu.classList.remove('nav-menu-open');
+    if (navBackdrop) navBackdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  const openMobileNav = () => {
+    if (navMenu) {
+      navMenu.scrollTop = 0;
+      navMenu.classList.add('nav-menu-open');
+    }
+    if (navBackdrop) navBackdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Delegated click listener to guarantee opening mobile nav even if re-rendered or dynamic
+  document.addEventListener('click', (e) => {
+    const toggle = e.target.closest('#header-mobile-toggle, .hamburger-btn, [data-action="mobile-menu-toggle"]');
+    if (toggle) {
+      e.preventDefault();
+      e.stopPropagation();
+      const menu = document.getElementById('main-nav-menu');
+      const backdrop = document.getElementById('main-nav-backdrop');
+      if (menu) {
+        if (menu.classList.contains('nav-menu-open')) {
+          menu.classList.remove('nav-menu-open');
+          if (backdrop) backdrop.classList.remove('active');
+          document.body.style.overflow = '';
+        } else {
+          menu.scrollTop = 0;
+          menu.classList.add('nav-menu-open');
+          if (backdrop) backdrop.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+      return;
+    }
+
+    const closeBtn = e.target.closest('#btn-mobile-nav-close, #main-nav-backdrop');
+    if (closeBtn) {
+      e.preventDefault();
+      closeMobileNav();
+      return;
+    }
+
+    const link = e.target.closest('.main-nav .nav-link');
+    if (link && !link.classList.contains('mobile-nav-logout')) {
+      closeMobileNav();
+    }
+  });
+
   if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('nav-menu-open');
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (navMenu.classList.contains('nav-menu-open')) {
+        closeMobileNav();
+      } else {
+        openMobileNav();
+      }
     });
+  }
+
+  if (closeNavBtn) closeNavBtn.addEventListener('click', closeMobileNav);
+  if (navBackdrop) navBackdrop.addEventListener('click', closeMobileNav);
+
+  if (navMenu) {
+    navMenu.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', closeMobileNav);
+    });
+  }
+
+  // Close drawer on Escape and when resizing back to desktop (prevents stuck scroll-lock)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu && navMenu.classList.contains('nav-menu-open')) closeMobileNav();
+  });
+  const desktopMq = window.matchMedia('(min-width: 1101px)');
+  const onMqChange = (mq) => { if (mq.matches) closeMobileNav(); };
+  if (desktopMq.addEventListener) desktopMq.addEventListener('change', onMqChange);
+  else if (desktopMq.addListener) desktopMq.addListener(onMqChange);
+
+  // Mobile drawer cart link opens the cart drawer (same as header cart icon)
+  const mobileCartLink = document.getElementById('mobile-nav-cart');
+  if (mobileCartLink) {
+    mobileCartLink.addEventListener('click', (e) => {
+      const opener = typeof window.openCartDrawer === 'function' ? window.openCartDrawer
+        : (window.AmezaCart && typeof window.AmezaCart.open === 'function' ? () => window.AmezaCart.open() : null);
+      if (opener) {
+        e.preventDefault();
+        closeMobileNav();
+        opener();
+      }
+    });
+  }
+
+  // Mobile drawer sign out
+  const mobileLogout = document.getElementById('mobile-nav-logout');
+  if (mobileLogout) {
+    mobileLogout.addEventListener('click', () => {
+      if (window.AmezaAuth && typeof window.AmezaAuth.logout === 'function') {
+        window.AmezaAuth.logout();
+      }
+      localStorage.removeItem('ameza_session');
+      localStorage.removeItem('ameza_auth_token');
+      window.location.href = `${base}index.html`;
+    });
+  }
+
+  // Ensure the account profile pill (rendered by auth.js) exists on EVERY storefront page,
+  // so the desktop header matches the homepage exactly.
+  if (!window.AmezaAuth && !document.querySelector('script[src*="auth.js"]')) {
+    const authScript = document.createElement('script');
+    authScript.src = `${base}js/auth.js`;
+    document.body.appendChild(authScript);
   }
 
   // 4. Logout action
@@ -841,6 +1172,13 @@ export function openSearchModal(base = '') {
     if (input) {
       input.addEventListener('input', (e) => {
         renderLiveSearchResultsUI(e.target.value, base);
+      });
+      // Enter submits a full search on the shop page
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const q = input.value.trim();
+          if (q) window.location.href = `${base}shop.html?q=${encodeURIComponent(q)}`;
+        }
       });
     }
   } else {
@@ -949,6 +1287,18 @@ function updateBadges() {
     const count = getWishlistCount();
     wishBadge.textContent = count;
     wishBadge.style.display = count > 0 ? '' : 'none';
+  }
+  const mCart = document.getElementById('mobile-nav-cart-count');
+  if (mCart) {
+    const count = getCartCount();
+    mCart.textContent = count;
+    mCart.style.display = count > 0 ? '' : 'none';
+  }
+  const mWish = document.getElementById('mobile-nav-wishlist-count');
+  if (mWish) {
+    const count = getWishlistCount();
+    mWish.textContent = count;
+    mWish.style.display = count > 0 ? '' : 'none';
   }
 }
 

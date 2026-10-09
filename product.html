@@ -9,13 +9,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/store.css">
-  <link rel="stylesheet" href="css/product.css">
-  <link rel="icon" type="image/png" href="assets/ameza-logo.png">
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/cart-drawer.css">
+  <link rel="stylesheet" href="css/product.css">
+  <link rel="icon" type="image/png" href="assets/ameza-logo.png">
 </head>
 <body class="product-page" data-layout="storefront">
   <div id="site-header"></div>
@@ -32,7 +32,7 @@
     <nav class="pdp-breadcrumb-nav" aria-label="Breadcrumb">
       <a href="index.html">Home</a>
       <span class="breadcrumb-sep">&gt;</span>
-      <a href="category.html?cat=leather-belts" id="pdp-crumb-cat">Leather Goods</a>
+      <a href="shop.html?category=leather-belts" id="pdp-crumb-cat">Leather Goods</a>
       <span class="breadcrumb-sep">&gt;</span>
       <a href="subcategory.html?sub=backpacks&cat=bags" id="pdp-crumb-sub">Bags</a>
       <span class="breadcrumb-sep">&gt;</span>
@@ -456,8 +456,10 @@
   <!-- ========================================================================= -->
   <div id="site-footer"></div>
 
-  <!-- Currency Engine -->
+  <!-- Currency & Auth Engines -->
   <script src="js/currency.js"></script>
+  <script src="js/auth.js"></script>
+  <script type="module" src="js/cart-drawer.js"></script>
 
   <!-- Product Page Logic Module Initialization -->
   <script type="module">

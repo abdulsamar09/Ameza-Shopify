@@ -3478,9 +3478,7 @@
   .logo-wrap img {
     height: 34px !important;
   }
-  .main-nav {
-    display: none !important; /* Managed via mobile drawer / categories bar */
-  }
+
   .desktop-store-btn {
     display: none !important;
   }

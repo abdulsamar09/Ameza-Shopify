@@ -866,9 +866,12 @@ function submitApplication(state) {
           </div>
         </div>
 
-        <div style="display: flex; gap: 12px; justify-content: center; margin-top: 28px;">
-          <a href="../index.html" class="btn-secondary">Return to Storefront</a>
-          <a href="../store.html" class="btn-primary">Browse Marketplace</a>
+        <div style="display: flex; gap: 14px; justify-content: center; margin-top: 28px; flex-wrap: wrap;">
+          <a href="../seller/index.html" class="btn-primary" id="btn-view-demo-seller-dashboard" style="background: linear-gradient(135deg, #7FB73C 0%, #5a9022 100%); color:#FFFFFF; padding:12px 26px; border-radius:10px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:8px; box-shadow:0 4px 14px rgba(127,183,60,0.35); font-size:15px;">
+            <span>View Demo Seller Dashboard</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="../index.html" class="btn-secondary" style="padding:12px 20px; border-radius:10px; font-weight:600; text-decoration:none; font-size:14px;">Return to Storefront</a>
         </div>
       </div>
     `;

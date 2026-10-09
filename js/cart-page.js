@@ -44,7 +44,7 @@ export function renderCartPage() {
         <div class="cart-empty-icon"><i class="fa-solid fa-basket-shopping"></i></div>
         <h2 class="cart-empty-title">Your cart is empty</h2>
         <p class="cart-empty-desc">Looks like you haven't added any handcrafted items to your cart yet. Explore our curated artisan workshops.</p>
-        <a href="store.html" class="btn-cart-shop-now">
+        <a href="shop.html" class="btn-cart-shop-now">
           <i class="fa-solid fa-arrow-left"></i> Continue Shopping
         </a>
       </div>
@@ -59,7 +59,7 @@ export function renderCartPage() {
         <span style="font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif); font-size: 32px; font-weight: 800; color: #111827; letter-spacing: -0.02em;">Your cart</span>
         <span style="font-size: 18px; font-weight: 500; color: #64748B; font-family: var(--font-body, 'Inter', sans-serif);">(${totalQuantity} item${totalQuantity > 1 ? 's' : ''})</span>
       </h1>
-      <a href="store.html" class="cart-continue-link" style="color: #7FB73C; font-weight: 600; text-decoration: underline; text-underline-offset: 4px;">Continue shopping &rarr;</a>
+      <a href="shop.html" class="cart-continue-link" style="color: #7FB73C; font-weight: 600; text-decoration: underline; text-underline-offset: 4px;">Continue shopping &rarr;</a>
     </div>
 
     <!-- 2-Column Cart Grid -->

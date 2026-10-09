@@ -1,4 +1,5 @@
 import { formatMoney } from './core/utils.js';
+import { getStoreBySlug } from './data/stores-data.js';
 
 export const STORE_DATA = {
   name: 'Urban Leather Co.',
@@ -568,14 +569,90 @@ export const STORE_REVIEWS = [
 ];
 
 export function initStorePage() {
+  const params = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
+  const targetSlug = params ? (params.get('slug') || params.get('vendor') || params.get('store')) : null;
+  const activeStore = targetSlug ? getStoreBySlug(targetSlug) : null;
+
+  if (activeStore) {
+    if (activeStore.slug !== 'urban-leather-co') {
+      document.title = `${activeStore.name} | Official Store - AMEZA Marketplace`;
+      const titleEl = document.getElementById('store-title-name');
+      if (titleEl) titleEl.textContent = activeStore.name;
+
+      const crumbEl = document.querySelector('.tax-breadcrumbs .current');
+      if (crumbEl) crumbEl.textContent = activeStore.name;
+
+      const bannerEl = document.querySelector('.store-banner-wrapper');
+      if (bannerEl && activeStore.banner) bannerEl.style.backgroundImage = `url('${activeStore.banner}')`;
+
+      const monogramEl = document.querySelector('.store-logo-monogram');
+      if (monogramEl) {
+        monogramEl.style.background = activeStore.monogramColor;
+        monogramEl.innerHTML = `<span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:36px; font-weight:800; color:#FFFFFF;">${activeStore.monogram}</span><span class="store-logo-subtext">${activeStore.name.toUpperCase()}</span>`;
+      }
+
+      const ratingValEl = document.querySelector('.store-rating-val');
+      if (ratingValEl) ratingValEl.textContent = activeStore.rating.toFixed(1);
+
+      const reviewsLinkEl = document.getElementById('link-open-reviews-tab');
+      if (reviewsLinkEl) reviewsLinkEl.textContent = `(${activeStore.reviewsCount} reviews)`;
+
+      const statProductsEl = document.getElementById('stat-products-count');
+      if (statProductsEl) statProductsEl.textContent = activeStore.productsCount;
+
+      const statFollowersEl = document.getElementById('stat-followers-count');
+      if (statFollowersEl) statFollowersEl.textContent = (activeStore.followers / 1000).toFixed(1) + 'k';
+
+      const aboutTextEl = document.querySelector('.store-about-text');
+      if (aboutTextEl) aboutTextEl.textContent = activeStore.tagline;
+
+      const storyP = document.querySelector('.store-story-box p');
+      if (storyP) storyP.textContent = `${activeStore.name} is a verified independent marketplace merchant based in ${activeStore.location}. ${activeStore.tagline}`;
+
+      STORE_DATA.name = activeStore.name;
+      STORE_DATA.slug = activeStore.slug;
+      STORE_DATA.rating = activeStore.rating;
+      STORE_DATA.reviewsCount = activeStore.reviewsCount;
+      STORE_DATA.productsCount = activeStore.productsCount;
+      STORE_DATA.baseFollowers = activeStore.followers || 3400;
+      STORE_DATA.location = activeStore.location;
+      STORE_DATA.shippingSpeed = activeStore.shippingSpeed || '1-2 days';
+      STORE_DATA.responseRate = activeStore.responseRate || '98%';
+      STORE_DATA.tagline = activeStore.tagline;
+    }
+
+    if (Array.isArray(activeStore.products) && activeStore.products.length > 0) {
+      STORE_DATA.products = activeStore.products;
+    }
+  }
+
+  // Populate dynamic category checkboxes for this store
+  const catListContainer = document.getElementById('store-category-filters-list');
+  if (catListContainer && activeStore && activeStore.slug !== 'urban-leather-co') {
+    const catMap = {};
+    STORE_DATA.products.forEach(p => {
+      const c = p.category || 'Other';
+      catMap[c] = (catMap[c] || 0) + 1;
+    });
+    catListContainer.innerHTML = Object.entries(catMap).map(([c, count]) => `
+      <label class="filter-check-row">
+        <input type="checkbox" class="sidebar-check-input cat-filter-checkbox" value="${c}">
+        <span>${c} <span class="filter-item-count">(${count})</span></span>
+      </label>
+    `).join('');
+  }
+
+  // Calculate price boundaries from current store catalog
+  const storePriceValues = STORE_DATA.products.map(p => Math.ceil((Number(p.priceCents !== undefined ? p.priceCents : p.price) || 0) / 100));
+  const maxStorePrice = Math.max(150, Math.max(...storePriceValues));
   let displayedCount = 12; // Initial 12 products per user request!
   let selectedCategories = [];
-  let maxPrice = 150;
+  let maxPrice = maxStorePrice;
   let inStockOnly = true;
   let sortBy = 'popular';
   let searchQuery = '';
 
-  const followKey = `ameza_mkt_follow_${STORE_DATA.slug}`;
+  const followKey = `ameza_mkt_follow_${(activeStore ? activeStore.slug : STORE_DATA.slug)}`;
   let isFollowing = localStorage.getItem(followKey) === 'true';
 
   // DOM references
@@ -589,11 +666,21 @@ export function initStorePage() {
   const cartBadge = document.getElementById('header-cart-badge');
   const wishlistBadge = document.getElementById('header-wishlist-badge');
 
+  const priceSlider = document.getElementById('price-range-slider');
+  const priceDisplay = document.getElementById('price-range-max-val');
+  if (priceSlider) {
+    priceSlider.max = String(maxStorePrice);
+    priceSlider.value = String(maxStorePrice);
+  }
+  if (priceDisplay) {
+    priceDisplay.textContent = `$${maxStorePrice}`;
+  }
+
   function updateFollowButton() {
     if (!btnFollow) return;
     const currentFollowers = STORE_DATA.baseFollowers + (isFollowing ? 1 : 0);
     if (followersCountEl) {
-      followersCountEl.textContent = isFollowing ? (currentFollowers / 1000).toFixed(1) + 'k' : '3.4k';
+      followersCountEl.textContent = isFollowing ? (currentFollowers / 1000).toFixed(1) + 'k' : (STORE_DATA.baseFollowers / 1000).toFixed(1) + 'k';
     }
     if (isFollowing) {
       btnFollow.classList.add('following');
@@ -609,7 +696,7 @@ export function initStorePage() {
       isFollowing = !isFollowing;
       localStorage.setItem(followKey, String(isFollowing));
       updateFollowButton();
-      showStoreToast(isFollowing ? 'You are now following Urban Leather Co.' : 'Unfollowed Urban Leather Co.');
+      showStoreToast(isFollowing ? `You are now following ${STORE_DATA.name}` : `Unfollowed ${STORE_DATA.name}`);
     });
   }
 
@@ -635,11 +722,11 @@ export function initStorePage() {
     const filtered = getFilteredProducts();
     const visible = filtered.slice(0, displayedCount);
 
-    let totalCount = 75;
+    let totalCount = STORE_DATA.products.length;
     if (selectedCategories.length === 1) {
-      const counts = { 'Bags': 24, 'Wallets': 18, 'Belts': 12, 'Leather Accessories': 8, 'Travel Goods': 6, 'Other': 4 };
-      totalCount = counts[selectedCategories[0]] || filtered.length;
-    } else if (selectedCategories.length > 1 || searchQuery || maxPrice < 150) {
+      const match = STORE_DATA.products.filter(p => p.category === selectedCategories[0]);
+      totalCount = match.length || filtered.length;
+    } else if (selectedCategories.length > 1 || searchQuery || maxPrice < maxStorePrice) {
       totalCount = filtered.length;
     }
 
@@ -732,15 +819,15 @@ export function initStorePage() {
   // Reset Filters
   function resetFilters() {
     selectedCategories = [];
-    maxPrice = 150;
+    maxPrice = maxStorePrice;
     inStockOnly = true;
     searchQuery = '';
 
     document.querySelectorAll('.cat-filter-checkbox').forEach(cb => cb.checked = false);
     const priceSlider = document.getElementById('price-range-slider');
     const priceDisplay = document.getElementById('price-range-max-val');
-    if (priceSlider) priceSlider.value = 150;
-    if (priceDisplay) priceDisplay.textContent = '$150';
+    if (priceSlider) priceSlider.value = maxStorePrice;
+    if (priceDisplay) priceDisplay.textContent = `$${maxStorePrice}`;
     const inStockBox = document.getElementById('filter-in-stock');
     if (inStockBox) inStockBox.checked = true;
     const outStockBox = document.getElementById('filter-out-of-stock');
@@ -756,18 +843,21 @@ export function initStorePage() {
   if (btnReset) btnReset.addEventListener('click', resetFilters);
 
   // Category Filter Checkboxes
-  const catBoxes = document.querySelectorAll('.cat-filter-checkbox');
-  catBoxes.forEach(box => {
-    box.addEventListener('change', () => {
-      selectedCategories = Array.from(catBoxes).filter(b => b.checked).map(b => b.value);
-      displayedCount = 12;
-      renderProductsGrid();
+  function bindCategoryCheckboxListeners() {
+    const catBoxes = document.querySelectorAll('.cat-filter-checkbox');
+    catBoxes.forEach(box => {
+      box.addEventListener('change', () => {
+        selectedCategories = Array.from(document.querySelectorAll('.cat-filter-checkbox'))
+          .filter(b => b.checked)
+          .map(b => b.value);
+        displayedCount = 12;
+        renderProductsGrid();
+      });
     });
-  });
+  }
+  bindCategoryCheckboxListeners();
 
-  // Price Slider
-  const priceSlider = document.getElementById('price-range-slider');
-  const priceDisplay = document.getElementById('price-range-max-val');
+  // Price Slider Input Listener
   if (priceSlider && priceDisplay) {
     priceSlider.addEventListener('input', (e) => {
       maxPrice = Number(e.target.value);
@@ -795,6 +885,30 @@ export function initStorePage() {
       renderProductsGrid();
     });
   }
+
+  // Mobile Filter Drawer Toggle (Filter Button & Drawer)
+  const btnStoreFilterTrigger = document.getElementById('btn-store-filters-trigger');
+  const btnStoreFilterClose = document.getElementById('btn-close-store-filters');
+  const storeFiltersSidebar = document.getElementById('store-filters-sidebar');
+  const storeFilterBackdrop = document.getElementById('store-filter-backdrop');
+
+  const openStoreFilters = () => {
+    if (storeFiltersSidebar) storeFiltersSidebar.classList.add('mobile-open');
+    if (storeFilterBackdrop) storeFilterBackdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeStoreFilters = () => {
+    if (storeFiltersSidebar) storeFiltersSidebar.classList.remove('mobile-open');
+    if (storeFilterBackdrop) storeFilterBackdrop.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  const btnStoreFilterApply = document.getElementById('btn-apply-store-filters');
+  if (btnStoreFilterTrigger) btnStoreFilterTrigger.addEventListener('click', openStoreFilters);
+  if (btnStoreFilterClose) btnStoreFilterClose.addEventListener('click', closeStoreFilters);
+  if (btnStoreFilterApply) btnStoreFilterApply.addEventListener('click', closeStoreFilters);
+  if (storeFilterBackdrop) storeFilterBackdrop.addEventListener('click', closeStoreFilters);
 
   // Search inside store (Top of sidebar)
   const searchInput = document.getElementById('store-search-input');
@@ -1072,7 +1186,7 @@ export function initStorePage() {
     formContact.addEventListener('submit', (e) => {
       e.preventDefault();
       closeModal();
-      showStoreToast('Message sent to Urban Leather Co.');
+      showStoreToast(`Message sent to ${STORE_DATA.name}`);
     });
   }
 

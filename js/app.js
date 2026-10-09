@@ -8,6 +8,7 @@ import { CatalogAPI } from './api/catalog.api.js';
 import { CartAPI } from './api/cart.api.js';
 import { OrdersAPI } from './api/orders.api.js';
 import { escapeHTML, sanitizeHTML, formatMoney } from './core/utils.js';
+import { initHomeStoresSlider } from './components/stores-slider.js';
 import './cart-drawer.js';
 
 let CATEGORIES = DEFAULT_CATEGORIES;
@@ -76,6 +77,7 @@ async function initCatalog() {
 // Initialize Application
 document.addEventListener('DOMContentLoaded', () => {
   initCatalog();
+  initHomeStoresSlider();
   setupEventListeners();
   startCountdownTimers();
 
@@ -346,7 +348,7 @@ function setupEventListeners() {
       const card = e.target.closest('.category-card');
       if (card) {
         const cat = card.getAttribute('data-category');
-        window.location.href = `category.html?cat=${encodeURIComponent(cat)}`;
+        window.location.href = `shop.html?category=${encodeURIComponent(cat)}`;
       }
     });
   }

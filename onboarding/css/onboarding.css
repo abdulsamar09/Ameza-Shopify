@@ -1387,3 +1387,110 @@ body.onb .nav-link {
     display: flex;
   }
 }
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS OVERRIDES (sell-with-us.html)
+   ========================================================================== */
+@media (max-width: 768px) {
+  body.onb {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  body.onb .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  body.onb .hero-h1 {
+    font-size: clamp(28px, 8vw, 38px);
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+
+  body.onb .hero-p {
+    font-size: 15px;
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+
+  body.onb .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+  }
+
+  body.onb .hero-actions .btn-primary,
+  body.onb .hero-actions .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+
+  body.onb .hero-mockup-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
+  }
+
+  body.onb .hero-blob-bg {
+    width: 320px;
+    height: 320px;
+  }
+
+  body.onb .dashboard-mockup-card {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  body.onb .floating-toast-card {
+    right: 8px;
+    top: -10px;
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+
+  body.onb .floating-product-card {
+    right: 8px;
+    bottom: -10px;
+    padding: 6px 10px;
+  }
+
+  body.onb .fees-table-card {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body.onb .fees-table {
+    min-width: 480px;
+  }
+}
+
+@media (max-width: 480px) {
+  body.onb .mockup-sidebar {
+    display: none;
+  }
+
+  body.onb .mockup-metrics-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  body.onb .stats-band-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 20px 14px;
+  }
+
+  body.onb .stat-item::after {
+    display: none !important;
+  }
+
+  body.onb .stat-number {
+    font-size: 28px;
+  }
+}

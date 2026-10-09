@@ -25,21 +25,19 @@ assert(layoutJs.includes('viewBox="0 0 24 24"'), 'layout.js footer should contai
 assert(layoutJs.includes('support@ameza.com') && layoutJs.includes('1-800-555-0123'), 'layout.js footer should contain contact info');
 console.log('✅ Footer JS: Crisp logo and bulletproof inline SVGs for social/contact verified.');
 
-// 3. Verify cart.html has data-layout="none" and no site-header/site-footer
+// 3. Verify cart.html has storefront layout with site-header/site-footer
 const cartHtml = fs.readFileSync('cart.html', 'utf-8');
-assert(cartHtml.includes('data-layout="none"'), 'cart.html should have data-layout="none"');
-assert(!cartHtml.includes('<div id="site-header"></div>'), 'cart.html should not have #site-header mount point');
-assert(!cartHtml.includes('<div id="site-footer"></div>'), 'cart.html should not have #site-footer mount point');
-assert(cartHtml.includes('cart-standalone-topbar'), 'cart.html should have clean standalone topbar');
-console.log('✅ Cart Page: Distraction-free (no header, no footer, clean standalone topbar) verified.');
+assert(cartHtml.includes('data-layout="storefront"'), 'cart.html should have data-layout="storefront"');
+assert(cartHtml.includes('<div id="site-header"></div>'), 'cart.html should have #site-header mount point');
+assert(cartHtml.includes('<div id="site-footer"></div>'), 'cart.html should have #site-footer mount point');
+console.log('✅ Cart Page: Unified storefront layout (site-header, site-footer, drawer) verified.');
 
-// 4. Verify checkout.html has data-layout="none" and no site-header/site-footer
+// 4. Verify checkout.html has storefront layout with site-header/site-footer
 const checkoutHtml = fs.readFileSync('checkout.html', 'utf-8');
-assert(checkoutHtml.includes('data-layout="none"'), 'checkout.html should have data-layout="none"');
-assert(!checkoutHtml.includes('<div id="site-header"></div>'), 'checkout.html should not have #site-header mount point');
-assert(!checkoutHtml.includes('<div id="site-footer"></div>'), 'checkout.html should not have #site-footer mount point');
-assert(checkoutHtml.includes('checkout-standalone-topbar'), 'checkout.html should have clean standalone topbar');
-console.log('✅ Checkout Page: Distraction-free (no header, no footer, clean standalone topbar) verified.');
+assert(checkoutHtml.includes('data-layout="storefront"'), 'checkout.html should have data-layout="storefront"');
+assert(checkoutHtml.includes('<div id="site-header"></div>'), 'checkout.html should have #site-header mount point');
+assert(checkoutHtml.includes('<div id="site-footer"></div>'), 'checkout.html should have #site-footer mount point');
+console.log('✅ Checkout Page: Unified storefront layout (site-header, site-footer, drawer) verified.');
 
 // 5. Verify Cart font in js/cart-page.js and css/cart.css
 const cartPageJs = fs.readFileSync('js/cart-page.js', 'utf-8');

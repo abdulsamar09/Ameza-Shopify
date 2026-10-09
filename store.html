@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Urban Leather Co. | Official Store - AMEZA Marketplace</title>
-  <meta name="description" content="Shop handcrafted genuine leather backpacks, messenger bags, wallets, belts, and accessories from Urban Leather Co. Verified artisan merchant with 4.8/5 rating.">
+  <meta name="description"
+    content="Shop handcrafted genuine leather backpacks, messenger bags, wallets, belts, and accessories from Urban Leather Co. Verified artisan merchant with 4.8/5 rating.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -17,6 +21,7 @@
   <link rel="stylesheet" href="css/cart-drawer.css">
   <link rel="icon" type="image/png" href="assets/ameza-logo.png">
 </head>
+
 <body class="store-page" data-layout="storefront">
   <div id="site-header"></div>
 
@@ -26,7 +31,7 @@
 
   <!-- STORE HERO CONTAINER -->
   <div class="store-container">
-    
+
     <!-- Breadcrumbs matching Screenshot 4 -->
     <nav class="tax-breadcrumbs" aria-label="Breadcrumb navigation" style="margin-top: 18px; margin-bottom: 0;">
       <a href="index.html">Home</a>
@@ -35,24 +40,26 @@
       <span class="sep">&gt;</span>
       <span class="current">Urban Leather Co.</span>
     </nav>
-    
+
     <!-- STORE HERO CARD (Banner + Avatar + Info) -->
     <div class="store-hero-card" style="margin-top: 16px;">
-      
+
       <!-- Workshop Leather Banner -->
       <div class="store-banner-wrapper" style="background-image: url('assets/store-banner.jpg');">
       </div>
 
       <!-- Store Profile Bar -->
       <div class="store-profile-bar">
-        
+
         <div class="store-profile-top">
           <!-- 112px round black UL monogram logo -->
           <div class="store-logo-wrapper" title="Urban Leather Co.">
             <div class="store-logo-monogram">
               <svg width="68" height="68" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <text x="32" y="65" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="52" font-weight="700" fill="#FFFFFF" text-anchor="middle">U</text>
-                <text x="64" y="65" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="52" font-weight="700" fill="#FFFFFF" text-anchor="middle">L</text>
+                <text x="32" y="65" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="52"
+                  font-weight="700" fill="#FFFFFF" text-anchor="middle">U</text>
+                <text x="64" y="65" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="52"
+                  font-weight="700" fill="#FFFFFF" text-anchor="middle">L</text>
               </svg>
               <span class="store-logo-subtext">URBAN LEATHER CO.</span>
             </div>
@@ -78,7 +85,8 @@
         <!-- Rating & Joined Row (USA location) -->
         <div class="store-meta-line">
           <div class="store-rating-stars" aria-label="4.8 out of 5 stars">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
             <span class="store-rating-val">4.8</span>
           </div>
           <span class="store-reviews-link" id="link-open-reviews-tab">(1.2k reviews)</span>
@@ -138,58 +146,68 @@
     <!-- ============================================== -->
     <div class="tab-content-panel active" id="tab-products">
       <div class="products-layout-grid">
-        
-        <!-- Left Filter Sidebar -->
-        <aside class="filters-sidebar-card" aria-label="Catalog Filters">
-          
+
+        <!-- Left Filter Sidebar / Mobile Drawer -->
+        <div class="store-filter-backdrop" id="store-filter-backdrop"></div>
+        <aside class="filters-sidebar-card" id="store-filters-sidebar" aria-label="Catalog Filters">
+
           <div class="filters-head-row">
             <h2 class="filters-title">Filters</h2>
-            <button class="filters-reset-btn" id="btn-reset-filters">Reset</button>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <button class="filters-reset-btn" id="btn-reset-filters">Reset</button>
+              <button type="button" class="btn-store-filter-close" id="btn-close-store-filters"
+                aria-label="Close filters">&times;</button>
+            </div>
           </div>
 
           <!-- Search in Store (Moved to TOP of sidebar per user request) -->
           <div class="filter-group-block">
             <div class="filter-group-title">Search in Store</div>
             <div style="position: relative;">
-              <input type="text" id="store-search-input" placeholder="Search catalog..." style="width: 100%; height: 38px; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 0 12px 0 32px; font-size: 13px; outline: none; box-sizing: border-box;">
-              <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 10px; top: 12px; color: var(--text-light); font-size: 13px;"></i>
+              <input type="text" id="store-search-input" placeholder="Search catalog..."
+                style="width: 100%; height: 38px; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 0 12px 0 32px; font-size: 13px; outline: none; box-sizing: border-box;">
+              <i class="fa-solid fa-magnifying-glass"
+                style="position: absolute; left: 10px; top: 12px; color: var(--text-light); font-size: 13px;"></i>
             </div>
           </div>
 
           <!-- Category -->
           <div class="filter-group-block">
             <div class="filter-group-title">Category</div>
-            <label class="filter-check-row">
-              <input type="checkbox" class="sidebar-check-input cat-filter-checkbox" value="Bags">
-              <span>Bags <span class="filter-item-count">(24)</span></span>
-            </label>
-            <label class="filter-check-row">
-              <input type="checkbox" class="sidebar-check-input cat-filter-checkbox" value="Wallets">
-              <span>Wallets <span class="filter-item-count">(18)</span></span>
-            </label>
-            <label class="filter-check-row">
-              <input type="checkbox" class="sidebar-check-input cat-filter-checkbox" value="Belts">
-              <span>Belts <span class="filter-item-count">(12)</span></span>
-            </label>
-            <label class="filter-check-row">
-              <input type="checkbox" class="sidebar-check-input cat-filter-checkbox" value="Leather Accessories">
-              <span>Leather Accessories <span class="filter-item-count">(8)</span></span>
-            </label>
-            <label class="filter-check-row">
-              <input type="checkbox" class="sidebar-check-input cat-filter-checkbox" value="Travel Goods">
-              <span>Travel Goods <span class="filter-item-count">(6)</span></span>
-            </label>
-            <label class="filter-check-row">
-              <input type="checkbox" class="sidebar-check-input cat-filter-checkbox" value="Other">
-              <span>Other <span class="filter-item-count">(4)</span></span>
-            </label>
+            <div id="store-category-filters-list">
+              <label class="filter-check-row">
+                <input type="checkbox" class="sidebar-check-input cat-filter-checkbox" value="Bags">
+                <span>Bags <span class="filter-item-count">(24)</span></span>
+              </label>
+              <label class="filter-check-row">
+                <input type="checkbox" class="sidebar-check-input cat-filter-checkbox" value="Wallets">
+                <span>Wallets <span class="filter-item-count">(18)</span></span>
+              </label>
+              <label class="filter-check-row">
+                <input type="checkbox" class="sidebar-check-input cat-filter-checkbox" value="Belts">
+                <span>Belts <span class="filter-item-count">(12)</span></span>
+              </label>
+              <label class="filter-check-row">
+                <input type="checkbox" class="sidebar-check-input cat-filter-checkbox" value="Leather Accessories">
+                <span>Leather Accessories <span class="filter-item-count">(8)</span></span>
+              </label>
+              <label class="filter-check-row">
+                <input type="checkbox" class="sidebar-check-input cat-filter-checkbox" value="Travel Goods">
+                <span>Travel Goods <span class="filter-item-count">(6)</span></span>
+              </label>
+              <label class="filter-check-row">
+                <input type="checkbox" class="sidebar-check-input cat-filter-checkbox" value="Other">
+                <span>Other <span class="filter-item-count">(4)</span></span>
+              </label>
+            </div>
           </div>
 
           <!-- Price Range -->
           <div class="filter-group-block">
             <div class="filter-group-title">Price Range</div>
             <div style="position: relative; margin: 12px 0 16px;">
-              <input type="range" min="10" max="150" step="5" value="150" id="price-range-slider" style="width: 100%; accent-color: var(--primary); cursor: pointer;">
+              <input type="range" min="10" max="150" step="5" value="150" id="price-range-slider"
+                style="width: 100%; accent-color: var(--primary); cursor: pointer;">
             </div>
             <div class="price-inputs-row">
               <span>$10</span>
@@ -202,27 +220,38 @@
             <div class="filter-group-title">Rating</div>
             <label class="filter-check-row">
               <input type="checkbox" class="sidebar-check-input rating-check-input">
-              <span style="color: #F5A623; font-size: 11px; letter-spacing: 1px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+              <span style="color: #F5A623; font-size: 11px; letter-spacing: 1px;"><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i></span>
               <span class="filter-item-count">(42)</span>
             </label>
             <label class="filter-check-row">
               <input type="checkbox" class="sidebar-check-input rating-check-input">
-              <span style="color: #F5A623; font-size: 11px; letter-spacing: 1px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star" style="color: #E5E7EB;"></i></span>
+              <span style="color: #F5A623; font-size: 11px; letter-spacing: 1px;"><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star" style="color: #E5E7EB;"></i></span>
               <span class="filter-item-count">(18)</span>
             </label>
             <label class="filter-check-row">
               <input type="checkbox" class="sidebar-check-input rating-check-input">
-              <span style="color: #F5A623; font-size: 11px; letter-spacing: 1px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star" style="color: #E5E7EB;"></i><i class="fa-solid fa-star" style="color: #E5E7EB;"></i></span>
+              <span style="color: #F5A623; font-size: 11px; letter-spacing: 1px;"><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"
+                  style="color: #E5E7EB;"></i><i class="fa-solid fa-star" style="color: #E5E7EB;"></i></span>
               <span class="filter-item-count">(7)</span>
             </label>
             <label class="filter-check-row">
               <input type="checkbox" class="sidebar-check-input rating-check-input">
-              <span style="color: #F5A623; font-size: 11px; letter-spacing: 1px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star" style="color: #E5E7EB;"></i><i class="fa-solid fa-star" style="color: #E5E7EB;"></i><i class="fa-solid fa-star" style="color: #E5E7EB;"></i></span>
+              <span style="color: #F5A623; font-size: 11px; letter-spacing: 1px;"><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star" style="color: #E5E7EB;"></i><i
+                  class="fa-solid fa-star" style="color: #E5E7EB;"></i><i class="fa-solid fa-star"
+                  style="color: #E5E7EB;"></i></span>
               <span class="filter-item-count">(2)</span>
             </label>
             <label class="filter-check-row">
               <input type="checkbox" class="sidebar-check-input rating-check-input">
-              <span style="color: #F5A623; font-size: 11px; letter-spacing: 1px;"><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></span>
+              <span style="color: #F5A623; font-size: 11px; letter-spacing: 1px;"><i class="fa-solid fa-star"></i><i
+                  class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                  class="fa-regular fa-star"></i></span>
               <span class="filter-item-count">(1)</span>
             </label>
           </div>
@@ -240,13 +269,25 @@
             </label>
           </div>
 
+          <!-- Mobile Drawer Footer with Apply Button -->
+          <div class="filters-mobile-footer">
+            <button type="button" class="btn-store-filter-apply" id="btn-apply-store-filters">
+              <i class="fa-solid fa-check"></i> Apply Filters
+            </button>
+          </div>
+
         </aside>
 
         <!-- Main Products Content -->
         <div class="products-content-area">
-          
+
           <!-- Toolbar -->
           <div class="products-toolbar-row">
+            <button type="button" class="btn-store-filters-trigger" id="btn-store-filters-trigger"
+              aria-label="Open filter menu">
+              <i class="fa-solid fa-filter"></i>
+              <span>Filters</span>
+            </button>
             <div class="toolbar-sort-wrap">
               <span class="toolbar-sort-label">Sort by</span>
               <select class="toolbar-sort-select" id="sort-products-select">
@@ -282,32 +323,52 @@
     <!-- TAB 2: ABOUT US (Clean Text & Headings Only)    -->
     <!-- ============================================== -->
     <div class="tab-content-panel" id="tab-about">
-      <div style="background-color: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 48px; margin-bottom: 32px; max-width: 900px; margin-left: auto; margin-right: auto;">
-        
-        <h2 style="font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--text); margin: 0 0 16px;">About Urban Leather Co.</h2>
-        
+      <div class="store-about-card">
+
+        <h2
+          style="font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--text); margin: 0 0 16px;">
+          About Urban Leather Co.</h2>
+
         <p style="font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px;">
-          Founded in 2024 in Austin, Texas, Urban Leather Co. is an independent leathercraft workshop dedicated to creating rugged, refined goods built for a lifetime of adventure. Our workshop combines traditional saddle-making methods with contemporary functional design.
+          Founded in 2024 in Austin, Texas, Urban Leather Co. is an independent leathercraft workshop dedicated to
+          creating rugged, refined goods built for a lifetime of adventure. Our workshop combines traditional
+          saddle-making methods with contemporary functional design.
         </p>
 
-        <h3 style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--text); margin: 32px 0 12px;">Full-Grain Leather & Vegetable Tanning</h3>
+        <h3
+          style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--text); margin: 32px 0 12px;">
+          Full-Grain Leather & Vegetable Tanning</h3>
         <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
-          We source only the top layer of cowhide, known as full-grain leather. Unlike corrected or bonded leather, full-grain retains natural markings, strength, and develops a rich, golden patina over years of use. All our leather is vegetable-tanned using organic tree barks and natural tannins, free of toxic chrome salts.
+          We source only the top layer of cowhide, known as full-grain leather. Unlike corrected or bonded leather,
+          full-grain retains natural markings, strength, and develops a rich, golden patina over years of use. All our
+          leather is vegetable-tanned using organic tree barks and natural tannins, free of toxic chrome salts.
         </p>
 
-        <h3 style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--text); margin: 32px 0 12px;">Hand-Stitched Durability</h3>
+        <h3
+          style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--text); margin: 32px 0 12px;">
+          Hand-Stitched Durability</h3>
         <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
-          Every stress point across our bags, belts, and wallets is reinforced with double-needle saddle stitching using bonded nylon thread. If a machine stitch breaks, the entire seam can unravel; our traditional hand stitching ensures that even if one loop experiences heavy wear, the rest of the seam remains completely intact.
+          Every stress point across our bags, belts, and wallets is reinforced with double-needle saddle stitching using
+          bonded nylon thread. If a machine stitch breaks, the entire seam can unravel; our traditional hand stitching
+          ensures that even if one loop experiences heavy wear, the rest of the seam remains completely intact.
         </p>
 
-        <h3 style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--text); margin: 32px 0 12px;">Our Lifetime Craftsmanship Guarantee</h3>
+        <h3
+          style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--text); margin: 32px 0 12px;">
+          Our Lifetime Craftsmanship Guarantee</h3>
         <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
-          We stand unconditionally behind every product we make. All solid brass hardware, buckles, rivets, and stitching are guaranteed for life. If any component ever fails under normal use, send it back to our Austin studio and we will repair or replace it free of charge.
+          We stand unconditionally behind every product we make. All solid brass hardware, buckles, rivets, and
+          stitching are guaranteed for life. If any component ever fails under normal use, send it back to our Austin
+          studio and we will repair or replace it free of charge.
         </p>
 
-        <h3 style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--text); margin: 32px 0 12px;">Domestic Shipping & Fast Dispatch</h3>
+        <h3
+          style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--text); margin: 32px 0 12px;">
+          Domestic Shipping & Fast Dispatch</h3>
         <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.7; margin-bottom: 0;">
-          All orders are packed and dispatched within 1–2 business days directly from our Austin studio via USPS Priority Mail and UPS Ground. Every order over $100 qualifies for free nationwide standard shipping with full door-to-door tracking.
+          All orders are packed and dispatched within 1–2 business days directly from our Austin studio via USPS
+          Priority Mail and UPS Ground. Every order over $100 qualifies for free nationwide standard shipping with full
+          door-to-door tracking.
         </p>
 
       </div>
@@ -317,48 +378,61 @@
     <!-- TAB 3: REVIEWS (10 Initial, Filters, Load More)-->
     <!-- ============================================== -->
     <div class="tab-content-panel" id="tab-reviews">
-      
+
       <!-- Reviews Summary Card -->
       <div class="reviews-summary-grid">
-        <div style="text-align: center; border-right: 1px solid var(--border); padding-right: 24px;">
-          <div style="font-size: 52px; font-weight: 800; color: var(--text); line-height: 1; font-family: var(--font-heading);">4.8</div>
+        <div class="reviews-summary-score-col" style="text-align: center; border-right: 1px solid var(--border); padding-right: 24px;">
+          <div
+            style="font-size: 52px; font-weight: 800; color: var(--text); line-height: 1; font-family: var(--font-heading);">
+            4.8</div>
           <div class="store-rating-stars" style="justify-content: center; margin: 8px 0; font-size: 18px;">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
           </div>
           <p style="font-size: 13px; color: var(--text-muted); margin: 0;">1,200 verified customer reviews</p>
         </div>
 
-        <div>
+        <div class="reviews-summary-bars-col">
           <div class="review-dist-row">
             <span style="width: 50px;">5 stars</span>
-            <div class="review-dist-bar"><div class="review-dist-fill" style="width: 82%;"></div></div>
+            <div class="review-dist-bar">
+              <div class="review-dist-fill" style="width: 82%;"></div>
+            </div>
             <span style="width: 40px; text-align: right; color: var(--text-muted);">82%</span>
           </div>
           <div class="review-dist-row">
             <span style="width: 50px;">4 stars</span>
-            <div class="review-dist-bar"><div class="review-dist-fill" style="width: 14%;"></div></div>
+            <div class="review-dist-bar">
+              <div class="review-dist-fill" style="width: 14%;"></div>
+            </div>
             <span style="width: 40px; text-align: right; color: var(--text-muted);">14%</span>
           </div>
           <div class="review-dist-row">
             <span style="width: 50px;">3 stars</span>
-            <div class="review-dist-bar"><div class="review-dist-fill" style="width: 3%;"></div></div>
+            <div class="review-dist-bar">
+              <div class="review-dist-fill" style="width: 3%;"></div>
+            </div>
             <span style="width: 40px; text-align: right; color: var(--text-muted);">3%</span>
           </div>
           <div class="review-dist-row">
             <span style="width: 50px;">2 stars</span>
-            <div class="review-dist-bar"><div class="review-dist-fill" style="width: 1%;"></div></div>
+            <div class="review-dist-bar">
+              <div class="review-dist-fill" style="width: 1%;"></div>
+            </div>
             <span style="width: 40px; text-align: right; color: var(--text-muted);">1%</span>
           </div>
           <div class="review-dist-row">
             <span style="width: 50px;">1 star</span>
-            <div class="review-dist-bar"><div class="review-dist-fill" style="width: 0%;"></div></div>
+            <div class="review-dist-bar">
+              <div class="review-dist-fill" style="width: 0%;"></div>
+            </div>
             <span style="width: 40px; text-align: right; color: var(--text-muted);">0%</span>
           </div>
         </div>
       </div>
 
       <!-- Review Filter Pills (User request) -->
-      <div style="display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap;">
+      <div class="rev-filter-pills-wrap">
         <button class="rev-filter-pill active" data-filter="all">All Reviews (1,200)</button>
         <button class="rev-filter-pill" data-filter="5star">5 Stars (984)</button>
         <button class="rev-filter-pill" data-filter="4star">4 Stars (168)</button>
@@ -385,7 +459,8 @@
     <div class="store-modal-card">
       <div class="store-modal-header">
         <div style="display: flex; align-items: center; gap: 10px;">
-          <div style="width: 38px; height: 38px; border-radius: 50%; background: var(--primary-light); color: var(--primary-dark); display: flex; align-items: center; justify-content: center; font-size: 16px;">
+          <div
+            style="width: 38px; height: 38px; border-radius: 50%; background: var(--primary-light); color: var(--primary-dark); display: flex; align-items: center; justify-content: center; font-size: 16px;">
             <i class="fa-regular fa-envelope"></i>
           </div>
           <div>
@@ -393,7 +468,9 @@
             <span style="font-size: 12px; color: var(--text-muted);">Replies typically within 2 hours</span>
           </div>
         </div>
-        <button id="btn-close-contact-modal" style="background: none; border: none; font-size: 18px; color: var(--text-light); cursor: pointer;" aria-label="Close modal">
+        <button id="btn-close-contact-modal"
+          style="background: none; border: none; font-size: 18px; color: var(--text-light); cursor: pointer;"
+          aria-label="Close modal">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
@@ -401,16 +478,25 @@
       <form id="contact-seller-form">
         <div class="store-modal-body">
           <div style="margin-bottom: 14px;">
-            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px;">Your Name</label>
-            <input type="text" id="contact-name" placeholder="e.g. Sarah Jenkins" required style="width: 100%; height: 40px; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 0 12px; font-size: 13.5px; box-sizing: border-box;">
+            <label
+              style="display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px;">Your
+              Name</label>
+            <input type="text" id="contact-name" placeholder="e.g. Sarah Jenkins" required
+              style="width: 100%; height: 40px; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 0 12px; font-size: 13.5px; box-sizing: border-box;">
           </div>
           <div style="margin-bottom: 14px;">
-            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px;">Email Address</label>
-            <input type="email" id="contact-email" placeholder="name@example.com" required style="width: 100%; height: 40px; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 0 12px; font-size: 13.5px; box-sizing: border-box;">
+            <label
+              style="display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px;">Email
+              Address</label>
+            <input type="email" id="contact-email" placeholder="name@example.com" required
+              style="width: 100%; height: 40px; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 0 12px; font-size: 13.5px; box-sizing: border-box;">
           </div>
           <div style="margin-bottom: 14px;">
-            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px;">Inquiry Topic</label>
-            <select id="contact-topic" style="width: 100%; height: 40px; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 0 12px; font-size: 13.5px; box-sizing: border-box; background: #fff;">
+            <label
+              style="display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px;">Inquiry
+              Topic</label>
+            <select id="contact-topic"
+              style="width: 100%; height: 40px; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 0 12px; font-size: 13.5px; box-sizing: border-box; background: #fff;">
               <option value="product">Product Question or Sizing</option>
               <option value="custom">Custom Monogramming Request</option>
               <option value="shipping">Shipping & Delivery Times</option>
@@ -418,13 +504,16 @@
             </select>
           </div>
           <div>
-            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px;">Message</label>
-            <textarea id="contact-message" rows="4" placeholder="Write your message to the merchant here..." required style="width: 100%; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 10px 12px; font-size: 13.5px; box-sizing: border-box; resize: vertical;"></textarea>
+            <label
+              style="display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px;">Message</label>
+            <textarea id="contact-message" rows="4" placeholder="Write your message to the merchant here..." required
+              style="width: 100%; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 10px 12px; font-size: 13.5px; box-sizing: border-box; resize: vertical;"></textarea>
           </div>
         </div>
 
         <div class="store-modal-footer">
-          <button type="button" class="btn-contact-outline" id="btn-cancel-contact-modal" style="height: 38px; padding: 0 16px;">Cancel</button>
+          <button type="button" class="btn-contact-outline" id="btn-cancel-contact-modal"
+            style="height: 38px; padding: 0 16px;">Cancel</button>
           <button type="submit" class="btn-follow-primary" style="height: 38px; padding: 0 20px;">
             <i class="fa-regular fa-paper-plane"></i> Send Message
           </button>
@@ -441,8 +530,9 @@
   <!-- ========================================================================= -->
   <div id="site-footer"></div>
 
-  <!-- Currency Engine -->
+  <!-- Currency & Auth Engines -->
   <script src="js/currency.js"></script>
+  <script src="js/auth.js"></script>
 
   <!-- Store Logic Module Initialization -->
   <script type="module">
@@ -457,4 +547,5 @@
   <!-- Unified Layout Module -->
   <script type="module" src="js/core/layout.js"></script>
 </body>
+
 </html>

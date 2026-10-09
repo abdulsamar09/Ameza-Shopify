@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/cart-drawer.css">
+  <link rel="stylesheet" href="css/stores.css">
 </head>
 <body data-layout="storefront">
   <div id="site-header"></div>
@@ -73,12 +74,12 @@
           <!-- Category Shortcut Pills -->
           <div class="hero-shortcuts">
             <span class="shortcut-label">Popular:</span>
-            <a href="category.html?cat=clothing" class="shortcut-pill">Clothing</a>
-            <a href="category.html?cat=electronics" class="shortcut-pill">Electronics</a>
-            <a href="category.html?cat=watches" class="shortcut-pill">Watches</a>
-            <a href="category.html?cat=leather-belts" class="shortcut-pill">Leather Belts</a>
-            <a href="category.html?cat=leather-wallets" class="shortcut-pill">Wallets</a>
-            <a href="category.html?cat=bags" class="shortcut-pill">Bags &amp; Totes</a>
+            <a href="shop.html?category=clothing" class="shortcut-pill">Clothing</a>
+            <a href="shop.html?category=electronics" class="shortcut-pill">Electronics</a>
+            <a href="shop.html?category=watches" class="shortcut-pill">Watches</a>
+            <a href="shop.html?category=leather-belts" class="shortcut-pill">Leather Belts</a>
+            <a href="shop.html?category=leather-wallets" class="shortcut-pill">Wallets</a>
+            <a href="shop.html?category=bags" class="shortcut-pill">Bags &amp; Totes</a>
           </div>
         </div>
 
@@ -147,13 +148,40 @@
             <h2>Best Selling Categories</h2>
             <p>Explore curated collections crafted for style, durability, and daily elegance</p>
           </div>
-          <a href="category.html?cat=clothing" class="view-all-link">
+          <a href="shop.html" class="view-all-link">
             View All Categories &rarr;
           </a>
         </div>
 
         <div class="categories-grid" id="categories-container">
           <!-- Dynamic Category Cards Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TOP STORES & ARTISAN VENDORS CAROUSEL (Slider Linking to store.html & View All to stores.html) -->
+    <section class="section top-stores-section" id="section-top-stores">
+      <div class="container">
+        <div class="stores-slider-header-wrap">
+          <div class="stores-header-left">
+            <h2><i class="fa-solid fa-store"></i> Top Stores &amp; Artisan Vendors</h2>
+            <p>Shop directly from verified independent makers, master leather crafters, and certified brand boutiques</p>
+          </div>
+          <div class="stores-header-actions">
+            <a href="stores.html" class="btn-view-all-stores" id="link-view-all-stores" title="View All Marketplace Stores">
+              <span>View All Stores</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <div class="stores-nav-arrows">
+              <button class="stores-arrow-btn prev" id="btn-stores-prev" aria-label="Previous stores"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="stores-arrow-btn next" id="btn-stores-next" aria-label="Next stores"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider Track for Store Cards -->
+        <div class="stores-slider-track" id="top-stores-track">
+          <!-- Dynamically populated by stores-slider.js -->
         </div>
       </div>
     </section>
@@ -205,7 +233,7 @@
             <h2>Electronics &amp; Watches</h2>
             <p>High-performance smartwatches, wireless audio, and precision timepieces</p>
           </div>
-          <a href="#" class="view-all-link" data-action="open-search">
+          <a href="shop.html?category=electronics" class="view-all-link">
             Browse All Electronics &rarr;
           </a>
         </div>
@@ -264,7 +292,7 @@
             <h2>Clothes &amp; Jewellery</h2>
             <p>Elevate your wardrobe with premium heavyweight cottons and modern silhouettes</p>
           </div>
-          <a href="#" class="view-all-link" data-action="open-search">
+          <a href="shop.html?category=clothing" class="view-all-link">
             View All Apparel &rarr;
           </a>
         </div>
@@ -320,7 +348,7 @@
             <h2>Leather Collection</h2>
             <p>Full-grain Italian cowhide belts, artisan buckles, and messenger carry bags</p>
           </div>
-          <a href="#" class="view-all-link" data-action="open-search">
+          <a href="shop.html?category=leather-belts" class="view-all-link">
             View All Leather &rarr;
           </a>
         </div>
@@ -339,7 +367,7 @@
             <h2>Latest Range</h2>
             <p>Newly released canvas totes, emerald hobo bags, luxury duffles, and RFID bifolds</p>
           </div>
-          <a href="#" class="view-all-link" data-action="open-search">
+          <a href="shop.html?section=latest-range" class="view-all-link">
             Explore All New &rarr;
           </a>
         </div>
@@ -362,6 +390,9 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
             <span id="deals-live-timer">18h : 45m : 30s</span>
           </div>
+          <a href="shop.html?deals=1" class="view-all-link" style="margin-left:auto;">
+            View All Deals &rarr;
+          </a>
         </div>
         <div class="deals-body-box">
           <div class="products-grid-5" id="grid-limited-deals">

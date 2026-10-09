@@ -15,27 +15,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/checkout.css">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/cart-drawer.css">
+  <link rel="stylesheet" href="css/checkout.css">
+  <link rel="icon" type="image/png" href="assets/ameza-logo.png">
 </head>
 <body class="checkout-body" data-layout="none">
-  <!-- Minimal Standalone Checkout Topbar -->
-  <header class="checkout-standalone-topbar" style="background:#FFFFFF; border-bottom:1px solid #E5E7EB; padding:16px 24px;">
-    <div style="max-width:1240px; margin:0 auto; display:flex; align-items:center; justify-content:space-between;">
-      <a href="store.html" style="display:inline-flex; align-items:center; gap:10px; text-decoration:none;">
-        <img src="assets/ameza-logo.png" alt="AMEZA" style="height:32px; width:auto;" onerror="this.src='assets/logo.png'">
-        <span style="font-family:var(--font-heading, 'Plus Jakarta Sans', sans-serif); font-size:20px; font-weight:800; color:#111827; letter-spacing:-0.4px;">AMEZA</span>
-      </a>
-      <div style="display:flex; align-items:center; gap:16px; font-size:13px; color:#64748B;">
-        <span style="display:inline-flex; align-items:center; gap:6px;"><i class="fa-solid fa-lock" style="color:#7FB73C;"></i> 256-Bit SSL Encrypted Checkout</span>
-        <span style="color:#CBD5E1;">|</span>
-        <a href="cart.html" style="color:#7FB73C; font-weight:600; text-decoration:none;">&larr; Return to Cart</a>
-      </div>
-    </div>
-  </header>
-
   <div id="checkout-app-root">
     <!-- Populated dynamically by checkout-page.js -->
   </div>
@@ -44,21 +31,10 @@
     <i class="fa-solid fa-circle-info" style="color: #7FB73C; margin-right: 6px;"></i> All transactions are processed in U.S. Dollars &mdash; <strong>You will be charged in USD</strong>.
   </div>
 
-  <!-- Minimal Standalone Checkout Footer -->
-  <footer class="checkout-standalone-footer" style="padding:28px 24px; text-align:center; font-size:12px; color:#94A3B8; border-top:1px solid #E5E7EB; margin-top:48px;">
-    <div style="max-width:1240px; margin:0 auto; display:flex; flex-direction:column; gap:6px; align-items:center;">
-      <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap; justify-content:center;">
-        <a href="legal/shipping-policy.html" style="color:#64748B; text-decoration:none;">Shipping Policy</a>
-        <a href="legal/returns-policy.html" style="color:#64748B; text-decoration:none;">Refund Policy</a>
-        <a href="legal/privacy.html" style="color:#64748B; text-decoration:none;">Privacy Policy</a>
-        <a href="legal/terms.html" style="color:#64748B; text-decoration:none;">Terms of Service</a>
-      </div>
-      <div style="margin-top:4px;">&copy; 2026 AMEZA Marketplace Inc. &bull; All rights reserved &bull; U.S. Domestic Shipping</div>
-    </div>
-  </footer>
-
-  <!-- Currency Engine -->
+  <!-- Scripts -->
   <script src="js/currency.js"></script>
+  <script src="js/auth.js"></script>
+  <script type="module" src="js/cart-drawer.js"></script>
 
   <!-- Checkout Logic Module -->
   <script type="module">

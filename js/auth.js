@@ -1310,6 +1310,19 @@ function updateAccountIconState() {
         });
       }
     }
+
+    // Resolve relative dropdown links against the site root so they work on
+    // sub-folder pages (e.g. legal/, onboarding/). Uses the header logo href set by layout.js.
+    const logoHref = document.querySelector('#main-header .logo-wrap')?.getAttribute('href') || '';
+    const siteBase = logoHref.replace(/index\.html$/, '');
+    if (siteBase && siteBase !== './') {
+      wrapper.querySelectorAll('a[href]').forEach(a => {
+        const href = a.getAttribute('href');
+        if (!/^(https?:|\/|#|\.\.\/|mailto:|tel:|javascript:)/i.test(href)) {
+          a.setAttribute('href', siteBase + href);
+        }
+      });
+    }
   });
 
   // 2. Update standalone top-bar links
@@ -1698,7 +1711,8 @@ function closeHeavyMobileDrawer() {
 // Global click listener for any mobile menu triggers
 if (typeof document !== 'undefined') {
   document.addEventListener('click', (e) => {
-    const toggleBtn = e.target.closest('[data-action="mobile-menu-toggle"], .hamburger-btn, #account-mobile-nav-toggle');
+    // Only handle explicit heavy drawer triggers on account dashboard; layout.js owns the mobile navigation drawer across the entire site
+    const toggleBtn = e.target.closest('#account-mobile-nav-toggle');
     if (toggleBtn) {
       e.preventDefault();
       e.stopPropagation();

@@ -20,7 +20,7 @@ const BANNED_PATTERNS = [
   // UK terms
   { name: 'UK Locations', regex: /\b(London|Heathrow|Gatwick)\b/i },
   // Non-US charge / base currencies
-  { name: 'Banned Currencies', regex: /\b(AUD|PKR|AED|SAR)\b/i },
+  { name: 'Banned Currencies', regex: /\b(AUD|PKR|AED|SAR)\b/ },
   // Australian tax & banking terms
   { name: 'AU Tax / Banking / Postal', regex: /\b(ABN|BSB|AusPost)\b/i },
   // Banned platform names
