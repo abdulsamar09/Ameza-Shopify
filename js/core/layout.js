@@ -561,7 +561,7 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
             <div class="mobile-nav-section-title">Travel &amp; Booking Services</div>
             <a href="${base}stays.html" class="nav-link" id="mobile-nav-stays">
               <i class="fa-solid fa-bed nav-icon"></i>
-              <span>Stays &amp; Hotels</span>
+              <span>AMEZA Hotels</span>
             </a>
             <a href="${base}car-rental.html" class="nav-link" id="mobile-nav-cars">
               <i class="fa-solid fa-car nav-icon"></i>
@@ -710,7 +710,7 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
             <a href="${base}stays.html" class="services-menu-item">
               <div class="services-item-icon"><i class="fa-solid fa-bed"></i></div>
               <div class="services-item-text">
-                <span class="services-item-title">Stay</span>
+                <span class="services-item-title">AMEZA Hotels</span>
                 <span class="services-item-sub">Hotels, Resorts &amp; Homes</span>
               </div>
             </a>
