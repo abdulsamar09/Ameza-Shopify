@@ -5,35 +5,75 @@
   <meta name="supported-color-schemes" content="light">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shipping | AMEZA Seller Central</title>
+  <title>Shipping & Delivery Hub | AMEZA Seller Central</title>
+  <meta name="description" content="Configure US regional delivery zones, USPS flat rates, handling times, and store vacation mode.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/dashboard.css">
   <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
+  <style>
+    /* Scoped Shipping Styles */
+    @media (max-width: 768px) {
+      .rates-table thead {
+        display: none;
+      }
+      .rates-table, .rates-table tbody, .rates-table tr, .rates-table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .rates-table tr {
+        padding: 12px;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+      }
+      .rates-table td {
+        padding: 6px 0;
+        text-align: left !important;
+      }
+      .rates-table td:last-child {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: auto;
+      }
+    }
+  </style>
 </head>
 <body data-layout="none">
+  <!-- Top Bar (Shell injected) -->
   <header id="app-topbar"></header>
+
+  <!-- Application Layout -->
   <div class="app-layout">
+    <!-- Sidebar Navigation (Shell injected) -->
     <aside id="app-sidebar"></aside>
-    <main class="main-content" role="main">
-      <div class="page-header">
-        <div>
-          <h1 class="page-title">Shipping</h1>
-          <p class="page-subtitle">Configure regional delivery zones, carrier flat rates, and express couriers.</p>
+
+    <!-- Main Content Canvas -->
+    <main class="main-content" id="main-content-region" role="main">
+      <div id="shipping-content-container">
+        <!-- Rendered dynamically by js/shipping.js -->
+        <div class="dashboard-skeleton-wrap" style="padding: 20px;">
+          <div style="height: 32px; width: 220px; background: var(--border); border-radius: 6px; margin-bottom: 20px;"></div>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="height: 180px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px;"></div>
+            <div style="height: 350px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px;"></div>
+          </div>
         </div>
-      </div>
-      <div class="placeholder-card">
-        <div class="placeholder-icon"><i class="fa-solid fa-truck-fast"></i></div>
-        <h2 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 8px;">Shipping Hub</h2>
-        <p style="color: var(--text-secondary); max-width: 440px; margin: 0 auto 20px;">
-          This is a placeholder page for shipping. Use the sidebar navigation or command palette (Ctrl+K) to browse other screens.
-        </p>
-        <a href="index.html" class="btn-header-action" style="text-decoration: none;">&larr; Back to Dashboard Home</a>
       </div>
     </main>
   </div>
+
+  <!-- Application Bootstrap Script (ES Modules) -->
   <script type="module">
     import { initShell } from '../js/shell.js';
+    import { initShipping } from '../js/shipping.js';
+
+    // Initialize reusable shell with 'shipping' as active page
     initShell('shipping');
+
+    // Initialize Shipping engine
+    initShipping();
   </script>
 </body>
 </html>

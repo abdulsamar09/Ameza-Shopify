@@ -8,8 +8,33 @@
   <title>Customer Reviews & Feedback | AMEZA Seller Central</title>
   <meta name="description" content="Manage buyer reviews, rating breakdowns, and verified customer satisfaction.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/dashboard.css">
   <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
+  <style>
+    /* Scoped Reviews Styles */
+    @media (max-width: 900px) {
+      .reviews-two-col-layout {
+        grid-template-columns: 1fr !important;
+      }
+      .reviews-rating-card {
+        position: static !important;
+      }
+    }
+    @media (max-width: 640px) {
+      .review-photo-thumb {
+        width: calc((100% - 20px) / 3) !important;
+        height: 80px !important;
+      }
+      .reply-composer-wrap textarea {
+        font-size: 16px !important;
+      }
+      .reply-composer-wrap button {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+    }
+  </style>
 </head>
 <body data-layout="none">
   <!-- Top Bar (Shell injected) -->
@@ -23,7 +48,14 @@
     <!-- Main Content Canvas -->
     <main class="main-content" id="main-content-region" role="main">
       <div id="reviews-content-container">
-        <!-- Rendered by js/reviews.js -->
+        <!-- Rendered dynamically by js/reviews.js -->
+        <div class="dashboard-skeleton-wrap" style="padding: 20px;">
+          <div style="height: 32px; width: 220px; background: var(--border); border-radius: 6px; margin-bottom: 20px;"></div>
+          <div style="display: grid; grid-template-columns: 320px 1fr; gap: 24px;">
+            <div style="height: 400px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px;"></div>
+            <div style="height: 500px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px;"></div>
+          </div>
+        </div>
       </div>
     </main>
   </div>
