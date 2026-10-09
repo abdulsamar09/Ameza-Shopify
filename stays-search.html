@@ -8,10 +8,28 @@
   <title>Available Stays &amp; Hotels | AMEZA Luxury Travel</title>
   <meta name="description" content="Browse and book verified 5-star hotels, luxury villas, and boutique apartments worldwide with guaranteed best prices.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/travel.css">
+  <link rel="stylesheet" href="/shared/css/tokens.css">
+  <link rel="stylesheet" href="/shared/css/base.css">
   <link rel="stylesheet" href="/shared/css/style.css">
-  <link rel="stylesheet" href="/travel/css/travel.css">
   <link rel="stylesheet" href="/shared/css/layout.css">
-  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
+  <link rel="stylesheet" href="/travel/css/travel.css">
+  <link rel="icon" type="image/svg+xml" href="assets/brand/ameza-logo.svg">
+  <link rel="icon" type="image/png" href="assets/ameza-logo.png">
+  <style>
+    .logo-wrap { display: inline-flex !important; align-items: center !important; max-height: 48px !important; text-decoration: none !important; }
+    .logo-wrap img, .header-sticky .logo-wrap img, .footer-logo, .footer-logo-wrap img {
+      max-height: 40px !important;
+      height: 38px !important;
+      width: auto !important;
+      object-fit: contain !important;
+      display: inline-block !important;
+    }
+  </style>
 </head>
 <body data-layout="travel">
 
@@ -36,7 +54,7 @@
   <header class="header-sticky" id="main-header">
     <div class="container header-inner">
       <a href="index.html" class="logo-wrap" title="AMEZA Travel">
-        <img src="/assets/ameza-logo.png" alt="AMEZA Logo" onerror="this.src="/assets/logo.png'">
+        <img src="assets/brand/ameza-logo.svg" alt="AMEZA Logo" style="height:38px; width:auto; max-height:40px; display:inline-block;" onerror="this.src='assets/ameza-logo.png'">
       </a>
 
       <!-- Center Nav -->
@@ -545,7 +563,7 @@
       <!-- Col 1: Brand Info & Support -->
       <div class="footer-col">
         <a href="index.html" class="footer-logo-wrap" aria-label="AMEZA Home">
-          <img src="/assets/logo-transparent.png" alt="AMEZA" class="footer-logo" onerror="this.src="/assets/logo.png'">
+          <img src="assets/brand/ameza-logo.svg" alt="AMEZA" class="footer-logo" style="height:38px; width:auto; max-height:40px; display:inline-block;" onerror="this.src='assets/ameza-logo.png'">
         </a>
         <p class="footer-desc">
           Premium U.S. multi-vendor marketplace connecting verified domestic merchants with shoppers nationwide.
@@ -949,9 +967,9 @@
     });
   </script>
   <!-- Currency & Cart Engines -->
-  <script src="/shared/js/currency.js"></script>
+  <script src="js/currency.js"></script>
   <script src="js/auth.js"></script>
-  <script type="module" src="/shared/js/cart-drawer.js"></script>
-  <script type="module" src="/shared/js/core/layout.js"></script>
+  <script type="module" src="js/cart-drawer.js"></script>
+  <script type="module" src="js/core/layout.js"></script>
 </body>
 </html>

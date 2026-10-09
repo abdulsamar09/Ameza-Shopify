@@ -25,6 +25,34 @@
   --travel-badge: #7FB73C;
 }
 
+/* Header & Footer Brand Logo Containment */
+.logo-wrap {
+  display: inline-flex !important;
+  align-items: center !important;
+  max-height: 48px !important;
+  text-decoration: none !important;
+}
+.logo-wrap img,
+.header-sticky .logo-wrap img {
+  max-height: 40px !important;
+  height: 38px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  display: inline-block !important;
+}
+.footer-logo-wrap {
+  display: inline-block !important;
+  max-height: 48px !important;
+}
+.footer-logo,
+.footer-logo-wrap img {
+  max-height: 42px !important;
+  height: 38px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  display: inline-block !important;
+}
+
 /* ==========================================================================
    1. TRAVEL CATEGORIES NAVIGATION BAR (AMEZA Sleek Dark & Green Pill Bar)
    ========================================================================== */
