@@ -9,7 +9,7 @@ import { AccountUI } from '/buyer/js/account-ui.js';
 export function initSecurityPage() {
   const Auth = window.AmezaAuth;
   const UI = AccountUI;
-  const user = UI.requireAuth();
+  const user = getSession() || (UI.requireAuth && UI.requireAuth());
   if (!user) return;
 
   const sidebarEl = document.getElementById('account-sidebar');

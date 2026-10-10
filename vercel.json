@@ -46,7 +46,9 @@
     { "source": "/ui-kit.html", "destination": "/dev/ui-kit.html", "permanent": true },
     { "source": "/account", "destination": "/buyer/", "permanent": true },
     { "source": "/seller/seller", "destination": "/seller/", "permanent": true },
-    { "source": "/seller/seller/:match*", "destination": "/seller/:match*", "permanent": true }
+    { "source": "/seller/seller/:match*", "destination": "/seller/:match*", "permanent": true },
+    { "source": "/buyer/legal/:match*", "destination": "/legal/:match*", "permanent": true },
+    { "source": "/seller/legal/:match*", "destination": "/legal/:match*", "permanent": true }
   ],
   "rewrites": [
     { "source": "/shop", "destination": "/storefront/shop.html" },

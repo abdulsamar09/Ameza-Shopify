@@ -6,7 +6,8 @@
 
 'use strict';
 
-import { escapeHTML } from '/shared/js/core/utils.js';
+import { escapeHTML, formatMoney } from '/shared/js/core/utils.js';
+import { getSession } from '/shared/js/core/session.js';
 
 
 const AccountUI = {
@@ -68,8 +69,16 @@ const AccountUI = {
     });
   },
 
+  // ─── Currency Formatter ───────────────────────────────────────
+  formatPrice(amount) {
+    const val = Number(amount) || 0;
+    return val > 500 && Number.isInteger(val) ? formatMoney(val) : formatMoney(Math.round(val * 100));
+  },
+
   // ─── Page Protection ──────────────────────────────────────────
   requireAuth(redirectBack = true) {
+    const session = getSession();
+    if (session) return session;
     if (window.AmezaAuth && typeof window.AmezaAuth.requireAuth === 'function') {
       return window.AmezaAuth.requireAuth(redirectBack);
     }
@@ -81,11 +90,13 @@ const AccountUI = {
         const search = window.location.search || '';
         let target = page + search;
         if (!redirectBack) target = 'account.html';
-        window.location.href = `login.html?redirect=${encodeURIComponent(target)}`;
+        window.location.href = `/auth/login.html?redirect=${encodeURIComponent(target)}`;
       } catch (e) {
-        window.location.href = 'login.html';
+        window.location.href = '/auth/login.html';
       }
     }
+    return null;
+  },
     return null;
   },
 
@@ -282,13 +293,13 @@ const AccountUI = {
     const isSeller = user.role === 'seller' || user.isSeller === true;
 
     const pages = [
-      { key: 'overview', label: 'Overview', href: 'index.html', icon: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>' },
-      { key: 'orders', label: 'Orders', href: 'orders.html', icon: '<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>', badge: pendingCount > 0 ? pendingCount : null },
-      { key: 'returns', label: 'Returns', href: 'orders.html?tab=returns', icon: '<polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>' },
-      { key: 'wishlist', label: 'Wishlist', href: 'wishlist.html', icon: '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>' },
-      { key: 'addresses', label: 'Addresses', href: 'addresses.html', icon: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>' },
-      { key: 'profile', label: 'Profile', href: 'profile.html', icon: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>' },
-      { key: 'security', label: 'Security', href: 'security.html', icon: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>' },
+      { key: 'overview', label: 'Overview', href: '/buyer/', icon: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>' },
+      { key: 'orders', label: 'Orders', href: '/buyer/orders.html', icon: '<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>', badge: pendingCount > 0 ? pendingCount : null },
+      { key: 'returns', label: 'Returns', href: '/buyer/orders.html?tab=returns', icon: '<polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>' },
+      { key: 'wishlist', label: 'Wishlist', href: '/buyer/wishlist.html', icon: '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>' },
+      { key: 'addresses', label: 'Addresses', href: '/buyer/addresses.html', icon: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>' },
+      { key: 'profile', label: 'Profile', href: '/buyer/profile.html', icon: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>' },
+      { key: 'security', label: 'Security', href: '/buyer/security.html', icon: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>' },
     ];
 
     const firstName = esc(user.firstName || 'Member');
@@ -329,7 +340,7 @@ const AccountUI = {
           <div class="account-sidebar-seller-card">
             <div class="sidebar-seller-title"><i class="fa-solid fa-store"></i> Become a seller</div>
             <p class="sidebar-seller-desc">Sell to millions of shoppers across the U.S.</p>
-            <a href="onboarding/sell-with-us.html" class="sidebar-seller-link">Become a seller &rarr;</a>
+            <a href="/seller/onboarding/sell-with-us.html" class="sidebar-seller-link">Become a seller &rarr;</a>
           </div>
         `}
 

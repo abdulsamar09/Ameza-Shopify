@@ -48,21 +48,38 @@ export function initWishlistPage() {
       return;
     }
 
-    container.innerHTML = items.map((item, idx) => `
-      <div class="wishlist-card" style="border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px; background: #FFF; display: flex; flex-direction: column;">
-        <div style="position:relative; aspect-ratio: 1; border-radius: var(--radius-md); overflow:hidden; background:#F8FAFC; margin-bottom:12px;">
-          <img src="${escapeHTML(item.image || item.imageUrl || '/assets/products/placeholder.jpg')}" alt="${escapeHTML(item.name || item.title || 'Item')}" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='/assets/products/leather-belt-1.jpg'">
-          <button type="button" class="btn-remove-wishlist" data-idx="${idx}" aria-label="Remove item" style="position:absolute; top:8px; right:8px; width:32px; height:32px; border-radius:50%; background:#FFF; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; cursor:pointer; color:#EF4444;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-          </button>
-        </div>
-        <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--dark); margin: 0 0 4px; line-height: 1.3;">${escapeHTML(item.name || item.title || 'Item')}</h4>
-        <div style="font-size: 1.1rem; font-weight: 800; color: var(--primary, #7DBA35); margin-bottom: 14px;">${AccountUI.formatPrice(item.price || item.priceCents || 0)}</div>
-        <div style="margin-top:auto;">
-          <a href="/storefront/product.html?id=${encodeURIComponent(item.id || item.productId || '')}" class="btn-section-action" style="display:block; text-align:center; padding: 8px 12px; text-decoration:none; font-size:0.85rem;">View Product</a>
-        </div>
+    const countBadge = document.getElementById('wishlist-count-badge');
+    if (countBadge) {
+      countBadge.textContent = `${items.length} item${items.length !== 1 ? 's' : ''}`;
+    }
+
+    container.innerHTML = `
+      <div class="account-wishlist-grid">
+        ${items.map((item, idx) => {
+          let img = item.image || item.imageUrl || item.img || '/assets/brand/ameza-logo.svg';
+          if (img && !img.startsWith('/') && !img.startsWith('http')) {
+            img = '/' + img;
+          }
+          const priceStr = AccountUI.formatPrice(item.priceCents || item.price || 0);
+
+          return `
+            <div class="wishlist-card" style="border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px; background: #FFF; display: flex; flex-direction: column;">
+              <div style="position:relative; aspect-ratio: 1; border-radius: var(--radius-md); overflow:hidden; background:#F8FAFC; margin-bottom:12px;">
+                <img src="${escapeHTML(img)}" alt="${escapeHTML(item.name || item.title || 'Product')}" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='/assets/brand/ameza-logo.svg'">
+                <button type="button" class="btn-remove-wishlist" data-idx="${idx}" aria-label="Remove item" style="position:absolute; top:8px; right:8px; width:30px; height:30px; border-radius:50%; background:#FFF; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; cursor:pointer; color:#EF4444; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+              </div>
+              <h4 style="font-size: 0.92rem; font-weight: 700; color: var(--dark); margin: 0 0 6px; line-height: 1.3;">${escapeHTML(item.name || item.title || 'Product')}</h4>
+              <div style="font-size: 1.05rem; font-weight: 800; color: var(--primary, #7DBA35); margin-bottom: 12px;">${priceStr}</div>
+              <div style="margin-top:auto;">
+                <a href="/storefront/product.html?id=${encodeURIComponent(item.id || item.productId || '')}" class="btn-section-action" style="display:block; text-align:center; padding: 8px 12px; text-decoration:none; font-size:0.85rem;">View Product</a>
+              </div>
+            </div>
+          `;
+        }).join('')}
       </div>
-    `).join('');
+    `;
 
     container.querySelectorAll('.btn-remove-wishlist').forEach(btn => {
       btn.addEventListener('click', (e) => {

@@ -477,7 +477,13 @@ export const DashboardShell = {
   }
 };
 
+export function initShell(activeNav = 'dashboard') {
+  DashboardShell.init({ activeNav, role: 'seller' });
+}
+
 // Global Exposure
 if (typeof window !== 'undefined') {
   window.DashboardShell = DashboardShell;
 }
+
+export { DashboardShell };

@@ -207,7 +207,7 @@ export function renderAccountOverview() {
                 <div style="font-size: 0.88rem; font-weight: 700; color: var(--dark);">${escapeHTML(itemName)}</div>
                 <div style="font-size: 0.78rem; color: var(--text-muted);">Dispatched to ${escapeHTML(inTransitOrder.shippingAddress?.line1 || inTransitOrder.shippingAddress || 'Austin, TX')}</div>
               </div>
-              <a href="account-order-detail.html?id=${encodeURIComponent(inTransitOrder.id)}" class="btn-section-action secondary" style="font-size: 0.8rem; padding: 6px 14px;">
+              <a href="/buyer/order-detail.html?id=${encodeURIComponent(inTransitOrder.id)}" class="btn-section-action secondary" style="font-size: 0.8rem; padding: 6px 14px;">
                 View Order Details
               </a>
             </div>
@@ -237,7 +237,7 @@ export function renderAccountOverview() {
             </div>
             <h3>No orders yet</h3>
             <p>Start shopping and your orders will appear here.</p>
-            <a href="shop.html" class="btn-section-action">Start Shopping</a>
+            <a href="/storefront/shop.html" class="btn-section-action">Start Shopping</a>
           </div>
         `;
       } else {
@@ -272,7 +272,7 @@ export function renderAccountOverview() {
 
               <div class="order-total">${formattedTotal}</div>
 
-              <a href="account-order-detail.html?id=${encodeURIComponent(o.id)}" class="btn-view-order" aria-label="View Order #${escapeHTML(o.orderNumber || o.id)}">
+              <a href="/buyer/order-detail.html?id=${encodeURIComponent(o.id)}" class="btn-view-order" aria-label="View Order #${escapeHTML(o.orderNumber || o.id)}">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                   <circle cx="12" cy="12" r="3"></circle>
@@ -308,7 +308,7 @@ export function renderAccountOverview() {
               <h3><i class="fa-solid fa-store" style="color: #A3E635; margin-right: 8px;"></i> Become a Seller on AMEZA</h3>
               <p>Join top American artisans and businesses. Zero setup fees, transparent 10% commission, and automated U.S. fulfillment.</p>
             </div>
-            <a href="onboarding/sell-with-us.html" class="btn-seller-cta">
+            <a href="/seller/onboarding/sell-with-us.html" class="btn-seller-cta">
               Become a Seller &rarr;
             </a>
           </div>

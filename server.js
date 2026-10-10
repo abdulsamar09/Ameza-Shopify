@@ -127,6 +127,17 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // Handle accidental nested /buyer/legal/* or /seller/legal/* redirects
+  if (reqPath.startsWith('/buyer/legal/') || reqPath.startsWith('/seller/legal/')) {
+    const newPath = reqPath.replace(/^\/(?:buyer|seller)\/legal\//, '/legal/');
+    res.writeHead(301, {
+      'Location': `${newPath}${query}`,
+      'Cache-Control': 'public, max-age=3600'
+    });
+    res.end();
+    return;
+  }
+
   // Handle Clean URL rewrites
   if (REWRITES[reqPath]) {
     reqPath = REWRITES[reqPath];

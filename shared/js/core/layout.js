@@ -25,13 +25,7 @@ export function ensureFontsLoaded() {
  * Ensures all assets and links resolve correctly regardless of folder depth.
  */
 function getBasePath() {
-  const path = window.location.pathname.replace(/^\/|\/$/g, '');
-  if (!path) return './';
-  const segments = path.split('/').filter(Boolean);
-  // If at root level file (e.g. index.html or empty)
-  if (segments.length <= 1) return './';
-  // If inside a subdirectory (e.g. seller/index.html or onboarding/apply.html)
-  return '../'.repeat(segments.length - 1);
+  return '/';
 }
 
 /**
@@ -269,8 +263,8 @@ function initTravelDrawer(base) {
     const drawerHeader = document.createElement('div');
     drawerHeader.className = 'mobile-nav-drawer-header';
     drawerHeader.innerHTML = `
-      <a href="${base}index.html" class="logo-wrap" style="display:inline-flex; align-items:center;">
-        <img src="${base}assets/ameza-logo.png" alt="AMEZA Logo" style="height:32px; width:auto;" onerror="this.src='${base}assets/logo.png'">
+      <a href="/index.html" class="logo-wrap" style="display:inline-flex; align-items:center;">
+        <img src="/assets/ameza-logo.png" alt="AMEZA Logo" style="height:32px; width:auto;" onerror="this.src='/assets/logo.png'">
       </a>
       <button type="button" class="btn-mobile-nav-close" id="btn-mobile-nav-close" aria-label="Close navigation">&times;</button>
     `;
@@ -284,27 +278,27 @@ function initTravelDrawer(base) {
     extras.innerHTML = `
       <!-- Store & Catalog Categories -->
       <div class="mobile-nav-section-title">Store &amp; Catalog</div>
-      <a href="${base}shop.html?category=clothing" class="nav-link">
+      <a href="/storefront/shop.html?category=clothing" class="nav-link">
         <i class="fa-solid fa-shirt nav-icon"></i>
         <span>Clothing</span>
       </a>
-      <a href="${base}shop.html?category=electronics" class="nav-link">
+      <a href="/storefront/shop.html?category=electronics" class="nav-link">
         <i class="fa-solid fa-headphones nav-icon"></i>
         <span>Electronics</span>
       </a>
-      <a href="${base}shop.html?category=watches" class="nav-link">
+      <a href="/storefront/shop.html?category=watches" class="nav-link">
         <i class="fa-solid fa-clock nav-icon"></i>
         <span>Watches</span>
       </a>
-      <a href="${base}shop.html?category=leather-belts" class="nav-link">
+      <a href="/storefront/shop.html?category=leather-belts" class="nav-link">
         <i class="fa-solid fa-shield-halved nav-icon"></i>
         <span>Leather Belts</span>
       </a>
-      <a href="${base}shop.html?category=leather-wallets" class="nav-link">
+      <a href="/storefront/shop.html?category=leather-wallets" class="nav-link">
         <i class="fa-solid fa-wallet nav-icon"></i>
         <span>Wallets</span>
       </a>
-      <a href="${base}shop.html?category=bags" class="nav-link">
+      <a href="/storefront/shop.html?category=bags" class="nav-link">
         <i class="fa-solid fa-bag-shopping nav-icon"></i>
         <span>Bags &amp; Totes</span>
         <span class="badge-new">NEW</span>
@@ -316,12 +310,12 @@ function initTravelDrawer(base) {
         <i class="fa-solid fa-user nav-icon"></i>
         <span>${session ? (session.name || 'Account Dashboard') : 'Sign In / Register'}</span>
       </a>
-      <a href="${base}account-wishlist.html" class="nav-link">
+      <a href="/buyer/wishlist.html" class="nav-link">
         <i class="fa-solid fa-heart nav-icon"></i>
         <span>Wishlist</span>
         <span class="mobile-nav-count" style="${wishlistCount > 0 ? '' : 'display: none;'}">${wishlistCount}</span>
       </a>
-      <a href="${base}cart.html" class="nav-link">
+      <a href="/storefront/cart.html" class="nav-link">
         <i class="fa-solid fa-cart-shopping nav-icon"></i>
         <span>Cart</span>
         <span class="mobile-nav-count" style="${cartCount > 0 ? '' : 'display: none;'}">${cartCount}</span>
@@ -329,7 +323,7 @@ function initTravelDrawer(base) {
 
       <!-- Merchant Link -->
       <div class="mobile-nav-section-title">Merchant &amp; Support</div>
-      <a href="${base}onboarding/sell-with-us.html" class="nav-link">
+      <a href="/seller/onboarding/sell-with-us.html" class="nav-link">
         <i class="fa-solid fa-store nav-icon" style="color:var(--primary, #7DBA35);"></i>
         <span style="font-weight:700; color:var(--primary, #7DBA35);">Become a Seller</span>
       </a>
@@ -460,8 +454,8 @@ function renderFocusLayout(headerMount, footerMount, base) {
     <header class="focus-header">
       <div class="container focus-header-container">
         <div class="focus-header-spacer"></div>
-        <a href="${base}index.html" class="focus-logo" title="Return to AMEZA Storefront">
-          <img src="${base}assets/ameza-logo.png" alt="AMEZA Logo" class="brand-logo-img" onerror="this.src='${base}assets/logo.png'">
+        <a href="/index.html" class="focus-logo" title="Return to AMEZA Storefront">
+          <img src="/assets/ameza-logo.png" alt="AMEZA Logo" class="brand-logo-img" onerror="this.src='/assets/logo.png'">
         </a>
         <div class="focus-security-col">
           <span class="focus-header-badge">
@@ -475,7 +469,7 @@ function renderFocusLayout(headerMount, footerMount, base) {
   footerMount.innerHTML = `
     <footer class="focus-footer">
       <div class="container focus-footer-container">
-        <p>&copy; 2026 AMEZA Marketplace Inc. &bull; Secure Multi-Vendor Platform &bull; <a href="${base}index.html">Return to Storefront</a></p>
+        <p>&copy; 2026 AMEZA Marketplace Inc. &bull; Secure Multi-Vendor Platform &bull; <a href="/index.html">Return to Storefront</a></p>
       </div>
     </footer>
   `;
@@ -499,11 +493,11 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
           <span>Free U.S. shipping on orders over $100 &bull; 30-day returns</span>
         </div>
         <div class="top-bar-right">
-          <a href="${base}onboarding/sell-with-us.html" class="top-bar-link" id="top-bar-become-seller">
+          <a href="/seller/onboarding/sell-with-us.html" class="top-bar-link" id="top-bar-become-seller">
             <i class="fa-solid fa-store"></i> Become a Seller
           </a>
           <span class="top-bar-divider">|</span>
-          <a href="${base}account-orders.html" class="top-bar-link" id="top-bar-track-order">
+          <a href="/buyer/orders.html" class="top-bar-link" id="top-bar-track-order">
             <i class="fa-solid fa-truck"></i> Track Order
           </a>
           <span class="top-bar-divider">|</span>
@@ -516,48 +510,48 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
     <header class="header-sticky" id="main-header">
       <div class="container header-inner">
         <!-- Logo -->
-        <a href="${base}index.html" class="logo-wrap" title="AMEZA E-Commerce Home">
-          <img src="${base}assets/ameza-logo.png" alt="AMEZA Logo" class="brand-logo-img" onerror="this.src='${base}assets/logo.png'">
+        <a href="/index.html" class="logo-wrap" title="AMEZA E-Commerce Home">
+          <img src="/assets/ameza-logo.png" alt="AMEZA Logo" class="brand-logo-img" onerror="this.src='/assets/logo.png'">
         </a>
 
         <!-- Center Nav -->
         <nav class="main-nav" id="main-nav-menu">
           <div class="mobile-nav-drawer-header">
-            <a href="${base}index.html" class="logo-wrap" style="display:inline-flex; align-items:center;">
-              <img src="${base}assets/ameza-logo.png" alt="AMEZA Logo" style="height:32px; width:auto;" onerror="this.src='${base}assets/logo.png'">
+            <a href="/index.html" class="logo-wrap" style="display:inline-flex; align-items:center;">
+              <img src="/assets/ameza-logo.png" alt="AMEZA Logo" style="height:32px; width:auto;" onerror="this.src='/assets/logo.png'">
             </a>
             <button type="button" class="btn-mobile-nav-close" id="btn-mobile-nav-close" aria-label="Close navigation">&times;</button>
           </div>
-          <a href="${base}index.html" class="nav-link" id="nav-home">
+          <a href="/index.html" class="nav-link" id="nav-home">
             <i class="fa-solid fa-house nav-icon"></i>
             <span>Home</span>
           </a>
-          <a href="${base}shop.html?category=clothing" class="nav-link" id="nav-clothing">
+          <a href="/storefront/shop.html?category=clothing" class="nav-link" id="nav-clothing">
             <i class="fa-solid fa-shirt nav-icon"></i>
             <span>Clothing</span>
           </a>
-          <a href="${base}shop.html?category=electronics" class="nav-link" id="nav-electronics">
+          <a href="/storefront/shop.html?category=electronics" class="nav-link" id="nav-electronics">
             <i class="fa-solid fa-headphones nav-icon"></i>
             <span>Electronics</span>
           </a>
-          <a href="${base}shop.html?category=watches" class="nav-link" id="nav-watches">
+          <a href="/storefront/shop.html?category=watches" class="nav-link" id="nav-watches">
             <i class="fa-solid fa-clock nav-icon"></i>
             <span>Watches</span>
           </a>
-          <a href="${base}shop.html?category=leather-belts" class="nav-link" id="nav-leather">
+          <a href="/storefront/shop.html?category=leather-belts" class="nav-link" id="nav-leather">
             <i class="fa-solid fa-shield-halved nav-icon"></i>
             <span>Leather Belts</span>
           </a>
-          <a href="${base}shop.html?category=leather-wallets" class="nav-link" id="nav-wallets">
+          <a href="/storefront/shop.html?category=leather-wallets" class="nav-link" id="nav-wallets">
             <i class="fa-solid fa-wallet nav-icon"></i>
             <span>Wallets</span>
           </a>
-          <a href="${base}shop.html?category=bags" class="nav-link" id="nav-bags">
+          <a href="/storefront/shop.html?category=bags" class="nav-link" id="nav-bags">
             <i class="fa-solid fa-bag-shopping nav-icon"></i>
             <span>Bags &amp; Totes</span>
             <span class="badge-new">NEW</span>
           </a>
-          <a href="${base}stores.html" class="nav-link" id="nav-stores">
+          <a href="/storefront/stores.html" class="nav-link" id="nav-stores">
             <i class="fa-solid fa-store nav-icon"></i>
             <span>Stores</span>
           </a>
@@ -566,23 +560,23 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
           <div class="mobile-nav-extras">
             <!-- Travel & Booking Services -->
             <div class="mobile-nav-section-title">Travel &amp; Booking Services</div>
-            <a href="${base}stays.html" class="nav-link" id="mobile-nav-stays">
+            <a href="/travel/stays.html" class="nav-link" id="mobile-nav-stays">
               <i class="fa-solid fa-bed nav-icon"></i>
               <span>AMEZA Hotels</span>
             </a>
-            <a href="${base}car-rental.html" class="nav-link" id="mobile-nav-cars">
+            <a href="/travel/car-rental.html" class="nav-link" id="mobile-nav-cars">
               <i class="fa-solid fa-car nav-icon"></i>
               <span>Car Rental</span>
             </a>
-            <a href="${base}attractions.html" class="nav-link" id="mobile-nav-attractions">
+            <a href="/travel/attractions.html" class="nav-link" id="mobile-nav-attractions">
               <i class="fa-solid fa-ticket nav-icon"></i>
               <span>Attractions &amp; Tours</span>
             </a>
-            <a href="${base}airport-taxis.html" class="nav-link" id="mobile-nav-taxis">
+            <a href="/travel/airport-taxis.html" class="nav-link" id="mobile-nav-taxis">
               <i class="fa-solid fa-taxi nav-icon"></i>
               <span>Airport Taxis</span>
             </a>
-            <a href="${base}flights.html" class="nav-link" id="mobile-nav-flights">
+            <a href="/travel/flights.html" class="nav-link" id="mobile-nav-flights">
               <i class="fa-solid fa-plane-departure nav-icon"></i>
               <span>Flights</span>
             </a>
@@ -593,24 +587,24 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
               <i class="fa-solid fa-user nav-icon"></i>
               <span>${session ? (session.name || 'Account Dashboard') : 'Sign In / Register'}</span>
             </a>
-            <a href="${base}account-wishlist.html" class="nav-link" id="mobile-nav-wishlist">
+            <a href="/buyer/wishlist.html" class="nav-link" id="mobile-nav-wishlist">
               <i class="fa-solid fa-heart nav-icon"></i>
               <span>Wishlist</span>
               <span class="mobile-nav-count" id="mobile-nav-wishlist-count" style="${wishlistCount > 0 ? '' : 'display: none;'}">${wishlistCount}</span>
             </a>
-            <a href="${base}cart.html" class="nav-link" id="mobile-nav-cart">
+            <a href="/storefront/cart.html" class="nav-link" id="mobile-nav-cart">
               <i class="fa-solid fa-cart-shopping nav-icon"></i>
               <span>Cart</span>
               <span class="mobile-nav-count" id="mobile-nav-cart-count" style="${cartCount > 0 ? '' : 'display: none;'}">${cartCount}</span>
             </a>
-            <a href="${base}account-orders.html" class="nav-link" id="mobile-nav-orders">
+            <a href="/buyer/orders.html" class="nav-link" id="mobile-nav-orders">
               <i class="fa-solid fa-truck-fast nav-icon"></i>
               <span>Track Orders</span>
             </a>
 
             <!-- Merchant / Seller Link -->
             <div class="mobile-nav-section-title">Merchant &amp; Support</div>
-            <a href="${base}onboarding/sell-with-us.html" class="nav-link" id="mobile-nav-seller">
+            <a href="/seller/onboarding/sell-with-us.html" class="nav-link" id="mobile-nav-seller">
               <i class="fa-solid fa-store nav-icon" style="color:var(--primary, #7DBA35);"></i>
               <span style="font-weight:700; color:var(--primary, #7DBA35);">Become a Seller</span>
             </a>
@@ -643,21 +637,21 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
                   <div class="account-user-role"><span class="badge badge-primary">${escapeHTML(role.toUpperCase())}</span></div>
                 </div>
                 <div class="account-popover-body">
-                  <a href="${base}account.html" class="account-menu-item"><i class="fa-solid fa-user"></i> My Profile</a>
-                  <a href="${base}account-orders.html" class="account-menu-item"><i class="fa-solid fa-box"></i> Orders &amp; Tracking</a>
-                  <a href="${base}account-wishlist.html" class="account-menu-item"><i class="fa-solid fa-heart"></i> My Wishlist</a>
-                  <a href="${base}account-addresses.html" class="account-menu-item"><i class="fa-solid fa-location-dot"></i> Saved Addresses</a>
+                  <a href="/buyer/" class="account-menu-item"><i class="fa-solid fa-user"></i> My Profile</a>
+                  <a href="/buyer/orders.html" class="account-menu-item"><i class="fa-solid fa-box"></i> Orders &amp; Tracking</a>
+                  <a href="/buyer/wishlist.html" class="account-menu-item"><i class="fa-solid fa-heart"></i> My Wishlist</a>
+                  <a href="/buyer/addresses.html" class="account-menu-item"><i class="fa-solid fa-location-dot"></i> Saved Addresses</a>
                   ${role === 'seller' ? `
                     <div class="dropdown-divider"></div>
-                    <a href="${base}seller/index.html" class="account-menu-item" style="color:var(--primary); font-weight:700;"><i class="fa-solid fa-store"></i> Seller Dashboard</a>
-                    <a href="${base}seller/orders.html" class="account-menu-item"><i class="fa-solid fa-truck-fast"></i> Seller Orders</a>
+                    <a href="/seller/index.html" class="account-menu-item" style="color:var(--primary); font-weight:700;"><i class="fa-solid fa-store"></i> Seller Dashboard</a>
+                    <a href="/seller/orders.html" class="account-menu-item"><i class="fa-solid fa-truck-fast"></i> Seller Orders</a>
                   ` : `
                     <div class="dropdown-divider"></div>
-                    <a href="${base}onboarding/sell-with-us.html" class="account-menu-item" style="color:var(--primary); font-weight:700;"><i class="fa-solid fa-rocket"></i> Become a Seller</a>
+                    <a href="/seller/onboarding/sell-with-us.html" class="account-menu-item" style="color:var(--primary); font-weight:700;"><i class="fa-solid fa-rocket"></i> Become a Seller</a>
                   `}
                   ${role === 'admin' || role === 'staff' ? `
                     <div class="dropdown-divider"></div>
-                    <a href="${base}admin-moderation.html" class="account-menu-item" style="color:var(--danger); font-weight:700;"><i class="fa-solid fa-shield-halved"></i> Admin Portal</a>
+                    <a href="/admin/products.html" class="account-menu-item" style="color:var(--danger); font-weight:700;"><i class="fa-solid fa-shield-halved"></i> Admin Portal</a>
                   ` : ''}
                   <div class="dropdown-divider"></div>
                   <button type="button" class="account-menu-item text-danger" id="layout-logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
@@ -668,24 +662,24 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
                   <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">Sign in for orders, wishlist &amp; perks</div>
                 </div>
                 <div class="account-popover-body">
-                  <a href="${base}login.html" class="btn btn-primary btn-sm btn-block" style="width:100%; text-align:center; margin-bottom:8px;">Sign In</a>
-                  <a href="${base}signup.html" class="btn btn-secondary btn-sm btn-block" style="width:100%; text-align:center; margin-bottom:12px;">Create Account</a>
+                  <a href="/auth/login.html" class="btn btn-primary btn-sm btn-block" style="width:100%; text-align:center; margin-bottom:8px;">Sign In</a>
+                  <a href="/auth/signup.html" class="btn btn-secondary btn-sm btn-block" style="width:100%; text-align:center; margin-bottom:12px;">Create Account</a>
                   <div class="dropdown-divider"></div>
-                  <a href="${base}account-orders.html" class="account-menu-item"><i class="fa-solid fa-clipboard-list"></i> Track Order</a>
-                  <a href="${base}onboarding/sell-with-us.html" class="account-menu-item" style="color:var(--primary); font-weight:700;"><i class="fa-solid fa-store"></i> Sell on AMEZA</a>
+                  <a href="/buyer/orders.html" class="account-menu-item"><i class="fa-solid fa-clipboard-list"></i> Track Order</a>
+                  <a href="/seller/onboarding/sell-with-us.html" class="account-menu-item" style="color:var(--primary); font-weight:700;"><i class="fa-solid fa-store"></i> Sell on AMEZA</a>
                 </div>
               `}
             </div>
           </div>
 
           <!-- Wishlist Trigger -->
-          <a href="${base}account-wishlist.html" class="action-btn" title="Wishlist" aria-label="Wishlist" id="header-wishlist-btn">
+          <a href="/buyer/wishlist.html" class="action-btn" title="Wishlist" aria-label="Wishlist" id="header-wishlist-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
             <span class="badge-count wishlist-count-badge" id="layout-wishlist-count" style="${wishlistCount > 0 ? '' : 'display: none;'}">${wishlistCount}</span>
           </a>
 
           <!-- Cart Trigger -->
-          <a href="${base}cart.html" class="action-btn" title="Shopping Cart" aria-label="Cart" id="header-cart-btn">
+          <a href="/storefront/cart.html" class="action-btn" title="Shopping Cart" aria-label="Cart" id="header-cart-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
             <span class="badge-count cart-count-badge" id="layout-cart-count" style="${cartCount > 0 ? '' : 'display: none;'}">${cartCount}</span>
           </a>
@@ -714,35 +708,35 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
               <span>Explore Services</span>
               <i class="fa-solid fa-compass" style="color: var(--primary, #7DBA35);"></i>
             </div>
-            <a href="${base}stays.html" class="services-menu-item">
+            <a href="/travel/stays.html" class="services-menu-item">
               <div class="services-item-icon"><i class="fa-solid fa-bed"></i></div>
               <div class="services-item-text">
                 <span class="services-item-title">AMEZA Hotels</span>
                 <span class="services-item-sub">Hotels, Resorts &amp; Homes</span>
               </div>
             </a>
-            <a href="${base}car-rental.html" class="services-menu-item">
+            <a href="/travel/car-rental.html" class="services-menu-item">
               <div class="services-item-icon"><i class="fa-solid fa-car"></i></div>
               <div class="services-item-text">
                 <span class="services-item-title">Car rental</span>
                 <span class="services-item-sub">Self-drive &amp; Chauffeur</span>
               </div>
             </a>
-            <a href="${base}attractions.html" class="services-menu-item">
+            <a href="/travel/attractions.html" class="services-menu-item">
               <div class="services-item-icon"><i class="fa-solid fa-ticket"></i></div>
               <div class="services-item-text">
                 <span class="services-item-title">Attraction</span>
                 <span class="services-item-sub">Tours, Activities &amp; Passes</span>
               </div>
             </a>
-            <a href="${base}airport-taxis.html" class="services-menu-item">
+            <a href="/travel/airport-taxis.html" class="services-menu-item">
               <div class="services-item-icon"><i class="fa-solid fa-taxi"></i></div>
               <div class="services-item-text">
                 <span class="services-item-title">Airport Taxis</span>
                 <span class="services-item-sub">Fast &amp; Reliable Airport Pickups</span>
               </div>
             </a>
-            <a href="${base}flights.html" class="services-menu-item">
+            <a href="/travel/flights.html" class="services-menu-item">
               <div class="services-item-icon"><i class="fa-solid fa-plane-departure"></i></div>
               <div class="services-item-text">
                 <span class="services-item-title">Flight</span>
@@ -764,8 +758,8 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
           <!-- Col 1: Brand Info & Support (Semantic <aside>) -->
           <aside class="footer-col footer-col-brand" aria-label="Brand Information">
             <div class="footer-brand-logo">
-              <a href="${base}index.html" aria-label="AMEZA Home" style="display:inline-flex; align-items:center; gap:10px; text-decoration:none;">
-                <img src="${base}assets/ameza-logo.png" alt="AMEZA" onerror="this.src='${base}assets/logo.png'" style="height:36px; width:auto; object-fit:contain; display:block;">
+              <a href="/index.html" aria-label="AMEZA Home" style="display:inline-flex; align-items:center; gap:10px; text-decoration:none;">
+                <img src="/assets/ameza-logo.png" alt="AMEZA" onerror="this.src='/assets/logo.png'" style="height:36px; width:auto; object-fit:contain; display:block;">
                 <span style="font-family:var(--font-heading, 'Plus Jakarta Sans', sans-serif); font-size:22px; font-weight:800; color:#FFFFFF; letter-spacing:-0.5px;">AMEZA</span>
               </a>
             </div>
@@ -802,13 +796,13 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
           <nav class="footer-col footer-col-nav" aria-label="Shop Categories">
             <h4 class="footer-heading">Shop Categories</h4>
             <ul class="footer-links-list">
-              <li><a href="${base}shop.html?category=clothing" class="footer-nav-link">Clothing</a></li>
-              <li><a href="${base}shop.html?category=electronics" class="footer-nav-link">Electronics</a></li>
-              <li><a href="${base}shop.html?category=watches" class="footer-nav-link">Watches</a></li>
-              <li><a href="${base}shop.html?category=leather-belts" class="footer-nav-link">Leather Belts</a></li>
-              <li><a href="${base}shop.html?category=leather-wallets" class="footer-nav-link">Leather Wallets</a></li>
-              <li><a href="${base}shop.html?category=bags" class="footer-nav-link">Bags &amp; Totes</a></li>
-              <li><a href="${base}shop.html" class="footer-nav-link" style="color:var(--primary, #7DBA35); font-weight:600;">Browse All Products &rarr;</a></li>
+              <li><a href="/storefront/shop.html?category=clothing" class="footer-nav-link">Clothing</a></li>
+              <li><a href="/storefront/shop.html?category=electronics" class="footer-nav-link">Electronics</a></li>
+              <li><a href="/storefront/shop.html?category=watches" class="footer-nav-link">Watches</a></li>
+              <li><a href="/storefront/shop.html?category=leather-belts" class="footer-nav-link">Leather Belts</a></li>
+              <li><a href="/storefront/shop.html?category=leather-wallets" class="footer-nav-link">Leather Wallets</a></li>
+              <li><a href="/storefront/shop.html?category=bags" class="footer-nav-link">Bags &amp; Totes</a></li>
+              <li><a href="/storefront/shop.html" class="footer-nav-link" style="color:var(--primary, #7DBA35); font-weight:600;">Browse All Products &rarr;</a></li>
             </ul>
           </nav>
 
@@ -816,11 +810,11 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
           <nav class="footer-col footer-col-nav" aria-label="Customer Care">
             <h4 class="footer-heading">Customer Care</h4>
             <ul class="footer-links-list">
-              <li><a href="${base}account-orders.html" class="footer-nav-link">Track Your Order</a></li>
-              <li><a href="${base}legal/shipping-policy.html" class="footer-nav-link">Shipping &amp; Delivery</a></li>
-              <li><a href="${base}legal/returns-policy.html" class="footer-nav-link">Returns &amp; Refunds</a></li>
-              <li><a href="${base}account.html" class="footer-nav-link">Help Center &amp; FAQs</a></li>
-              <li><a href="${base}account-wishlist.html" class="footer-nav-link">My Wishlist</a></li>
+              <li><a href="/buyer/orders.html" class="footer-nav-link">Track Your Order</a></li>
+              <li><a href="/legal/shipping-policy.html" class="footer-nav-link">Shipping &amp; Delivery</a></li>
+              <li><a href="/legal/returns-policy.html" class="footer-nav-link">Returns &amp; Refunds</a></li>
+              <li><a href="/buyer/" class="footer-nav-link">Help Center &amp; FAQs</a></li>
+              <li><a href="/buyer/wishlist.html" class="footer-nav-link">My Wishlist</a></li>
               <li><a href="mailto:support@ameza.com" class="footer-nav-link">Contact Support</a></li>
             </ul>
           </nav>
@@ -829,12 +823,12 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
           <nav class="footer-col footer-col-nav" aria-label="Sell and Legal">
             <h4 class="footer-heading">Sell &amp; Legal</h4>
             <ul class="footer-links-list">
-              <li><a href="${base}onboarding/sell-with-us.html" class="footer-nav-link" style="color:var(--primary, #7DBA35); font-weight:600;">Become a Seller</a></li>
-              <li><a href="${base}login.html" class="footer-nav-link">Seller Sign In</a></li>
-              <li><a href="${base}legal/seller-agreement.html" class="footer-nav-link">Merchant Agreement</a></li>
-              <li><a href="${base}legal/privacy.html" class="footer-nav-link">Privacy Policy</a></li>
-              <li><a href="${base}legal/terms.html" class="footer-nav-link">Terms of Service</a></li>
-              <li><a href="${base}legal/accessibility.html" class="footer-nav-link">Accessibility</a></li>
+              <li><a href="/seller/onboarding/sell-with-us.html" class="footer-nav-link" style="color:var(--primary, #7DBA35); font-weight:600;">Become a Seller</a></li>
+              <li><a href="/auth/login.html" class="footer-nav-link">Seller Sign In</a></li>
+              <li><a href="/legal/seller-agreement.html" class="footer-nav-link">Merchant Agreement</a></li>
+              <li><a href="/legal/privacy.html" class="footer-nav-link">Privacy Policy</a></li>
+              <li><a href="/legal/terms.html" class="footer-nav-link">Terms of Service</a></li>
+              <li><a href="/legal/accessibility.html" class="footer-nav-link">Accessibility</a></li>
             </ul>
           </nav>
         </div>
@@ -842,12 +836,12 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
         <!-- Clean Minimalist Bottom Row: Payment Icons + Copyright -->
         <div class="footer-bottom-row">
           <div class="footer-payment-icons" aria-label="Payment Methods">
-            <img src="${base}assets/icons/visa.svg" alt="Visa" title="Visa" loading="lazy">
-            <img src="${base}assets/icons/mastercard.svg" alt="Mastercard" title="Mastercard" loading="lazy">
-            <img src="${base}assets/icons/amex.svg" alt="American Express" title="American Express" loading="lazy">
-            <img src="${base}assets/icons/apple-pay.svg" alt="Apple Pay" title="Apple Pay" loading="lazy">
-            <img src="${base}assets/icons/google-pay.svg" alt="Google Pay" title="Google Pay" loading="lazy">
-            <img src="${base}assets/icons/paypal.svg" alt="PayPal" title="PayPal" loading="lazy">
+            <img src="/assets/icons/visa.svg" alt="Visa" title="Visa" loading="lazy">
+            <img src="/assets/icons/mastercard.svg" alt="Mastercard" title="Mastercard" loading="lazy">
+            <img src="/assets/icons/amex.svg" alt="American Express" title="American Express" loading="lazy">
+            <img src="/assets/icons/apple-pay.svg" alt="Apple Pay" title="Apple Pay" loading="lazy">
+            <img src="/assets/icons/google-pay.svg" alt="Google Pay" title="Google Pay" loading="lazy">
+            <img src="/assets/icons/paypal.svg" alt="PayPal" title="PayPal" loading="lazy">
           </div>
           <div class="footer-copyright">
             &copy; 2026 AMEZA Marketplace Inc. All rights reserved.
@@ -1096,7 +1090,7 @@ function bindLayoutEvents(base) {
       }
       localStorage.removeItem('ameza_session');
       localStorage.removeItem('ameza_auth_token');
-      window.location.href = `${base}index.html`;
+      window.location.href = `/index.html`;
     });
   }
 
@@ -1114,7 +1108,7 @@ function bindLayoutEvents(base) {
     logoutBtn.addEventListener('click', () => {
       localStorage.removeItem('ameza_session');
       localStorage.removeItem('ameza_auth_token');
-      window.location.href = `${base}index.html`;
+      window.location.href = `/index.html`;
     });
   }
 
@@ -1128,7 +1122,7 @@ function bindLayoutEvents(base) {
       } else if (window.AmezaCart && typeof window.AmezaCart.open === 'function') {
         window.AmezaCart.open();
       } else {
-        window.location.href = `${base}cart.html`;
+        window.location.href = `/storefront/cart.html`;
       }
     });
   }
@@ -1203,7 +1197,7 @@ export function openSearchModal(base = '') {
       input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
           const q = input.value.trim();
-          if (q) window.location.href = `${base}shop.html?q=${encodeURIComponent(q)}`;
+          if (q) window.location.href = `/storefront/shop.html?q=${encodeURIComponent(q)}`;
         }
       });
     }
@@ -1296,7 +1290,7 @@ function renderLiveSearchResultsUI(query, base = '') {
       const pid = row.getAttribute('data-product-id');
       const modal = document.getElementById('search-modal');
       if (modal) modal.classList.remove('active');
-      window.location.href = `${base}product.html?id=${encodeURIComponent(pid)}`;
+      window.location.href = `/storefront/product.html?id=${encodeURIComponent(pid)}`;
     });
   });
 }
