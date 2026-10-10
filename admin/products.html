@@ -9,11 +9,11 @@
   <meta name="description" content="Admin moderation portal for approving U.S. merchants and catalog items.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="/shared/css/style.css">
-  <link rel="stylesheet" href="css/account.css">
-  <link rel="stylesheet" href="css/seller.css">
+  <link rel="stylesheet" href="/buyer/css/account.css">
+  <link rel="stylesheet" href="/seller/css/seller.css">
   <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
 </head>
-<body>
+<body data-layout="dashboard" data-access="admin" data-area="admin">
 
   <!-- Persistent Demo Control Bar -->
   <script type="module" src="/shared/js/demo-bar.js"></script>
@@ -21,19 +21,19 @@
   <!-- HEADER -->
   <header class="header-sticky">
     <div class="container header-inner">
-      <a href="index.html" class="logo-wrap">
+      <a href="/" class="logo-wrap">
         <img src="/assets/ameza-logo.png" alt="AMEZA Logo" onerror="this.style.display='none'">
       </a>
       <nav class="main-nav">
-        <a href="admin-moderation.html" class="nav-link active"><span>Compliance &amp; Moderation</span></a>
-        <a href="admin-finance.html" class="nav-link"><span>Finance &amp; Ledger</span></a>
-        <a href="admin-cms.html" class="nav-link"><span>CMS &amp; Banners</span></a>
-        <a href="admin-categories.html" class="nav-link"><span>Categories</span></a>
-        <a href="admin-audit.html" class="nav-link"><span>Audit Log</span></a>
-        <a href="admin-settings.html" class="nav-link"><span>Settings &amp; Roles</span></a>
+        <a href="/admin/products.html" class="nav-link active"><span>Compliance &amp; Moderation</span></a>
+        <a href="/admin/finance.html" class="nav-link"><span>Finance &amp; Ledger</span></a>
+        <a href="/admin/content.html" class="nav-link"><span>CMS &amp; Banners</span></a>
+        <a href="/admin/categories.html" class="nav-link"><span>Categories</span></a>
+        <a href="/admin/audit.html" class="nav-link"><span>Audit Log</span></a>
+        <a href="/admin/settings.html" class="nav-link"><span>Settings &amp; Roles</span></a>
       </nav>
       <div class="header-actions">
-        <a href="seller/index.html" class="btn-outline" style="font-size: 0.8rem; padding: 6px 12px;">Merchant Portal →</a>
+        <a href="/seller/index.html" class="btn-outline" style="font-size: 0.8rem; padding: 6px 12px;">Merchant Portal →</a>
       </div>
     </div>
   </header>
@@ -106,8 +106,8 @@
 
   <!-- Scripts -->
   <script src="/shared/js/currency.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/account-ui.js"></script>
+  <script src="/auth/js/auth.js"></script>
+  <script src="/buyer/js/account-ui.js"></script>
   <script type="module">
     import { SellerAPI } from './js/api/seller.api.js';
     import { escapeHTML } from './js/core/utils.js';

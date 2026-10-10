@@ -21,13 +21,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Scoped Styles -->
-  <link rel="stylesheet" href="css/onboarding.css">
-  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
-  <link rel="stylesheet" href="../css/tokens.css">
-  <link rel="stylesheet" href="../css/layout.css">
-  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="/seller/onboarding/css/onboarding.css">
+  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
+  <link rel="stylesheet" href="/shared/css/tokens.css">
+  <link rel="stylesheet" href="/shared/css/layout.css">
+  <link rel="stylesheet" href="/shared/css/base.css">
 </head>
-<body class="onb" data-layout="storefront">
+<body class="onb" data-layout="storefront" data-access="public" data-area="seller">
   <div id="site-header"></div>
 
   <!-- Top Sticky Navigation Bar (72px) -->
@@ -54,7 +54,7 @@
               <a href="apply.html" class="btn-primary" style="height: 48px; padding: 0 28px; font-size: 16px;">
                 Become a Seller <i class="fa-solid fa-arrow-right" style="font-size: 13px;"></i>
               </a>
-              <a href="../seller/index.html" class="btn-outline" style="height: 48px; padding: 0 20px; font-size: 15px;">
+              <a href="/seller/index.html" class="btn-outline" style="height: 48px; padding: 0 20px; font-size: 15px;">
                 View Demo Seller Dashboard <i class="fa-solid fa-chart-pie" style="font-size: 13px; margin-left: 4px;"></i>
               </a>
               <a href="#how-it-works" class="btn-outline" style="height: 48px; padding: 0 20px; font-size: 15px;">
@@ -350,6 +350,6 @@
     initLanding();
   </script>
   <!-- Unified Layout Module -->
-  <script type="module" src="../js/core/layout.js"></script>
+  <script type="module" src="/shared/js/core/layout.js"></script>
 </body>
 </html>

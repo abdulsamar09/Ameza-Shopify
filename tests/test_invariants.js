@@ -37,11 +37,11 @@ async function runInvariantsTest() {
   console.log('  RUNNING SECTION 9 INVARIANT VALIDATION TESTS');
   console.log('====================================================\n');
 
-  const { SeedService, DEMO_IDENTITIES } = await import('../js/api/seed.js');
-  const { CartAPI } = await import('../js/api/cart.api.js');
-  const { OrdersAPI } = await import('../js/api/orders.api.js');
-  const { LedgerAPI } = await import('../js/api/ledger.api.js');
-  const { escapeHTML } = await import('../js/core/utils.js');
+  const { SeedService, DEMO_IDENTITIES } = await import('../shared/js/api/seed.js');
+  const { CartAPI } = await import('../shared/js/api/cart.api.js');
+  const { OrdersAPI } = await import('../shared/js/api/orders.api.js');
+  const { LedgerAPI } = await import('../shared/js/api/ledger.api.js');
+  const { escapeHTML } = await import('../shared/js/core/utils.js');
 
   // Initialize seed dataset
   SeedService.init(true);

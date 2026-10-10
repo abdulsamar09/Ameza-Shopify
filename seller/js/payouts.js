@@ -8,7 +8,7 @@
  */
 
 import { Icons } from './icons.js';
-import { escapeHTML, formatMoney, showToast } from './core/utils.js';
+import { escapeHTML, formatMoney, showToast } from '/shared/js/core/utils.js';
 import { LedgerAPI } from './api/ledger.api.js';
 import { PayoutsAPI } from './api/payouts.api.js';
 

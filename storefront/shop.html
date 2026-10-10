@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shop all products | AMEZA</title>
   <meta name="description" content="Shop handcrafted artisan goods, clothing, smart electronics, luxury watches, leather belts, and bags across the United States on AMEZA.">
-  <link rel="canonical" href="shop.html">
+  <link rel="canonical" href="/storefront/shop.html">
   <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
 
   <!-- Google Fonts: Inter & Plus Jakarta Sans -->
@@ -35,7 +35,7 @@
   }
   </script>
 </head>
-<body class="shop" data-layout="storefront">
+<body class="shop" data-layout="storefront" data-access="public" data-area="storefront">
   <!-- Shared Header (Rendered by js/core/layout.js) -->
   <div id="site-header"></div>
 
@@ -46,7 +46,7 @@
   <section class="shop-hero" id="shop-hero-section">
     <div class="shop-hero-container">
       <nav class="shop-breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html">Home</a>
+        <a href="/">Home</a>
         <span class="shop-breadcrumb-sep">/</span>
         <span class="shop-breadcrumb-current" id="shop-crumb-current">Shop</span>
       </nav>
@@ -312,7 +312,7 @@
 
   <!-- Scripts -->
   <script src="/shared/js/currency.js"></script>
-  <script src="js/auth.js"></script>
+  <script src="/auth/js/auth.js"></script>
   <script type="module" src="/shared/js/cart-drawer.js"></script>
   <script type="module" src="/shared/js/core/layout.js"></script>
   <script type="module" src="/storefront/js/shop-page.js"></script>

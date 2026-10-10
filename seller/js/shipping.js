@@ -5,8 +5,8 @@
  * USA compliance: USD cents formatting, American English, USPS carrier standards.
  */
 
-import { escapeHTML, showToast } from './shell.js';
-import { formatMoney } from './core/utils.js';
+import { escapeHTML, showToast } from '/seller/js/dashboard-shell.js';
+import { formatMoney } from '/shared/js/core/utils.js';
 
 const SHIPPING_STORAGE_KEY = 'ameza_seller_shipping_config';
 const VACATION_STORAGE_KEY = 'ameza_seller_vacation_mode';

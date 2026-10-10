@@ -8,12 +8,12 @@
   <title>Order Details | AMEZA Account</title>
   <meta name="description" content="View your order details.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/account.css">
-  <link rel="icon" type="image/png" href="assets/ameza-logo.png">
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="/shared/css/style.css">
+  <link rel="stylesheet" href="/buyer/css/account.css">
+  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
+  <link rel="stylesheet" href="/shared/css/tokens.css">
+  <link rel="stylesheet" href="/shared/css/layout.css">
+  <link rel="stylesheet" href="/shared/css/base.css">
 </head>
 <body data-layout="storefront">
   <div id="site-header"></div>
@@ -41,9 +41,9 @@
   <div class="account-toast-container" id="account-toast-container"></div>
 
   <!-- Currency Engine -->
-  <script src="js/currency.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/account-ui.js"></script>
+  <script src="/shared/js/currency.js"></script>
+  <script src="/auth/js/auth.js"></script>
+  <script src="/buyer/js/account-ui.js"></script>
   <script>
     (function() {
       const Auth = window.AmezaAuth;
@@ -63,11 +63,11 @@
     const main = document.getElementById('order-detail-main');
 
     if (!orderId) {
-      main.innerHTML = `<div class="account-empty-state"><h3>No order specified</h3><p><a href="account-orders.html" class="btn-section-action" style="text-decoration:none;">Back to Orders</a></p></div>`;
+      main.innerHTML = `<div class="account-empty-state"><h3>No order specified</h3><p><a href="/buyer/orders.html" class="btn-section-action" style="text-decoration:none;">Back to Orders</a></p></div>`;
     } else {
       const order = Auth.getOrderById(user.id, orderId);
       if (!order) {
-        main.innerHTML = `<div class="account-card"><div class="account-card-body account-empty-state"><h3>Order not found</h3><p>This order doesn't exist or doesn't belong to your account.</p><a href="account-orders.html" class="btn-section-action" style="text-decoration:none; display:inline-flex;">← Back to Orders</a></div></div>`;
+        main.innerHTML = `<div class="account-card"><div class="account-card-body account-empty-state"><h3>Order not found</h3><p>This order doesn't exist or doesn't belong to your account.</p><a href="/buyer/orders.html" class="btn-section-action" style="text-decoration:none; display:inline-flex;">← Back to Orders</a></div></div>`;
       } else {
         const items = Array.isArray(order.items) ? order.items : [];
         const subtotal = order.subtotal || order.total || 0;
@@ -77,9 +77,9 @@
         main.innerHTML = `
           <!-- Breadcrumb -->
           <div style="margin-bottom: 20px; font-size: 0.85rem; color: var(--text-muted);">
-            <a href="account.html" style="color: var(--text-muted); text-decoration:none;">Account</a>
+            <a href="/buyer/" style="color: var(--text-muted); text-decoration:none;">Account</a>
             <span style="margin: 0 6px;">›</span>
-            <a href="account-orders.html" style="color: var(--text-muted); text-decoration:none;">Orders</a>
+            <a href="/buyer/orders.html" style="color: var(--text-muted); text-decoration:none;">Orders</a>
             <span style="margin: 0 6px;">›</span>
             <span style="color: var(--dark); font-weight: 700;">#${order.id}</span>
           </div>
@@ -94,7 +94,7 @@
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
                   ${UI.statusBadge(order.status || 'Processing')}
-                  <a href="account-orders.html" class="btn-section-action secondary" style="font-size: 0.8rem; padding: 6px 14px; text-decoration:none;">← Back to Orders</a>
+                  <a href="/buyer/orders.html" class="btn-section-action secondary" style="font-size: 0.8rem; padding: 6px 14px; text-decoration:none;">← Back to Orders</a>
                 </div>
               </div>
 
@@ -152,6 +152,6 @@
     })();
   </script>
   <!-- Unified Layout Module -->
-  <script type="module" src="js/core/layout.js"></script>
+  <script type="module" src="/shared/js/core/layout.js"></script>
 </body>
 </html>

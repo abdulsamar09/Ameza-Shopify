@@ -4,7 +4,7 @@
  */
 import { getInventory, saveInventory, getLowStockThreshold, saveLowStockThreshold } from './data.js';
 import { Icons } from './icons.js';
-import { showToast } from './shell.js';
+import { showToast } from '/seller/js/dashboard-shell.js';
 
 export function initInventory() {
   let inventory = getInventory();

@@ -1,5 +1,13 @@
-_trash
+_trash/
 _trash/**
+tests/
+tests/**
+scripts/
+scripts/**
+docs/
+docs/**
+db/
+db/**
 .git
 .gitignore
 *.ps1

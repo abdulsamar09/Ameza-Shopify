@@ -5,7 +5,7 @@
 
 import { Icons } from './icons.js';
 import { getProducts, saveProducts, formatMoney, CATEGORIES_LIST } from './data.js';
-import { showToast, escapeHTML } from './shell.js';
+import { showToast, escapeHTML } from '/seller/js/dashboard-shell.js';
 
 let state = {
   products: [],

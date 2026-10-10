@@ -8,10 +8,10 @@
   <title>Analytics & Store Intelligence | AMEZA Seller Central</title>
   <meta name="description" content="Review United States conversion funnels, regional customer demand, and top-selling SKUs.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="../css/dashboard.css">
-  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
+  <link rel="stylesheet" href="/shared/css/dashboard.css">
+  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
 </head>
-<body data-layout="none">
+<body data-layout="none" data-access="seller" data-area="seller">
   <!-- Top Bar (Shell injected) -->
   <header id="app-topbar"></header>
 
@@ -30,8 +30,8 @@
 
   <!-- Application Bootstrap Script (ES Modules) -->
   <script type="module">
-    import { initShell } from '../js/shell.js';
-    import { initAnalytics } from '../js/analytics.js';
+    import { initShell } from "/seller/js/dashboard-shell.js";
+    import { initAnalytics } from "/seller/js/analytics.js";
 
     // Initialize reusable shell with 'analytics' as active page
     initShell('analytics');

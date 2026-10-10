@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="/storefront/css/product.css">
   <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
 </head>
-<body class="product-page" data-layout="storefront">
+<body class="product-page" data-layout="storefront" data-access="public" data-area="storefront">
   <div id="site-header"></div>
 
   <!-- Persistent Demo Control Bar -->
@@ -32,11 +32,11 @@
     
     <!-- Breadcrumb Navigation -->
     <nav class="pdp-breadcrumb-nav" aria-label="Breadcrumb">
-      <a href="index.html">Home</a>
+      <a href="/">Home</a>
       <span class="breadcrumb-sep">&gt;</span>
-      <a href="shop.html?category=leather-belts" id="pdp-crumb-cat">Leather Goods</a>
+      <a href="/storefront/shop.html?category=leather-belts" id="pdp-crumb-cat">Leather Goods</a>
       <span class="breadcrumb-sep">&gt;</span>
-      <a href="subcategory.html?sub=backpacks&cat=bags" id="pdp-crumb-sub">Bags</a>
+      <a href="/storefront/subcategory.html?sub=backpacks&cat=bags" id="pdp-crumb-sub">Bags</a>
       <span class="breadcrumb-sep">&gt;</span>
       <span class="breadcrumb-current" id="breadcrumb-product-name">Handcrafted Leather Backpack</span>
     </nav>
@@ -205,10 +205,10 @@
         <div class="pdp-tags-section">
           <span class="pdp-tags-label"><i class="fa-solid fa-tags"></i> Tags:</span>
           <div id="pdp-tags-container" class="pdp-tags-row">
-            <a href="tag.html?tag=handcrafted" class="tax-mini-tag">#Handcrafted</a>
-            <a href="tag.html?tag=leather" class="tax-mini-tag">#Full-Grain</a>
-            <a href="tag.html?tag=artisan" class="tax-mini-tag">#Artisan Made</a>
-            <a href="tag.html?tag=bestseller" class="tax-mini-tag">#Best Seller</a>
+            <a href="/storefront/tag.html?tag=handcrafted" class="tax-mini-tag">#Handcrafted</a>
+            <a href="/storefront/tag.html?tag=leather" class="tax-mini-tag">#Full-Grain</a>
+            <a href="/storefront/tag.html?tag=artisan" class="tax-mini-tag">#Artisan Made</a>
+            <a href="/storefront/tag.html?tag=bestseller" class="tax-mini-tag">#Best Seller</a>
           </div>
         </div>
 
@@ -460,7 +460,7 @@
 
   <!-- Currency & Auth Engines -->
   <script src="/shared/js/currency.js"></script>
-  <script src="js/auth.js"></script>
+  <script src="/auth/js/auth.js"></script>
   <script type="module" src="/shared/js/cart-drawer.js"></script>
 
   <!-- Product Page Logic Module Initialization -->

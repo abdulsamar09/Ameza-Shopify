@@ -5,7 +5,7 @@
 
 import { Icons } from './icons.js';
 import { COMMISSION_RATE, formatMoney } from './data.js';
-import { showToast, escapeHTML } from './shell.js';
+import { showToast, escapeHTML } from '/seller/js/dashboard-shell.js';
 
 let order = {
   id: '#AM-1042',

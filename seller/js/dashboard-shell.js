@@ -12,7 +12,7 @@
  * - Customize Dashboard trigger button
  */
 
-import { escapeHTML, showToast } from './core/utils.js';
+import { escapeHTML, showToast } from '/shared/js/core/utils.js';
 
 export const IDENTITIES = {
   customer: {

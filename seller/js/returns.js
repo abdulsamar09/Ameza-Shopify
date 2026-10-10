@@ -4,8 +4,8 @@
  * USA compliance: USD cents formatting, American English, Eastern Time formats.
  */
 
-import { escapeHTML, showToast } from './shell.js';
-import { formatMoney } from './core/utils.js';
+import { escapeHTML, showToast } from '/seller/js/dashboard-shell.js';
+import { formatMoney } from '/shared/js/core/utils.js';
 
 const STORAGE_KEY = 'ameza_seller_returns_data';
 

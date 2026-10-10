@@ -25,7 +25,7 @@ global.crypto = {
 };
 
 global.window = global;
-const authCode = fs.readFileSync(path.join(__dirname, '../js/auth.js'), 'utf8');
+const authCode = fs.readFileSync(path.join(__dirname, '../auth/js/auth.js'), 'utf8');
 eval(authCode);
 
 async function testOrderIsolation() {

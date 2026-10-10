@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/shared/css/layout.css">
   <link rel="stylesheet" href="/shared/css/base.css">
 </head>
-<body data-layout="storefront">
+<body data-layout="storefront" data-access="buyer" data-area="buyer">
   <div id="site-header"></div>
 
   
@@ -40,7 +40,7 @@
               </div>
               <div style="display: flex; align-items: center; gap: 10px;">
                 <span id="wishlist-count-badge" class="twofa-status-badge disabled-badge"></span>
-                <a href="wishlist.html" class="btn-section-action secondary" style="font-size: 0.8rem; padding: 6px 14px; text-decoration: none;">Full View</a>
+                <a href="/storefront/wishlist.html" class="btn-section-action secondary" style="font-size: 0.8rem; padding: 6px 14px; text-decoration: none;">Full View</a>
               </div>
             </div>
             <div class="account-card-body">
@@ -60,7 +60,7 @@
 
   <!-- Currency Engine -->
   <script src="/shared/js/currency.js"></script>
-  <script src="js/auth.js"></script>
+  <script src="/auth/js/auth.js"></script>
   <script src="/buyer/js/account-ui.js"></script>
   <script>
     (function() {
@@ -108,7 +108,7 @@
               </div>
               <h3>Your wishlist is empty</h3>
               <p>Save items you love to find them again easily.</p>
-              <a href="index.html" class="btn-section-action">Start Shopping</a>
+              <a href="/" class="btn-section-action">Start Shopping</a>
             </div>`;
           return;
         }

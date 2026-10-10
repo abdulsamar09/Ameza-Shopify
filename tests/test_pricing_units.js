@@ -52,11 +52,11 @@ async function runPricingUnitsTests() {
   console.log('====================================================\n');
 
   // Import core utilities & modules
-  const { formatMoney } = await import('../js/core/utils.js');
-  const { calculateDiscountPercent } = await import('../js/core/pricing.js');
-  const { PRODUCTS } = await import('../js/products-data.js');
+  const { formatMoney } = await import('../shared/js/core/utils.js');
+  const { calculateDiscountPercent } = await import('../shared/js/core/pricing.js');
+  const { PRODUCTS } = await import('../shared/js/products-data.js');
   const { STORE_DATA } = await import('../js/store-page.js');
-  const { getCart, saveCart } = await import('../js/cart-drawer.js');
+  const { getCart, saveCart } = await import('../shared/js/cart-drawer.js');
 
   // Clear storage
   global.localStorage.clear();

@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shop all products | AMEZA</title>
   <meta name="description" content="Shop handcrafted artisan goods, clothing, smart electronics, luxury watches, leather belts, and bags across the United States on AMEZA.">
-  <link rel="canonical" href="shop.html">
-  <link rel="icon" type="image/png" href="assets/ameza-logo.png">
+  <link rel="canonical" href="/storefront/shop.html">
+  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
 
   <!-- Google Fonts: Inter & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,11 +19,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Core & Shared Styles -->
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/cart-drawer.css">
-  <link rel="stylesheet" href="css/shop.css">
+  <link rel="stylesheet" href="/shared/css/tokens.css">
+  <link rel="stylesheet" href="/shared/css/layout.css">
+  <link rel="stylesheet" href="/shared/css/base.css">
+  <link rel="stylesheet" href="/storefront/css/cart-drawer.css">
+  <link rel="stylesheet" href="/storefront/css/shop.css">
 
   <!-- Structured Data JSON-LD for ItemList (Dynamic in JS) -->
   <script type="application/ld+json" id="shop-jsonld">
@@ -40,13 +40,13 @@
   <div id="site-header"></div>
 
   <!-- Persistent Demo Control Bar -->
-  <script type="module" src="js/demo-bar.js"></script>
+  <script type="module" src="/shared/js/demo-bar.js"></script>
 
   <!-- SHORT HERO SECTION (160–220px desktop, ~120px mobile) -->
   <section class="shop-hero" id="shop-hero-section">
     <div class="shop-hero-container">
       <nav class="shop-breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html">Home</a>
+        <a href="/">Home</a>
         <span class="shop-breadcrumb-sep">/</span>
         <span class="shop-breadcrumb-current" id="shop-crumb-current">Shop</span>
       </nav>
@@ -311,10 +311,10 @@
   <div id="site-footer"></div>
 
   <!-- Scripts -->
-  <script src="js/currency.js"></script>
-  <script src="js/auth.js"></script>
-  <script type="module" src="js/cart-drawer.js"></script>
-  <script type="module" src="js/core/layout.js"></script>
+  <script src="/shared/js/currency.js"></script>
+  <script src="/auth/js/auth.js"></script>
+  <script type="module" src="/shared/js/cart-drawer.js"></script>
+  <script type="module" src="/shared/js/core/layout.js"></script>
   <script type="module" src="js/shop-page.js"></script>
 </body>
 </html>

@@ -8,9 +8,9 @@
   <title>Create Discount Code | AMEZA Seller Central</title>
   <meta name="description" content="Set up a new promotional discount or coupon code for your AMEZA store.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="../css/tokens.css">
-  <link rel="stylesheet" href="../css/dashboard.css">
-  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
+  <link rel="stylesheet" href="/shared/css/tokens.css">
+  <link rel="stylesheet" href="/shared/css/dashboard.css">
+  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
   <style>
     .create-discount-grid {
       display: grid;
@@ -48,7 +48,7 @@
     }
   </style>
 </head>
-<body data-layout="none">
+<body data-layout="none" data-access="seller" data-area="seller">
   <!-- Top Bar (Shell injected) -->
   <header id="app-topbar"></header>
 
@@ -63,14 +63,14 @@
         <!-- Page Header -->
         <div class="page-header" style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
           <div style="display: flex; align-items: center; gap: 12px;">
-            <a href="discounts.html" class="btn-header-secondary" id="btn-back-discounts" style="padding: 8px 14px; text-decoration: none; font-weight: 700; min-height: 44px; display: inline-flex; align-items: center;">&larr; Discounts</a>
+            <a href="/seller/discounts.html" class="btn-header-secondary" id="btn-back-discounts" style="padding: 8px 14px; text-decoration: none; font-weight: 700; min-height: 44px; display: inline-flex; align-items: center;">&larr; Discounts</a>
             <div>
               <h1 class="page-title" id="page-title-heading" style="margin: 0; font-size: 22px;">Create Discount</h1>
               <p class="page-subtitle" style="margin-top: 2px; font-size: 13px;">Configure promotion parameters, customer eligibility, and validity period.</p>
             </div>
           </div>
           <div class="page-header-actions" style="display: flex; gap: 10px;">
-            <a href="discounts.html" class="btn-header-secondary" style="text-decoration: none; min-height: 44px; display: inline-flex; align-items: center;">Discard</a>
+            <a href="/seller/discounts.html" class="btn-header-secondary" style="text-decoration: none; min-height: 44px; display: inline-flex; align-items: center;">Discard</a>
             <button type="button" id="btn-save-discount" class="btn-header-primary" style="min-height: 44px; padding: 0 20px; font-weight: 700;">Save discount</button>
           </div>
         </div>
@@ -216,7 +216,7 @@
               </div>
 
               <div style="display: flex; gap: 10px;">
-                <a href="discounts.html" class="btn-header-secondary" style="flex: 1; text-align: center; text-decoration: none; padding: 10px; font-weight: 700; min-height: 44px; display: inline-flex; align-items: center; justify-content: center;">Cancel</a>
+                <a href="/seller/discounts.html" class="btn-header-secondary" style="flex: 1; text-align: center; text-decoration: none; padding: 10px; font-weight: 700; min-height: 44px; display: inline-flex; align-items: center; justify-content: center;">Cancel</a>
                 <button type="button" id="btn-create-discount-submit" class="btn-header-primary" style="flex: 2; padding: 10px; font-weight: 700; min-height: 44px;">
                   Create discount
                 </button>
@@ -229,8 +229,8 @@
   </div>
 
   <script type="module">
-    import { initShell, showToast } from '../js/shell.js';
-    import { getCoupons, saveCoupons } from '../js/discounts.js';
+    import { initShell, showToast } from "/seller/js/dashboard-shell.js";
+    import { getCoupons, saveCoupons } from "/seller/js/discounts.js";
 
     initShell('discounts');
 

@@ -29,7 +29,7 @@ global.crypto = {
 // Load auth engine
 const fs = require('fs');
 const path = require('path');
-const authCode = fs.readFileSync(path.join(__dirname, '../js/auth.js'), 'utf8');
+const authCode = fs.readFileSync(path.join(__dirname, '../auth/js/auth.js'), 'utf8');
 
 // Evaluate in global context
 global.window = global;

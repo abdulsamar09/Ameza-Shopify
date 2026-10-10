@@ -9,10 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/dashboard.css">
-  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
+  <link rel="stylesheet" href="/shared/css/dashboard.css">
+  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
 </head>
-<body data-layout="none">
+<body data-layout="none" data-access="seller" data-area="seller">
   <!-- App Top Bar Component -->
   <header id="app-topbar"></header>
 
@@ -309,8 +309,8 @@
 
   <!-- Scripts -->
   <script type="module">
-    import { initShell } from '../js/shell.js';
-    import { initInventory } from '../js/inventory.js';
+    import { initShell } from "/seller/js/dashboard-shell.js";
+    import { initInventory } from "/seller/js/inventory.js";
 
     initShell('inventory');
     initInventory();

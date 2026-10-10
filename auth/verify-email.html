@@ -10,14 +10,14 @@
   <meta name="description" content="Verify your AMEZA account email address to complete registration.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="/shared/css/style.css">
-  <link rel="stylesheet" href="css/account.css">
+  <link rel="stylesheet" href="/buyer/css/account.css">
   <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
   <link rel="stylesheet" href="/shared/css/tokens.css">
   <link rel="stylesheet" href="/shared/css/layout.css">
   <link rel="stylesheet" href="/shared/css/base.css">
 </head>
 
-<body data-layout="focus">
+<body data-layout="focus" data-access="public" data-area="auth">
   <div id="site-header"></div>
 
   <!-- TOP BAR -->
@@ -31,7 +31,7 @@
     <div class="auth-page-wrapper">
       <div class="auth-card" style="text-align: center;">
 
-        <a href="index.html" class="auth-logo-link">
+        <a href="/" class="auth-logo-link">
           <img src="/assets/ameza-logo.png" alt="AMEZA" onerror="this.style.display='none'">
         </a>
 
@@ -44,7 +44,7 @@
           </div>
           <h1 class="auth-title">Email Verified!</h1>
           <p class="auth-subtitle">Your email has been successfully verified. You can now access your account.</p>
-          <a href="account.html" class="btn-auth-primary"
+          <a href="/buyer/" class="btn-auth-primary"
             style="display: flex; text-decoration: none; margin-top: 20px;">
             Continue to Account →
           </a>
@@ -61,7 +61,7 @@
           </div>
           <h1 class="auth-title">Link Expired</h1>
           <p class="auth-subtitle" id="expired-msg">This verification link has expired. Please request a new one.</p>
-          <a href="login.html" class="btn-auth-primary"
+          <a href="/auth/login.html" class="btn-auth-primary"
             style="display: flex; text-decoration: none; margin-top: 16px;">Back to Sign In</a>
         </div>
 
@@ -122,7 +122,7 @@
 
           <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <a href="#" class="auth-link" id="change-email-link" style="font-size: 0.85rem;">Change Email Address</a>
-            <a href="login.html" class="auth-link" style="font-size: 0.85rem;">← Back to Sign In</a>
+            <a href="/auth/login.html" class="auth-link" style="font-size: 0.85rem;">← Back to Sign In</a>
           </div>
 
           <!-- Dev token display -->

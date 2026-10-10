@@ -30,7 +30,7 @@ global.crypto = {
 global.window = global;
 
 // Load auth engine
-const authCode = fs.readFileSync(path.join(__dirname, '../js/auth.js'), 'utf8');
+const authCode = fs.readFileSync(path.join(__dirname, '../auth/js/auth.js'), 'utf8');
 eval(authCode);
 
 async function runPhase2Verification() {
@@ -54,8 +54,8 @@ async function runPhase2Verification() {
   console.log('Step 2 - Merchant Session Active:', loginRes.success ? 'PASSED' : 'FAILED');
 
   // Dynamically import SellerAPI & CatalogAPI
-  const { SellerAPI } = await import('../js/api/seller.api.js');
-  const { CatalogAPI } = await import('../js/api/catalog.api.js');
+  const { SellerAPI } = await import('../shared/js/api/seller.api.js');
+  const { CatalogAPI } = await import('../shared/js/api/catalog.api.js');
 
   // Step 3: Submit U.S. Merchant Application
   const appRes = await SellerAPI.submitSellerApplication({

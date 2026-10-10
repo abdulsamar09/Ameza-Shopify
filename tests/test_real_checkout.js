@@ -46,9 +46,9 @@ async function runRealCheckoutTests() {
   console.log('====================================================\n');
 
   // Load modules
-  const { OrdersAPI } = await import('../js/api/orders.api.js');
-  const { LedgerAPI } = await import('../js/api/ledger.api.js');
-  const { formatMoney } = await import('../js/core/utils.js');
+  const { OrdersAPI } = await import('../shared/js/api/orders.api.js');
+  const { LedgerAPI } = await import('../shared/js/api/ledger.api.js');
+  const { formatMoney } = await import('../shared/js/core/utils.js');
 
   // Reset storage
   global.localStorage.clear();

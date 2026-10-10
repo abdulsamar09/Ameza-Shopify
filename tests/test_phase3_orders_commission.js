@@ -38,9 +38,9 @@ async function runPhase3Tests() {
   console.log('  RUNNING PHASE 3 MULTI-VENDOR CHECKOUT & LEDGER TESTS');
   console.log('====================================================\n');
 
-  const { CartAPI } = await import('../js/api/cart.api.js');
-  const { OrdersAPI } = await import('../js/api/orders.api.js');
-  const { LedgerAPI } = await import('../js/api/ledger.api.js');
+  const { CartAPI } = await import('../shared/js/api/cart.api.js');
+  const { OrdersAPI } = await import('../shared/js/api/orders.api.js');
+  const { LedgerAPI } = await import('../shared/js/api/ledger.api.js');
 
   // Clear mock storage to ensure clean test environment
   global.localStorage.clear();

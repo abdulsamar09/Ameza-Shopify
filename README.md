@@ -4,23 +4,22 @@ A AMEZA Admin-style seller dashboard ("Home") built with pixel-perfect attention
 
 ---
 
-## 🚀 How to Run
+## 🚀 Quick Start
 
-### Method 1: Direct File Opening (Zero Install)
-You can open the dashboard directly in any modern browser without any web server:
-- Double-click **`index.html`** or drag it into Chrome, Edge, Safari, or Firefox.
+The platform uses modular ES modules and root-absolute paths (`/shared/...`, `/assets/...`). **The site must be served over HTTP; opening files by double-click is no longer supported.**
 
-### Method 2: Local Static Server (Recommended for ES Modules)
-If you prefer running via a local HTTP server:
 ```bash
-# Using Node.js built-in static server
-node server.js
-# Then open: http://localhost:3000
+# Install dependencies (if needed) & start local server
+npm start
+# Server listens at: http://localhost:3000/
 ```
-Or with Python:
+
+### Development Scripts
 ```bash
-python -m http.server 3000
-# Then open: http://localhost:3000
+npm start          # Starts server on http://localhost:3000
+npm test           # Runs complete invariant, pricing, and checkout test suite
+npm run check      # Validates architectural structure and USA standards
+npm run qa         # Crawls and audits all internal routes and links
 ```
 
 ---

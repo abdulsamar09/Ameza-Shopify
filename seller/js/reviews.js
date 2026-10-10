@@ -6,7 +6,7 @@
  * USA compliance: US customer names, American English, Eastern Time.
  */
 
-import { escapeHTML, showToast } from './shell.js';
+import { escapeHTML, showToast } from '/seller/js/dashboard-shell.js';
 
 const STORAGE_KEY = 'ameza_seller_reviews_v2';
 const MODERATION_KEY = 'ameza_admin_moderation_queue';

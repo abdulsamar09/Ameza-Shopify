@@ -5,7 +5,7 @@
 
 import { Icons } from './icons.js';
 import { getOrders, saveOrders, formatMoney } from './data.js';
-import { showToast, escapeHTML } from './shell.js';
+import { showToast, escapeHTML } from '/seller/js/dashboard-shell.js';
 
 let state = {
   orders: [],

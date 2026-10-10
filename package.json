@@ -6,15 +6,17 @@
   "scripts": {
     "start": "node server.js",
     "seed": "node scripts/seed_catalog.js",
-    "test": "node scripts/check_usa.js && node scripts/test_xss_escape.js && node scripts/test_auth_flow.js && node scripts/test_order_isolation.js && node scripts/test_phase2_flow.js && node scripts/test_phase3_orders_commission.js && node scripts/test_invariants.js && node scripts/test_pricing_units.js && node scripts/test_real_checkout.js",
-    "test:xss": "node scripts/test_xss_escape.js",
-    "test:auth": "node scripts/test_auth_flow.js",
-    "test:orders": "node scripts/test_order_isolation.js",
-    "test:phase2": "node scripts/test_phase2_flow.js",
-    "test:phase3": "node scripts/test_phase3_orders_commission.js",
-    "test:invariants": "node scripts/test_invariants.js",
-    "test:pricing": "node scripts/test_pricing_units.js",
-    "test:checkout": "node scripts/test_real_checkout.js"
+    "test": "node scripts/check_usa.js && node tests/test_xss_escape.js && node tests/test_auth_flow.js && node tests/test_order_isolation.js && node tests/test_phase2_flow.js && node tests/test_phase3_orders_commission.js && node tests/test_invariants.js && node tests/test_pricing_units.js && node tests/test_real_checkout.js",
+    "check": "node scripts/check_structure.js && node scripts/check_usa.js",
+    "qa": "node scripts/audit_links.js",
+    "test:xss": "node tests/test_xss_escape.js",
+    "test:auth": "node tests/test_auth_flow.js",
+    "test:orders": "node tests/test_order_isolation.js",
+    "test:phase2": "node tests/test_phase2_flow.js",
+    "test:phase3": "node tests/test_phase3_orders_commission.js",
+    "test:invariants": "node tests/test_invariants.js",
+    "test:pricing": "node tests/test_pricing_units.js",
+    "test:checkout": "node tests/test_real_checkout.js"
   },
   "keywords": [
     "marketplace",

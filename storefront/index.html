@@ -9,7 +9,7 @@
   <meta name="description" content="Discover premium clothing, smart tech electronics, luxury watches, handcrafted leather bags & accessories at AMEZA.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="/shared/css/style.css">
-  <link rel="stylesheet" href="css/account.css">
+  <link rel="stylesheet" href="/buyer/css/account.css">
   <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
   <link rel="stylesheet" href="/shared/css/tokens.css">
   <link rel="stylesheet" href="/shared/css/layout.css">
@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="/storefront/css/cart-drawer.css">
   <link rel="stylesheet" href="/storefront/css/stores.css">
 </head>
-<body data-layout="storefront">
+<body data-layout="storefront" data-access="public" data-area="storefront">
   <div id="site-header"></div>
 
   <!-- Persistent Demo Control Bar -->
@@ -76,12 +76,12 @@
           <!-- Category Shortcut Pills -->
           <div class="hero-shortcuts">
             <span class="shortcut-label">Popular:</span>
-            <a href="shop.html?category=clothing" class="shortcut-pill">Clothing</a>
-            <a href="shop.html?category=electronics" class="shortcut-pill">Electronics</a>
-            <a href="shop.html?category=watches" class="shortcut-pill">Watches</a>
-            <a href="shop.html?category=leather-belts" class="shortcut-pill">Leather Belts</a>
-            <a href="shop.html?category=leather-wallets" class="shortcut-pill">Wallets</a>
-            <a href="shop.html?category=bags" class="shortcut-pill">Bags &amp; Totes</a>
+            <a href="/storefront/shop.html?category=clothing" class="shortcut-pill">Clothing</a>
+            <a href="/storefront/shop.html?category=electronics" class="shortcut-pill">Electronics</a>
+            <a href="/storefront/shop.html?category=watches" class="shortcut-pill">Watches</a>
+            <a href="/storefront/shop.html?category=leather-belts" class="shortcut-pill">Leather Belts</a>
+            <a href="/storefront/shop.html?category=leather-wallets" class="shortcut-pill">Wallets</a>
+            <a href="/storefront/shop.html?category=bags" class="shortcut-pill">Bags &amp; Totes</a>
           </div>
         </div>
 
@@ -150,7 +150,7 @@
             <h2>Best Selling Categories</h2>
             <p>Explore curated collections crafted for style, durability, and daily elegance</p>
           </div>
-          <a href="shop.html" class="view-all-link">
+          <a href="/storefront/shop.html" class="view-all-link">
             View All Categories &rarr;
           </a>
         </div>
@@ -170,7 +170,7 @@
             <p>Shop directly from verified independent makers, master leather crafters, and certified brand boutiques</p>
           </div>
           <div class="stores-header-actions">
-            <a href="stores.html" class="btn-view-all-stores" id="link-view-all-stores" title="View All Marketplace Stores">
+            <a href="/storefront/stores.html" class="btn-view-all-stores" id="link-view-all-stores" title="View All Marketplace Stores">
               <span>View All Stores</span>
               <i class="fa-solid fa-arrow-right"></i>
             </a>
@@ -235,7 +235,7 @@
             <h2>Electronics &amp; Watches</h2>
             <p>High-performance smartwatches, wireless audio, and precision timepieces</p>
           </div>
-          <a href="shop.html?category=electronics" class="view-all-link">
+          <a href="/storefront/shop.html?category=electronics" class="view-all-link">
             Browse All Electronics &rarr;
           </a>
         </div>
@@ -294,7 +294,7 @@
             <h2>Clothes &amp; Jewellery</h2>
             <p>Elevate your wardrobe with premium heavyweight cottons and modern silhouettes</p>
           </div>
-          <a href="shop.html?category=clothing" class="view-all-link">
+          <a href="/storefront/shop.html?category=clothing" class="view-all-link">
             View All Apparel &rarr;
           </a>
         </div>
@@ -350,7 +350,7 @@
             <h2>Leather Collection</h2>
             <p>Full-grain Italian cowhide belts, artisan buckles, and messenger carry bags</p>
           </div>
-          <a href="shop.html?category=leather-belts" class="view-all-link">
+          <a href="/storefront/shop.html?category=leather-belts" class="view-all-link">
             View All Leather &rarr;
           </a>
         </div>
@@ -369,7 +369,7 @@
             <h2>Latest Range</h2>
             <p>Newly released canvas totes, emerald hobo bags, luxury duffles, and RFID bifolds</p>
           </div>
-          <a href="shop.html?section=latest-range" class="view-all-link">
+          <a href="/storefront/shop.html?section=latest-range" class="view-all-link">
             Explore All New &rarr;
           </a>
         </div>
@@ -392,7 +392,7 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
             <span id="deals-live-timer">18h : 45m : 30s</span>
           </div>
-          <a href="shop.html?deals=1" class="view-all-link" style="margin-left:auto;">
+          <a href="/storefront/shop.html?deals=1" class="view-all-link" style="margin-left:auto;">
             View All Deals &rarr;
           </a>
         </div>
@@ -523,7 +523,7 @@
         Move All to Cart &rarr;
       </button>
       <div style="display: flex; gap: 8px;">
-        <a href="wishlist.html" class="btn-clear-search" style="flex: 1; justify-content: center; text-decoration: none;">
+        <a href="/storefront/wishlist.html" class="btn-clear-search" style="flex: 1; justify-content: center; text-decoration: none;">
           View Full Page
         </a>
         <button class="btn-clear-search" style="flex: 1; justify-content: center;" data-action="wishlist-clear-all">
@@ -633,8 +633,8 @@
   <!-- Currency Engine -->
   <script src="/shared/js/currency.js"></script>
   <!-- Auth engine for account icon state & profile dropdown -->
-  <script src="js/auth.js"></script>
-  <script type="module" src="js/app.js"></script>
+  <script src="/auth/js/auth.js"></script>
+  <script type="module" src="/shared/js/app.js"></script>
   <!-- Unified Layout Module -->
   <script type="module" src="/shared/js/core/layout.js"></script>
 </body>

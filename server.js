@@ -95,8 +95,9 @@ const server = http.createServer((req, res) => {
   const query = queryString ? `?${queryString}` : '';
   let reqPath = decodeURI(rawPath);
 
-  // Block access to _trash/ (always return 404)
-  if (reqPath.startsWith('/_trash/') || reqPath === '/_trash') {
+  // Block access to _trash, db, scripts, tests, docs (always return 404)
+  const BLOCKED_PREFIXES = ['/_trash', '/db', '/scripts', '/tests', '/docs'];
+  if (BLOCKED_PREFIXES.some(prefix => reqPath === prefix || reqPath.startsWith(prefix + '/'))) {
     res.statusCode = 404;
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.end('<h1>404 Not Found</h1><p><a href="/">Return to Home</a></p>');

@@ -5,7 +5,7 @@
  */
 
 import { Icons } from './icons.js';
-import { escapeHTML, showToast } from './shell.js';
+import { escapeHTML, showToast } from '/seller/js/dashboard-shell.js';
 
 // Sample period dataset with realistic US marketplace volume
 const ANALYTICS_DATA = {

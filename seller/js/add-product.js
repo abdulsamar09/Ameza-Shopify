@@ -5,7 +5,7 @@
 
 import { Icons } from './icons.js';
 import { getProducts, saveProducts, COMMISSION_RATE, CATEGORIES_LIST, BRANDS_LIST, formatMoney } from './data.js';
-import { showToast, escapeHTML } from './shell.js';
+import { showToast, escapeHTML } from '/seller/js/dashboard-shell.js';
 
 let isDirty = false;
 let editProductId = null;

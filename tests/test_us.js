@@ -14,7 +14,7 @@ const {
   isValidRoutingNumber,
   maskTin,
   carrierTrackingUrl
-} = require('../js/core/us.js');
+} = require('../shared/js/core/us.js');
 
 let passed = 0;
 let failed = 0;

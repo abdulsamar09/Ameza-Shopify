@@ -8,29 +8,29 @@
   <title>Manage Products | AMEZA Merchant Central</title>
   <meta name="description" content="Add, edit, bulk import and manage your marketplace catalog on AMEZA USA.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/account.css">
-  <link rel="stylesheet" href="css/seller.css">
-  <link rel="icon" type="image/png" href="assets/ameza-logo.png">
+  <link rel="stylesheet" href="/shared/css/style.css">
+  <link rel="stylesheet" href="/buyer/css/account.css">
+  <link rel="stylesheet" href="/seller/css/seller.css">
+  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
 </head>
 <body>
 
   <!-- Persistent Demo Control Bar -->
-  <script type="module" src="js/demo-bar.js"></script>
+  <script type="module" src="/shared/js/demo-bar.js"></script>
 
   <!-- MAIN HEADER -->
   <header class="header-sticky">
     <div class="container header-inner">
-      <a href="seller/index.html" class="logo-wrap" title="AMEZA Merchant Portal">
-        <img src="assets/ameza-logo.png" alt="AMEZA Logo" onerror="this.style.display='none'">
+      <a href="/seller/index.html" class="logo-wrap" title="AMEZA Merchant Portal">
+        <img src="/assets/ameza-logo.png" alt="AMEZA Logo" onerror="this.style.display='none'">
       </a>
       <nav class="main-nav">
-        <a href="seller/index.html" class="nav-link"><span>Overview</span></a>
+        <a href="/seller/index.html" class="nav-link"><span>Overview</span></a>
         <a href="seller-products.html" class="nav-link active"><span>Products &amp; Inventory</span></a>
         <a href="seller-orders.html" class="nav-link"><span>Orders</span></a>
         <a href="seller-payouts.html" class="nav-link"><span>Payouts</span></a>
         <a href="#" class="nav-link" id="nav-view-store" target="_blank"><span>Storefront</span></a>
-        <a href="admin-moderation.html" class="nav-link" style="color: #0284C7;"><span>Admin</span></a>
+        <a href="/admin/products.html" class="nav-link" style="color: #0284C7;"><span>Admin</span></a>
       </nav>
       <div class="header-actions">
         <button class="btn-primary" id="btn-open-create-modal" style="padding: 8px 16px; font-size: 0.85rem;">
@@ -140,7 +140,7 @@
           <label class="form-label">Primary Image URL *</label>
           <input type="url" class="form-input" id="prod-image" placeholder="https://... or assets/wp_products/wp_549_0.webp" value="assets/wp_products/wp_549_0.webp" required>
           <div style="margin-top: 6px; display: flex; align-items: center; gap: 10px;">
-            <img id="img-preview" src="assets/wp_products/wp_549_0.webp" style="width: 48px; height: 48px; border-radius: 6px; object-fit: cover; border: 1px solid var(--border);">
+            <img id="img-preview" src="/assets/wp_products/wp_549_0.webp" style="width: 48px; height: 48px; border-radius: 6px; object-fit: cover; border: 1px solid var(--border);">
             <span style="font-size: 0.75rem; color: var(--text-muted);">Paste an image link or use default demo asset.</span>
           </div>
         </div>
@@ -198,9 +198,9 @@
   <div id="account-toast-container"></div>
 
   <!-- Scripts -->
-  <script src="js/currency.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/account-ui.js"></script>
+  <script src="/shared/js/currency.js"></script>
+  <script src="/auth/js/auth.js"></script>
+  <script src="/buyer/js/account-ui.js"></script>
   <script type="module">
     import { SellerAPI } from './js/api/seller.api.js';
     import { escapeHTML } from './js/core/utils.js';

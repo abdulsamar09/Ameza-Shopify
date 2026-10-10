@@ -8,9 +8,9 @@
   <title>Shipping & Delivery Hub | AMEZA Seller Central</title>
   <meta name="description" content="Configure US regional delivery zones, USPS flat rates, handling times, and store vacation mode.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="../css/tokens.css">
-  <link rel="stylesheet" href="../css/dashboard.css">
-  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
+  <link rel="stylesheet" href="/shared/css/tokens.css">
+  <link rel="stylesheet" href="/shared/css/dashboard.css">
+  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
   <style>
     /* Scoped Shipping Styles */
     @media (max-width: 768px) {
@@ -40,7 +40,7 @@
     }
   </style>
 </head>
-<body data-layout="none">
+<body data-layout="none" data-access="seller" data-area="seller">
   <!-- Top Bar (Shell injected) -->
   <header id="app-topbar"></header>
 
@@ -66,8 +66,8 @@
 
   <!-- Application Bootstrap Script (ES Modules) -->
   <script type="module">
-    import { initShell } from '../js/shell.js';
-    import { initShipping } from '../js/shipping.js';
+    import { initShell } from "/seller/js/dashboard-shell.js";
+    import { initShipping } from "/seller/js/shipping.js";
 
     // Initialize reusable shell with 'shipping' as active page
     initShell('shipping');

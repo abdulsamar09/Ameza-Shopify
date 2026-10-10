@@ -4,8 +4,8 @@
  * with 100% US minor-unit cents compliance and shared mock/coupons.json sync.
  */
 
-import { escapeHTML, showToast } from './shell.js';
-import { formatMoney } from './core/utils.js';
+import { escapeHTML, showToast } from '/seller/js/dashboard-shell.js';
+import { formatMoney } from '/shared/js/core/utils.js';
 
 const STORAGE_KEY = 'ameza_coupons';
 

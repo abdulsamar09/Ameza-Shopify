@@ -17,20 +17,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/cart-drawer.css">
-  <link rel="stylesheet" href="css/stores.css">
-  <link rel="icon" type="image/png" href="assets/ameza-logo.png">
+  <link rel="stylesheet" href="/shared/css/tokens.css">
+  <link rel="stylesheet" href="/shared/css/layout.css">
+  <link rel="stylesheet" href="/shared/css/base.css">
+  <link rel="stylesheet" href="/shared/css/style.css">
+  <link rel="stylesheet" href="/storefront/css/cart-drawer.css">
+  <link rel="stylesheet" href="/storefront/css/stores.css">
+  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
 </head>
 <body class="stores-directory-body" data-layout="storefront">
   <!-- Dynamic Mount for Site Header -->
   <div id="site-header"></div>
 
   <!-- Persistent Demo Control Bar -->
-  <script type="module" src="js/demo-bar.js"></script>
+  <script type="module" src="/shared/js/demo-bar.js"></script>
 
   <main>
     <!-- DIRECTORY HERO -->
@@ -44,7 +44,7 @@
 
         <!-- Breadcrumbs -->
         <nav class="tax-breadcrumbs" aria-label="Breadcrumb" style="justify-content: center; margin: 0; opacity: 0.85;">
-          <a href="index.html" style="color: #94A3B8;">Home</a>
+          <a href="/" style="color: #94A3B8;">Home</a>
           <span class="sep" style="color: #64748B;">&gt;</span>
           <span class="current" style="color: #FFFFFF;">Stores Directory</span>
         </nav>
@@ -106,7 +106,7 @@
           <p class="stores-cta-text">Join AMEZA Marketplace to open your branded storefront, reach thousands of verified U.S. buyers, and enjoy low commission rates with automated payouts.</p>
         </div>
         <div>
-          <a href="onboarding/sell-with-us.html" class="btn-primary stores-cta-btn">
+          <a href="/seller/onboarding/sell-with-us.html" class="btn-primary stores-cta-btn">
             <span>Become a Seller Today</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
@@ -119,10 +119,10 @@
   <div id="site-footer"></div>
 
   <!-- Scripts -->
-  <script src="js/currency.js"></script>
-  <script src="js/auth.js"></script>
-  <script type="module" src="js/cart-drawer.js"></script>
+  <script src="/shared/js/currency.js"></script>
+  <script src="/auth/js/auth.js"></script>
+  <script type="module" src="/shared/js/cart-drawer.js"></script>
   <script type="module" src="js/stores-page.js"></script>
-  <script type="module" src="js/core/layout.js"></script>
+  <script type="module" src="/shared/js/core/layout.js"></script>
 </body>
 </html>

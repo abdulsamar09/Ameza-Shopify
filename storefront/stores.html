@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/storefront/css/stores.css">
   <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
 </head>
-<body class="stores-directory-body" data-layout="storefront">
+<body class="stores-directory-body" data-layout="storefront" data-access="public" data-area="storefront">
   <!-- Dynamic Mount for Site Header -->
   <div id="site-header"></div>
 
@@ -44,7 +44,7 @@
 
         <!-- Breadcrumbs -->
         <nav class="tax-breadcrumbs" aria-label="Breadcrumb" style="justify-content: center; margin: 0; opacity: 0.85;">
-          <a href="index.html" style="color: #94A3B8;">Home</a>
+          <a href="/" style="color: #94A3B8;">Home</a>
           <span class="sep" style="color: #64748B;">&gt;</span>
           <span class="current" style="color: #FFFFFF;">Stores Directory</span>
         </nav>
@@ -106,7 +106,7 @@
           <p class="stores-cta-text">Join AMEZA Marketplace to open your branded storefront, reach thousands of verified U.S. buyers, and enjoy low commission rates with automated payouts.</p>
         </div>
         <div>
-          <a href="onboarding/sell-with-us.html" class="btn-primary stores-cta-btn">
+          <a href="/seller/onboarding/sell-with-us.html" class="btn-primary stores-cta-btn">
             <span>Become a Seller Today</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
@@ -120,7 +120,7 @@
 
   <!-- Scripts -->
   <script src="/shared/js/currency.js"></script>
-  <script src="js/auth.js"></script>
+  <script src="/auth/js/auth.js"></script>
   <script type="module" src="/shared/js/cart-drawer.js"></script>
   <script type="module" src="/storefront/js/stores-page.js"></script>
   <script type="module" src="/shared/js/core/layout.js"></script>

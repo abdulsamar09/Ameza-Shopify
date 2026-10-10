@@ -8,8 +8,8 @@ const fs = require('fs');
 const path = require('path');
 
 const targetFiles = [
-  path.join(__dirname, '../js/app.js'),
-  path.join(__dirname, '../js/account-ui.js')
+  path.join(__dirname, '../storefront/js/home.js'),
+  path.join(__dirname, '../buyer/js/account-ui.js')
 ];
 
 let issuesFound = 0;
