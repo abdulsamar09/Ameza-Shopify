@@ -8,18 +8,18 @@
   <title>My Orders | AMEZA Account</title>
   <meta name="description" content="View and manage your AMEZA order history.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="/shared/css/style.css">
-  <link rel="stylesheet" href="/buyer/css/account.css">
-  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
-  <link rel="stylesheet" href="/shared/css/tokens.css">
-  <link rel="stylesheet" href="/shared/css/layout.css">
-  <link rel="stylesheet" href="/shared/css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/account.css">
+  <link rel="icon" type="image/png" href="assets/ameza-logo.png">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/base.css">
 </head>
 <body data-layout="storefront">
   <div id="site-header"></div>
 
   <!-- Persistent Demo Control Bar -->
-  <script type="module" src="/shared/js/demo-bar.js"></script>
+  <script type="module" src="js/demo-bar.js"></script>
 
   
 
@@ -57,9 +57,9 @@
   <div class="account-toast-container" id="account-toast-container"></div>
 
   <!-- Currency Engine -->
-  <script src="/shared/js/currency.js"></script>
-  <script src="/auth/js/auth.js"></script>
-  <script src="/buyer/js/account-ui.js"></script>
+  <script src="js/currency.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/account-ui.js"></script>
   <script>
     (function() {
       const Auth = window.AmezaAuth;
@@ -87,7 +87,7 @@
             </div>
             <h3>No orders yet</h3>
             <p>Your order history will appear here once you've made a purchase.</p>
-            <a href="/" class="btn-section-action">Start Shopping</a>
+            <a href="index.html" class="btn-section-action">Start Shopping</a>
           </div>`;
       } else {
         container.innerHTML = orders.map(o => `
@@ -102,7 +102,7 @@
               <div class="order-total">${UI.formatPrice(o.total || 0)}</div>
               <div style="font-size: 0.72rem; color: var(--text-muted);">${o.paymentStatus || 'Paid'}</div>
             </div>
-            <a href="/buyer/order-detail.html?id=${encodeURIComponent(o.id)}" class="btn-view-order">
+            <a href="account-order-detail.html?id=${encodeURIComponent(o.id)}" class="btn-view-order">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
               View Order
             </a>
@@ -111,6 +111,6 @@
     })();
   </script>
   <!-- Unified Layout Module -->
-  <script type="module" src="/shared/js/core/layout.js"></script>
+  <script type="module" src="js/core/layout.js"></script>
 </body>
 </html>

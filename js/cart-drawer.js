@@ -77,23 +77,6 @@ export function updateAllCartBadges() {
  * Adds product to cart, updates state & badges, and slides out drawer smoothly.
  */
 export function addToCart(productOrId, quantity = 1, options = {}) {
-  // Vacation Mode Guard: Blocks adding products when merchant has Vacation Mode active
-  try {
-    const rawVac = localStorage.getItem('ameza_seller_vacation_mode');
-    if (rawVac) {
-      const vac = JSON.parse(rawVac);
-      if (vac && vac.enabled) {
-        const notice = vac.message ? `Store on vacation: ${vac.message}` : 'Store on vacation. Purchasing is temporarily paused.';
-        if (typeof window.showToast === 'function') {
-          window.showToast(notice, 'warning');
-        } else if (typeof window.AmezaUI?.showToast === 'function') {
-          window.AmezaUI.showToast(notice, 'warning');
-        }
-        return false;
-      }
-    }
-  } catch (e) {}
-
   let cart = getCart();
   let product = null;
 

@@ -8,9 +8,9 @@
   <title>AMEZA Component Library & UI Kit</title>
   <meta name="description" content="Official AMEZA Multi-Vendor Marketplace Design System & UI Component Showcase.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="/shared/css/tokens.css">
-  <link rel="stylesheet" href="/shared/css/components.css">
-  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
   <style>
     /* UI Kit Page Layout Specifics */
     body {
@@ -853,7 +853,7 @@
   <!-- ES MODULE INITIALIZATION SCRIPT -->
   <script type="module">
     import { escapeHTML, formatMoney, showToast } from '../js/core/utils.js';
-    import { TableKit } from "/seller/js/table-kit.js";
+    import { TableKit } from '../js/table-kit.js';
     import { MarketplaceAPI } from '../js/api/marketplace.api.js';
 
     // 1. Initialize Interactive Table Kit with Mock Data
@@ -1000,6 +1000,8 @@
         showToast(`Primary theme set to ${c}`, 'info');
       });
     });
+
+});
 
     // 10. Simulate Button Loading
     const simBtn = document.getElementById('btn-simulate-loading');

@@ -7,10 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Settings | AMEZA Seller Central</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="/shared/css/dashboard.css">
-  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
 </head>
-<body data-layout="none" data-access="seller" data-area="seller">
+<body data-layout="none">
   <header id="app-topbar"></header>
   <div class="app-layout">
     <aside id="app-sidebar"></aside>
@@ -27,12 +27,12 @@
         <p style="color: var(--text-secondary); max-width: 440px; margin: 0 auto 20px;">
           This is a placeholder page for settings. Use the sidebar navigation or command palette (Ctrl+K) to browse other screens.
         </p>
-        <a href="/" class="btn-header-action" style="text-decoration: none;">&larr; Back to Dashboard Home</a>
+        <a href="index.html" class="btn-header-action" style="text-decoration: none;">&larr; Back to Dashboard Home</a>
       </div>
     </main>
   </div>
   <script type="module">
-    import { initShell } from "/seller/js/dashboard-shell.js";
+    import { initShell } from '../js/shell.js';
     initShell('settings');
   </script>
 </body>

@@ -12,18 +12,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/shared/css/tokens.css">
-  <link rel="stylesheet" href="/shared/css/layout.css">
-  <link rel="stylesheet" href="/shared/css/base.css">
-  <link rel="stylesheet" href="/storefront/css/cart-drawer.css">
-  <link rel="stylesheet" href="/storefront/css/product.css">
-  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/cart-drawer.css">
+  <link rel="stylesheet" href="css/product.css">
+  <link rel="icon" type="image/png" href="assets/ameza-logo.png">
 </head>
 <body class="product-page" data-layout="storefront">
   <div id="site-header"></div>
 
   <!-- Persistent Demo Control Bar -->
-  <script type="module" src="/shared/js/demo-bar.js"></script>
+  <script type="module" src="js/demo-bar.js"></script>
 
 
 
@@ -32,11 +32,11 @@
     
     <!-- Breadcrumb Navigation -->
     <nav class="pdp-breadcrumb-nav" aria-label="Breadcrumb">
-      <a href="/">Home</a>
+      <a href="index.html">Home</a>
       <span class="breadcrumb-sep">&gt;</span>
       <a href="shop.html?category=leather-belts" id="pdp-crumb-cat">Leather Goods</a>
       <span class="breadcrumb-sep">&gt;</span>
-      <a href="/storefront/subcategory.html?sub=backpacks&cat=bags" id="pdp-crumb-sub">Bags</a>
+      <a href="subcategory.html?sub=backpacks&cat=bags" id="pdp-crumb-sub">Bags</a>
       <span class="breadcrumb-sep">&gt;</span>
       <span class="breadcrumb-current" id="breadcrumb-product-name">Handcrafted Leather Backpack</span>
     </nav>
@@ -72,7 +72,7 @@
           </button>
 
           <img 
-            src="/assets/products/ul-backpack.jpg" 
+            src="assets/products/ul-backpack.jpg" 
             alt="Handcrafted Leather Backpack" 
             id="pdp-main-image"
           >
@@ -205,10 +205,10 @@
         <div class="pdp-tags-section">
           <span class="pdp-tags-label"><i class="fa-solid fa-tags"></i> Tags:</span>
           <div id="pdp-tags-container" class="pdp-tags-row">
-            <a href="/storefront/tag.html?tag=handcrafted" class="tax-mini-tag">#Handcrafted</a>
-            <a href="/storefront/tag.html?tag=leather" class="tax-mini-tag">#Full-Grain</a>
-            <a href="/storefront/tag.html?tag=artisan" class="tax-mini-tag">#Artisan Made</a>
-            <a href="/storefront/tag.html?tag=bestseller" class="tax-mini-tag">#Best Seller</a>
+            <a href="tag.html?tag=handcrafted" class="tax-mini-tag">#Handcrafted</a>
+            <a href="tag.html?tag=leather" class="tax-mini-tag">#Full-Grain</a>
+            <a href="tag.html?tag=artisan" class="tax-mini-tag">#Artisan Made</a>
+            <a href="tag.html?tag=bestseller" class="tax-mini-tag">#Best Seller</a>
           </div>
         </div>
 
@@ -408,14 +408,14 @@
             <i class="fa-regular fa-image" style="color:var(--primary);"></i> Product Photo Gallery
           </h3>
           <div class="pdp-images-gallery-grid">
-            <div class="pdp-gallery-photo-item"><img src="/assets/products/ul-backpack.jpg" alt="Front View" loading="lazy"></div>
-            <div class="pdp-gallery-photo-item"><img src="/assets/products/ul-messenger.jpg" alt="Messenger Style" loading="lazy"></div>
-            <div class="pdp-gallery-photo-item"><img src="/assets/products/ul-wallet.jpg" alt="Wallet Match" loading="lazy"></div>
-            <div class="pdp-gallery-photo-item"><img src="/assets/products/ul-belt.jpg" alt="Belt Hardware" loading="lazy"></div>
-            <div class="pdp-gallery-photo-item"><img src="/assets/products/ul-tote.jpg" alt="Full Leather Grain" loading="lazy"></div>
-            <div class="pdp-gallery-photo-item"><img src="/assets/products/ul-cardholder.jpg" alt="Card Holder Detail" loading="lazy"></div>
-            <div class="pdp-gallery-photo-item"><img src="/assets/products/ul-doppkit.jpg" alt="Dopp Kit Interior" loading="lazy"></div>
-            <div class="pdp-gallery-photo-item"><img src="/assets/products/ul-notebook.jpg" alt="Journal Leather Strap" loading="lazy"></div>
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-backpack.jpg" alt="Front View" loading="lazy"></div>
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-messenger.jpg" alt="Messenger Style" loading="lazy"></div>
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-wallet.jpg" alt="Wallet Match" loading="lazy"></div>
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-belt.jpg" alt="Belt Hardware" loading="lazy"></div>
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-tote.jpg" alt="Full Leather Grain" loading="lazy"></div>
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-cardholder.jpg" alt="Card Holder Detail" loading="lazy"></div>
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-doppkit.jpg" alt="Dopp Kit Interior" loading="lazy"></div>
+            <div class="pdp-gallery-photo-item"><img src="assets/products/ul-notebook.jpg" alt="Journal Leather Strap" loading="lazy"></div>
           </div>
         </div>
 
@@ -459,9 +459,9 @@
   <div id="site-footer"></div>
 
   <!-- Currency & Auth Engines -->
-  <script src="/shared/js/currency.js"></script>
-  <script src="/auth/js/auth.js"></script>
-  <script type="module" src="/shared/js/cart-drawer.js"></script>
+  <script src="js/currency.js"></script>
+  <script src="js/auth.js"></script>
+  <script type="module" src="js/cart-drawer.js"></script>
 
   <!-- Product Page Logic Module Initialization -->
   <script type="module">
@@ -472,6 +472,6 @@
   </script>
 
   <!-- Unified Layout Module -->
-  <script type="module" src="/shared/js/core/layout.js"></script>
+  <script type="module" src="js/core/layout.js"></script>
 </body>
 </html>

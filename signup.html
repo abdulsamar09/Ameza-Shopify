@@ -8,12 +8,12 @@
   <title>Create Account | AMEZA Premium E-Commerce Store</title>
   <meta name="description" content="Create your AMEZA account for faster checkout, order tracking, wishlist management and exclusive member benefits.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="/shared/css/style.css">
-  <link rel="stylesheet" href="/buyer/css/account.css">
-  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
-  <link rel="stylesheet" href="/shared/css/tokens.css">
-  <link rel="stylesheet" href="/shared/css/layout.css">
-  <link rel="stylesheet" href="/shared/css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/account.css">
+  <link rel="icon" type="image/png" href="assets/ameza-logo.png">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/base.css">
 </head>
 <body data-layout="focus">
   <div id="site-header"></div>
@@ -29,8 +29,8 @@
     <div class="auth-page-wrapper">
       <div class="auth-card auth-card-wide">
 
-        <a href="/" class="auth-logo-link">
-          <img src="/assets/ameza-logo.png" alt="AMEZA" onerror="this.style.display='none'">
+        <a href="index.html" class="auth-logo-link">
+          <img src="assets/ameza-logo.png" alt="AMEZA" onerror="this.style.display='none'">
         </a>
 
         <h1 class="auth-title">Create Your Account</h1>
@@ -160,7 +160,7 @@
         </form>
 
         <div class="auth-switch-row">
-          Already have an account? <a href="/auth/login.html">Sign In</a>
+          Already have an account? <a href="login.html">Sign In</a>
         </div>
 
       </div>
@@ -173,8 +173,8 @@
   <div class="account-toast-container" id="account-toast-container"></div>
 
   <!-- Currency Engine -->
-  <script src="/shared/js/currency.js"></script>
-  <script src="/auth/js/auth.js"></script>
+  <script src="js/currency.js"></script>
+  <script src="js/auth.js"></script>
   <script>
     // Redirect if already logged in
     if (window.AmezaAuth && window.AmezaAuth.isLoggedIn()) {
@@ -315,6 +315,6 @@
     });
   </script>
   <!-- Unified Layout Module -->
-  <script type="module" src="/shared/js/core/layout.js"></script>
+  <script type="module" src="js/core/layout.js"></script>
 </body>
 </html>

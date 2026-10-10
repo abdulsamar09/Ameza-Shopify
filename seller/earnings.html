@@ -8,11 +8,11 @@
   <title>Earnings | AMEZA Seller Central</title>
   <meta name="description" content="Track real-time merchant sales, platform commissions, double-entry ledger history, and payouts on AMEZA Marketplace.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="/shared/css/tokens.css">
-  <link rel="stylesheet" href="/shared/css/dashboard.css">
-  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
 </head>
-<body data-layout="none" class="seller-body" data-access="seller" data-area="seller">
+<body data-layout="none" class="seller-body">
 
   <!-- 1. Top Bar (Shell injected) -->
   <header id="app-topbar"></header>
@@ -149,8 +149,8 @@
 
   <!-- Application Bootstrap Script (ES Modules) -->
   <script type="module">
-    import { initShell } from "/seller/js/dashboard-shell.js";
-    import { initEarnings } from "/seller/js/earnings.js";
+    import { initShell } from '../js/shell.js';
+    import { initEarnings } from '../js/earnings.js';
 
     // 1. Initialize reusable shell with 'earnings' as active page
     initShell('earnings');

@@ -8,10 +8,10 @@
   <title>AMEZA Seller Central | AMEZA Admin Style Dashboard</title>
   <meta name="description" content="Manage your AMEZA seller dashboard, orders, inventory, sales over time, and setup guide.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="/shared/css/dashboard.css">
-  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
 </head>
-<body data-layout="none" data-access="seller" data-area="seller">
+<body data-layout="none">
 
   <!-- 1. Top Bar (Shell injected) -->
   <header id="app-topbar"></header>
@@ -31,8 +31,8 @@
 
   <!-- Application Bootstrap Script (ES Modules) -->
   <script type="module">
-    import { initShell } from "/seller/js/dashboard-shell.js";
-    import { initHome } from "/seller/js/home.js";
+    import { initShell } from '../js/shell.js';
+    import { initHome } from '../js/home.js';
 
     // Initialize reusable shell with 'home' as active page
     initShell('home');

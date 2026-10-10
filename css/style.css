@@ -3524,7 +3524,12 @@ textarea {
     min-width: 0;
   }
 
-  .services-nav-btn {
+  .services-nav-btn,
+  .services-nav-btn:hover,
+  .services-nav-btn:active,
+  .services-nav-btn:focus,
+  .services-nav-dropdown:hover .services-nav-btn,
+  .services-nav-dropdown.is-open .services-nav-btn {
     width: 100%;
     justify-content: space-between;
     padding: 7px 10px;
@@ -3532,6 +3537,10 @@ textarea {
     gap: 4px;
     white-space: nowrap;
     overflow: hidden;
+    background: rgba(127, 183, 60, 0.15) !important;
+    border-color: rgba(127, 183, 60, 0.4) !important;
+    color: #FFFFFF !important;
+    box-shadow: none !important;
   }
 
   .services-nav-btn span {
@@ -3806,10 +3815,10 @@ textarea {
 .services-nav-btn:hover,
 .services-nav-dropdown:hover .services-nav-btn,
 .services-nav-dropdown.is-open .services-nav-btn {
-  background: var(--primary, #7DBA35);
-  border-color: var(--primary, #7DBA35);
+  background: rgba(127, 183, 60, 0.15);
+  border-color: rgba(127, 183, 60, 0.5);
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(127, 183, 60, 0.4);
+  box-shadow: none;
 }
 
 .services-nav-btn .services-chevron {
@@ -3831,7 +3840,7 @@ textarea {
 .services-nav-btn:hover .services-btn-pill,
 .services-nav-dropdown:hover .services-btn-pill,
 .services-nav-dropdown.is-open .services-btn-pill {
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.16);
   color: #FFFFFF;
 }
 

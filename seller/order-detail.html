@@ -7,10 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Order #AM-1042 | AMEZA Seller Central</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="/shared/css/dashboard.css">
-  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
 </head>
-<body data-layout="none" data-access="seller" data-area="seller">
+<body data-layout="none">
   <header id="app-topbar"></header>
 
   <div class="app-layout">
@@ -21,7 +21,7 @@
       <div class="page-header" style="margin-bottom: 20px;">
         <div>
           <div style="display:flex; align-items:center; gap: 12px; margin-bottom: 4px;">
-            <a href="/buyer/orders.html" class="btn-icon-dots" aria-label="Back to Orders" style="color:var(--text-main); text-decoration:none;">
+            <a href="orders.html" class="btn-icon-dots" aria-label="Back to Orders" style="color:var(--text-main); text-decoration:none;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
             </a>
             <h1 class="page-title" id="order-title-code" style="font-size: 22px;">#AM-1042</h1>
@@ -253,8 +253,8 @@
   </div>
 
   <script type="module">
-    import { initShell } from "/seller/js/dashboard-shell.js";
-    import { initOrderDetail } from "/seller/js/order-detail.js";
+    import { initShell } from '../js/shell.js';
+    import { initOrderDetail } from '../js/order-detail.js';
 
     initShell('orders');
     initOrderDetail();

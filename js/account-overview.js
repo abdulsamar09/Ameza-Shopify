@@ -296,7 +296,7 @@ export function renderAccountOverview() {
               <h3><i class="fa-solid fa-briefcase" style="color: #A3E635; margin-right: 8px;"></i> Open Seller Dashboard</h3>
               <p>Manage your artisan products, fulfillment workflows, customer reviews, and ACH payouts.</p>
             </div>
-            <a href="/seller/index.html" class="btn-seller-cta">
+            <a href="seller/index.html" class="btn-seller-cta">
               Open Seller Central &rarr;
             </a>
           </div>

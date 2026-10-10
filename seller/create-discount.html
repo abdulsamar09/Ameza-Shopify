@@ -8,47 +8,10 @@
   <title>Create Discount Code | AMEZA Seller Central</title>
   <meta name="description" content="Set up a new promotional discount or coupon code for your AMEZA store.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="/shared/css/tokens.css">
-  <link rel="stylesheet" href="/shared/css/dashboard.css">
-  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
-  <style>
-    .create-discount-grid {
-      display: grid;
-      grid-template-columns: 1.6fr 1.1fr;
-      gap: 24px;
-      align-items: start;
-    }
-
-    .sticky-summary-card {
-      position: sticky;
-      top: 80px;
-    }
-
-    @media (max-width: 900px) {
-      .create-discount-grid {
-        grid-template-columns: 1fr;
-      }
-      .sticky-summary-card {
-        position: static;
-      }
-      .mobile-sticky-save-bar {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: var(--bg-surface);
-        padding: 12px 16px;
-        border-top: 1px solid var(--border);
-        box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
-        z-index: 999;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
 </head>
-<body data-layout="none" data-access="seller" data-area="seller">
+<body data-layout="none">
   <!-- Top Bar (Shell injected) -->
   <header id="app-topbar"></header>
 
@@ -59,50 +22,50 @@
 
     <!-- Main Content Canvas -->
     <main class="main-content" id="main-content-region" role="main">
-      <div style="max-width: 1040px; margin: 0 auto; padding-bottom: 80px;">
+      <div style="max-width: 1040px; margin: 0 auto; padding-bottom: 60px;">
         <!-- Page Header -->
-        <div class="page-header" style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <div class="page-header" style="margin-bottom: 24px;">
           <div style="display: flex; align-items: center; gap: 12px;">
-            <a href="/seller/discounts.html" class="btn-header-secondary" id="btn-back-discounts" style="padding: 8px 14px; text-decoration: none; font-weight: 700; min-height: 44px; display: inline-flex; align-items: center;">&larr; Discounts</a>
+            <a href="discounts.html" class="btn-header-secondary" style="padding: 8px 12px; text-decoration: none;">&larr; Back to Discounts</a>
             <div>
-              <h1 class="page-title" id="page-title-heading" style="margin: 0; font-size: 22px;">Create Discount</h1>
-              <p class="page-subtitle" style="margin-top: 2px; font-size: 13px;">Configure promotion parameters, customer eligibility, and validity period.</p>
+              <h1 class="page-title" style="margin: 0;">Create Discount Code</h1>
+              <p class="page-subtitle" style="margin-top: 2px;">Configure promotion parameters, customer eligibility, and validity period.</p>
             </div>
           </div>
           <div class="page-header-actions" style="display: flex; gap: 10px;">
-            <a href="/seller/discounts.html" class="btn-header-secondary" style="text-decoration: none; min-height: 44px; display: inline-flex; align-items: center;">Discard</a>
-            <button type="button" id="btn-save-discount" class="btn-header-primary" style="min-height: 44px; padding: 0 20px; font-weight: 700;">Save discount</button>
+            <a href="discounts.html" class="btn-header-secondary" style="text-decoration: none;">Discard</a>
+            <button type="button" id="btn-save-discount" class="btn-header-primary">Save Discount</button>
           </div>
         </div>
 
         <!-- 2-Column Form Layout -->
-        <div class="create-discount-grid">
+        <div style="display: grid; grid-template-columns: 1.6fr 1.1fr; gap: 24px;">
           <!-- Left Column: Core Fields -->
           <div style="display: flex; flex-direction: column; gap: 20px;">
             <!-- Card 1: Code & Title -->
             <div class="dashboard-card" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px;">
               <h2 style="font-size: 15px; font-weight: 700; margin-bottom: 16px;">Discount Code Details</h2>
               <div style="margin-bottom: 16px;">
-                <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Discount Code *</label>
+                <label style="display: block; font-weight: 600; font-size: 13px; margin-bottom: 6px;">Discount Code</label>
                 <div style="display: flex; gap: 8px;">
-                  <input type="text" id="input-code" placeholder="e.g. FALL2026" style="flex: 1; height: 42px; padding: 0 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main); font-family: monospace; font-size: 16px; font-weight: 800; text-transform: uppercase;">
-                  <button type="button" id="btn-generate-code" class="btn-header-secondary" style="height: 42px; font-size: 13px; font-weight: 700; min-height: 42px;">Generate</button>
+                  <input type="text" id="input-code" placeholder="e.g. FALL2026" style="flex: 1; height: 40px; padding: 0 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main); font-family: monospace; font-weight: 700; text-transform: uppercase;">
+                  <button type="button" id="btn-generate-code" class="btn-header-secondary" style="height: 40px; font-size: 12px;">Generate</button>
                 </div>
-                <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Must be unique uppercase code without spaces.</p>
+                <p style="font-size: 11.5px; color: var(--text-secondary); margin-top: 4px;">Customers will enter this code at checkout.</p>
               </div>
 
               <div>
-                <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Description / Headline</label>
-                <input type="text" id="input-desc" placeholder="e.g. 15% off Autumn Sale promotion" style="width: 100%; height: 42px; padding: 0 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main); font-size: 16px; box-sizing: border-box;">
+                <label style="display: block; font-weight: 600; font-size: 13px; margin-bottom: 6px;">Internal Description</label>
+                <input type="text" id="input-desc" placeholder="e.g. 15% off Autumn Sale promotion" style="width: 100%; height: 40px; padding: 0 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main); font-size: 13px;">
               </div>
             </div>
 
             <!-- Card 2: Discount Value & Type -->
             <div class="dashboard-card" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px;">
-              <h2 style="font-size: 15px; font-weight: 700; margin-bottom: 16px;">Discount Type &amp; Value</h2>
+              <h2 style="font-size: 15px; font-weight: 700; margin-bottom: 16px;">Discount Type & Value</h2>
               <div style="margin-bottom: 16px;">
-                <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Discount Type</label>
-                <select id="select-type" style="width: 100%; height: 42px; padding: 0 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main); font-size: 14px;">
+                <label style="display: block; font-weight: 600; font-size: 13px; margin-bottom: 6px;">Discount Type</label>
+                <select id="select-type" style="width: 100%; height: 40px; padding: 0 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main); font-size: 13.5px;">
                   <option value="percentage">Percentage Discount (%)</option>
                   <option value="fixed_amount">Fixed USD Amount ($)</option>
                   <option value="fixed_shipping">Free Standard Shipping ($5.99 credit)</option>
@@ -110,27 +73,27 @@
               </div>
 
               <div id="value-input-row" style="margin-bottom: 16px;">
-                <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 6px;">Discount Value *</label>
+                <label style="display: block; font-weight: 600; font-size: 13px; margin-bottom: 6px;">Discount Value</label>
                 <div style="position: relative; max-width: 220px;">
-                  <span id="value-unit-badge" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-weight: 700; color: var(--text-muted);">%</span>
-                  <input type="number" id="input-value" value="15" min="1" max="100" style="width: 100%; height: 42px; padding-left: 28px; padding-right: 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main); font-size: 16px; font-weight: 700; box-sizing: border-box;">
+                  <span id="value-unit-badge" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-weight: 700; color: var(--text-secondary);">%</span>
+                  <input type="number" id="input-value" value="15" min="1" max="100" style="width: 100%; height: 40px; padding-left: 28px; padding-right: 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main); font-size: 14px; font-weight: 700;">
                 </div>
               </div>
 
               <div>
-                <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 8px;">Applies To</label>
+                <label style="display: block; font-weight: 600; font-size: 13px; margin-bottom: 6px;">Applies To</label>
                 <div style="display: flex; flex-direction: column; gap: 8px;">
-                  <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; cursor: pointer;">
-                    <input type="radio" name="applies_to" value="all" checked style="width: 18px; height: 18px;">
+                  <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+                    <input type="radio" name="applies_to" value="all" checked>
                     <span>All Products in Store</span>
                   </label>
-                  <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; cursor: pointer;">
-                    <input type="radio" name="applies_to" value="clothing" style="width: 18px; height: 18px;">
-                    <span>Clothing &amp; Fashion Collections</span>
+                  <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+                    <input type="radio" name="applies_to" value="clothing">
+                    <span>Clothing & Fashion Collections</span>
                   </label>
-                  <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; cursor: pointer;">
-                    <input type="radio" name="applies_to" value="leather" style="width: 18px; height: 18px;">
-                    <span>Leather Goods &amp; Accessories</span>
+                  <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+                    <input type="radio" name="applies_to" value="leather">
+                    <span>Leather Goods & Accessories</span>
                   </label>
                 </div>
               </div>
@@ -140,86 +103,87 @@
             <div class="dashboard-card" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px;">
               <h2 style="font-size: 15px; font-weight: 700; margin-bottom: 16px;">Minimum Purchase Requirement</h2>
               <div style="display: flex; flex-direction: column; gap: 10px;">
-                <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; cursor: pointer;">
-                  <input type="radio" name="min_req" value="none" checked style="width: 18px; height: 18px;">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+                  <input type="radio" name="min_req" value="none" checked>
                   <span>No minimum purchase requirement</span>
                 </label>
-                <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; cursor: pointer;">
-                  <input type="radio" name="min_req" value="amount" style="width: 18px; height: 18px;">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+                  <input type="radio" name="min_req" value="amount">
                   <span>Minimum purchase amount ($ USD)</span>
                 </label>
               </div>
               <div id="min-amount-wrap" style="margin-top: 12px; display: none; max-width: 220px;">
                 <div style="position: relative;">
-                  <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-weight: 700; color: var(--text-muted);">$</span>
-                  <input type="number" id="input-min-spend" value="50.00" step="5" min="0" style="width: 100%; height: 42px; padding-left: 28px; padding-right: 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main); font-size: 16px; box-sizing: border-box;">
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 4: Usage Limits -->
-            <div class="dashboard-card" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px;">
-              <h2 style="font-size: 15px; font-weight: 700; margin-bottom: 16px;">Usage Limits</h2>
-              <div style="display: flex; flex-direction: column; gap: 12px;">
-                <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; cursor: pointer;">
-                  <input type="checkbox" id="chk-limit-total" style="width: 18px; height: 18px;">
-                  <span>Limit total number of times this discount can be used in total</span>
-                </label>
-                <div id="limit-total-input-wrap" style="display: none; padding-left: 26px;">
-                  <input type="number" id="input-limit-total" value="100" min="1" style="width: 140px; height: 38px; padding: 0 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main); font-size: 14px;">
-                </div>
-                <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; cursor: pointer;">
-                  <input type="checkbox" id="chk-limit-per-user" checked style="width: 18px; height: 18px;">
-                  <span>Limit to one use per customer</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Card 5: Active Dates -->
-            <div class="dashboard-card" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px;">
-              <h2 style="font-size: 15px; font-weight: 700; margin-bottom: 16px;">Active Dates</h2>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-                <div>
-                  <label style="display: block; font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px;">Start Date</label>
-                  <input type="date" id="input-start-date" value="2026-10-01" style="width: 100%; height: 42px; padding: 0 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main); font-size: 14px; box-sizing: border-box;">
-                </div>
-                <div>
-                  <label style="display: block; font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px;">End Date</label>
-                  <input type="date" id="input-end-date" value="2026-12-31" style="width: 100%; height: 42px; padding: 0 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main); font-size: 14px; box-sizing: border-box;">
+                  <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-weight: 700; color: var(--text-secondary);">$</span>
+                  <input type="number" id="input-min-spend" value="50.00" step="5" min="0" style="width: 100%; height: 40px; padding-left: 28px; padding-right: 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main); font-size: 14px;">
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Right Column: Live Summary Card -->
-          <div class="sticky-summary-card" style="display: flex; flex-direction: column; gap: 20px;">
-            <div class="dashboard-card" style="padding: 20px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
-              <h2 style="font-size: 15px; font-weight: 800; margin-bottom: 16px; color: var(--text-main);">Summary</h2>
-
-              <div style="background: var(--bg-surface-alt, #F8FAF7); padding: 16px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 16px;">
+          <!-- Right Column: Live Summary, Usage Limits & Dates -->
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <!-- Live Preview Card -->
+            <div class="dashboard-card" style="padding: 20px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(59, 130, 246, 0.04)); border: 1px dashed var(--primary-green-dark); border-radius: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <span style="font-size: 11px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; color: var(--primary-green-dark);">Live Coupon Preview</span>
+                <span class="status-pill status-paid" style="font-size: 10px;">Ready</span>
+              </div>
+              <div style="background: var(--bg-surface); padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
                 <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                  <span style="font-size: 20px;">🏷️</span>
+                  <span style="font-size: 18px;">🏷️</span>
                   <span id="preview-code" style="font-family: monospace; font-size: 18px; font-weight: 800; color: var(--text-main); letter-spacing: 1px;">SAVE15</span>
                 </div>
-                <div id="preview-value-label" style="font-size: 14px; font-weight: 700; color: #10B981; margin-bottom: 4px;">15% off order</div>
-                <div id="preview-condition-label" style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Applies to all products &bull; No minimum purchase</div>
+                <div id="preview-value-label" style="font-size: 13.5px; font-weight: 700; color: #10B981; margin-bottom: 4px;">15% off entire order</div>
+                <div id="preview-condition-label" style="font-size: 11.5px; color: var(--text-secondary);">Applies to all products &bull; No minimum purchase</div>
               </div>
+            </div>
 
-              <div style="border-top: 1px solid var(--border); padding-top: 14px; margin-bottom: 16px;">
-                <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase;">Performance Details</div>
-                <ul style="margin: 0; padding-left: 18px; font-size: 12.5px; color: var(--text-secondary); line-height: 1.6;">
-                  <li id="sum-applies">Applies to: All store merchandise</li>
-                  <li id="sum-min">Minimum requirement: None</li>
-                  <li id="sum-limits">Usage: 1 use per customer</li>
-                  <li id="sum-dates">Active: Oct 1, 2026 &ndash; Dec 31, 2026</li>
-                </ul>
+            <!-- Customer Eligibility -->
+            <div class="dashboard-card" style="padding: 20px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px;">
+              <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">Customer Eligibility</h3>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+                  <input type="radio" name="eligibility" value="all" checked>
+                  <span>All Customers</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+                  <input type="radio" name="eligibility" value="first_time">
+                  <span>First-Time Buyers Only</span>
+                </label>
               </div>
+            </div>
 
-              <div style="display: flex; gap: 10px;">
-                <a href="/seller/discounts.html" class="btn-header-secondary" style="flex: 1; text-align: center; text-decoration: none; padding: 10px; font-weight: 700; min-height: 44px; display: inline-flex; align-items: center; justify-content: center;">Cancel</a>
-                <button type="button" id="btn-create-discount-submit" class="btn-header-primary" style="flex: 2; padding: 10px; font-weight: 700; min-height: 44px;">
-                  Create discount
-                </button>
+            <!-- Usage Limits -->
+            <div class="dashboard-card" style="padding: 20px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px;">
+              <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">Usage Limits</h3>
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+                  <input type="checkbox" id="chk-limit-total" class="custom-chk">
+                  <span>Limit total number of redemptions</span>
+                </label>
+                <div id="limit-total-input-wrap" style="display: none; padding-left: 24px;">
+                  <input type="number" id="input-limit-total" value="100" min="1" style="width: 140px; height: 36px; padding: 0 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main);">
+                </div>
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+                  <input type="checkbox" id="chk-limit-per-user" class="custom-chk" checked>
+                  <span>Limit to one use per customer</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Active Dates -->
+            <div class="dashboard-card" style="padding: 20px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px;">
+              <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">Active Date Range</h3>
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div>
+                  <label style="display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">Start Date</label>
+                  <input type="date" id="input-start-date" value="2026-10-08" style="width: 100%; height: 36px; padding: 0 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main); font-size: 13px;">
+                </div>
+                <div>
+                  <label style="display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">Expiration Date</label>
+                  <input type="date" id="input-end-date" value="2026-12-31" style="width: 100%; height: 36px; padding: 0 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-page); color: var(--text-main); font-size: 13px;">
+                </div>
               </div>
             </div>
           </div>
@@ -229,113 +193,62 @@
   </div>
 
   <script type="module">
-    import { initShell, showToast } from "/seller/js/dashboard-shell.js";
-    import { getCoupons, saveCoupons } from "/seller/js/discounts.js";
+    import { initShell } from '../js/shell.js';
+    import { getCoupons, saveCoupons } from '../js/discounts.js';
+    import { showToast } from '../js/shell.js';
 
     initShell('discounts');
 
-    let isDirty = false;
-    window.addEventListener('beforeunload', (e) => {
-      if (isDirty) {
-        e.preventDefault();
-        e.returnValue = '';
-      }
-    });
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const editCode = urlParams.get('code') || urlParams.get('id');
-
-    // Pre-fill if editing existing code
-    if (editCode) {
-      const coupons = getCoupons();
-      const existing = coupons.find(c => c.code.toUpperCase() === editCode.toUpperCase());
-      if (existing) {
-        document.getElementById('page-title-heading').textContent = `Edit Discount: ${existing.code}`;
-        document.getElementById('input-code').value = existing.code;
-        document.getElementById('input-code').disabled = true;
-        document.getElementById('btn-generate-code').style.display = 'none';
-        document.getElementById('input-desc').value = existing.description || '';
-        document.getElementById('select-type').value = existing.discountType;
-        
-        if (existing.discountType === 'percentage') {
-          document.getElementById('input-value').value = existing.value;
-        } else if (existing.discountType === 'fixed_amount') {
-          document.getElementById('input-value').value = (existing.value / 100).toFixed(2);
-        }
-
-        if (existing.minSpendCents > 0) {
-          const radio = document.querySelector('input[name="min_req"][value="amount"]');
-          if (radio) radio.checked = true;
-          document.getElementById('min-amount-wrap').style.display = 'block';
-          document.getElementById('input-min-spend').value = (existing.minSpendCents / 100).toFixed(2);
-        }
-
-        if (existing.startDate) {
-          document.getElementById('input-start-date').value = existing.startDate.slice(0, 10);
-        }
-        if (existing.endDate) {
-          document.getElementById('input-end-date').value = existing.endDate.slice(0, 10);
-        }
-      }
-    }
-
-    // Generator
+    // Generate random code helper
     document.getElementById('btn-generate-code')?.addEventListener('click', () => {
-      const prefix = ['SAVE', 'FLASH', 'VIP', 'OFF', 'FALL', 'HOLIDAY'][Math.floor(Math.random() * 6)];
-      const num = [10, 15, 20, 25, 30][Math.floor(Math.random() * 5)];
-      document.getElementById('input-code').value = `${prefix}${num}`;
-      isDirty = true;
+      const prefixes = ['FALL', 'WINTER', 'FLASH', 'VIP', 'USA', 'AMEZA'];
+      const randomPref = prefixes[Math.floor(Math.random() * prefixes.length)];
+      const randomNum = Math.floor(10 + Math.random() * 90);
+      document.getElementById('input-code').value = `${randomPref}${randomNum}`;
       updatePreview();
     });
 
-    // Type change
-    document.getElementById('select-type')?.addEventListener('change', (e) => {
-      const type = e.target.value;
-      const unitBadge = document.getElementById('value-unit-badge');
-      const valInput = document.getElementById('input-value');
-      const valRow = document.getElementById('value-input-row');
-      isDirty = true;
-
-      if (type === 'percentage') {
-        valRow.style.display = 'block';
-        unitBadge.textContent = '%';
-        valInput.max = '100';
-        valInput.value = '15';
-      } else if (type === 'fixed_amount') {
-        valRow.style.display = 'block';
-        unitBadge.textContent = '$';
-        valInput.removeAttribute('max');
-        valInput.value = '10.00';
-      } else if (type === 'fixed_shipping') {
-        valRow.style.display = 'none';
-      }
-      updatePreview();
-    });
-
-    // Min requirement toggles
+    // Toggle min requirement input
     document.querySelectorAll('input[name="min_req"]').forEach(r => {
       r.addEventListener('change', (e) => {
-        isDirty = true;
         document.getElementById('min-amount-wrap').style.display = e.target.value === 'amount' ? 'block' : 'none';
         updatePreview();
       });
     });
 
-    // Limits toggles
+    // Toggle total limit input
     document.getElementById('chk-limit-total')?.addEventListener('change', (e) => {
-      isDirty = true;
       document.getElementById('limit-total-input-wrap').style.display = e.target.checked ? 'block' : 'none';
     });
 
-    ['input-code', 'input-value', 'input-min-spend', 'input-start-date', 'input-end-date'].forEach(id => {
-      document.getElementById(id)?.addEventListener('input', () => {
-        isDirty = true;
-        updatePreview();
-      });
+    // Type select changes unit badge
+    document.getElementById('select-type')?.addEventListener('change', (e) => {
+      const badge = document.getElementById('value-unit-badge');
+      const valRow = document.getElementById('value-input-row');
+      const valInput = document.getElementById('input-value');
+      if (e.target.value === 'percentage') {
+        valRow.style.display = 'block';
+        badge.textContent = '%';
+        valInput.value = '15';
+        valInput.max = '100';
+      } else if (e.target.value === 'fixed_amount') {
+        valRow.style.display = 'block';
+        badge.textContent = '$';
+        valInput.value = '10';
+        valInput.removeAttribute('max');
+      } else {
+        valRow.style.display = 'none';
+      }
+      updatePreview();
+    });
+
+    // Input listeners to update preview
+    ['input-code', 'input-value', 'input-min-spend'].forEach(id => {
+      document.getElementById(id)?.addEventListener('input', updatePreview);
     });
 
     function updatePreview() {
-      const code = (document.getElementById('input-code').value || 'DISCOUNT').toUpperCase().replace(/\s+/g, '');
+      const code = (document.getElementById('input-code').value || 'DISCOUNT').toUpperCase();
       const type = document.getElementById('select-type').value;
       const val = document.getElementById('input-value').value || '10';
       const isMinAmount = document.querySelector('input[name="min_req"]:checked')?.value === 'amount';
@@ -356,93 +269,51 @@
         condText += ' &bull; No minimum purchase';
       }
       document.getElementById('preview-condition-label').innerHTML = condText;
-
-      const startDate = document.getElementById('input-start-date').value || '2026-10-01';
-      const endDate = document.getElementById('input-end-date').value || '2026-12-31';
-      const dateEl = document.getElementById('sum-dates');
-      if (dateEl) dateEl.textContent = `Active: ${startDate} to ${endDate}`;
     }
 
-    function handleSave() {
-      const codeInput = document.getElementById('input-code');
-      const code = (codeInput.value.trim() || '').toUpperCase().replace(/\s+/g, '');
-      const desc = document.getElementById('input-desc').value.trim() || `${code} Promotion`;
+    // Save discount handler
+    document.getElementById('btn-save-discount')?.addEventListener('click', () => {
+      const code = (document.getElementById('input-code').value.trim() || 'PROMO10').toUpperCase();
+      const desc = document.getElementById('input-desc').value.trim() || `${code} Promotional Code`;
       const type = document.getElementById('select-type').value;
-      const val = parseFloat(document.getElementById('input-value').value) || 0;
+      const val = parseFloat(document.getElementById('input-value').value) || 10;
       const isMinAmount = document.querySelector('input[name="min_req"]:checked')?.value === 'amount';
       const minSpendCents = isMinAmount ? Math.round((parseFloat(document.getElementById('input-min-spend').value) || 0) * 100) : 0;
-      const startDate = document.getElementById('input-start-date').value;
-      const endDate = document.getElementById('input-end-date').value;
-
-      // Validation
-      if (!code) {
-        showToast('Please enter a valid uppercase discount code', 'danger');
-        codeInput.focus();
-        return;
-      }
-
-      if (type === 'percentage') {
-        if (val <= 0 || val > 100) {
-          showToast('Percentage discount must be between 1% and 100%', 'danger');
-          return;
-        }
-      } else if (type === 'fixed_amount') {
-        if (val <= 0) {
-          showToast('Fixed amount must be greater than $0.00', 'danger');
-          return;
-        }
-      }
-
-      if (startDate && endDate && new Date(endDate) <= new Date(startDate)) {
-        showToast('End date must be after the start date', 'danger');
-        return;
-      }
-
-      const coupons = getCoupons();
-      const isExisting = coupons.some(c => c.code.toUpperCase() === code);
-      if (!editCode && isExisting) {
-        showToast(`Discount code "${code}" already exists. Please choose a unique code.`, 'danger');
-        return;
-      }
+      const endDate = document.getElementById('input-end-date').value || '2026-12-31';
 
       let parsedValue = val;
       if (type === 'fixed_amount') {
         parsedValue = Math.round(val * 100); // store cents
       } else if (type === 'fixed_shipping') {
-        parsedValue = 599; // $5.99 cents
+        parsedValue = 599; // $5.99 in cents
       }
 
       const newCoupon = {
-        id: editCode ? (coupons.find(c => c.code.toUpperCase() === code)?.id || 'coup_' + Date.now()) : 'coup_' + Date.now(),
         code,
         discountType: type,
         value: parsedValue,
         minSpendCents,
         active: true,
-        usageCount: editCode ? (coupons.find(c => c.code.toUpperCase() === code)?.usageCount || 0) : 0,
-        usageLimit: document.getElementById('chk-limit-total').checked ? parseInt(document.getElementById('input-limit-total').value, 10) : null,
+        usageCount: 0,
         description: desc,
-        startDate: new Date(startDate || '2026-10-01').toISOString(),
-        endDate: new Date(endDate || '2026-12-31').toISOString()
+        endDate: new Date(endDate).toISOString()
       };
 
-      const existingIdx = coupons.findIndex(c => c.code.toUpperCase() === code);
+      const coupons = getCoupons();
+      // Replace if existing code or prepend
+      const existingIdx = coupons.findIndex(c => c.code === code);
       if (existingIdx >= 0) {
         coupons[existingIdx] = newCoupon;
       } else {
         coupons.unshift(newCoupon);
       }
       saveCoupons(coupons);
-      isDirty = false;
 
-      showToast(`Discount code "${code}" saved successfully!`, 'success');
+      showToast(`Discount code "${code}" created successfully!`, 'success');
       setTimeout(() => {
         window.location.href = 'discounts.html';
-      }, 600);
-    }
-
-    document.getElementById('btn-save-discount')?.addEventListener('click', handleSave);
-    document.getElementById('btn-create-discount-submit')?.addEventListener('click', handleSave);
+      }, 700);
+    });
 
     updatePreview();
   </script>

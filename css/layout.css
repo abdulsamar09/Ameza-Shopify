@@ -18,7 +18,7 @@
   padding: 8px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   position: relative;
-  z-index: 10002;
+  z-index: 99;
   width: 100%;
 }
 
@@ -1891,10 +1891,10 @@
 .services-nav-btn:hover,
 .services-nav-dropdown:hover .services-nav-btn,
 .services-nav-dropdown.is-open .services-nav-btn {
-  background: var(--primary, #7DBA35);
-  border-color: var(--primary, #7DBA35);
+  background: rgba(127, 183, 60, 0.15);
+  border-color: rgba(127, 183, 60, 0.5);
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(127, 183, 60, 0.4);
+  box-shadow: none;
 }
 
 .services-nav-btn .services-chevron {
@@ -1916,7 +1916,7 @@
 .services-nav-btn:hover .services-btn-pill,
 .services-nav-dropdown:hover .services-btn-pill,
 .services-nav-dropdown.is-open .services-btn-pill {
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.18);
   color: #FFFFFF;
 }
 

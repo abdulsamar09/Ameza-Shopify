@@ -41,9 +41,7 @@ for (const file of htmlFiles) {
     }
     const relFile = path.relative(rootDir, file).replace(/\\/g, '/');
     const dirOfFile = path.posix.dirname(relFile);
-    const resolvedPath = rawHref.startsWith('/')
-      ? path.posix.normalize(rawHref.replace(/^\/+/, ''))
-      : path.posix.normalize(path.posix.join(dirOfFile, rawHref));
+    const resolvedPath = path.posix.normalize(path.posix.join(dirOfFile, rawHref));
     
     if (!allLinks.has(resolvedPath)) {
       allLinks.set(resolvedPath, { rawHref, resolvedPath, sources: [] });

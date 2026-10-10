@@ -8,20 +8,20 @@
   <title>AMEZA | Premium Modern E-Commerce Store</title>
   <meta name="description" content="Discover premium clothing, smart tech electronics, luxury watches, handcrafted leather bags & accessories at AMEZA.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="/shared/css/style.css">
-  <link rel="stylesheet" href="/buyer/css/account.css">
-  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
-  <link rel="stylesheet" href="/shared/css/tokens.css">
-  <link rel="stylesheet" href="/shared/css/layout.css">
-  <link rel="stylesheet" href="/shared/css/base.css">
-  <link rel="stylesheet" href="/storefront/css/cart-drawer.css">
-  <link rel="stylesheet" href="/storefront/css/stores.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/account.css">
+  <link rel="icon" type="image/png" href="assets/ameza-logo.png">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/cart-drawer.css">
+  <link rel="stylesheet" href="css/stores.css">
 </head>
-<body data-layout="storefront" data-access="public" data-area="storefront">
+<body data-layout="storefront">
   <div id="site-header"></div>
 
   <!-- Persistent Demo Control Bar -->
-  <script type="module" src="/shared/js/demo-bar.js"></script>
+  <script type="module" src="js/demo-bar.js"></script>
 
 
   <main>
@@ -88,7 +88,7 @@
         <!-- Right Hero Showcase Banner -->
         <div class="hero-showcase">
           <div class="hero-banner-card">
-            <img src="/assets/banners/hero-smart-tech.png" alt="SMART TECH BETTER LIFE" loading="eager">
+            <img src="assets/banners/hero-smart-tech.png" alt="SMART TECH BETTER LIFE" loading="eager">
             <div class="hero-banner-overlay">
               <div class="hero-overlay-text">
                 <h4>SMART TECH BETTER LIFE</h4>
@@ -150,7 +150,7 @@
             <h2>Best Selling Categories</h2>
             <p>Explore curated collections crafted for style, durability, and daily elegance</p>
           </div>
-          <a href="/storefront/shop.html" class="view-all-link">
+          <a href="shop.html" class="view-all-link">
             View All Categories &rarr;
           </a>
         </div>
@@ -170,7 +170,7 @@
             <p>Shop directly from verified independent makers, master leather crafters, and certified brand boutiques</p>
           </div>
           <div class="stores-header-actions">
-            <a href="/storefront/stores.html" class="btn-view-all-stores" id="link-view-all-stores" title="View All Marketplace Stores">
+            <a href="stores.html" class="btn-view-all-stores" id="link-view-all-stores" title="View All Marketplace Stores">
               <span>View All Stores</span>
               <i class="fa-solid fa-arrow-right"></i>
             </a>
@@ -193,7 +193,7 @@
       <div class="container">
         <div class="promo-wide-card">
           <div class="promo-wide-img">
-            <img src="/assets/banners/promo-elevates.png" alt="TECH THAT ELEVATES EVERY DAY">
+            <img src="assets/banners/promo-elevates.png" alt="TECH THAT ELEVATES EVERY DAY">
           </div>
           <div class="promo-wide-body">
             <span class="promo-pill">PROMOTIONAL SPOTLIGHT</span>
@@ -252,7 +252,7 @@
         <div class="tri-banner-grid">
           <!-- Banner 1: Leather -->
           <div class="tri-banner-card" data-action="scroll-section" data-target="section-leather-collection">
-            <img src="/assets/banners/promo-leather.png" alt="LEATHER PRODUCTS">
+            <img src="assets/banners/promo-leather.png" alt="LEATHER PRODUCTS">
             <div class="tri-banner-content">
               <span class="tri-banner-badge">GENUINE LEATHER</span>
               <h3 class="tri-banner-title">LEATHER PRODUCTS</h3>
@@ -263,7 +263,7 @@
 
           <!-- Banner 2: Clothes -->
           <div class="tri-banner-card" data-action="scroll-section" data-target="section-clothes-jewellery">
-            <img src="/assets/banners/promo-clothes.png" alt="CLOTHES COLLECTION">
+            <img src="assets/banners/promo-clothes.png" alt="CLOTHES COLLECTION">
             <div class="tri-banner-content">
               <span class="tri-banner-badge">UP TO 40% OFF</span>
               <h3 class="tri-banner-title">CLOTHES COLLECTION</h3>
@@ -274,7 +274,7 @@
 
           <!-- Banner 3: Electronics -->
           <div class="tri-banner-card" data-action="scroll-section" data-target="section-electronics-watches">
-            <img src="/assets/banners/promo-electronics.png" alt="ELECTRONICS COLLECTION">
+            <img src="assets/banners/promo-electronics.png" alt="ELECTRONICS COLLECTION">
             <div class="tri-banner-content">
               <span class="tri-banner-badge">LATEST TECH</span>
               <h3 class="tri-banner-title">ELECTRONICS COLLECTION</h3>
@@ -310,7 +310,7 @@
       <div class="container">
         <div class="lifestyle-card">
           <div class="lifestyle-img">
-            <img src="/assets/banners/banner-everyday-style.png" alt="ELEVATE YOUR EVERYDAY STYLE">
+            <img src="assets/banners/banner-everyday-style.png" alt="ELEVATE YOUR EVERYDAY STYLE">
           </div>
           <div class="lifestyle-body">
             <span class="lifestyle-tag">FLASH PROMOTION &bull; UP TO 50% OFF</span>
@@ -523,7 +523,7 @@
         Move All to Cart &rarr;
       </button>
       <div style="display: flex; gap: 8px;">
-        <a href="/storefront/wishlist.html" class="btn-clear-search" style="flex: 1; justify-content: center; text-decoration: none;">
+        <a href="wishlist.html" class="btn-clear-search" style="flex: 1; justify-content: center; text-decoration: none;">
           View Full Page
         </a>
         <button class="btn-clear-search" style="flex: 1; justify-content: center;" data-action="wishlist-clear-all">
@@ -631,11 +631,11 @@
   <div class="toast-container" id="toast-container"></div>
 
   <!-- Currency Engine -->
-  <script src="/shared/js/currency.js"></script>
+  <script src="js/currency.js"></script>
   <!-- Auth engine for account icon state & profile dropdown -->
-  <script src="/auth/js/auth.js"></script>
+  <script src="js/auth.js"></script>
   <script type="module" src="js/app.js"></script>
   <!-- Unified Layout Module -->
-  <script type="module" src="/shared/js/core/layout.js"></script>
+  <script type="module" src="js/core/layout.js"></script>
 </body>
 </html>

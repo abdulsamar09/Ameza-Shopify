@@ -8,11 +8,10 @@
   <title>Discounts & Promotions | AMEZA Seller Central</title>
   <meta name="description" content="Create and manage coupon codes, promotional sales, and checkout cart discounts.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="/shared/css/tokens.css">
-  <link rel="stylesheet" href="/shared/css/dashboard.css">
-  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
 </head>
-<body data-layout="none" data-access="seller" data-area="seller">
+<body data-layout="none">
   <!-- Top Bar (Shell injected) -->
   <header id="app-topbar"></header>
 
@@ -31,8 +30,8 @@
 
   <!-- Application Bootstrap Script (ES Modules) -->
   <script type="module">
-    import { initShell } from "/seller/js/dashboard-shell.js";
-    import { initDiscounts } from "/seller/js/discounts.js";
+    import { initShell } from '../js/shell.js';
+    import { initDiscounts } from '../js/discounts.js';
 
     // Initialize reusable shell with 'discounts' as active page
     initShell('discounts');

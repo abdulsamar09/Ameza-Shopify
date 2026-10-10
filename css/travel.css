@@ -6,34 +6,23 @@
    Services: Stays | Flights | Car Rental | Attractions | Airport Taxis
    ========================================================================== */
 
+:root {
+  --travel-brand: #7FB73C;
+  --travel-brand-dark: #6CA030;
+  --travel-brand-darker: #5B8828;
+  --travel-brand-light: #F3F8EE;
+  --travel-brand-lighter: #FAFCF8;
+  --travel-brand-glow: rgba(127, 183, 60, 0.35);
 
-
-/* Header & Footer Brand Logo Containment */
-.logo-wrap {
-  display: inline-flex !important;
-  align-items: center !important;
-  max-height: 48px !important;
-  text-decoration: none !important;
-}
-.logo-wrap img,
-.header-sticky .logo-wrap img {
-  max-height: 40px !important;
-  height: 38px !important;
-  width: auto !important;
-  object-fit: contain !important;
-  display: inline-block !important;
-}
-.footer-logo-wrap {
-  display: inline-block !important;
-  max-height: 48px !important;
-}
-.footer-logo,
-.footer-logo-wrap img {
-  max-height: 42px !important;
-  height: 38px !important;
-  width: auto !important;
-  object-fit: contain !important;
-  display: inline-block !important;
+  --travel-dark-bg: #0F172A;
+  --travel-dark-card: #1E293B;
+  --travel-dark-hero: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #142217 100%);
+  
+  --travel-card-bg: #FFFFFF;
+  --travel-border: #E2E8F0;
+  --travel-text-dark: #0F172A;
+  --travel-text-muted: #64748B;
+  --travel-badge: #7FB73C;
 }
 
 /* ==========================================================================
@@ -85,10 +74,10 @@
 .services-nav-btn:hover,
 .services-nav-dropdown:hover .services-nav-btn,
 .services-nav-dropdown.is-open .services-nav-btn {
-  background: var(--travel-brand, #7DBA35);
-  border-color: var(--travel-brand, #7DBA35);
+  background: rgba(127, 183, 60, 0.15);
+  border-color: rgba(127, 183, 60, 0.5);
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(127, 183, 60, 0.4);
+  box-shadow: none;
 }
 
 .services-nav-btn .services-chevron {
@@ -110,7 +99,7 @@
 .services-nav-btn:hover .services-btn-pill,
 .services-nav-dropdown:hover .services-btn-pill,
 .services-nav-dropdown.is-open .services-btn-pill {
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.16);
   color: #FFFFFF;
 }
 
@@ -273,7 +262,7 @@
 }
 
 .travel-cat-pill.store-pill:hover {
-  background: var(--travel-brand);
+  background: rgba(127, 183, 60, 0.15);
   color: #FFFFFF;
 }
 
@@ -3526,15 +3515,33 @@
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
   }
+  .services-nav-btn,
+  .services-nav-btn:hover,
+  .services-nav-btn:active,
+  .services-nav-btn:focus,
+  .services-nav-dropdown:hover .services-nav-btn,
+  .services-nav-dropdown.is-open .services-nav-btn {
+    background: rgba(127, 183, 60, 0.15) !important;
+    border-color: rgba(127, 183, 60, 0.4) !important;
+    color: #FFFFFF !important;
+    box-shadow: none !important;
+  }
   .services-btn-pill {
     display: none !important;
   }
-  .travel-cat-pill.store-pill {
+  .travel-cat-pill.store-pill,
+  .travel-cat-pill.store-pill:hover,
+  .travel-cat-pill.store-pill:active,
+  .travel-cat-pill.store-pill:focus {
     flex-shrink: 0 !important;
     padding: 7px 12px !important;
     font-size: 0.82rem !important;
     white-space: nowrap !important;
     margin-left: 0 !important;
+    background: rgba(127, 183, 60, 0.15) !important;
+    border: 1.5px solid rgba(127, 183, 60, 0.5) !important;
+    color: #FFFFFF !important;
+    box-shadow: none !important;
   }
   .services-menu-dropdown {
     position: absolute !important;

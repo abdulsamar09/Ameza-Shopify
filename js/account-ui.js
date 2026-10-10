@@ -329,7 +329,7 @@ const AccountUI = {
           <div class="account-sidebar-seller-card">
             <div class="sidebar-seller-title"><i class="fa-solid fa-briefcase"></i> Seller Dashboard</div>
             <p class="sidebar-seller-desc">Manage store products, orders, and payouts.</p>
-            <a href="/seller/index.html" class="sidebar-seller-link">Open seller dashboard &rarr;</a>
+            <a href="seller/index.html" class="sidebar-seller-link">Open seller dashboard &rarr;</a>
           </div>
         ` : `
           <div class="account-sidebar-seller-card">

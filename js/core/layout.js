@@ -227,8 +227,8 @@ function initTravelDrawer(base) {
   const iconMap = {
     'store': 'fa-house',
     'home': 'fa-house',
-    'stay': 'fa-bed',
     'hotel': 'fa-bed',
+    'stay': 'fa-bed',
     'flight': 'fa-plane-departure',
     'car': 'fa-car',
     'attraction': 'fa-ticket',
@@ -363,7 +363,7 @@ export function initLayout() {
   } catch (e) {}
 
   const layoutType = document.body.getAttribute('data-layout') || 'storefront';
-  if (layoutType === 'none' || layoutType === 'dashboard') {
+  if (layoutType === 'none') {
     return; // Dashboards handle their own shell
   }
 
@@ -700,7 +700,7 @@ function renderStorefrontLayout(headerMount, footerMount, base, session, cartCou
           <button class="services-nav-btn" id="services-nav-btn" type="button" aria-expanded="false" aria-haspopup="true">
             <i class="fa-solid fa-plane-departure"></i>
             <span>Travel &amp; Booking Services</span>
-            <span class="services-btn-pill">AMEZA Hotels &bull; Flights &bull; Cars &bull; Taxis</span>
+            <span class="services-btn-pill">Stays &bull; Flights &bull; Cars &bull; Taxis</span>
             <i class="fa-solid fa-chevron-down services-chevron"></i>
           </button>
           <div class="services-menu-dropdown" id="services-menu-dropdown">

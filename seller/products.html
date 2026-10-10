@@ -7,10 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Products | AMEZA Seller Central</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="/shared/css/dashboard.css">
-  <link rel="icon" type="image/png" href="/assets/ameza-logo.png">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" type="image/png" href="../assets/ameza-logo.png">
 </head>
-<body data-layout="none" data-access="seller" data-area="seller">
+<body data-layout="none">
   <header id="app-topbar"></header>
 
   <div class="app-layout">
@@ -31,7 +31,7 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Import
           </button>
-          <a href="/seller/add-product.html" class="btn-header-primary">
+          <a href="add-product.html" class="btn-header-primary">
             Add product
           </a>
         </div>
@@ -216,9 +216,9 @@
   </div>
 
   <script type="module">
-    import { initShell } from "/seller/js/dashboard-shell.js";
-    import { initProducts } from "/seller/js/products.js";
-    import { initImportModal } from "/seller/js/import-modal.js";
+    import { initShell } from '../js/shell.js';
+    import { initProducts } from '../js/products.js';
+    import { initImportModal } from '../js/import-modal.js';
 
     initShell('products');
     initProducts();
