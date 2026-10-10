@@ -3,12 +3,7 @@
  * Brand colours: primary green #7FB73C — no navy/blue
  */
 
-@import url('./tokens.css');
 
-:root {
-  --cart-font: var(--font-heading, 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif);
-  --cart-body: var(--font-body, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif);
-}
 
 body.cart-page-body {
   font-family: var(--font-body, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif);

@@ -4,8 +4,9 @@
  * real-time filtering, currency formatting, quick add-to-cart, and wishlist syncing.
  */
 
-import { PRODUCTS, CATEGORIES } from './products-data.js';
-import { addToCart } from './cart-drawer.js';
+import { PRODUCTS, CATEGORIES } from '/shared/js/products-data.js';
+import { addToCart } from '/shared/js/cart-drawer.js';
+import { escapeHTML as escapeHtml } from '/shared/js/core/utils.js';
 
 // Category Taxonomy Map
 export const TAXONOMY = {
@@ -797,14 +798,4 @@ function syncWishlistButtons(root) {
   } catch (e) {}
 }
 
-function escapeHtml(str) {
-  return (str || '').replace(/[&<>'"]/g, 
-    tag => ({
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      "'": '&#39;',
-      '"': '&quot;'
-    }[tag] || tag)
-  );
-}
+

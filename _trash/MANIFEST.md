@@ -19,6 +19,7 @@ All moves preserve original sub-paths. Direct HTTP access to `_trash/` is blocke
 | `scripts/fix_all_banned_terms.js` | `_trash/scripts/fix_all_banned_terms.js` | One-off regex replacement script that already completed | 2026-10-10 | Automated CI guard: `scripts/check_usa.js` | `Move-Item "_trash/scripts/fix_all_banned_terms.js" "scripts/fix_all_banned_terms.js"` |
 | `scripts/apply_pricing_to_products_data.js` | `_trash/scripts/apply_pricing_to_products_data.js` | One-off catalog price normalizer that has already run | 2026-10-10 | `shared/js/core/pricing.js` & unit minor units | `Move-Item "_trash/scripts/apply_pricing_to_products_data.js" "scripts/apply_pricing_to_products_data.js"` |
 | `scripts/update_stays_nav.js` | `_trash/scripts/update_stays_nav.js` | One-off navigation updater script | 2026-10-10 | Static HTML & layout engine updates | `Move-Item "_trash/scripts/update_stays_nav.js" "scripts/update_stays_nav.js"` |
+| `shared/js/core/currency.js` | `_trash/shared/js/core/currency.js` | Duplicate currency engine | 2026-10-10 | `shared/js/currency.js` | `git mv "_trash/shared/js/core/currency.js" "shared/js/core/currency.js"` |
 
 ---
 

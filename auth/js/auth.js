@@ -1092,15 +1092,17 @@ async function deleteAccount(userId, { password }) {
 // ACCOUNT ICON & PROFILE HEADER HELPER
 // ============================================================
 
-function escapeHTML(str) {
-  if (!str) return '';
-  return String(str)
+const escapeHTML = (str) => {
+  if (typeof window !== 'undefined' && typeof window.escapeHTML === 'function') {
+    return window.escapeHTML(str);
+  }
+  return String(str || '')
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
-}
+};
 
 /**
  * Update all account elements on the page based on login state.

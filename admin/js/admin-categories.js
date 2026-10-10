@@ -2,6 +2,7 @@
  * AMEZA Admin Console — Taxonomy & Category Management Engine (js/admin-categories.js)
  * Manages hierarchical category tree, commission overrides, and catalog mappings.
  */
+import { escapeHTML } from '/shared/js/core/utils.js';
 
 const STORAGE_KEY = 'ameza_catalog_categories';
 
@@ -86,10 +87,7 @@ export function initAdminCategories() {
   bindCategoriesEvents();
 }
 
-function escapeHTML(str) {
-  if (!str) return '';
-  return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]);
-}
+
 
 function showAdminToast(msg, type = 'success') {
   const toast = document.createElement('div');

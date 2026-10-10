@@ -4,7 +4,8 @@
  * formatted in 12-hour US Eastern Time.
  */
 
-import { getAuditLogs } from './api/audit.api.js';
+import { getAuditLogs } from '/shared/js/api/audit.api.js';
+import { escapeHTML } from '/shared/js/core/utils.js';
 
 let searchQuery = '';
 let actionFilter = 'all';
@@ -13,11 +14,6 @@ let typeFilter = 'all';
 export function initAdminAudit() {
   renderAuditView();
   bindAuditEvents();
-}
-
-function escapeHTML(str) {
-  if (!str) return '';
-  return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]);
 }
 
 /**

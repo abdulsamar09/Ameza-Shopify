@@ -11,8 +11,9 @@
  */
 
 import { STORE_DATA } from './store-page.js';
-import { PRODUCTS as CATALOG_PRODUCTS } from './products-data.js';
-import { getAllStoreProducts } from './data/stores-data.js';
+import { PRODUCTS as CATALOG_PRODUCTS } from '/shared/js/products-data.js';
+import { getAllStoreProducts } from '/shared/js/data/stores-data.js';
+import { escapeHTML as escapeHtml } from '/shared/js/core/utils.js';
 import { initCartDrawer } from './cart-drawer.js';
 import { formatMoney } from './core/utils.js';
 
@@ -626,14 +627,4 @@ function showToast(msg) {
   setTimeout(() => toast.classList.remove('show'), 2500);
 }
 
-function escapeHtml(str) {
-  return str.replace(/[&<>'"]/g, 
-    tag => ({
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      "'": '&#39;',
-      '"': '&quot;'
-    }[tag] || tag)
-  );
-}
+

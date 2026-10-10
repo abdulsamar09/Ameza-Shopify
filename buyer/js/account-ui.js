@@ -6,15 +6,8 @@
 
 'use strict';
 
-function escapeHTML(str) {
-  if (str === null || str === undefined) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
+import { escapeHTML } from '/shared/js/core/utils.js';
+
 
 const AccountUI = {
 
@@ -366,7 +359,8 @@ const AccountUI = {
       </div>
     </div>
   </div>`;
-  },
+  }
+};
 
 window.Ameza = window.Ameza || {};
 window.Ameza.AccountUI = AccountUI;

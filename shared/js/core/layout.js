@@ -5,6 +5,20 @@
  */
 
 import { escapeHTML, formatMoney } from './utils.js';
+import { initBackToTop } from './back-to-top.js';
+
+/**
+ * Universal font loader for Inter and Plus Jakarta Sans.
+ */
+export function ensureFontsLoaded() {
+  if (typeof document === 'undefined') return;
+  if (document.getElementById('ameza-font-loader')) return;
+  const link = document.createElement('link');
+  link.id = 'ameza-font-loader';
+  link.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap';
+  document.head.appendChild(link);
+}
 
 /**
  * Calculates relative base path from current page to project root.
@@ -404,21 +418,13 @@ export function initLayout() {
     renderStorefrontLayout(headerMount, footerMount, base, session, cartCount, wishlistCount);
   }
 
-  // Ensure Global Back to Top button exists
-  if (!document.getElementById('global-back-to-top')) {
-    const btt = document.createElement('button');
-    btt.type = 'button';
-    btt.id = 'global-back-to-top';
-    btt.className = 'back-to-top-btn';
-    btt.setAttribute('aria-label', 'Back to top');
-    btt.setAttribute('title', 'Back to top');
-    btt.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
-    document.body.appendChild(btt);
-  }
+  // Ensure fonts and back-to-top are active
+  ensureFontsLoaded();
+  initBackToTop();
 
   // Load and initialize cart drawer on storefront pages
   if (layoutType !== 'focus' && layoutType !== 'none') {
-    const cartDrawerUrl = new URL(`${base}js/cart-drawer.js`, window.location.href).href;
+    const cartDrawerUrl = '/shared/js/cart-drawer.js';
     import(cartDrawerUrl).then(module => {
       if (module && typeof module.initCartDrawer === 'function') {
         module.initCartDrawer();
@@ -431,7 +437,7 @@ export function initLayout() {
   // Ensure currency engine is active
   if (!window.AmezaCurrency) {
     const currScript = document.createElement('script');
-    currScript.src = `${base}js/currency.js`;
+    currScript.src = '/shared/js/currency.js';
     currScript.onload = () => {
       if (window.AmezaCurrency && typeof window.AmezaCurrency.updateTopBarLabels === 'function') {
         window.AmezaCurrency.updateTopBarLabels();

@@ -2,6 +2,7 @@
  * AMEZA Marketplace - Stores Slider & Directory Component
  */
 import { STORES_LIST, getStoreBySlug } from '../data/stores-data.js';
+import { escapeHTML } from '../core/utils.js';
 
 /**
  * Creates HTML for a single compact store card ("thori information k sath small card")
@@ -122,12 +123,4 @@ export function initHomeStoresSlider() {
   });
 }
 
-function escapeHTML(str) {
-  if (!str) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
+

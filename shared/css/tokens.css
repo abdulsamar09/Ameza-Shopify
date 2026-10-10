@@ -70,6 +70,26 @@
   --badge-sale: #E11D48;
   --badge-deal: #D97706;
 
+  /* --- Travel Suite Tokens --- */
+  --travel-brand: #7FB73C;
+  --travel-brand-dark: #6CA030;
+  --travel-brand-darker: #5B8828;
+  --travel-brand-light: #F3F8EE;
+  --travel-brand-lighter: #FAFCF8;
+  --travel-brand-glow: rgba(127, 183, 60, 0.35);
+  --travel-dark-bg: #0F172A;
+  --travel-dark-card: #1E293B;
+  --travel-dark-hero: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #142217 100%);
+  --travel-card-bg: #FFFFFF;
+  --travel-border: #E2E8F0;
+  --travel-text-dark: #0F172A;
+  --travel-text-muted: #64748B;
+  --travel-badge: #7FB73C;
+
+  /* --- Cart Page Tokens --- */
+  --cart-font: var(--font-heading);
+  --cart-body: var(--font-body);
+
   /* --- Spacing Scale --- */
   --space-3xs: 2px;
   --space-2xs: 4px;

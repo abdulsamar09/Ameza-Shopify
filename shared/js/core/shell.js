@@ -5,13 +5,26 @@
 
 import { Icons } from './icons.js';
 import { NAV_ITEMS, NOTIFICATIONS } from './data.js';
+import { escapeHTML } from './utils.js';
+import { initBackToTop } from './back-to-top.js';
 
-import { escapeHTML } from './core/utils.js';
+export function ensureFontsLoaded() {
+  if (typeof document === 'undefined') return;
+  if (document.getElementById('ameza-font-loader')) return;
+  const link = document.createElement('link');
+  link.id = 'ameza-font-loader';
+  link.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap';
+  document.head.appendChild(link);
+}
+
 export { escapeHTML };
 
 let notificationList = [...NOTIFICATIONS];
 
 export function initShell(activePageId = 'home') {
+  ensureFontsLoaded();
+  initBackToTop();
   // 1. Render Top Bar
   const topbarEl = document.getElementById('app-topbar');
   if (topbarEl) {
