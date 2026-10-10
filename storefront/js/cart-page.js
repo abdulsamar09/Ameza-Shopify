@@ -5,7 +5,7 @@
  */
 
 import { getCart, saveCart, updateAllCartBadges } from './cart-drawer.js';
-import { formatMoney } from './core/utils.js';
+import { formatMoney } from '/shared/js/core/utils.js';
 
 export function initCartPage() {
   const container = document.getElementById('cart-page-content');

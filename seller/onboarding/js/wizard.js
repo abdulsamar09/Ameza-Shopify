@@ -10,10 +10,10 @@ import {
   COUNTRIES_LIST,
   US_MAJOR_BANKS,
   SELLER_AGREEMENT_TEXT
-} from './wizard-data.js';
+} from '/seller/onboarding/js/wizard-data.js';
 
-import { escapeHTML } from './config.js';
-import { US_STATES, isValidZip, isValidRoutingNumber, formatPhone, maskTin } from '../../js/core/us.js';
+import { escapeHTML } from '/seller/onboarding/js/config.js';
+import { US_STATES, isValidZip, isValidRoutingNumber, formatPhone, maskTin } from '/shared/js/core/us.js';
 
 export function initWizard() {
   // Wizard State

@@ -12,14 +12,14 @@
  */
 
 import { getCart, saveCart } from './cart-drawer.js';
-import { US_STATES, isValidZip, formatPhone } from './core/us.js';
-import { formatMoney, showToast, escapeHTML } from './core/utils.js';
+import { US_STATES, isValidZip, formatPhone } from '/shared/js/core/us.js';
+import { formatMoney, showToast, escapeHTML } from '/shared/js/core/utils.js';
 import { OrdersAPI } from './api/orders.api.js';
 import {
   groupCartBySeller,
   calculateTax,
   validateAndApplyCoupon
-} from './core/pricing.js';
+} from '/shared/js/core/pricing.js';
 
 let taxRatesCache = null;
 let couponsCache = null;

@@ -1,4 +1,4 @@
-import { formatMoney } from './core/utils.js';
+import { formatMoney } from '/shared/js/core/utils.js';
 import { getStoreBySlug } from './data/stores-data.js';
 
 export const STORE_DATA = {

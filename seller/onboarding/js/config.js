@@ -184,5 +184,5 @@ export const FAQ_CONFIG = [
 ];
 
 // Helper: Escape HTML strings to prevent XSS (from core utils)
-import { escapeHTML } from '../../js/core/utils.js';
+import { escapeHTML } from '/shared/js/core/utils.js';
 export { escapeHTML };

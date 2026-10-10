@@ -341,7 +341,7 @@ export const DashboardShell = {
 
         <!-- MOBILE BOTTOM NAVIGATION -->
         <nav class="mobile-bottom-nav">
-          <a href="seller/index.html" class="mob-nav-link ${this.activeNav === 'dashboard' ? 'active' : ''}">
+          <a href="/seller/index.html" class="mob-nav-link ${this.activeNav === 'dashboard' ? 'active' : ''}">
             <i class="fa-solid fa-chart-pie"></i>
             <span>Dashboard</span>
           </a>

@@ -6,7 +6,7 @@
  */
 
 import { PRODUCTS, CATEGORIES, getBrandList } from './products-data.js';
-import { escapeHTML, formatMoney } from './core/utils.js';
+import { escapeHTML, formatMoney } from '/shared/js/core/utils.js';
 import { addToCart } from './cart-drawer.js';
 
 // --- CONFIG & CONSTANTS ---

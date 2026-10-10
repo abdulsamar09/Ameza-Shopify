@@ -15,7 +15,7 @@ import { PRODUCTS as CATALOG_PRODUCTS } from '/shared/js/products-data.js';
 import { getAllStoreProducts } from '/shared/js/data/stores-data.js';
 import { escapeHTML as escapeHtml } from '/shared/js/core/utils.js';
 import { initCartDrawer } from './cart-drawer.js';
-import { formatMoney } from './core/utils.js';
+import { formatMoney } from '/shared/js/core/utils.js';
 
 export function initProductPage() {
   // Initialize the slide-out cart drawer on product page

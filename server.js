@@ -73,7 +73,9 @@ const REDIRECTS_301 = {
   '/prototype-index.html': '/dev/prototype-index.html',
   '/selftest.html': '/dev/selftest.html',
   '/ui-kit.html': '/dev/ui-kit.html',
-  '/account': '/buyer/'
+  '/account': '/buyer/',
+  '/seller/seller': '/seller/',
+  '/seller/seller/index.html': '/seller/'
 };
 
 // Clean URLs rewrites map

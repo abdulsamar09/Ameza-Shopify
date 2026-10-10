@@ -44,7 +44,9 @@
     { "source": "/prototype-index.html", "destination": "/dev/prototype-index.html", "permanent": true },
     { "source": "/selftest.html", "destination": "/dev/selftest.html", "permanent": true },
     { "source": "/ui-kit.html", "destination": "/dev/ui-kit.html", "permanent": true },
-    { "source": "/account", "destination": "/buyer/", "permanent": true }
+    { "source": "/account", "destination": "/buyer/", "permanent": true },
+    { "source": "/seller/seller", "destination": "/seller/", "permanent": true },
+    { "source": "/seller/seller/:match*", "destination": "/seller/:match*", "permanent": true }
   ],
   "rewrites": [
     { "source": "/shop", "destination": "/storefront/shop.html" },

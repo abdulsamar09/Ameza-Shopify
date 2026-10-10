@@ -9,7 +9,7 @@ import {
   TESTIMONIALS_CONFIG,
   FAQ_CONFIG,
   escapeHTML
-} from './config.js';
+} from '/seller/onboarding/js/config.js';
 
 export function initLanding() {
   renderAuthHeader();

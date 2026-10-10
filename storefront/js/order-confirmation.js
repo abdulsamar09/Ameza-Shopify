@@ -5,7 +5,7 @@
  */
 
 import { OrdersAPI } from './api/orders.api.js';
-import { formatMoney, escapeHTML } from './core/utils.js';
+import { formatMoney, escapeHTML } from '/shared/js/core/utils.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const root = document.getElementById('order-confirmation-root');
